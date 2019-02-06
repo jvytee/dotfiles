@@ -40,6 +40,7 @@ if has('nvim')
     
     set termguicolors
     colorscheme flattened_dark
+    highlight Conceal ctermbg=8 guibg=#002b36
     
     nnoremap <leader>f :FZF<CR>
 
