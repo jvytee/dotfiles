@@ -1,8 +1,0 @@
-*font: Cantarell:size=9.75
-
-Xft.hinting: 1
-Xft.hintstyle: hintslight
-Xft.antialias: 1
-Xft.rgba: rgb
-
-Xcursor.theme: Adwaita
