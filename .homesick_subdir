@@ -1,1 +1,4 @@
 .config/nvim
+.config/bspwm
+.config/sxhkd
+.config/yabar
