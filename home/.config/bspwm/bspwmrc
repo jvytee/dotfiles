@@ -19,7 +19,6 @@ bspc config focused_border_color "#839496"
 xinput set-prop 10 289 1
 xinput set-prop 10 299 1
 xrdb .Xresources
-xscreensaver -no-splash &
 compton -b
 redshift &
 yabar &

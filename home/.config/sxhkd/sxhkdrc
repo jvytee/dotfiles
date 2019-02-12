@@ -16,7 +16,7 @@ super + Escape
 
 # lock screen
 super + alt + q
-        xscreensaver-command -l
+        slock
 
 # volume control
 XF86AudioRaiseVolume
@@ -27,6 +27,13 @@ XF86AudioLowerVolume
 
 XF86AudioMute
         pactl set-sink-mute 0 toggle
+
+# brightness control
+XF86MonBrightnessUp
+        xbacklight +5
+
+XF86MonBrightnessDown
+        xbacklight -5
 
 #
 # bspwm hotkeys
