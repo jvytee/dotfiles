@@ -19,6 +19,7 @@ let mapleader = "\<space>"
 if has('nvim')
     call plug#begin('~/.local/share/nvim/vim-plug')
         Plug 'romainl/flattened'
+        Plug 'romainl/apprentice'
         Plug 'junegunn/fzf', {
                     \ 'dir': '~/.fzf',
                     \ 'do': './install --all'
@@ -40,7 +41,9 @@ if has('nvim')
     
     set termguicolors
     colorscheme flattened_dark
-    highlight Conceal ctermbg=8 guibg=#002b36
+
+    " TODO Merge this upstream if possible
+    highlight Conceal ctermbg=none guibg=none
     
     nnoremap <leader>f :FZF<CR>
 
