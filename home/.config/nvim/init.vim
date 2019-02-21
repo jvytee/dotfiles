@@ -5,6 +5,7 @@ set cursorline
 set ignorecase
 set linebreak
 set mouse=a
+set nofoldenable
 set number
 set signcolumn=yes
 set smartcase
@@ -18,8 +19,7 @@ let mapleader = "\<space>"
 
 if has('nvim')
     call plug#begin('~/.local/share/nvim/vim-plug')
-        Plug 'romainl/flattened'
-        Plug 'romainl/apprentice'
+        Plug 'jvytee/flattened'
         Plug 'junegunn/fzf', {
                     \ 'dir': '~/.fzf',
                     \ 'do': './install --all'
@@ -41,9 +41,6 @@ if has('nvim')
     
     set termguicolors
     colorscheme flattened_dark
-
-    " TODO Merge this upstream if possible
-    highlight Conceal ctermbg=none guibg=none
     
     nnoremap <leader>f :FZF<CR>
 
