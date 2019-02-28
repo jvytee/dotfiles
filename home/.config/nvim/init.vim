@@ -31,6 +31,7 @@ if has('nvim')
                     \ 'branch': 'next',
                     \ 'do': 'bash install.sh'
                     \ }
+        Plug 'ervandew/supertab'
         Plug 'octol/vim-cpp-enhanced-highlight'
         Plug 'ludovicchabant/vim-gutentags'
         Plug 'vim-pandoc/vim-pandoc'
@@ -68,6 +69,9 @@ if has('nvim')
         autocmd!
         autocmd FileType cpp,c,python call SetLSPShortcuts()
     augroup END
+
+    let g:SuperTabDefaultCompletionType = "<c-n>"
+    let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
     let g:cpp_class_scope_highlight = 1
     let g:cpp_member_variable_highlight = 1
