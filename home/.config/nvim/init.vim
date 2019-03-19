@@ -24,6 +24,7 @@ if has('nvim')
                     \ 'dir': '~/.fzf',
                     \ 'do': './install --all'
                     \ }
+        Plug 'ervandew/supertab'
         Plug 'Shougo/deoplete.nvim', {
                     \ 'do': ':UpdateRemotePlugins'
                     \ }
@@ -31,13 +32,10 @@ if has('nvim')
                     \ 'branch': 'next',
                     \ 'do': 'bash install.sh'
                     \ }
-        Plug 'ervandew/supertab'
         Plug 'octol/vim-cpp-enhanced-highlight'
-        Plug 'ludovicchabant/vim-gutentags'
         Plug 'vim-pandoc/vim-pandoc'
         Plug 'vim-pandoc/vim-pandoc-syntax'
         Plug 'lervag/vimtex'
-        Plug 'jceb/vim-orgmode'
     call plug#end()
     
     set termguicolors
@@ -46,6 +44,7 @@ if has('nvim')
     nnoremap <leader>f :FZF<CR>
 
     let g:deoplete#enable_at_startup = 1
+
     let g:LanguageClient_serverCommands = {
                 \ 'cpp': ['clangd-6.0'],
                 \ 'go': ['golsp'],
@@ -70,8 +69,8 @@ if has('nvim')
         autocmd FileType cpp,c,python call SetLSPShortcuts()
     augroup END
 
-    let g:SuperTabDefaultCompletionType = "<c-n>"
-    let g:SuperTabContextDefaultCompletionType = "<c-n>"
+    let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
+    let g:SuperTabContextDefaultCompletionType = "<C-x><C-o>"
 
     let g:cpp_class_scope_highlight = 1
     let g:cpp_member_variable_highlight = 1
