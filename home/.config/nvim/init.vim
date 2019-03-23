@@ -22,9 +22,8 @@ if has('nvim')
         Plug 'jvytee/flattened'
         Plug 'junegunn/fzf', {
                     \ 'dir': '~/.fzf',
-                    \ 'do': './install --all'
-                    \ }
-        Plug 'ervandew/supertab'
+                    \ 'do': './install --all' }
+        Plug 'junegunn/fzf.vim'
         Plug 'Shougo/deoplete.nvim', {
                     \ 'do': ':UpdateRemotePlugins'
                     \ }
@@ -32,6 +31,8 @@ if has('nvim')
                     \ 'branch': 'next',
                     \ 'do': 'bash install.sh'
                     \ }
+        Plug 'neomake/neomake'
+        Plug 'deoplete-plugins/deoplete-jedi'
         Plug 'octol/vim-cpp-enhanced-highlight'
         Plug 'vim-pandoc/vim-pandoc'
         Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -42,13 +43,16 @@ if has('nvim')
     colorscheme flattened_dark
     
     nnoremap <leader>f :FZF<CR>
+    nnoremap <leader>b :Buffers<CR>
+    nnoremap <leader>g :GitFiles<CR>
 
     let g:deoplete#enable_at_startup = 1
+    let g:neomake_python_enabled_makers = ['pylint']
+    call neomake#configure#automake('rw', 500)
 
     let g:LanguageClient_serverCommands = {
                 \ 'cpp': ['clangd-6.0'],
-                \ 'go': ['golsp'],
-                \ 'python': ['pyls']
+                \ 'go': ['golsp']
                 \ }
     
     function! SetLSPShortcuts()
@@ -68,9 +72,6 @@ if has('nvim')
         autocmd!
         autocmd FileType cpp,c,python call SetLSPShortcuts()
     augroup END
-
-    let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
-    let g:SuperTabContextDefaultCompletionType = "<C-x><C-o>"
 
     let g:cpp_class_scope_highlight = 1
     let g:cpp_member_variable_highlight = 1
