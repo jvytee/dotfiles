@@ -1,6 +1,7 @@
 set autochdir
 set breakindent
 set clipboard+=unnamedplus
+set cmdheight=2
 set cursorline
 set ignorecase
 set linebreak
@@ -27,12 +28,11 @@ if has('nvim')
         Plug 'Shougo/deoplete.nvim', {
                     \ 'do': ':UpdateRemotePlugins'
                     \ }
+        Plug 'Shougo/echodoc.vim'
         Plug 'autozimu/LanguageClient-neovim', {
                     \ 'branch': 'next',
                     \ 'do': 'bash install.sh'
                     \ }
-        Plug 'neomake/neomake'
-        Plug 'deoplete-plugins/deoplete-jedi'
         Plug 'octol/vim-cpp-enhanced-highlight'
         Plug 'vim-pandoc/vim-pandoc'
         Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -47,12 +47,14 @@ if has('nvim')
     nnoremap <leader>g :GitFiles<CR>
 
     let g:deoplete#enable_at_startup = 1
-    let g:neomake_python_enabled_makers = ['pylint']
-    call neomake#configure#automake('rw', 500)
+    let g:echodoc#enable_at_startup = 1
+    let g:echodoc#type = 'signature'
+    let g:LanguageClient_useVirtualText = 0
 
     let g:LanguageClient_serverCommands = {
                 \ 'cpp': ['clangd-6.0'],
-                \ 'go': ['golsp']
+                \ 'go': ['golsp'],
+                \ 'python': ['pyls']
                 \ }
     
     function! SetLSPShortcuts()
@@ -76,6 +78,8 @@ if has('nvim')
     let g:cpp_class_scope_highlight = 1
     let g:cpp_member_variable_highlight = 1
     let g:cpp_class_decl_highlight = 1
+
+    autocmd BufRead,BufNewFile *.tex :set filetype=tex
 else
     syntax on
 endif
