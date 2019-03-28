@@ -1,0 +1,4 @@
+-x
+--audio-format mp3
+--audio-quality 0
+-o '%(playlist_title)s/%(autonumber)s %(title)s.%(ext)s'

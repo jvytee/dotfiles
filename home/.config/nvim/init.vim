@@ -72,7 +72,7 @@ if has('nvim')
     
     augroup LSP
         autocmd!
-        autocmd FileType cpp,c,python call SetLSPShortcuts()
+        autocmd FileType c,cpp,go,python call SetLSPShortcuts()
     augroup END
 
     let g:cpp_class_scope_highlight = 1
