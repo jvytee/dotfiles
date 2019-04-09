@@ -33,7 +33,7 @@ if has('nvim')
                     \ 'branch': 'next',
                     \ 'do': 'bash install.sh'
                     \ }
-        Plug 'octol/vim-cpp-enhanced-highlight'
+        Plug 'sheerun/vim-polyglot'
         Plug 'vim-pandoc/vim-pandoc'
         Plug 'vim-pandoc/vim-pandoc-syntax'
         Plug 'lervag/vimtex'
