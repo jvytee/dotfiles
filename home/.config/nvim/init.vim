@@ -3,7 +3,6 @@ set breakindent
 set clipboard+=unnamedplus
 set cmdheight=2
 set cursorline
-set ignorecase
 set linebreak
 set mouse=a
 set nofoldenable
