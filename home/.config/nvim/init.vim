@@ -47,10 +47,12 @@ if has('nvim')
     nnoremap <leader>g :GitFiles<CR>
 
     let g:deoplete#enable_at_startup = 1
+    autocmd CompleteDone * silent! pclose!
+
     let g:echodoc#enable_at_startup = 1
     let g:echodoc#type = 'signature'
-    let g:LanguageClient_useVirtualText = 0
 
+    let g:LanguageClient_useVirtualText = 0
     let g:LanguageClient_serverCommands = {
                 \ 'cpp': ['clangd-6.0'],
                 \ 'go': ['golsp'],
@@ -74,10 +76,6 @@ if has('nvim')
         autocmd!
         autocmd FileType c,cpp,go,python call SetLSPShortcuts()
     augroup END
-
-    let g:cpp_class_scope_highlight = 1
-    let g:cpp_member_variable_highlight = 1
-    let g:cpp_class_decl_highlight = 1
 
     autocmd BufRead,BufNewFile *.tex :set filetype=tex
 else
