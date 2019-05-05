@@ -16,6 +16,7 @@ set softtabstop=4
 set shiftwidth=4
 
 let mapleader = "\<space>"
+let maplocalleader = "\<space>"
 
 if has('nvim')
     call plug#begin('~/.local/share/nvim/vim-plug')
@@ -25,6 +26,7 @@ if has('nvim')
                     \ 'do': './install --all' }
         Plug 'junegunn/fzf.vim'
         Plug 'Shougo/deoplete.nvim', {
+                    \ 'branch': '4.1',
                     \ 'do': ':UpdateRemotePlugins'
                     \ }
         Plug 'Shougo/echodoc.vim'
@@ -32,7 +34,6 @@ if has('nvim')
                     \ 'branch': 'next',
                     \ 'do': 'bash install.sh'
                     \ }
-        Plug 'sheerun/vim-polyglot'
         Plug 'vim-pandoc/vim-pandoc'
         Plug 'vim-pandoc/vim-pandoc-syntax'
         Plug 'lervag/vimtex'
@@ -76,7 +77,9 @@ if has('nvim')
         autocmd FileType c,cpp,go,python call SetLSPShortcuts()
     augroup END
 
-    autocmd BufRead,BufNewFile *.tex :set filetype=tex
+    call deoplete#custom#var('omni', 'input_patterns', {
+                \ 'tex': g:vimtex#re#deoplete
+                \ })
 else
     syntax on
 endif
