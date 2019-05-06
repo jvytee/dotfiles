@@ -55,7 +55,6 @@ if has('nvim')
     let g:LanguageClient_useVirtualText = 0
     let g:LanguageClient_serverCommands = {
                 \ 'cpp': ['clangd-6.0'],
-                \ 'go': ['golsp'],
                 \ 'python': ['pyls']
                 \ }
     
@@ -74,7 +73,7 @@ if has('nvim')
     
     augroup LSP
         autocmd!
-        autocmd FileType c,cpp,go,python call SetLSPShortcuts()
+        autocmd FileType c,cpp,python call SetLSPShortcuts()
     augroup END
 
     call deoplete#custom#var('omni', 'input_patterns', {
