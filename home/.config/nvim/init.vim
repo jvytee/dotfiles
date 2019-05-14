@@ -55,7 +55,8 @@ if has('nvim')
     let g:LanguageClient_useVirtualText = 0
     let g:LanguageClient_serverCommands = {
                 \ 'cpp': ['clangd-6.0'],
-                \ 'python': ['pyls']
+                \ 'python': ['pyls'],
+                \ 'rust': ['rls']
                 \ }
     
     function! SetLSPShortcuts()
