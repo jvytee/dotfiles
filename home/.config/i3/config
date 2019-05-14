@@ -169,4 +169,5 @@ bindsym $mod+q exec "i3lock -c 000000"
 
 exec nm-applet
 exec start-pulseaudio-x11
+exec "compton -b"
 exec ~/.fehbg
