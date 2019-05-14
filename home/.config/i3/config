@@ -164,8 +164,12 @@ new_window pixel 2
 
 bindsym $mod+u exec thunderbird
 bindsym $mod+i exec firefox
-bindsym $mod+o exec "nautilus --no-desktop"
-bindsym $mod+q exec "i3lock -c 000000"
+bindsym $mod+o exec --no-startup-id "nautilus --no-desktop"
+bindsym $mod+q exec --no-startup-id "i3lock -c 000000"
+
+bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +5%"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 0 -5%"
 
 exec nm-applet
 exec start-pulseaudio-x11
