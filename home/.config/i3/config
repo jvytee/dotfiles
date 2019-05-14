@@ -165,6 +165,7 @@ new_window pixel 2
 bindsym $mod+u exec thunderbird
 bindsym $mod+i exec firefox
 bindsym $mod+o exec "nautilus --no-desktop"
+bindsym $mod+q exec "i3lock -c 000000"
 
 exec nm-applet
 exec start-pulseaudio-x11
