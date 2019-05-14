@@ -15,7 +15,7 @@ general {
         color_bad = "#DC322F"
 }
 
-order += "disk /"
+order += "disk /home"
 order += "run_watch VPN"
 order += "ipv6"
 order += "wireless _first_"
@@ -55,7 +55,7 @@ load {
         format = "%1min"
 }
 
-disk "/" {
+disk "/home" {
         format = "%avail"
 }
 
