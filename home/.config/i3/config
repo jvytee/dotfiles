@@ -162,6 +162,10 @@ bar {
 #default_border pixel 2
 new_window pixel 2
 
+bindsym $mod+u exec thunderbird
+bindsym $mod+i exec firefox
+bindsym $mod+o exec "nautilus --no-desktop"
+
 exec nm-applet
 exec start-pulseaudio-x11
 exec ~/.fehbg
