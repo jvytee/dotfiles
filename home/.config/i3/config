@@ -163,4 +163,5 @@ bar {
 new_window pixel 2
 
 exec nm-applet
+exec start-pulseaudio-x11
 exec ~/.fehbg
