@@ -10,9 +10,9 @@ general {
         colors = true
         interval = 5
 
-        color_good = "#859900"
-        color_degraded = "#B58900"
-        color_bad = "#DC322F"
+        color_good = "#4E9A06"
+        color_degraded = "#C4A000"
+        color_bad = "#CC0000"
 }
 
 order += "disk /home"
@@ -25,7 +25,7 @@ order += "battery 0"
 order += "tztime local"
 
 wireless _first_ {
-        format_up = "W: (%quality at %essid) %ip"
+        format_up = "W: %ip (%quality at %essid)"
         format_down = "W: down"
 }
 

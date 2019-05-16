@@ -154,7 +154,8 @@ bar {
         tray_output primary
         
         colors {
-            statusline #839496
+            statusline #D3D7CF
+            separator #555753
         }
 }
 
