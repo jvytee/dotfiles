@@ -152,7 +152,6 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
         tray_output primary
-        position top
         
         colors {
             statusline #839496
@@ -161,6 +160,7 @@ bar {
 
 #default_border pixel 2
 new_window pixel 2
+hide_edge_borders both
 
 bindsym $mod+u exec thunderbird
 bindsym $mod+i exec firefox
