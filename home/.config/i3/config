@@ -30,7 +30,7 @@ font pango:Noto Sans 8.25
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -179,6 +179,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id start-pulseaudio-x11
 exec --no-startup-id "compton -b"
 exec --no-startup-id "redshift &"
-exec --no-startup-id "xinput set-prop 11 307 1"
-exec --no-startup-id "xinput set-prop 11 294 1"
+exec --no-startup-id "xinput set-prop 10 289 1"
+exec --no-startup-id "xinput set-prop 10 299 1"
 exec --no-startup-id ~/.fehbg
