@@ -163,7 +163,6 @@ bar {
 
 #default_border pixel 2
 new_window pixel 2
-hide_edge_borders both
 
 bindsym $mod+u exec thunderbird
 bindsym $mod+i exec firefox
