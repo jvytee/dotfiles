@@ -167,7 +167,8 @@ new_window pixel 2
 bindsym $mod+u exec thunderbird
 bindsym $mod+i exec firefox
 bindsym $mod+o exec --no-startup-id "nautilus --no-desktop"
-bindsym $mod+q exec --no-startup-id "i3lock -c 000000"
+bindsym $mod+q exec --no-startup-id "i3lock -c 002b36"
+bindsym $mod+Shift+w exec --no-startup-id "i3lock -c 002b36 && systemctl suspend"
 
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle"
 bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +5%"
