@@ -154,7 +154,7 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
         tray_output primary
-        font pango:Noto Sans Bold 8.25
+        font pango:Noto Sans 8.25
 
         colors {
             background #282828
