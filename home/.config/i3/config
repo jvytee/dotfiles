@@ -157,9 +157,9 @@ bar {
         font pango:Noto Sans Bold 8.25
 
         colors {
-            background #000000
-            separator #586e75
-            statusline #839496
+            background #282828
+            separator #458588
+            statusline #ebdbb2
         }
 }
 
