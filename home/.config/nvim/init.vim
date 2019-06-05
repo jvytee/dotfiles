@@ -21,7 +21,6 @@ let maplocalleader = "\<space>"
 if has('nvim')
     call plug#begin('~/.local/share/nvim/vim-plug')
         Plug 'jvytee/flattened'
-        Plug 'morhetz/gruvbox'
         Plug 'junegunn/fzf', {
                     \ 'dir': '~/.fzf',
                     \ 'do': './install --all' }
@@ -41,7 +40,7 @@ if has('nvim')
     call plug#end()
     
     set termguicolors
-    colorscheme gruvbox
+    colorscheme flattened_dark
     
     nnoremap <leader>f :FZF<CR>
     nnoremap <leader>b :Buffers<CR>
