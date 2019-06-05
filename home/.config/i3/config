@@ -154,13 +154,6 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
         tray_output primary
-        font pango:Noto Sans 8.25
-
-        colors {
-            background #000000
-            separator #586e75
-            statusline #839496
-        }
 }
 
 #default_border pixel 2
