@@ -175,6 +175,6 @@ bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -5"
 
 exec --no-startup-id nm-applet
 exec --no-startup-id start-pulseaudio-x11
-exec --no-startup-id "compton -bf"
+exec --no-startup-id "compton -b"
 exec --no-startup-id "redshift &"
 exec --no-startup-id ~/.fehbg
