@@ -21,6 +21,7 @@ let maplocalleader = "\<space>"
 if has('nvim')
     call plug#begin('~/.local/share/nvim/vim-plug')
         Plug 'romainl/flattened'
+        Plug 'dracula/vim'
         Plug 'junegunn/fzf', {
                     \ 'dir': '~/.fzf',
                     \ 'do': './install --all' }
@@ -40,7 +41,7 @@ if has('nvim')
     call plug#end()
     
     set termguicolors
-    colorscheme flattened_dark
+    colorscheme dracula
     
     nnoremap <leader>f :FZF<CR>
     nnoremap <leader>b :Buffers<CR>
