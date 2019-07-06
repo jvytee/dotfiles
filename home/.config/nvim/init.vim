@@ -3,6 +3,7 @@ set breakindent
 set clipboard+=unnamedplus
 set cmdheight=2
 set cursorline
+set hidden
 set linebreak
 set mouse=a
 set nofoldenable
@@ -50,7 +51,6 @@ if has('nvim')
     autocmd CompleteDone * silent! pclose!
 
     let g:echodoc#enable_at_startup = 1
-    let g:echodoc#type = 'signature'
 
     let g:LanguageClient_useVirtualText = 0
     let g:LanguageClient_serverCommands = {
@@ -74,7 +74,7 @@ if has('nvim')
     
     augroup LSP
         autocmd!
-        autocmd FileType c,cpp,python call SetLSPShortcuts()
+        autocmd FileType c,cpp,python,rust call SetLSPShortcuts()
     augroup END
 
     call deoplete#custom#var('omni', 'input_patterns', {
