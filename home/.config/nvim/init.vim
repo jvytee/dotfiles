@@ -30,10 +30,7 @@ if has('nvim')
                     \ 'do': ':UpdateRemotePlugins'
                     \ }
         Plug 'Shougo/echodoc.vim'
-        Plug 'autozimu/LanguageClient-neovim', {
-                    \ 'branch': 'next',
-                    \ 'do': 'bash install.sh'
-                    \ }
+        Plug 'w0rp/ale'
         Plug 'vim-pandoc/vim-pandoc'
         Plug 'vim-pandoc/vim-pandoc-syntax'
         Plug 'lervag/vimtex'
@@ -50,32 +47,18 @@ if has('nvim')
     autocmd CompleteDone * silent! pclose!
 
     let g:echodoc#enable_at_startup = 1
-    let g:echodoc#type = 'signature'
 
-    let g:LanguageClient_useVirtualText = 0
-    let g:LanguageClient_serverCommands = {
-                \ 'cpp': ['clangd-6.0'],
+    let g:ale_cpp_clangd_executable = 'clangd-6.0'
+    let g:ale_linters = {
                 \ 'python': ['pyls'],
+                \ 'cpp': ['clangd'],
                 \ 'rust': ['rls']
                 \ }
-    
-    function! SetLSPShortcuts()
-        nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-        nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-        nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-        nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-        nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
-        nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-        nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
-        nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-        nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-        nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
-    endfunction()
-    
-    augroup LSP
-        autocmd!
-        autocmd FileType c,cpp,python call SetLSPShortcuts()
-    augroup END
+
+    nnoremap <leader>ad :ALEGoToDefinition<cr>
+    nnoremap <leader>ar :ALEFindReferences<cr>
+    nnoremap <leader>ah :ALEHover<cr>
+    nnoremap <leader>as :ALESymbolSearch<cr>
 
     call deoplete#custom#var('omni', 'input_patterns', {
                 \ 'tex': g:vimtex#re#deoplete
