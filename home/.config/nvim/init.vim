@@ -21,6 +21,7 @@ let maplocalleader = "\<space>"
 if has('nvim')
     call plug#begin('~/.local/share/nvim/vim-plug')
         Plug 'romainl/flattened'
+        Plug 'morhetz/gruvbox'
         Plug 'junegunn/fzf', {
                     \ 'dir': '~/.fzf',
                     \ 'do': './install --all' }
