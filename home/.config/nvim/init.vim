@@ -35,6 +35,7 @@ if has('nvim')
         Plug 'vim-pandoc/vim-pandoc'
         Plug 'vim-pandoc/vim-pandoc-syntax'
         Plug 'lervag/vimtex'
+        Plug 'chrisbra/Colorizer'
     call plug#end()
     
     set termguicolors
