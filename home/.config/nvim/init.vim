@@ -51,14 +51,14 @@ if has('nvim')
     let g:echodoc#enable_at_startup = 1
 
     let g:ale_cpp_clangd_executable = 'clangd-6.0'
-    let g:ale_fix_on_save = 1
+    let g:ale_python_black_options = '--line-length 120'
     let g:ale_linters = {
                 \ 'python': ['pyls'],
                 \ 'cpp': ['clangd'],
                 \ 'rust': ['rls']
                 \ }
     let g:ale_fixers = {
-                \ 'python': ['yapf']
+                \ 'python': ['black']
                 \ }
 
     nnoremap <leader>ad :ALEGoToDefinition<cr>
