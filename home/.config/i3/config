@@ -150,8 +150,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 #
 # class                 border  bground text    indicator child_border
-client.focused          #2AA198 #073642 #839496 #268BD2   #2AA198
-client.focused_inactive #586E75 #002B36 #586E75 #268BD2   #586E75
+client.focused          #268BD2 #073642 #839496 #2AA198   #268BD2
+client.focused_inactive #586E75 #002B36 #586E75 #2AA198   #586E75
 client.unfocused        #002B36 #002B36 #586E75 #002B36   #002B36
 client.urgent           #DC322F #DC322F #002B36 #DC322F   #DC322F
 client.placeholder      #073642 #002B36 #EEE8D5 #002B36   #073642
@@ -168,7 +168,7 @@ bar {
                 statusline #839496
                 separator  #586E75
 
-                focused_workspace  #2AA198 #073642 #839496
+                focused_workspace  #268BD2 #073642 #839496
                 active_workspace   #586E75 #002B36 #586E75
                 inactive_workspace #002B36 #002B36 #586E75
                 urgent_workspace   #DC322F #DC322F #002B36
