@@ -39,7 +39,7 @@ if has('nvim')
     call plug#end()
     
     set termguicolors
-    colorscheme gruvbox
+    colorscheme flattened_dark
     
     nnoremap <leader>f :FZF<CR>
     nnoremap <leader>b :Buffers<CR>
@@ -58,7 +58,7 @@ if has('nvim')
                 \ 'rust': ['rls']
                 \ }
     let g:ale_fixers = {
-                \ 'python': ['black']
+                \ 'python': ['yapf']
                 \ }
 
     nnoremap <leader>ad :ALEGoToDefinition<cr>
