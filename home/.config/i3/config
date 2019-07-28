@@ -179,6 +179,9 @@ bar {
 #default_border pixel 2
 new_window pixel 2
 
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
 bindsym $mod+u exec thunderbird
 bindsym $mod+i exec firefox
 bindsym $mod+o exec --no-startup-id "nautilus --no-desktop"

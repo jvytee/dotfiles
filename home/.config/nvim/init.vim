@@ -65,6 +65,7 @@ if has('nvim')
     nnoremap <leader>ar :ALEFindReferences<cr>
     nnoremap <leader>ah :ALEHover<cr>
     nnoremap <leader>as :ALESymbolSearch<cr>
+    nnoremap <leader>af :ALEFix<cr>
 
     call deoplete#custom#var('omni', 'input_patterns', {
                 \ 'tex': g:vimtex#re#deoplete
