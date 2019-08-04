@@ -22,6 +22,7 @@ if has('nvim')
     call plug#begin('~/.local/share/nvim/vim-plug')
         Plug 'romainl/flattened'
         Plug 'morhetz/gruvbox'
+        Plug 'scrooloose/nerdtree'
         Plug 'junegunn/fzf', {
                     \ 'dir': '~/.fzf',
                     \ 'do': './install --all' }
@@ -44,6 +45,9 @@ if has('nvim')
     nnoremap <leader>f :FZF<CR>
     nnoremap <leader>b :Buffers<CR>
     nnoremap <leader>g :GitFiles<CR>
+    
+    nnoremap <leader>nn :NERDTreeFocus<cr>
+    nnoremap <leader>nt :NERDTreeToggle<cr>
 
     let g:deoplete#enable_at_startup = 1
     autocmd CompleteDone * silent! pclose!
