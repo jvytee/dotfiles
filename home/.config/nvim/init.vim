@@ -40,7 +40,7 @@ if has('nvim')
     call plug#end()
     
     set termguicolors
-    colorscheme flattened_dark
+    colorscheme onedark
     
     nnoremap <leader>f :FZF<CR>
     nnoremap <leader>b :Buffers<CR>
