@@ -1,5 +1,5 @@
 browser firefox
 
-color listfocus yellow black bold
-color listfocus_unread magenta black bold
+color listfocus yellow black
+color listfocus_unread yellow black bold
 color info yellow black
