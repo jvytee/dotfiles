@@ -185,7 +185,8 @@ bindsym $mod+Shift+Tab workspace prev
 
 bindsym $mod+u exec thunderbird
 bindsym $mod+i exec firefox
-bindsym $mod+o exec --no-startup-id "nautilus --no-desktop"
+bindsym $mod+o exec "nautilus --no-desktop"
+bindsym $mod+p exec --no-startup-id "xrandr --auto"
 bindsym $mod+q exec --no-startup-id "light-locker-command -l"
 bindsym $mod+Shift+Udiaeresis exec --no-startup-id "systemctl suspend"
 bindsym $mod+Shift+p exec --no-startup-id "systemctl poweroff"
