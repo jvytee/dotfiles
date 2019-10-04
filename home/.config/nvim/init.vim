@@ -61,7 +61,7 @@ if has('nvim')
                 \ 'rust': ['rls']
                 \ }
     let g:ale_fixers = {
-                \ 'python': ['yapf']
+                \ 'python': ['black']
                 \ }
 
     nnoremap <leader>ad :ALEGoToDefinition<cr>
