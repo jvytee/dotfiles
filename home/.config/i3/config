@@ -177,8 +177,7 @@ bar {
 }
 
 workspace_layout tabbed
-#default_border pixel 2
-new_window pixel 2
+default_border pixel 2
 
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
