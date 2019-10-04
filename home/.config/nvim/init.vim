@@ -28,7 +28,6 @@ if has('nvim')
                     \ 'do': './install --all' }
         Plug 'junegunn/fzf.vim'
         Plug 'Shougo/deoplete.nvim', {
-                    \ 'branch': '4.1',
                     \ 'do': ':UpdateRemotePlugins'
                     \ }
         Plug 'Shougo/echodoc.vim'
