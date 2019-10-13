@@ -32,6 +32,7 @@ if has('nvim')
                     \ }
         Plug 'Shougo/echodoc.vim'
         Plug 'w0rp/ale'
+        Plug 'octol/vim-cpp-enhanced-highlight'
         Plug 'vim-pandoc/vim-pandoc'
         Plug 'vim-pandoc/vim-pandoc-syntax'
         Plug 'lervag/vimtex'
@@ -61,7 +62,8 @@ if has('nvim')
                 \ 'rust': ['rls']
                 \ }
     let g:ale_fixers = {
-                \ 'python': ['black']
+                \ 'python': ['black'],
+                \ 'cpp': ['clang-format']
                 \ }
 
     nnoremap <leader>ad :ALEGoToDefinition<cr>
