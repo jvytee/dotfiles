@@ -54,7 +54,6 @@ if has('nvim')
 
     let g:echodoc#enable_at_startup = 1
 
-    let g:ale_cpp_clangd_executable = 'clangd'
     let g:ale_python_black_options = '--line-length 120'
     let g:ale_linters = {
                 \ 'python': ['pyls'],
