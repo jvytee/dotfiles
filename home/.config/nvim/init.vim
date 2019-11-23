@@ -62,7 +62,7 @@ if has('nvim')
                 \ }
     let g:ale_fixers = {
                 \ 'python': ['black'],
-                \ 'cpp': ['clang-format']
+                \ 'cpp': ['clang-format'],
                 \ }
 
     nnoremap <leader>ad :ALEGoToDefinition<cr>
