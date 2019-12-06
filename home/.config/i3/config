@@ -149,20 +149,19 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# TODO
 set_from_resource $bg background #000000
 set_from_resource $fg foreground #ffffff
 set_from_resource $red color1 #ff0000
-set_from_resource $blue color12 #0000ff
+set_from_resource $blue color4 #0000ff
 set_from_resource $cyan color6 #00ffff
-set_from_resource $grey color15 #808080
+set_from_resource $grey color10 #808080
 
 # class                 border bground text indicator child_border
-client.focused          $blue $bg $fg $cyan   $blue
-client.focused_inactive $fg $bg $fg $cyan   $fg
-client.unfocused        $grey $bg $grey $bg   $bg
-client.urgent           $red $bg $red $red   $red
-client.placeholder      $bg $bg $bg $bg   $bg
+client.focused          $blue  $bg     $fg  $cyan     $blue
+client.focused_inactive $fg    $bg     $fg  $cyan     $fg
+client.unfocused        $grey  $bg     $grey $bg      $bg
+client.urgent           $red   $bg     $red $red      $red
+client.placeholder      $bg    $bg     $bg  $bg       $bg
 client.background       $bg
 
 # Start i3bar to display a workspace bar (plus the system information i3status
