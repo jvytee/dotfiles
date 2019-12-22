@@ -20,7 +20,7 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin
 export EDITOR=/usr/bin/nvim
 
 # If running from tty1 start sway
