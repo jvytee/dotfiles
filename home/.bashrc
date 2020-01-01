@@ -20,10 +20,16 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin
+export PYENV_ROOT=$HOME/.pyenv
+export PATH=$PYENV_ROOT/bin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin
 export EDITOR=/usr/bin/nvim
 
 # If running from tty1 start sway
 if [ "$(tty)" = "/dev/tty1" ]; then
 	exec sway
+fi
+
+# Set up PyEnv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
 fi
