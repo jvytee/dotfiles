@@ -23,6 +23,7 @@ fi
 export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PYENV_ROOT/bin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin
 export EDITOR=/usr/bin/nvim
+export MOZ_ENABLE_WAYLAND=1
 
 # If running from tty1 start sway
 if [ "$(tty)" = "/dev/tty1" ]; then
