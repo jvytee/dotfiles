@@ -21,6 +21,7 @@ let maplocalleader = "\<space>"
 if has('nvim')
     call plug#begin('~/.local/share/nvim/vim-plug')
         Plug 'romainl/flattened'
+        Plug 'morhetz/gruvbox'
         Plug 'joshdick/onedark.vim'
         Plug 'scrooloose/nerdtree'
         Plug 'junegunn/fzf', {
@@ -40,7 +41,7 @@ if has('nvim')
     call plug#end()
     
     set termguicolors
-    colorscheme onedark
+    colorscheme gruvbox
     
     nnoremap <leader>f :FZF<CR>
     nnoremap <leader>b :Buffers<CR>

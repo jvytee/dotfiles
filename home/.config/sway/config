@@ -1,4 +1,4 @@
-# Default config for sway
+
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
@@ -210,12 +210,12 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $bg "#282c34"
-set $fg "#abb2bf"
-set $red "#e06c75"
-set $blue "#61afef"
-set $cyan "#56b6c2"
-set $grey "#5c6370"
+set $bg "#282828"
+set $fg "#ebdbb2"
+set $red "#cc241d"
+set $blue "#458588"
+set $cyan "#689d6a"
+set $grey "#928374"
 
 #
 # Status Bar:
