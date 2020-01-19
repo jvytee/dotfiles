@@ -256,6 +256,7 @@ workspace_layout tabbed
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
+bindsym $mod+z exec passmenu -fn "Noto Sans-8" -nf "$fg" -nb "$bg" -sb "$bg" -sf "$blue"
 bindsym $mod+u exec thunderbird
 bindsym $mod+i exec firefox
 bindsym $mod+o exec nautilus
