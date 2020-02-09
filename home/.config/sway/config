@@ -20,7 +20,8 @@ set $term alacritty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu dmenu_run -fn "Noto Sans-8" -nf "$fg" -nb "$bg" -sb "$bg" -sf "$blue" | xargs swaymsg exec --
+#set $menu dmenu_run -fn "Noto Sans-8" -nf "$fg" -nb "$bg" -sb "$bg" -sf "$blue" | xargs swaymsg exec --
+set $menu bemenu-run -i -p "Run" --fn "Noto Sans 8" --tb "$bg" --tf "$blue" --fb "$bg" --ff "$blue" --nb "$bg" --nf "$fg" --hb "$bg" --hf "$blue" --sb "$bg" --sf "$cyan" | xargs swaymsg exec --
 
 ### Output configuration
 #
