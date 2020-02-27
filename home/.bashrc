@@ -21,7 +21,7 @@ fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export PYENV_ROOT=$HOME/.pyenv
-export PATH=$PYENV_ROOT/bin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin
+export PATH=$PYENV_ROOT/bin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin:/opt/zotero
 export EDITOR=/usr/bin/nvim
 export BEMENU_BACKEND=wayland
 # export MOZ_ENABLE_WAYLAND=1
