@@ -11,7 +11,7 @@ alias ip='ip -c'
 
 #PS1='[\u@\h \W]\$ '
 source ~/.git-prompt.sh
-PS1='\[\033[0;32m\]\u \[\033[0;36m\] \h \[\033[0;34m\] \w \[\033[0;35m\]$(__git_ps1 " %s ")\[\033[00m\] '
+PS1='\[\033[1;32m\]\u \[\033[1;36m\] \h \[\033[1;34m\] \w \[\033[1;35m\]$(__git_ps1 " %s ")\[\033[00m\] '
 PS2=' '
 
 if [ -f /usr/share/bash-completion/bash_completion ]; then
