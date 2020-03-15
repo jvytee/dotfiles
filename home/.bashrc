@@ -8,6 +8,7 @@
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 alias ip='ip -c'
+alias vim='nvim'
 
 #PS1='[\u@\h \W]\$ '
 source ~/.git-prompt.sh
