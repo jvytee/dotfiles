@@ -63,7 +63,7 @@ output * bg ~/.config/sway/wallpaper.jpg fill
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-input * xkb_layout "de"
+input type:keyboard xkb_layout "de"
 input * xkb_options "caps:swapescape"
 
 input "2:7:SynPS/2_Synaptics_TouchPad" {
