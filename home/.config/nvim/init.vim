@@ -26,6 +26,8 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 Plug 'romainl/flattened'
 Plug 'morhetz/gruvbox'
 Plug 'dense-analysis/ale'
+Plug 'Shougo/deoplete.nvim', {
+            \ 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/fzf', {
             \ 'dir': '~/.fzf',
             \ 'do': './install --all' }
@@ -41,7 +43,10 @@ call plug#end()
 set termguicolors
 colorscheme gruvbox
 
-let g:ale_completion_enabled = 1
+autocmd CompleteDone * silent! pclose!
+let g:deoplete#enable_at_startup = 1
+
+"let g:ale_completion_enabled = 1
 let g:ale_python_black_options = '--line-length 120'
 let g:ale_linters = {
             \ 'python': ['pyls'],
