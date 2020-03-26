@@ -223,7 +223,7 @@ set $grey "#928374"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position bottom
+    position top
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
@@ -264,6 +264,7 @@ bindsym $mod+o exec nautilus
 bindsym $mod+q exec swaylock -i ~/.config/sway/wallpaper.jpg
 bindsym $mod+Shift+Udiaeresis exec swaylock -f -i ~/.config/sway/wallpaper.jpg && systemctl suspend
 bindsym $mod+Shift+p exec systemctl poweroff
+bindsym $mod+m exec makoctl dismiss
 
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
