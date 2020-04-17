@@ -25,7 +25,8 @@ export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PYENV_ROOT/bin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin:/opt/zotero
 export EDITOR=/usr/bin/nvim
 export BEMENU_BACKEND=wayland
-# export MOZ_ENABLE_WAYLAND=1
+export MOZ_ENABLE_WAYLAND=1
+export MOZ_USE_XINPUT2=1
 
 # If running from tty1 start sway
 if [ "$(tty)" = "/dev/tty1" ]; then
@@ -35,4 +36,9 @@ fi
 # Set up PyEnv
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
+fi
+
+# Source command-not-found hook
+if [ -f /usr/share/doc/pkgfile/command-not-found.bash ]; then
+    source /usr/share/doc/pkgfile/command-not-found.bash
 fi
