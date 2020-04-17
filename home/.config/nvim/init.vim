@@ -33,11 +33,9 @@ Plug 'junegunn/fzf', {
             \ 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'lervag/vimtex'
 Plug 'chrisbra/Colorizer'
+Plug 'octol/vim-cpp-enhanced-highlight'
 call plug#end()
 
 set termguicolors
@@ -46,7 +44,6 @@ colorscheme gruvbox
 autocmd CompleteDone * silent! pclose!
 let g:deoplete#enable_at_startup = 1
 
-"let g:ale_completion_enabled = 1
 let g:ale_python_black_options = '--line-length 120'
 let g:ale_linters = {
             \ 'python': ['pyls'],
