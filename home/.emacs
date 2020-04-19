@@ -1,29 +1,27 @@
-;; Set up package.el to work with MELPA
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
-(require 'evil)
-(require 'helm-config)
-
-(require 'lsp-mode)
-(add-hook 'prog-mode-hook #'lsp)
-
 (require 'company-lsp)
-(push 'company-lsp company-backends)
-(add-hook 'after-init-hook 'global-company-mode)
-
-(require 'magit)
+(require 'evil)
 (require 'evil-magit)
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x M-g") 'magit-dispatch)
+(require 'helm-config)
+(require 'lsp-mode)
+(require 'magit)
+
+(push 'company-lsp company-backends)
 
 (defun disable-line-numbers ()
   (setq-local display-line-numbers-type nil))
 
 (add-hook 'term-mode-hook 'disable-line-numbers)
 (add-hook 'rcirc-mode 'disable-line-numbers)
+(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'prog-mode-hook #'lsp)
+
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -49,7 +47,8 @@
       :encryption tls)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(vc-follow-symlinks t))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
