@@ -21,29 +21,26 @@
 
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x M-g") 'magit-dispatch)
+(global-set-key (kbd "C-x p") 'projectile-command-map)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (gruvbox-dark-medium)))
+ '(custom-enabled-themes (quote (gruvbox)))
  '(custom-safe-themes
    (quote
-    ("aded61687237d1dff6325edb492bde536f40b048eab7246c61d5c6643c696b7f" default)))
+    ("b89ae2d35d2e18e4286c8be8aaecb41022c1a306070f64a66fd114310ade88aa" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "aded61687237d1dff6325edb492bde536f40b048eab7246c61d5c6643c696b7f" default)))
  '(evil-mode 1)
  '(global-display-line-numbers-mode t)
- '(icomplete-mode t)
- '(ido-mode (quote both) nil (ido))
+ '(ivy-mode t)
  '(lsp-keymap-prefix "M-l")
+ '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (company-lsp evil-magit magit lsp-ui pyvenv company lsp-mode gruvbox-theme evil)))
- '(rcirc-server-alist
-   (quote
-    (("irc.freenode.net" :nick "jvytee" :port 6697 :channels
-      ("#stratum0")
-      :encryption tls))) t)
+    (projectile ivy spacemacs-theme company-lsp evil-magit magit lsp-ui pyvenv company lsp-mode gruvbox-theme evil)))
+ '(projectile-mode t nil (projectile))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
