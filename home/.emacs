@@ -44,7 +44,9 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (which-key yaml-mode projectile ivy company-lsp evil-magit magit lsp-ui pyvenv company lsp-mode gruvbox-theme evil)))
+    (rust-mode which-key yaml-mode projectile ivy company-lsp evil-magit magit lsp-ui pyvenv company lsp-mode gruvbox-theme evil)))
+ '(projectile-completion-system (quote ivy))
+ '(projectile-indexing-method (quote hybrid))
  '(projectile-mode t nil (projectile))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
