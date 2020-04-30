@@ -5,9 +5,9 @@
 
 (require 'company-lsp)
 (require 'evil)
-(require 'evil-magit)
 (require 'lsp-mode)
 (require 'magit)
+(require 'evil-magit)
 
 (push 'company-lsp company-backends)
 
@@ -33,10 +33,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (gruvbox)))
+ '(custom-enabled-themes (quote (monokai-pro)))
  '(custom-safe-themes
    (quote
-    ("b89ae2d35d2e18e4286c8be8aaecb41022c1a306070f64a66fd114310ade88aa" default)))
+    ("983eb22dae24cab2ce86ac26700accbf615a3f41fef164085d829fe0bcd3c236" "b89ae2d35d2e18e4286c8be8aaecb41022c1a306070f64a66fd114310ade88aa" default)))
  '(evil-mode 1)
  '(global-display-line-numbers-mode t)
  '(initial-buffer-choice "~/Dokumente/notes/misc.org")
@@ -44,7 +44,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (rust-mode which-key yaml-mode projectile ivy company-lsp evil-magit magit lsp-ui pyvenv company lsp-mode gruvbox-theme evil)))
+    (monokai-pro-theme evil-magit rust-mode which-key yaml-mode projectile ivy company-lsp magit lsp-ui pyvenv company lsp-mode evil)))
  '(projectile-completion-system (quote ivy))
  '(projectile-indexing-method (quote hybrid))
  '(projectile-mode t nil (projectile))

@@ -211,21 +211,19 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $bg "#282828"
-set $fg "#ebdbb2"
-set $red0 "#cc241d"
-set $red1 "#fb4934"
-set $blue0 "#458588"
-set $blue1 "#83a598"
-set $cyan "#689d6a"
-set $grey "#928374"
+set $bg "#2d2a2e"
+set $fg "#fcfcfa"
+set $red "#ff6188"
+set $blue0 "#ab9df2"
+set $blue1 "#78dce8"
+set $grey "#727072"
 
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
+    position bottom
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
@@ -237,19 +235,19 @@ bar {
         background $bg
         separator $grey
 
-        focused_workspace  $blue1 $blue0 $fg
+        focused_workspace  $blue0 $bg $blue0
         active_workspace   $fg $bg $fg
         inactive_workspace $grey $bg $grey
-        urgent_workspace   $red1 $red0 $fg
-        binding_mode       $red1 $red0 $fg
+        urgent_workspace   $red $bg $red
+        binding_mode       $red $bg $red
     }
 }
 
 # class                 border bground text indicator child_border
-client.focused          $blue1 $blue0  $fg  $blue1    $blue0
+client.focused          $blue0  $bg    $blue0 $blue1  $blue0
 client.focused_inactive $fg    $bg     $fg  $blue1    $fg
 client.unfocused        $grey  $bg     $grey $bg      $bg
-client.urgent           $red1  $red0   $fg  $red1     $red0
+client.urgent           $red   $bg     $red  $blue1   $red
 client.placeholder      $bg    $bg     $bg  $bg       $bg
 client.background       $bg
 
