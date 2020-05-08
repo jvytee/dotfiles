@@ -12,7 +12,7 @@ alias vim='nvim'
 
 #PS1='[\u@\h \W]\$ '
 source ~/.git-prompt.sh
-PS1='\[\033[01m\][\[\033[32m\]\u@\h \[\033[34m\]\W\[\033[35m\]$(__git_ps1 " (%s)")\[\033[37m\]]$ \[\033[00m\]'
+PS1='\[\033[1m\][\[\033[32m\]\u@\h \[\033[34m\]\W\[\033[35m\]$(__git_ps1 " (%s)")\[\033[39m\]]$\[\033[0m\] '
 
 if [ -f /usr/share/bash-completion/bash_completion ]; then
     source /usr/share/bash-completion/bash_completion
