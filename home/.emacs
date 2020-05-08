@@ -3,28 +3,26 @@
              '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
-(require 'company-lsp)
 (require 'evil)
 (require 'lsp-mode)
 (require 'magit)
 (require 'evil-magit)
 
-(push 'company-lsp company-backends)
-
 (defun disable-line-numbers ()
   (setq-local display-line-numbers-type nil))
 
-(add-hook 'term-mode-hook 'disable-line-numbers)
-(add-hook 'rcirc-mode 'disable-line-numbers)
 (add-hook 'after-init-hook 'global-company-mode)
-(add-hook 'prog-mode-hook #'lsp)
+(add-hook 'term-mode-hook 'disable-line-numbers)
+
+(add-hook 'c++-mode-hook #'lsp)
+(add-hook 'python-mode-hook #'lsp)
+(add-hook 'rust-mode-hook #'lsp)
 
 (global-unset-key (kbd "M-SPC"))
 (global-set-key (kbd "M-SPC g") 'magit-status)
 (global-set-key (kbd "M-SPC M-g") 'magit-dispatch)
 (global-set-key (kbd "M-SPC p") 'projectile-command-map)
 (global-set-key (kbd "M-SPC f") 'projectile-find-file)
-(global-set-key (kbd "M-SPC l") lsp-command-map)
 (global-set-key (kbd "M-SPC c") (lambda () (interactive)
 				  (find-file user-init-file)))
 
@@ -33,10 +31,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(cua-mode t nil (cua-base))
  '(custom-enabled-themes (quote (monokai-pro)))
  '(custom-safe-themes
    (quote
-    ("983eb22dae24cab2ce86ac26700accbf615a3f41fef164085d829fe0bcd3c236" "b89ae2d35d2e18e4286c8be8aaecb41022c1a306070f64a66fd114310ade88aa" default)))
+    ("588b1c5d24ab8ddeffe6e7ae93ac642f71149bbb67b13e54edbef4ef761ad13c" default)))
  '(evil-mode 1)
  '(global-display-line-numbers-mode t)
  '(initial-buffer-choice "~/Dokumente/notes/misc.org")
@@ -44,7 +43,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (monokai-pro-theme evil-magit rust-mode which-key yaml-mode projectile ivy company-lsp magit lsp-ui pyvenv company lsp-mode evil)))
+    (lsp-ivy auctex monokai-pro-theme evil-magit rust-mode which-key yaml-mode projectile ivy magit lsp-ui pyvenv company lsp-mode evil)))
  '(projectile-completion-system (quote ivy))
  '(projectile-indexing-method (quote hybrid))
  '(projectile-mode t nil (projectile))
