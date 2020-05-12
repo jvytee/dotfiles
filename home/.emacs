@@ -4,17 +4,17 @@
 (package-initialize)
 
 (require 'evil)
-(require 'lsp-mode)
 (require 'magit)
 (require 'evil-magit)
+(require 'lsp-mode)
 
-(defun disable-line-numbers ()
-  (setq-local display-line-numbers-type nil))
+(push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
 
 (add-hook 'after-init-hook 'global-company-mode)
-(add-hook 'term-mode-hook 'disable-line-numbers)
+(add-hook 'text-mode-hook 'display-line-numbers-mode)
 
 (add-hook 'c++-mode-hook #'lsp)
+(add-hook 'java-mode-hook #'lsp)
 (add-hook 'python-mode-hook #'lsp)
 (add-hook 'rust-mode-hook #'lsp)
 
@@ -23,6 +23,8 @@
 (global-set-key (kbd "M-SPC M-g") 'magit-dispatch)
 (global-set-key (kbd "M-SPC p") 'projectile-command-map)
 (global-set-key (kbd "M-SPC f") 'projectile-find-file)
+(global-set-key (kbd "M-SPC s") 'shell-pop)
+(global-set-key (kbd "M-SPC l") lsp-command-map)
 (global-set-key (kbd "M-SPC c") (lambda () (interactive)
 				  (find-file user-init-file)))
 
@@ -32,10 +34,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cua-mode t nil (cua-base))
- '(custom-enabled-themes (quote (monokai-pro)))
- '(custom-safe-themes
-   (quote
-    ("588b1c5d24ab8ddeffe6e7ae93ac642f71149bbb67b13e54edbef4ef761ad13c" default)))
+ '(custom-enabled-themes (quote (solarized-dark)))
+ '(erc-nick "jvytee")
  '(evil-mode 1)
  '(global-display-line-numbers-mode t)
  '(initial-buffer-choice "~/Dokumente/notes/misc.org")
@@ -43,11 +43,12 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (lsp-ivy auctex monokai-pro-theme evil-magit rust-mode which-key yaml-mode projectile ivy magit lsp-ui pyvenv company lsp-mode evil)))
+    (solarized-theme lsp-java shell-pop lsp-ivy auctex monokai-pro-theme evil-magit rust-mode which-key yaml-mode projectile ivy magit lsp-ui pyvenv company lsp-mode evil)))
  '(projectile-completion-system (quote ivy))
  '(projectile-indexing-method (quote hybrid))
  '(projectile-mode t nil (projectile))
  '(scroll-bar-mode nil)
+ '(shell-pop-universal-key "M-SPC s")
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(vc-follow-symlinks t)
