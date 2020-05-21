@@ -24,7 +24,6 @@ let maplocalleader = "\<space>"
 
 call plug#begin('~/.local/share/nvim/vim-plug')
 Plug 'romainl/flattened'
-Plug 'phanviet/vim-monokai-pro'
 Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim', {
             \ 'do': ':UpdateRemotePlugins' }
@@ -39,7 +38,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 call plug#end()
 
 set termguicolors
-colorscheme monokai_pro
+colorscheme flattened_dark
 
 autocmd CompleteDone * silent! pclose!
 let g:deoplete#enable_at_startup = 1
