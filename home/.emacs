@@ -7,11 +7,13 @@
 (require 'magit)
 (require 'evil-magit)
 (require 'lsp-mode)
+(require 'lsp-java)
 
 (push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
 
 (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'text-mode-hook 'display-line-numbers-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (add-hook 'c++-mode-hook #'lsp)
 (add-hook 'java-mode-hook #'lsp)
@@ -35,18 +37,22 @@
  ;; If there is more than one, they won't work right.
  '(cua-mode t nil (cua-base))
  '(custom-enabled-themes (quote (solarized-dark)))
+ '(custom-safe-themes
+   (quote
+    ("c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default)))
  '(erc-nick "jvytee")
  '(evil-mode 1)
  '(global-display-line-numbers-mode t)
  '(initial-buffer-choice "~/Dokumente/notes/misc.org")
  '(ivy-mode t)
- '(menu-bar-mode nil)
+ '(lsp-rust-server (quote rust-analyzer))
  '(package-selected-packages
    (quote
-    (solarized-theme lsp-java shell-pop lsp-ivy auctex monokai-pro-theme evil-magit rust-mode which-key yaml-mode projectile ivy magit lsp-ui pyvenv company lsp-mode evil)))
+    (solarized-theme lsp-java shell-pop lsp-ivy auctex evil-magit rust-mode which-key yaml-mode projectile ivy magit lsp-ui pyvenv company lsp-mode evil)))
  '(projectile-completion-system (quote ivy))
  '(projectile-indexing-method (quote hybrid))
  '(projectile-mode t nil (projectile))
+ '(python-shell-interpreter "ipython")
  '(scroll-bar-mode nil)
  '(shell-pop-universal-key "M-SPC s")
  '(show-paren-mode t)
