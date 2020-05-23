@@ -52,6 +52,11 @@
   :bind (("M-SPC g" . magit-status)
 	 ("M-SPC M-g" . magit-dispatch)))
 
+(use-package one-themes
+  :ensure t
+  :config
+  (load-theme 'one-dark))
+
 (use-package projectile
   :ensure t
   :bind ("M-SPC f" . projectile-find-file)
@@ -73,11 +78,6 @@
   :custom
   (shell-pop-universal-key "M-SPC s"))
 
-(use-package solarized-theme
-  :ensure t
-  :config
-  (load-theme 'solarized-dark t))
-
 (use-package yaml-mode
   :ensure t)
 
@@ -98,11 +98,22 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cua-mode t nil (cua-base))
+ '(custom-safe-themes
+   (quote
+    ("0dd2666921bd4c651c7f8a724b3416e95228a13fca1aa27dc0022f4e023bf197" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default)))
  '(erc-nick "jvytee")
+ '(evil-want-C-u-scroll t)
  '(global-display-line-numbers-mode t)
  '(initial-buffer-choice "~/Dokumente/notes/misc.org")
+ '(lsp-rust-server (quote rust-analyzer) t)
+ '(package-selected-packages
+   (quote
+    (one-themes yaml-mode which-key use-package shell-pop rust-mode pyvenv projectile lsp-ui lsp-java lsp-ivy evil-magit company auctex)))
+ '(projectile-completion-system (quote ivy))
+ '(projectile-indexing-method (quote hybrid))
  '(python-shell-interpreter "ipython")
  '(scroll-bar-mode nil)
+ '(shell-pop-universal-key "M-SPC s")
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(vc-follow-symlinks t))
