@@ -24,6 +24,7 @@ let maplocalleader = "\<space>"
 
 call plug#begin('~/.local/share/nvim/vim-plug')
 Plug 'romainl/flattened'
+Plug 'joshdick/onedark.vim'
 Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim', {
             \ 'do': ':UpdateRemotePlugins' }
@@ -38,7 +39,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 call plug#end()
 
 set termguicolors
-colorscheme flattened_dark
+colorscheme onedark
 
 autocmd CompleteDone * silent! pclose!
 let g:deoplete#enable_at_startup = 1
@@ -47,7 +48,7 @@ let g:ale_python_black_options = '--line-length 120'
 let g:ale_linters = {
             \ 'python': ['pyls'],
             \ 'cpp': ['clangd'],
-            \ 'rust': ['rls']
+            \ 'rust': ['rust-analyzer']
             \ }
 let g:ale_fixers = {
             \ 'python': ['black'],

@@ -26,6 +26,11 @@
 (use-package evil-magit
   :ensure t)
 
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode))
+
 (use-package ivy
   :ensure t
   :config
@@ -53,6 +58,7 @@
 	 ("M-SPC M-g" . magit-dispatch)))
 
 (use-package one-themes
+  :defer t
   :ensure t
   :config
   (load-theme 'one-dark))
@@ -100,7 +106,7 @@
  '(cua-mode t nil (cua-base))
  '(custom-safe-themes
    (quote
-    ("0dd2666921bd4c651c7f8a724b3416e95228a13fca1aa27dc0022f4e023bf197" "b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" "c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default)))
+    ("b73a23e836b3122637563ad37ae8c7533121c2ac2c8f7c87b381dd7322714cd0" default)))
  '(erc-nick "jvytee")
  '(evil-want-C-u-scroll t)
  '(global-display-line-numbers-mode t)
@@ -108,9 +114,9 @@
  '(lsp-rust-server (quote rust-analyzer) t)
  '(package-selected-packages
    (quote
-    (one-themes yaml-mode which-key use-package shell-pop rust-mode pyvenv projectile lsp-ui lsp-java lsp-ivy evil-magit company auctex)))
- '(projectile-completion-system (quote ivy))
- '(projectile-indexing-method (quote hybrid))
+    (flycheck one-themes yaml-mode which-key use-package shell-pop rust-mode pyvenv projectile lsp-ui lsp-java lsp-ivy evil-magit company auctex)))
+ '(projectile-completion-system (quote ivy) t)
+ '(projectile-indexing-method (quote hybrid) t)
  '(python-shell-interpreter "ipython")
  '(scroll-bar-mode nil)
  '(shell-pop-universal-key "M-SPC s")
