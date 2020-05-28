@@ -41,12 +41,9 @@
   :bind-keymap ("M-SPC l" . lsp-command-map)
   :custom
   (lsp-rust-server 'rust-analyzer)
-  :hook (c++-mode java-mode python-mode rust-mode (lsp-mode . lsp-enable-which-key-integration)))
+  :hook (c++-mode javascript-mode python-mode rust-mode))
 
 (use-package lsp-ivy
-  :ensure t)
-
-(use-package lsp-java
   :ensure t)
 
 (use-package lsp-ui
@@ -114,7 +111,7 @@
  '(lsp-rust-server (quote rust-analyzer) t)
  '(package-selected-packages
    (quote
-    (flycheck one-themes yaml-mode which-key use-package shell-pop rust-mode pyvenv projectile lsp-ui lsp-java lsp-ivy evil-magit company auctex)))
+    (flycheck one-themes yaml-mode which-key use-package shell-pop rust-mode pyvenv projectile lsp-ui lsp-ivy evil-magit company auctex)))
  '(projectile-completion-system (quote ivy) t)
  '(projectile-indexing-method (quote hybrid) t)
  '(python-shell-interpreter "ipython")
