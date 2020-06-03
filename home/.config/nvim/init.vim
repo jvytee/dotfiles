@@ -34,8 +34,9 @@ Plug 'junegunn/fzf', {
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'lervag/vimtex'
-Plug 'chrisbra/Colorizer'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'freitass/todo.txt-vim'
+Plug 'chrisbra/Colorizer'
 call plug#end()
 
 set termguicolors
