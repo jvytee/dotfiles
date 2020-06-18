@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 alias grep='grep --color=auto'
-alias ls='ls --color=auto'
+alias ls=exa
 alias ip='ip -c'
 alias vim='nvim'
 
@@ -26,6 +26,8 @@ export EDITOR=/usr/bin/nvim
 export BEMENU_BACKEND=wayland
 export MOZ_ENABLE_WAYLAND=1
 export MOZ_USE_XINPUT2=1
+export _JAVA_AWT_WM_NONREPARENTING=1
+export QT_QPA_PLATFORM=wayland-egl
 
 # If running from tty1 start sway
 if [ "$(tty)" = "/dev/tty1" ]; then
