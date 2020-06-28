@@ -49,7 +49,7 @@ let g:ale_python_black_options = '--line-length 120'
 let g:ale_linters = {
             \ 'python': ['pyls'],
             \ 'cpp': ['clangd'],
-            \ 'rust': ['rust-analyzer']
+            \ 'rust': ['analyzer']
             \ }
 let g:ale_fixers = {
             \ 'python': ['black'],
