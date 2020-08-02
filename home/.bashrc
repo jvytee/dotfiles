@@ -20,23 +20,18 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-export PYENV_ROOT=$HOME/.pyenv
-export PATH=$PYENV_ROOT/bin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin:/opt/zotero
+export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:/opt/zotero
 export EDITOR=/usr/bin/nvim
 export BEMENU_BACKEND=wayland
 export MOZ_ENABLE_WAYLAND=1
 export MOZ_USE_XINPUT2=1
 export _JAVA_AWT_WM_NONREPARENTING=1
 export QT_QPA_PLATFORM=wayland-egl
+export QT_STYLE_OVERRIDE=breeze
 
 # If running from tty1 start sway
 if [ "$(tty)" = "/dev/tty1" ]; then
-	exec sway
-fi
-
-# Set up PyEnv
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+    exec sway
 fi
 
 # Source command-not-found hook
