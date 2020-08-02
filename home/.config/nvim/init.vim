@@ -42,6 +42,7 @@ call plug#end()
 set termguicolors
 colorscheme onedark
 
+autocmd filetype javascript,json,yaml setlocal shiftwidth=2 softtabstop=2
 autocmd CompleteDone * silent! pclose!
 let g:deoplete#enable_at_startup = 1
 
@@ -49,7 +50,8 @@ let g:ale_python_black_options = '--line-length 120'
 let g:ale_linters = {
             \ 'python': ['pyls'],
             \ 'cpp': ['clangd'],
-            \ 'rust': ['analyzer']
+            \ 'rust': ['analyzer'],
+            \ 'javascript': ['eslint'],
             \ }
 let g:ale_fixers = {
             \ 'python': ['black'],
