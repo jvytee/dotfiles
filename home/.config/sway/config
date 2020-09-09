@@ -211,12 +211,12 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $bg "#282c34"
-set $fg "#abb2bf"
-set $red "#e06c75"
-set $blue0 "#61afef"
-set $blue1 "#56b6c2"
-set $grey "#5c6370"
+set $bg "#1d1f21"
+set $fg "#c5c8c6"
+set $red "#d54e53"
+set $blue0 "#7aa6da"
+set $blue1 "#70c0b1"
+set $grey "#666666"
 
 #
 # Status Bar:
