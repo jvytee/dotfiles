@@ -24,7 +24,6 @@ let maplocalleader = "\<space>"
 
 call plug#begin('~/.local/share/nvim/vim-plug')
 Plug 'romainl/flattened'
-Plug 'joshdick/onedark.vim'
 Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim', {
             \ 'do': ':UpdateRemotePlugins' }
@@ -35,12 +34,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'lervag/vimtex'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'udalov/kotlin-vim'
 Plug 'freitass/todo.txt-vim'
 Plug 'chrisbra/Colorizer'
 call plug#end()
 
 set termguicolors
-colorscheme onedark
+colorscheme flattened_dark
 
 autocmd filetype javascript,json,yaml setlocal shiftwidth=2 softtabstop=2
 autocmd CompleteDone * silent! pclose!
@@ -51,7 +51,7 @@ let g:ale_linters = {
             \ 'python': ['pyls'],
             \ 'cpp': ['clangd'],
             \ 'rust': ['analyzer'],
-            \ 'javascript': ['eslint'],
+            \ 'kotlin': ['kotlinc'],
             \ }
 let g:ale_fixers = {
             \ 'python': ['black'],
