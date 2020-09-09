@@ -261,8 +261,8 @@ bindsym $mod+m exec makoctl dismiss
 bindsym $mod+u exec thunderbird
 bindsym $mod+i exec firefox
 bindsym $mod+o exec nautilus
-bindsym $mod+q exec swaylock -i ~/.config/sway/wallpaper.jpg
-bindsym $mod+Shift+Udiaeresis exec swaylock -f -i ~/.config/sway/wallpaper.jpg && systemctl suspend
+bindsym $mod+q exec grim -t jpeg /tmp/lockscreen.jpg && mogrify -scale 5% -scale 2000% /tmp/lockscreen.jpg && swaylock -i /tmp/lockscreen.jpg
+bindsym $mod+Shift+Udiaeresis exec grim -t jpeg /tmp/lockscreen.jpg && mogrify -scale 5% -scale 2000% /tmp/lockscreen.jpg && swaylock -f -i /tmp/lockscreen.jpg && systemctl suspend
 bindsym $mod+Shift+p exec systemctl poweroff
 
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
