@@ -38,3 +38,6 @@ fi
 if [ -f /usr/share/doc/pkgfile/command-not-found.bash ]; then
     source /usr/share/doc/pkgfile/command-not-found.bash
 fi
+
+# Init starship prompt
+eval "$(starship init bash)"
