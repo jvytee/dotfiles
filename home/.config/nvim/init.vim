@@ -24,6 +24,7 @@ let maplocalleader = "\<space>"
 
 call plug#begin('~/.local/share/nvim/vim-plug')
 Plug 'romainl/flattened'
+Plug 'chriskempson/base16-vim'
 Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim', {
             \ 'do': ':UpdateRemotePlugins' }
@@ -40,7 +41,7 @@ Plug 'chrisbra/Colorizer'
 call plug#end()
 
 set termguicolors
-colorscheme flattened_dark
+colorscheme base16-tomorrow-night
 
 autocmd filetype javascript,json,yaml setlocal shiftwidth=2 softtabstop=2
 autocmd CompleteDone * silent! pclose!
