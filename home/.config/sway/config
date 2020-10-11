@@ -4,7 +4,7 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-font pango:Noto Sans 9
+font pango:Cantarell 9
 
 ### Variables
 #
@@ -21,7 +21,7 @@ set $term alacritty
 # Note: it's recommended that you pass the final command to sway
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
 #set $menu dmenu_run -fn "Noto Sans-8" -nf "$fg" -nb "$bg" -sb "$bg" -sf "$blue" | xargs swaymsg exec --
-set $menu bemenu-run -i -p "Run" --fn "Noto Sans 9" --tb "$bg" --tf "$blue0" --fb "$bg" --ff "$blue0" --nb "$bg" --nf "$fg" --hb "$bg" --hf "$blue0" --sb "$bg" --sf "$blue1" | xargs swaymsg exec --
+set $menu bemenu-run -i -p "Run" --fn "Cantarell 9" --tb "$bg" --tf "$blue0" --fb "$bg" --ff "$blue0" --nb "$bg" --nf "$fg" --hb "$bg" --hf "$blue0" --sb "$bg" --sf "$blue1" | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -241,6 +241,9 @@ bar {
         urgent_workspace   $red $bg $red
         binding_mode       $red $bg $red
     }
+
+    tray_bindcode 272 Activate
+    tray_bindcode 273 ContextMenu
 }
 
 # class                 border bground text indicator child_border
@@ -272,7 +275,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
 exec gnome-keyring-daemon --start
-exec gsettings set org.gnome.desktop.interface font-name 'Noto Sans 9'
+exec gsettings set org.gnome.desktop.interface font-name 'Cantarell 9'
 exec mako
 
 include /etc/sway/config.d/*
