@@ -241,9 +241,6 @@ bar {
         urgent_workspace   $red $bg $red
         binding_mode       $red $bg $red
     }
-
-    tray_bindcode 272 Activate
-    tray_bindcode 273 ContextMenu
 }
 
 # class                 border bground text indicator child_border
