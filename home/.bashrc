@@ -30,9 +30,9 @@ export QT_QPA_PLATFORM=wayland-egl
 export QT_STYLE_OVERRIDE=breeze
 
 # If running from tty1 start sway
-if [ "$(tty)" = "/dev/tty1" ]; then
-    exec sway
-fi
+#if [ "$(tty)" = "/dev/tty1" ]; then
+#    exec sway
+#fi
 
 # Source command-not-found hook
 if [ -f /usr/share/doc/pkgfile/command-not-found.bash ]; then
