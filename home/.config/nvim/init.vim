@@ -41,7 +41,7 @@ Plug 'chrisbra/Colorizer'
 call plug#end()
 
 set termguicolors
-colorscheme base16-tomorrow-night
+colorscheme flattened_dark
 
 autocmd filetype javascript,json,yaml setlocal shiftwidth=2 softtabstop=2
 autocmd CompleteDone * silent! pclose!
