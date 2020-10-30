@@ -22,17 +22,6 @@ fi
 
 export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:/opt/zotero
 export EDITOR=/usr/bin/nvim
-export BEMENU_BACKEND=wayland
-export MOZ_ENABLE_WAYLAND=1
-export MOZ_USE_XINPUT2=1
-export _JAVA_AWT_WM_NONREPARENTING=1
-export QT_QPA_PLATFORM=wayland-egl
-export QT_STYLE_OVERRIDE=breeze
-
-# If running from tty1 start sway
-#if [ "$(tty)" = "/dev/tty1" ]; then
-#    exec sway
-#fi
 
 # Source command-not-found hook
 if [ -f /usr/share/doc/pkgfile/command-not-found.bash ]; then
