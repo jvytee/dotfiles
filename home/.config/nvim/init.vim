@@ -24,8 +24,10 @@ let maplocalleader = "\<space>"
 
 call plug#begin('~/.local/share/nvim/vim-plug')
 Plug 'romainl/flattened'
-Plug 'chriskempson/base16-vim'
-Plug 'dense-analysis/ale'
+Plug 'junegunn/seoul256.vim'
+Plug 'autozimu/LanguageClient-neovim', {
+            \ 'branch': 'next',
+            \ 'do': 'bash install.sh' }
 Plug 'Shougo/deoplete.nvim', {
             \ 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/fzf', {
@@ -35,38 +37,31 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'lervag/vimtex'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'udalov/kotlin-vim'
 Plug 'freitass/todo.txt-vim'
 Plug 'chrisbra/Colorizer'
 call plug#end()
 
 set termguicolors
-colorscheme flattened_dark
+let g:seoul256_background = 235
+colorscheme seoul256
 
 autocmd filetype javascript,json,yaml setlocal shiftwidth=2 softtabstop=2
-autocmd CompleteDone * silent! pclose!
 let g:deoplete#enable_at_startup = 1
 
-let g:ale_python_black_options = '--line-length 120'
-let g:ale_linters = {
+let g:LanguageClient_serverCommands = {
             \ 'python': ['pyls'],
             \ 'cpp': ['clangd'],
-            \ 'rust': ['analyzer'],
-            \ 'kotlin': ['kotlinc'],
-            \ }
-let g:ale_fixers = {
-            \ 'python': ['black'],
-            \ 'cpp': ['clang-format'],
-            \ 'rust': ['rustfmt']
-            \ }
+            \ 'rust': ['rust-analyzer'] }
 
-nnoremap <leader>aR :ALERename<cr>
-nnoremap <leader>aD :ALEDetail<cr>
-nnoremap <leader>ad :ALEGoToDefinition<cr>
-nnoremap <leader>af :ALEFix<cr>
-nnoremap <leader>ah :ALEHover<cr>
-nnoremap <leader>ar :ALEFindReferences<cr>
-nnoremap <leader>as :ALESymbolSearch<cr>
+nmap <leader>cc <Plug>(lcn-menu)
+nmap <leader>ch <Plug>(lcn-hover)
+nmap <leader>cR <Plug>(lcn-rename)
+nmap <leader>cd <Plug>(lcn-definition)
+nmap <leader>cr <Plug>(lcn-references)
+nmap <leader>ci <Plug>(lcn-implementation)
+nmap <leader>cF <Plug>(lcn-format)
+nmap <leader>cn <Plug>(cln-diagnostics-next)
+nmap <leader>cp <Plug>(cln-diagnostics-prev)
 
 nnoremap <leader>f :FZF<cr>
 nnoremap <leader>b :Buffers<cr>
