@@ -8,7 +8,6 @@ set cmdheight=2
 set cursorline
 set linebreak
 set mouse=a
-set nocompatible
 set nofoldenable
 set number
 set signcolumn=yes
@@ -24,7 +23,7 @@ let maplocalleader = "\<space>"
 
 call plug#begin('~/.local/share/nvim/vim-plug')
 Plug 'romainl/flattened'
-Plug 'junegunn/seoul256.vim'
+Plug 'morhetz/gruvbox'
 Plug 'autozimu/LanguageClient-neovim', {
             \ 'branch': 'next',
             \ 'do': 'bash install.sh' }
@@ -42,8 +41,7 @@ Plug 'chrisbra/Colorizer'
 call plug#end()
 
 set termguicolors
-let g:seoul256_background = 235
-colorscheme seoul256
+colorscheme gruvbox
 
 autocmd filetype javascript,json,yaml setlocal shiftwidth=2 softtabstop=2
 let g:deoplete#enable_at_startup = 1
