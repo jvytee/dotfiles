@@ -23,7 +23,7 @@ let maplocalleader = "\<space>"
 
 call plug#begin('~/.local/share/nvim/vim-plug')
 Plug 'romainl/flattened'
-Plug 'morhetz/gruvbox'
+Plug 'dracula/vim'
 Plug 'autozimu/LanguageClient-neovim', {
             \ 'branch': 'next',
             \ 'do': 'bash install.sh' }
@@ -41,7 +41,7 @@ Plug 'chrisbra/Colorizer'
 call plug#end()
 
 set termguicolors
-colorscheme gruvbox
+colorscheme flattened_dark
 
 autocmd filetype javascript,json,yaml setlocal shiftwidth=2 softtabstop=2
 let g:deoplete#enable_at_startup = 1
