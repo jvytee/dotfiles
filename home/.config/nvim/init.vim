@@ -43,13 +43,14 @@ call plug#end()
 set termguicolors
 colorscheme flattened_dark
 
-autocmd filetype javascript,json,yaml setlocal shiftwidth=2 softtabstop=2
+autocmd filetype html,css,javascript,xml,json,yaml setlocal shiftwidth=2 softtabstop=2
 let g:deoplete#enable_at_startup = 1
 
 let g:LanguageClient_serverCommands = {
             \ 'python': ['pyls'],
             \ 'cpp': ['clangd'],
-            \ 'rust': ['rust-analyzer'] }
+            \ 'rust': ['rust-analyzer'],
+            \ 'javascript': ['typescript-language-server', '--stdio'] }
 
 nmap <leader>cc <Plug>(lcn-menu)
 nmap <leader>ch <Plug>(lcn-hover)
