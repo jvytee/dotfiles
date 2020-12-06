@@ -71,8 +71,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     bat
+    binutils
     borgbackup
-    clang
     clang-tools
     darktable
     element-desktop
@@ -80,6 +80,8 @@
     fd
     firefox
     fzf
+    gcc
+    gdb
     git
     gnome3.gnome-tweaks
     gnupg
