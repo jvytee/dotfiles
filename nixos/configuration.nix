@@ -183,7 +183,7 @@
     };
 
     bash = {
-      shellInit = ''
+      interactiveShellInit = ''
         source $(fzf-share)/completion.bash
         source $(fzf-share)/key-bindings.bash
       '';
