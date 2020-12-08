@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       <nixos-hardware/lenovo/thinkpad/t460s>
       ./hardware-configuration.nix
+      ./wg-quick.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -71,9 +72,11 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     (import ./neovim.nix)
+    ansible
     bat
     binutils
     borgbackup
+    chromium
     clang-tools
     darktable
     element-desktop
@@ -101,7 +104,11 @@
     stow
     tdesktop
     thunderbird
+    tig
+    tor
+    tor-browser-bundle-bin
     vlc
+    zotero
   ];
 
   fonts.fonts = with pkgs; [
