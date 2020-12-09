@@ -9,7 +9,6 @@
     [ # Include the results of the hardware scan.
       <nixos-hardware/lenovo/thinkpad/t460s>
       ./hardware-configuration.nix
-      ./wg-quick.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -20,6 +19,9 @@
 
   networking.hostName = "klapprechner"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  networking.wireguard.enable = true;
+  networking.firewall.checkReversePath = false;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
