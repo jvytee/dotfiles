@@ -1,6 +1,5 @@
 with import <nixpkgs> {};
 
-
 neovim.override {
   configure = {
     customRC = ''
@@ -19,7 +18,7 @@ neovim.override {
       set softtabstop=4 shiftwidth=4
 
       set termguicolors
-      colorscheme NeoSolarized
+      colorscheme monokai_pro
 
       autocmd filetype html,css,javascript,xml,json,yaml,conf setlocal shiftwidth=2 softtabstop=2
 
@@ -28,7 +27,7 @@ neovim.override {
                   \ 'python': ['pyls'],
                   \ 'cpp': ['clangd'],
                   \ 'rust': ['rust-analyzer'],
-                  \ 'javascript': ['typescript-language-server', '--stdio'] }
+                  \ 'javascript': ['npx', 'typescript-language-server', '--stdio'] }
 
       let mapleader = "\<space>"
       let maplocalleader = "\<space>"
@@ -40,8 +39,8 @@ neovim.override {
       nmap <leader>cr <Plug>(lcn-references)
       nmap <leader>ci <Plug>(lcn-implementation)
       nmap <leader>cF <Plug>(lcn-format)
-      nmap <leader>cn <Plug>(cln-diagnostics-next)
-      nmap <leader>cp <Plug>(cln-diagnostics-prev)
+      nmap <leader>cn <Plug>(lcn-diagnostics-next)
+      nmap <leader>cp <Plug>(lcn-diagnostics-prev)
 
       nnoremap <leader>f :FZF<cr>
       nnoremap <leader>b :Buffers<cr>
@@ -60,6 +59,7 @@ neovim.override {
         nerdtree
         todo-txt-vim
         vim-cpp-enhanced-highlight
+        vim-monokai-pro
         vim-nix
         #vimtex
       ];
