@@ -94,8 +94,7 @@
     gradle
     jetbrains.idea-community
     jdk14
-    kotlin
-    nodejs
+    nodejs-14_x
     pass
     pinentry-gnome
     python3
@@ -147,12 +146,12 @@
   # services.openssh.enable = true;
 
   services = {
-    syncthing = {
-      enable = true;
-      user = "julian";
-      dataDir = "/home/julian";
-      configDir = "/home/julian/.config/syncthing";
-    };
+    #syncthing = {
+    #  enable = true;
+    #  user = "julian";
+    #  dataDir = "/home/julian";
+    #  configDir = "/home/julian/.config/syncthing";
+    #};
 
     tlp.enable = true;
   };
