@@ -15,12 +15,12 @@ neovim.override {
       set smartcase
 
       set tabstop=8 expandtab
-      set softtabstop=4 shiftwidth=4
+      set softtabstop=2 shiftwidth=2
 
       set termguicolors
       colorscheme monokai_pro
 
-      autocmd filetype html,css,javascript,xml,json,yaml,conf setlocal shiftwidth=2 softtabstop=2
+      autocmd filetype python setlocal shiftwidth=4 softtabstop=4
 
       let g:deoplete#enable_at_startup = 1
       let g:LanguageClient_serverCommands = {
