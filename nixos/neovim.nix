@@ -61,6 +61,7 @@ neovim.override {
         vim-cpp-enhanced-highlight
         vim-monokai-pro
         vim-nix
+        vim-toml
         #vimtex
       ];
     };

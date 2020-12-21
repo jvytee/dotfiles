@@ -78,6 +78,7 @@
     bat
     binutils
     borgbackup
+    cargo
     chromium
     clang-tools
     darktable
@@ -90,6 +91,7 @@
     gdb
     git
     gnome3.gnome-tweaks
+    gnumake
     gnupg
     gradle
     jetbrains.idea-community
@@ -100,14 +102,13 @@
     python3
     ripgrep
     rust-analyzer
-    rustup
+    rustc
     starship
     stow
     tdesktop
     thunderbird
     tig
     tor
-    tor-browser-bundle-bin
     vlc
     zotero
   ];
