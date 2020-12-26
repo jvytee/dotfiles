@@ -11,6 +11,9 @@
       ./hardware-configuration.nix
     ];
 
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -56,6 +59,11 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.drivers = with pkgs; [
+    gutenprint
+    brlaser
+    brgenml1cupswrapper
+  ];
 
   # Enable sound.
   sound.enable = true;
@@ -94,7 +102,7 @@
     gnumake
     gnupg
     gradle
-    jetbrains.idea-community
+    inkscape
     jdk14
     nodejs-14_x
     pass
@@ -114,8 +122,10 @@
   ];
 
   fonts.fonts = with pkgs; [
+    b612
     iosevka
-    noto-fonts
+    roboto
+    roboto-slab
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -154,7 +164,12 @@
     #  configDir = "/home/julian/.config/syncthing";
     #};
 
-    tlp.enable = true;
+    tlp = {
+      enable = true;
+      settings = {
+        MAX_LOST_WORK_SECS_ON_BAT = 15;
+      };
+    };
   };
 
   virtualisation.podman.enable = true;
