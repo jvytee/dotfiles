@@ -18,7 +18,7 @@ neovim.override {
       set softtabstop=2 shiftwidth=2
 
       set termguicolors
-      colorscheme monokai_pro
+      colorscheme NeoSolarized
 
       autocmd filetype python setlocal shiftwidth=4 softtabstop=4
 
@@ -59,7 +59,6 @@ neovim.override {
         nerdtree
         todo-txt-vim
         vim-cpp-enhanced-highlight
-        vim-monokai-pro
         vim-nix
         vim-toml
         #vimtex
