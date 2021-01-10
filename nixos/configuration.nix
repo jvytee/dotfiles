@@ -51,6 +51,24 @@
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome3.enable = true;
+
+  programs.sway = {
+    enable = true;
+    extraPackages = with pkgs; [
+      swaylock
+      swayidle
+      xwayland
+      alacritty
+      dmenu
+      brightnessctl
+      grim
+      i3status
+      imagemagick
+      libnotify
+      mako
+      pavucontrol
+    ];
+  };
   
 
   # Configure keymap in X11
@@ -122,10 +140,9 @@
   ];
 
   fonts.fonts = with pkgs; [
-    b612
+    cantarell-fonts
     iosevka
-    roboto
-    roboto-slab
+    noto-fonts
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
