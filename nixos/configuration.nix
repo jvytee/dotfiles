@@ -59,7 +59,7 @@
       swayidle
       xwayland
       alacritty
-      dmenu
+      bemenu
       brightnessctl
       grim
       i3status
@@ -102,6 +102,7 @@
     (import ./neovim.nix)
     ansible
     bat
+    bind
     binutils
     borgbackup
     cargo
@@ -121,10 +122,14 @@
     gnupg
     gradle
     inkscape
-    jdk14
+    jetbrains.pycharm-community
+    jq
+    mumble
+    musescore
     nodejs-14_x
     pass
     pinentry-gnome
+    powertop
     python3
     ripgrep
     rust-analyzer
@@ -192,11 +197,10 @@
   virtualisation.podman.enable = true;
 
   # Environment variables
-  environment.variables = {
+  environment.sessionVariables = {
     EDITOR = "nvim";
     MOZ_ENABLE_WAYLAND = "1";
     MOZ_USE_XINPUT2 = "1";
-    QT_QPA_PLATFORM = "wayland";
     _JAVA_AWT_WM_NONREPARENTING = "1";
   };
 
