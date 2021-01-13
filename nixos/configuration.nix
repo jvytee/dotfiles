@@ -105,7 +105,6 @@
     bind
     binutils
     borgbackup
-    cargo
     chromium
     clang-tools
     darktable
@@ -133,7 +132,7 @@
     python3
     ripgrep
     rust-analyzer
-    rustc
+    rustup
     starship
     stow
     tdesktop
