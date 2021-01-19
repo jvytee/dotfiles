@@ -52,6 +52,13 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome3.enable = true;
 
+  environment.gnome3 = {
+    excludePackages = with pkgs.gnome3; [
+      gnome-music
+      epiphany
+    ];
+  };
+
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [
@@ -67,6 +74,8 @@
       libnotify
       mako
       pavucontrol
+      wdisplays
+      wl-clipboard
     ];
   };
   
@@ -123,6 +132,7 @@
     inkscape
     jetbrains.pycharm-community
     jq
+    kid3
     mumble
     musescore
     nodejs-14_x
@@ -159,6 +169,7 @@
     };
 
     bash = {
+      enableCompletion = true;
       interactiveShellInit = ''
         source $(fzf-share)/completion.bash
         source $(fzf-share)/key-bindings.bash
@@ -200,6 +211,7 @@
     EDITOR = "nvim";
     MOZ_ENABLE_WAYLAND = "1";
     MOZ_USE_XINPUT2 = "1";
+    QT_QPA_PLATFORM = "wayland";
     _JAVA_AWT_WM_NONREPARENTING = "1";
   };
 
