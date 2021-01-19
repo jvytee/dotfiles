@@ -96,7 +96,6 @@ input "type:keyboard" {
 
     # Exit sway (logs you out of your Wayland session)
     #bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-    bindsym $mod+Shift+e exec swaymsg exit
 #
 # Moving around:
 #
@@ -229,8 +228,18 @@ bar {
 
 default_border pixel 2
 
+mode "menu" {
+    bindsym $mod+e exec swaymsg exit
+    bindsym $mod+l exec grim -t jpeg /tmp/lockscreen.jpg && mogrify -scale 5% -scale 2000% /tmp/lockscreen.jpg && swaylock -i /tmp/lockscreen.jpg && swaymsg mode "default"
+    bindsym $mod+Shift+l exec grim -t jpeg /tmp/lockscreen.jpg && mogrify -scale 5% -scale 2000% /tmp/lockscreen.jpg && swaylock -f -i /tmp/lockscreen.jpg && systemctl suspend && swaymsg mode "default"
+    bindsym $mod+p exec systemctl poweroff
+    bindsym $mod+Shift+p exec systemctl reboot
+
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+e mode "menu"
+
 bindsym $mod+m exec makoctl dismiss
-bindsym $mod+q exec grim -t jpeg /tmp/lockscreen.jpg && mogrify -scale 5% -scale 2000% /tmp/lockscreen.jpg && swaylock -i /tmp/lockscreen.jpg
 
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
