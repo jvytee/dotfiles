@@ -136,7 +136,7 @@
     mumble
     musescore
     nodejs-14_x
-    pass
+    pass-wayland
     pinentry-gnome
     powertop
     python3
