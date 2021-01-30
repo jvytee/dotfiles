@@ -4,7 +4,7 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-font pango:Cantarell 9
+font pango:Noto Sans 9
 
 ### Variables
 #
@@ -20,7 +20,7 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu bemenu-run --fn "Cantarell 9" | xargs swaymsg exec --
+set $menu bemenu-run --fn "Noto Sans 9" | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -222,7 +222,7 @@ bar {
 
     colors {
         statusline #ffffff
-        background #000000c0
+        background #000000B0
     }
 }
 
