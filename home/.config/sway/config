@@ -222,7 +222,7 @@ bar {
 
     colors {
         statusline #ffffff
-        background #000000B0
+        background #222222
     }
 }
 
