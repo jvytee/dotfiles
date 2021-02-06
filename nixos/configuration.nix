@@ -59,6 +59,12 @@
     ];
   };
 
+  qt5 = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita";
+  };
+
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [
@@ -108,7 +114,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    (import ./neovim.nix)
     ansible
     bat
     bind
@@ -120,6 +125,7 @@
     element-desktop
     exa
     fd
+    file
     firefox
     fzf
     gcc
@@ -128,13 +134,16 @@
     gnome3.gnome-tweaks
     gnumake
     gnupg
-    gradle
+    htop
     inkscape
-    jetbrains.pycharm-community
+    jetbrains.idea-community
     jq
     kid3
+    libav
+    libreoffice
     mumble
     musescore
+    neovim
     nodejs-14_x
     pass-wayland
     pinentry-gnome
