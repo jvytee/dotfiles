@@ -214,7 +214,7 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
+    position bottom
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
@@ -228,7 +228,7 @@ bar {
 
 default_border pixel 2
 
-mode "menu" {
+mode "exit" {
     bindsym $mod+e exec swaymsg exit
     bindsym $mod+l exec grim -t jpeg /tmp/lockscreen.jpg && mogrify -scale 5% -scale 2000% /tmp/lockscreen.jpg && swaylock -i /tmp/lockscreen.jpg && swaymsg mode "default"
     bindsym $mod+Shift+l exec grim -t jpeg /tmp/lockscreen.jpg && mogrify -scale 5% -scale 2000% /tmp/lockscreen.jpg && swaylock -f -i /tmp/lockscreen.jpg && systemctl suspend && swaymsg mode "default"
@@ -237,7 +237,7 @@ mode "menu" {
 
     bindsym Escape mode "default"
 }
-bindsym $mod+Shift+e mode "menu"
+bindsym $mod+Shift+e mode "exit"
 
 bindsym $mod+m exec makoctl dismiss
 
