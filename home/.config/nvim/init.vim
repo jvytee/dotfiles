@@ -32,7 +32,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'lervag/vimtex'
 call plug#end()
 
-colorscheme onedark
+colorscheme flattened_dark
 
 let g:deoplete#enable_at_startup = 1
 let g:LanguageClient_serverCommands = {

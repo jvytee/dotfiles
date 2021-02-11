@@ -9,17 +9,14 @@
 general {
         colors = true
         interval = 5
-
-        color_bad = "#e06c75"
-        color_degraded = "#e5c07b"
-        color_good = "#98c379"
+        markup = "pango"
 }
 
 order += "ipv6"
 order += "wireless _first_"
 order += "ethernet _first_"
 order += "battery all"
-order += "disk /"
+#order += "disk /"
 order += "load"
 order += "memory"
 order += "volume master"
@@ -27,12 +24,12 @@ order += "tztime local"
 
 wireless _first_ {
         format_up = "W: (%quality at %essid) %ip"
-        format_down = "W: down"
+        format_down = "<s>W: down</s>"
 }
 
 ethernet _first_ {
         format_up = "E: %ip (%speed)"
-        format_down = "E: down"
+        format_down = "<s>E: down</s>"
 }
 
 battery all {
@@ -56,9 +53,9 @@ memory {
 volume master {
         device = "pulse"
         format = "VOL %volume"
-        format_muted = "muted"
+        format_muted = "<s>VOL %volume</s>"
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+        format = "%H:%M"
 }
