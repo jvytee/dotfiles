@@ -1,36 +1,47 @@
-;; Set up package.el to work with MELPA
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
-;(package-refresh-contents)
 
-;; Download Evil
-(unless (package-installed-p 'evil)
-  (package-install 'evil))
+(eval-when-compile (require 'use-package))
+(require 'use-package-ensure)
 
-;; Enable Evil
-(require 'evil)
-(evil-mode 1)
+(use-package evil
+  :config
+  (evil-mode 1))
 
-(ivy-mode 1)
-(which-key-mode 1)
+(use-package ivy
+  :config
+  (setq ivy-count-format "(%d/%d) ")
+  (setq ivy-use-virtual-buffers t)
+  (ivy-mode 1))
 
-(require 'lsp-mode)
-(define-key lsp-mode-map (kbd "C-SPC") lsp-command-map)
-(with-eval-after-load 'lsp-mode
-  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
-(add-hook 'python-mode-hook #'lsp)
-(add-hook 'rust-mode-hook #'lsp)
-(add-hook 'javascript-mode-hook #'lsp)
+(use-package lsp-ivy
+  :bind ("C-c s" . lsp-ivy-workspace-symbol)
+  :commands lsp-ivy-workspace-symbol)
 
-(require 'nix-mode)
-(add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-mode))
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-SPC")
+  :hook
+  ((javascript-mode python-mode rust-mode yaml-mode)
+   (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
 
-(require 'projectile)
-(projectile-mode +1)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-(global-set-key (kbd "C-c f") 'projectile-find-file)
+(use-package lsp-ui
+  :commands lsp-ui-mode)
+
+(use-package nix-mode
+  :mode "\\.nix\\'")
+
+(use-package projectile
+  :bind-keymap ("C-c p" . projectile-command-map)
+  :bind ("C-c f" . projectile-find-file)
+  :config
+  (projectile-mode +1))
+
+(use-package which-key
+  :config
+  (which-key-mode 1))
 
 (add-hook 'after-init-hook #'global-company-mode)
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -51,14 +62,13 @@
  '(custom-enabled-themes '(solarized-dark))
  '(custom-safe-themes
    '("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
- '(ivy-count-format "(%d/%d) ")
- '(ivy-use-virtual-buffers t)
- '(lsp-keymap-prefix "C-SPC")
  '(package-selected-packages
-   '(virtualenvwrapper yaml-mode projectile magit ivy which-key nix-mode flycheck rust-mode solarized-theme company lsp-ui lsp-mode evil))
+   '(lsp-ivy jinja2-mode use-package virtualenvwrapper yaml-mode projectile magit ivy which-key nix-mode flycheck rust-mode solarized-theme company lsp-ui lsp-mode evil))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
+ '(use-package-always-ensure t)
+ '(vc-follow-symlinks nil)
  '(x-underline-at-descent-line t))
 
 (custom-set-faces
