@@ -3,7 +3,6 @@
 (package-initialize)
 
 (eval-when-compile (require 'use-package))
-(require 'use-package-ensure)
 
 (use-package evil
   :config
@@ -23,7 +22,10 @@
   :init
   (setq lsp-keymap-prefix "C-SPC")
   :hook
-  ((javascript-mode python-mode rust-mode yaml-mode)
+  ((javascript-mode . lsp)
+   (python-mode . lsp)
+   (rust-mode . lsp)
+   (yaml-mode . lsp)
    (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
 
@@ -43,6 +45,8 @@
   :config
   (which-key-mode 1))
 
+(require 'use-package-ensure)
+
 (add-hook 'after-init-hook #'global-company-mode)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
@@ -59,9 +63,9 @@
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(column-number-mode t)
- '(custom-enabled-themes '(solarized-dark))
+ '(custom-enabled-themes '(solarized-light))
  '(custom-safe-themes
-   '("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
+   '("c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
  '(package-selected-packages
    '(lsp-ivy jinja2-mode use-package virtualenvwrapper yaml-mode projectile magit ivy which-key nix-mode flycheck rust-mode solarized-theme company lsp-ui lsp-mode evil))
  '(scroll-bar-mode nil)
