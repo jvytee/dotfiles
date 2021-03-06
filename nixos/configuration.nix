@@ -119,12 +119,14 @@
     bind
     binutils
     borgbackup
+    brscan4
     chromium
-    clang-tools
     darktable
     element-desktop
+    emacs
     exa
     fd
+    ffmpeg
     file
     firefox
     fzf
@@ -139,16 +141,18 @@
     jetbrains.idea-community
     jq
     kid3
-    libav
     libreoffice
+    lmms
     mumble
     musescore
+    neofetch
     neovim
     nodejs-14_x
     pass-wayland
     pinentry-gnome
     powertop
     python3
+    python38Packages.pip
     ripgrep
     rust-analyzer
     rustup
@@ -217,7 +221,7 @@
 
   # Environment variables
   environment.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = "emacs";
     MOZ_ENABLE_WAYLAND = "1";
     MOZ_USE_XINPUT2 = "1";
     QT_QPA_PLATFORM = "wayland";
