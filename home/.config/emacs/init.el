@@ -4,6 +4,8 @@
 
 (eval-when-compile (require 'use-package))
 
+(use-package better-defaults)
+
 (use-package evil
   :config
   (evil-mode 1))
@@ -64,17 +66,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
  '(column-number-mode t)
  '(custom-enabled-themes '(solarized-dark))
  '(custom-safe-themes
    '("c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
  '(package-selected-packages
-   '(simple-modeline lsp-ivy jinja2-mode use-package virtualenvwrapper yaml-mode projectile magit ivy which-key nix-mode flycheck rust-mode solarized-theme company lsp-ui lsp-mode evil))
- '(scroll-bar-mode nil)
- '(show-paren-mode t)
- '(tool-bar-mode nil)
+   '(better-defaults simple-modeline lsp-ivy jinja2-mode use-package virtualenvwrapper yaml-mode projectile magit ivy which-key nix-mode flycheck rust-mode solarized-theme company lsp-ui lsp-mode evil))
  '(use-package-always-ensure t)
  '(vc-follow-symlinks nil)
  '(x-underline-at-descent-line t))
@@ -84,4 +81,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Iosevka" :foundry "BE5N" :slant normal :weight normal :height 90 :width normal)))))
+ '(default ((t (:family "Source Code Pro" :foundry "ADBO" :slant normal :weight normal :height 90 :width normal)))))
