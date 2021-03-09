@@ -56,9 +56,10 @@
 (add-hook 'after-init-hook #'global-company-mode)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'conf-mode-hook 'display-line-numbers-mode)
 (add-hook 'org-mode-hook 'display-line-numbers-mode)
+(add-hook 'markdown-mode-hook 'display-line-numbers-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'yaml-mode-hook 'display-line-numbers-mode)
 
 (custom-set-variables
