@@ -168,7 +168,6 @@
 
   fonts.fonts = with pkgs; [
     cantarell-fonts
-    iosevka
     noto-fonts
   ];
 
@@ -221,7 +220,7 @@
 
   # Environment variables
   environment.sessionVariables = {
-    EDITOR = "emacs";
+    EDITOR = "nvim";
     MOZ_ENABLE_WAYLAND = "1";
     MOZ_USE_XINPUT2 = "1";
     QT_QPA_PLATFORM = "wayland";
