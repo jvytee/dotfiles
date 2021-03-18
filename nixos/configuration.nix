@@ -207,7 +207,10 @@
         ls = "exa";
         vim = "nvim";
       };
-      autosuggestions.enable = true;
+      autosuggestions = {
+        enable = true;
+        highlightStyle = "fg=10";
+      };
       syntaxHighlighting.enable = true;
     };
   };
