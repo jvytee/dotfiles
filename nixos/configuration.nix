@@ -186,12 +186,29 @@
         source $(fzf-share)/completion.bash
         source $(fzf-share)/key-bindings.bash
       '';
-      promptInit = "eval \"$(starship init bash)\"";
+      promptInit = ''eval "$(starship init bash)"'';
       shellAliases = {
 	ls = "exa";
 	ip = "ip -c";
 	vim = "nvim";
       };
+    };
+
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      interactiveShellInit = ''
+        source $(fzf-share)/completion.zsh
+        source $(fzf-share)/key-bindings.zsh
+      '';
+      promptInit = ''eval "$(starship init zsh)"'';
+      shellAliases = {
+        ip = "ip -c";
+        ls = "exa";
+        vim = "nvim";
+      };
+      autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
     };
   };
 
