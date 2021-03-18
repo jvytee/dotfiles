@@ -6,15 +6,15 @@
 
 (use-package better-defaults)
 
-(use-package evil
-  :config
-  (evil-mode 1))
-
-(use-package ivy
+(use-package counsel
   :config
   (setq ivy-count-format "(%d/%d) ")
   (setq ivy-use-virtual-buffers t)
   (ivy-mode 1))
+
+(use-package evil
+  :config
+  (evil-mode 1))
 
 (use-package lsp-ivy
   :bind ("C-c s" . lsp-ivy-workspace-symbol)
