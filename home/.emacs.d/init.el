@@ -6,7 +6,7 @@
 
 (use-package better-defaults)
 
-(use-package counsel
+(use-package ivy
   :config
   (setq ivy-count-format "(%d/%d) ")
   (setq ivy-use-virtual-buffers t)
@@ -72,7 +72,7 @@
  '(custom-safe-themes
    '("c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
  '(package-selected-packages
-   '(better-defaults simple-modeline lsp-ivy jinja2-mode use-package virtualenvwrapper yaml-mode projectile magit ivy which-key nix-mode flycheck rust-mode solarized-theme company lsp-ui lsp-mode evil))
+   '(better-defaults simple-modeline lsp-ivy jinja2-mode use-package virtualenvwrapper yaml-mode projectile magit counsel which-key nix-mode flycheck rust-mode solarized-theme company lsp-ui lsp-mode evil))
  '(use-package-always-ensure t)
  '(vc-follow-symlinks nil)
  '(x-underline-at-descent-line t))
