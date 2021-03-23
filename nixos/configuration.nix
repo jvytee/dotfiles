@@ -72,7 +72,6 @@
       swayidle
       xwayland
       alacritty
-      bemenu
       brightnessctl
       grim
       i3status
@@ -82,6 +81,7 @@
       pavucontrol
       wdisplays
       wl-clipboard
+      wofi
     ];
   };
   
@@ -109,6 +109,7 @@
   users.users.julian = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.zsh;
   };
 
   # List packages installed in system profile. To search, run:
