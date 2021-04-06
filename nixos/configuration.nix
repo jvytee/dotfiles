@@ -148,7 +148,6 @@
     musescore
     neofetch
     neovim
-    nodejs-14_x
     pass-wayland
     pinentry-gnome
     powertop
