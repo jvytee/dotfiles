@@ -7,6 +7,7 @@
 (use-package better-defaults)
 
 (use-package ivy
+  :bind ("C-c i" . swiper-isearch)
   :config
   (setq ivy-count-format "(%d/%d) ")
   (setq ivy-use-virtual-buffers t)
@@ -21,6 +22,7 @@
   :commands lsp-ivy-workspace-symbol)
 
 (use-package lsp-mode
+  :commands lsp
   :init
   (setq lsp-keymap-prefix "C-SPC")
   :hook
@@ -28,11 +30,13 @@
    (python-mode . lsp)
    (rust-mode . lsp)
    (yaml-mode . lsp)
-   (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp)
+   (lsp-mode . lsp-enable-which-key-integration)))
 
 (use-package lsp-ui
   :commands lsp-ui-mode)
+
+(use-package magit
+  :bind ("C-c g" . magit-file-dispatch))
 
 (use-package nix-mode
   :mode "\\.nix\\'")
@@ -70,7 +74,7 @@
  '(column-number-mode t)
  '(custom-enabled-themes '(solarized-dark))
  '(custom-safe-themes
-   '("c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
+   '("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
  '(package-selected-packages
    '(better-defaults simple-modeline lsp-ivy jinja2-mode use-package virtualenvwrapper yaml-mode projectile magit counsel which-key nix-mode flycheck rust-mode solarized-theme company lsp-ui lsp-mode evil))
  '(use-package-always-ensure t)
