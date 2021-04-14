@@ -20,25 +20,27 @@
 
   boot.initrd.luks.devices.cryptlvm-nixos.device = "/dev/disk/by-uuid/4ea3800a-a562-44d4-8ccc-ca788e5ed942";
 
-  networking.hostName = "klapprechner"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking = {
+    hostName = "klapprechner"; # Define your hostname.
+    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  networking.wireguard.enable = true;
-  networking.firewall.checkReversePath = false;
+    wireguard.enable = true;
+    firewall.checkReversePath = false;
+    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
+
+    # Per-interface useDHCP will be mandatory in the future, so this generated config
+    # replicates the default behaviour.
+    useDHCP = false;
+    interfaces.enp0s31f6.useDHCP = true;
+    interfaces.wlp4s0.useDHCP = true;
+
+    # Configure network proxy if necessary
+    # networking.proxy.default = "http://user:password@proxy:port/";
+    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
-
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.enp0s31f6.useDHCP = true;
-  networking.interfaces.wlp4s0.useDHCP = true;
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "de_DE.UTF-8";
@@ -47,63 +49,50 @@
     keyMap = "de";
   };
 
-  # Enable the GNOME 3 Desktop Environment.
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome3.enable = true;
+  services = {
+    # Configure keymap in X11
+    xserver = {
+      enable = true;
+      layout = "de";
+      xkbOptions = "caps:swapescape";
 
-  environment.gnome3 = {
-    excludePackages = with pkgs.gnome3; [
-      gnome-music
-      epiphany
+      # Enable the GNOME 3 Desktop Environment.
+      displayManager.gdm.enable = true;
+      desktopManager.gnome3.enable = true;
+
+      # Enable touchpad support (enabled default in most desktopManager).
+      libinput.enable = true;
+    };
+
+    # Enable CUPS to print documents.
+    printing.enable = true;
+    printing.drivers = with pkgs; [
+      gutenprint
+      brlaser
+      brgenml1cupswrapper
     ];
+
+    # Enable the OpenSSH daemon.
+    # openssh.enable = true;
+
+    #syncthing = {
+    #  enable = true;
+    #  user = "julian";
+    #  dataDir = "/home/julian";
+    #  configDir = "/home/julian/.config/syncthing";
+    #};
+
+    tlp = {
+      enable = true;
+      settings = {
+        MAX_LOST_WORK_SECS_ON_BAT = 15;
+      };
+    };
   };
-
-  qt5 = {
-    enable = true;
-    platformTheme = "gnome";
-    style = "adwaita";
-  };
-
-  programs.sway = {
-    enable = true;
-    extraPackages = with pkgs; [
-      swaylock
-      swayidle
-      xwayland
-      alacritty
-      brightnessctl
-      grim
-      i3status
-      imagemagick
-      libnotify
-      mako
-      pavucontrol
-      wdisplays
-      wl-clipboard
-      wofi
-    ];
-  };
-  
-
-  # Configure keymap in X11
-  services.xserver.layout = "de";
-  services.xserver.xkbOptions = "caps:swapescape";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-  services.printing.drivers = with pkgs; [
-    gutenprint
-    brlaser
-    brgenml1cupswrapper
-  ];
 
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.julian = {
@@ -114,67 +103,86 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    ansible
-    bat
-    bind
-    binutils
-    borgbackup
-    brscan4
-    chromium
-    darktable
-    element-desktop
-    emacs
-    exa
-    fd
-    ffmpeg
-    file
-    firefox
-    fzf
-    gcc
-    gdb
-    git
-    gnome3.gnome-tweaks
-    gnumake
-    gnupg
-    htop
-    inkscape
-    jetbrains.idea-community
-    jq
-    kid3
-    libreoffice
-    lmms
-    mumble
-    musescore
-    neofetch
-    neovim
-    pass-wayland
-    pinentry-gnome
-    powertop
-    python3
-    python38Packages.pip
-    ripgrep
-    rust-analyzer
-    rustup
-    starship
-    stow
-    tdesktop
-    thunderbird
-    tig
-    tor
-    vlc
-    zotero
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      ansible
+      bat
+      bind
+      binutils
+      borgbackup
+      brscan4
+      chromium
+      darktable
+      element-desktop
+      emacs
+      exa
+      fd
+      ffmpeg
+      file
+      firefox
+      fzf
+      gcc
+      gdb
+      git
+      gnome3.gnome-tweaks
+      gnumake
+      gnupg
+      htop
+      inkscape
+      jetbrains.idea-community
+      jq
+      kid3
+      libreoffice
+      lmms
+      mumble
+      musescore
+      neofetch
+      neovim
+      pass-wayland
+      pinentry-gnome
+      powertop
+      python3
+      python38Packages.pip
+      ripgrep
+      rust-analyzer
+      rustup
+      starship
+      stow
+      tdesktop
+      thunderbird
+      tig
+      tor
+      vlc
+      zotero
+    ];
+
+    gnome3 = {
+      excludePackages = with pkgs.gnome3; [
+        gnome-music
+        epiphany
+      ];
+    };
+
+    # Environment variables
+    sessionVariables = {
+      EDITOR = "nvim";
+      MOZ_ENABLE_WAYLAND = "1";
+      MOZ_USE_XINPUT2 = "1";
+      QT_QPA_PLATFORM = "wayland";
+      _JAVA_AWT_WM_NONREPARENTING = "1";
+    };
+  };
 
   fonts.fonts = with pkgs; [
     cantarell-fonts
     noto-fonts
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
   programs = {
+    # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    # mtr.enable = true;
+
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
@@ -196,56 +204,52 @@
 
     zsh = {
       enable = true;
+      autosuggestions = {
+        enable = true;
+        highlightStyle = "fg=10";
+      };
       enableCompletion = true;
-      interactiveShellInit = ''
-        source $(fzf-share)/completion.zsh
-        source $(fzf-share)/key-bindings.zsh
-      '';
       promptInit = ''eval "$(starship init zsh)"'';
       shellAliases = {
         ip = "ip -c";
         ls = "exa";
         vim = "nvim";
       };
-      autosuggestions = {
-        enable = true;
-        highlightStyle = "fg=10";
-      };
+      shellInit = ''
+        source $(fzf-share)/completion.zsh
+        source $(fzf-share)/key-bindings.zsh
+      '';
       syntaxHighlighting.enable = true;
+    };
+
+    sway = {
+      enable = true;
+      extraPackages = with pkgs; [
+        swaylock
+        swayidle
+        xwayland
+        alacritty
+        brightnessctl
+        grim
+        i3status
+        imagemagick
+        libnotify
+        mako
+        pavucontrol
+        wdisplays
+        wl-clipboard
+        wofi
+      ];
     };
   };
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  services = {
-    #syncthing = {
-    #  enable = true;
-    #  user = "julian";
-    #  dataDir = "/home/julian";
-    #  configDir = "/home/julian/.config/syncthing";
-    #};
-
-    tlp = {
-      enable = true;
-      settings = {
-        MAX_LOST_WORK_SECS_ON_BAT = 15;
-      };
-    };
+  qt5 = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita";
   };
 
   virtualisation.podman.enable = true;
-
-  # Environment variables
-  environment.sessionVariables = {
-    EDITOR = "nvim";
-    MOZ_ENABLE_WAYLAND = "1";
-    MOZ_USE_XINPUT2 = "1";
-    QT_QPA_PLATFORM = "wayland";
-    _JAVA_AWT_WM_NONREPARENTING = "1";
-  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
