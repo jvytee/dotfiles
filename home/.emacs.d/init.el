@@ -18,6 +18,8 @@
   (setq ivy-count-format "(%d/%d) ")
   (setq ivy-use-virtual-buffers t))
 
+(use-package dracula-theme)
+
 (use-package evil
   :config (evil-mode 1))
 
@@ -25,6 +27,9 @@
   :hook (after-init . global-flycheck-mode))
 
 (use-package go-mode)
+
+(use-package highlight-indentation
+  :hook ((python-mode yaml-mode) . highlight-indentation-mode))
 
 (use-package lsp-ivy
   :bind ("C-c s" . lsp-ivy-workspace-symbol)
@@ -51,6 +56,8 @@
   :bind-keymap ("C-c p" . projectile-command-map)
   :config (projectile-mode +1))
 
+(use-package rust-mode)
+
 (use-package simple-modeline
   :config (simple-modeline-mode))
 
@@ -74,3 +81,4 @@
 (add-hook 'yaml-mode-hook 'display-line-numbers-mode)
 
 (load custom-file)
+(load-theme 'dracula t)
