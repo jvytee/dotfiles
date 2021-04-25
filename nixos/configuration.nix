@@ -9,10 +9,16 @@
     [ # Include the results of the hardware scan.
       <nixos-hardware/lenovo/thinkpad/t460s>
       ./hardware-configuration.nix
+      /home/julian/code/current/nothing/modules
     ];
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      (import /home/julian/code/nixpkgs-mozilla/rust-overlay.nix)
+      (import /home/julian/code/current/nothing/packages/nothing-overlay.nix)
+    ];
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -108,7 +114,6 @@
       ansible
       bat
       bind
-      binutils
       borgbackup
       brscan4
       chromium
@@ -121,11 +126,9 @@
       file
       firefox
       fzf
-      gcc
       gdb
       git
       gnome3.gnome-tweaks
-      gnumake
       gnupg
       htop
       inkscape
@@ -144,8 +147,6 @@
       python3
       python38Packages.pip
       ripgrep
-      rust-analyzer
-      rustup
       starship
       stow
       tdesktop
