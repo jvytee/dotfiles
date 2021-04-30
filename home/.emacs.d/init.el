@@ -18,8 +18,6 @@
   (setq ivy-count-format "(%d/%d) ")
   (setq ivy-use-virtual-buffers t))
 
-(use-package dracula-theme)
-
 (use-package evil
   :config (evil-mode 1))
 
@@ -81,4 +79,3 @@
 (add-hook 'yaml-mode-hook 'display-line-numbers-mode)
 
 (load custom-file)
-(load-theme 'dracula t)

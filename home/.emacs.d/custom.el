@@ -4,8 +4,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(custom-enabled-themes '(solarized-dark))
  '(custom-safe-themes
-   '("81c3de64d684e23455236abde277cda4b66509ef2c28f66e059aa925b8b12534" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
+   '("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
  '(ivy-mode t)
  '(package-selected-packages
    '(yaml-mode which-key virtualenvwrapper solarized-theme simple-modeline projectile nix-mode magit lsp-ui lsp-ivy go-mode flycheck evil counsel company better-defaults use-package))
