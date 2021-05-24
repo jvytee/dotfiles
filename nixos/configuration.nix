@@ -9,16 +9,9 @@
     [ # Include the results of the hardware scan.
       <nixos-hardware/lenovo/thinkpad/t460s>
       ./hardware-configuration.nix
-      /home/julian/code/current/nothing/modules
     ];
 
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = [
-      (import /home/julian/code/nixpkgs-mozilla/rust-overlay.nix)
-      (import /home/julian/code/current/nothing/packages/nothing-overlay.nix)
-    ];
-  };
+  nixpkgs.config.allowUnfree = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -81,12 +74,12 @@
     # Enable the OpenSSH daemon.
     # openssh.enable = true;
 
-    #syncthing = {
-    #  enable = true;
-    #  user = "julian";
-    #  dataDir = "/home/julian";
-    #  configDir = "/home/julian/.config/syncthing";
-    #};
+    syncthing = {
+      enable = true;
+      user = "julian";
+      dataDir = "/home/julian";
+      configDir = "/home/julian/.config/syncthing";
+    };
 
     tlp = {
       enable = true;
@@ -102,8 +95,9 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.julian = {
-    isNormalUser = true;
+    description = "Julian";
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    isNormalUser = true;
     shell = pkgs.zsh;
   };
 
@@ -112,6 +106,7 @@
   environment = {
     systemPackages = with pkgs; [
       ansible
+      audacity
       bat
       bind
       borgbackup
@@ -132,20 +127,18 @@
       gnupg
       htop
       inkscape
-      jetbrains.idea-community
       jq
       kid3
       libreoffice
       lmms
       mumble
-      musescore
       neofetch
       neovim
       pass-wayland
       pinentry-gnome
       powertop
       python3
-      python38Packages.pip
+      python38Packages.pynvim
       ripgrep
       starship
       stow
@@ -210,16 +203,16 @@
         highlightStyle = "fg=10";
       };
       enableCompletion = true;
+      interactiveShellInit = ''
+        source $(fzf-share)/completion.zsh
+        source $(fzf-share)/key-bindings.zsh
+      '';
       promptInit = ''eval "$(starship init zsh)"'';
       shellAliases = {
         ip = "ip -c";
         ls = "exa";
         vim = "nvim";
       };
-      shellInit = ''
-        source $(fzf-share)/completion.zsh
-        source $(fzf-share)/key-bindings.zsh
-      '';
       syntaxHighlighting.enable = true;
     };
 
