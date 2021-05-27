@@ -7,9 +7,10 @@
  '(custom-enabled-themes '(solarized-dark))
  '(custom-safe-themes
    '("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
+ '(inhibit-startup-screen t)
  '(ivy-mode t)
  '(package-selected-packages
-   '(typescript-mode rust-mode highlight-indentation dockerfile-mode yaml-mode which-key virtualenvwrapper solarized-theme simple-modeline projectile nix-mode magit lsp-ui lsp-ivy flycheck evil counsel company better-defaults use-package))
+   '(rainbow-mode typescript-mode rust-mode highlight-indentation dockerfile-mode yaml-mode which-key virtualenvwrapper solarized-theme simple-modeline projectile nix-mode magit lsp-ui lsp-ivy flycheck evil counsel company better-defaults use-package))
  '(vc-follow-symlinks nil)
  '(x-underline-at-descent-line t))
 

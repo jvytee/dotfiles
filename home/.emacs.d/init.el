@@ -54,6 +54,8 @@
   :bind-keymap ("C-c p" . projectile-command-map)
   :config (projectile-mode +1))
 
+(use-package rainbow-mode)
+
 (use-package rust-mode)
 
 (use-package simple-modeline
