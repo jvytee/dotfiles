@@ -221,8 +221,15 @@ bar {
     status_command i3status
 
     colors {
-        statusline #ffffff
-        background #222222
+        statusline #c0bfbc
+        background #241f31
+        separator  #3d3846
+
+        focused_workspace  #3584e4 #241f31 #deddda
+        active_workspace   #c0bfbc #241f31 #c0bfbc
+        inactive_workspace #3d3846 #241f31 #c0bfbc
+        urgent_workspace   #e01b24 #241f31 #e01b24
+        binding_mode       #e01b24 #241f31 #e01b24
     }
 }
 
@@ -246,3 +253,12 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #3584e4 #241f31 #deddda #33d17a   #3584e4
+client.focused_inactive #c0bfbc #241f31 #c0bfbc #33d17a   #c0bfbc
+client.unfocused        #3d3846 #241f31 #c0bfbc #3d3846   #241f31
+client.urgent           #e01b24 #241f31 #e01b24 #e01b24   #e01b24
+client.placeholder      #3d3846 #241f31 #c0bfbc #3d3846   #241f31
+
+client.background       #241f31
