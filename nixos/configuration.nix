@@ -16,12 +16,23 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
   boot.initrd.luks.devices.cryptlvm-nixos.device = "/dev/disk/by-uuid/4ea3800a-a562-44d4-8ccc-ca788e5ed942";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "de_DE.UTF-8";
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "de";
+  };
 
   networking = {
     hostName = "klapprechner"; # Define your hostname.
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+    networkmanager = {
+      enable = true;
+      wifi.powersave = true;
+    };
 
     wireguard.enable = true;
     firewall.checkReversePath = false;
@@ -38,60 +49,12 @@
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
 
-  # Set your time zone.
-  time.timeZone = "Europe/Berlin";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "de_DE.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "de";
-  };
-
-  services = {
-    # Configure keymap in X11
-    xserver = {
-      enable = true;
-      layout = "de";
-      xkbOptions = "caps:swapescape";
-
-      # Enable the GNOME 3 Desktop Environment.
-      displayManager.gdm.enable = true;
-      desktopManager.gnome3.enable = true;
-
-      # Enable touchpad support (enabled default in most desktopManager).
-      libinput.enable = true;
-    };
-
-    # Enable CUPS to print documents.
-    printing.enable = true;
-    printing.drivers = with pkgs; [
-      gutenprint
-      brlaser
-      brgenml1cupswrapper
-    ];
-
-    # Enable the OpenSSH daemon.
-    # openssh.enable = true;
-
-    syncthing = {
-      enable = true;
-      user = "julian";
-      dataDir = "/home/julian";
-      configDir = "/home/julian/.config/syncthing";
-    };
-
-    tlp = {
-      enable = true;
-      settings = {
-        MAX_LOST_WORK_SECS_ON_BAT = 15;
-      };
-    };
-  };
-
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+
+  # Set your time zone.
+  time.timeZone = "Europe/Berlin";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.julian = {
@@ -105,8 +68,8 @@
   # $ nix search wget
   environment = {
     systemPackages = with pkgs; [
+      adwaita-qt
       ansible
-      audacity
       bat
       bind
       borgbackup
@@ -123,19 +86,18 @@
       fzf
       gdb
       git
-      gnome3.gnome-tweaks
+      gnome3.adwaita-icon-theme
+      gnome3.nautilus
       gnupg
       htop
       inkscape
       jq
       kid3
       libreoffice
-      lmms
       mumble
       neofetch
       neovim
       pass-wayland
-      pinentry-gnome
       powertop
       python3
       python38Packages.pynvim
@@ -150,19 +112,13 @@
       zotero
     ];
 
-    gnome3 = {
-      excludePackages = with pkgs.gnome3; [
-        gnome-music
-        epiphany
-      ];
-    };
-
     # Environment variables
     sessionVariables = {
       EDITOR = "nvim";
       MOZ_ENABLE_WAYLAND = "1";
       MOZ_USE_XINPUT2 = "1";
       QT_QPA_PLATFORM = "wayland";
+      QT_QPA_PLATFORMTHEME = "qt5ct";
       _JAVA_AWT_WM_NONREPARENTING = "1";
     };
   };
@@ -170,6 +126,7 @@
   fonts.fonts = with pkgs; [
     cantarell-fonts
     noto-fonts
+    source-code-pro
   ];
 
   programs = {
@@ -182,6 +139,8 @@
       enableSSHSupport = true;
     };
 
+    qt5ct.enable = true;
+
     bash = {
       enableCompletion = true;
       interactiveShellInit = ''
@@ -190,9 +149,9 @@
       '';
       promptInit = ''eval "$(starship init bash)"'';
       shellAliases = {
-	ls = "exa";
-	ip = "ip -c";
-	vim = "nvim";
+        ls = "exa";
+        ip = "ip -c";
+        vim = "nvim";
       };
     };
 
@@ -234,13 +193,49 @@
         wl-clipboard
         wofi
       ];
+      wrapperFeatures.gtk = true;
     };
   };
 
-  qt5 = {
-    enable = true;
-    platformTheme = "gnome";
-    style = "adwaita";
+  services = {
+    # Configure keymap in X11
+    xserver = {
+      enable = true;
+      layout = "de";
+      xkbOptions = "caps:swapescape";
+
+      # Enable the GNOME 3 Desktop Environment.
+      displayManager.gdm.enable = true;
+      # desktopManager.gnome3.enable = true;
+
+      # Enable touchpad support (enabled default in most desktopManager).
+      libinput.enable = true;
+    };
+
+    # Enable CUPS to print documents.
+    printing.enable = true;
+    printing.drivers = with pkgs; [
+      gutenprint
+      brlaser
+      brgenml1cupswrapper
+    ];
+
+    # Enable the OpenSSH daemon.
+    # openssh.enable = true;
+
+    syncthing = {
+      enable = true;
+      user = "julian";
+      dataDir = "/home/julian";
+      configDir = "/home/julian/.config/syncthing";
+    };
+
+    tlp = {
+      enable = true;
+      settings = {
+        MAX_LOST_WORK_SECS_ON_BAT = 15;
+      };
+    };
   };
 
   virtualisation.podman.enable = true;
