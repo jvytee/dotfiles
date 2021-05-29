@@ -143,12 +143,7 @@
     # started in user sessions.
     # mtr.enable = true;
 
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
-
-    qt5ct.enable = true;
+    gnupg.agent.enable = true;
 
     bash = {
       enableCompletion = true;
@@ -183,6 +178,9 @@
       };
       syntaxHighlighting.enable = true;
     };
+
+    qt5ct.enable = true;
+    ssh.startAgent = true;
 
     sway = {
       enable = true;
