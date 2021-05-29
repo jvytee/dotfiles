@@ -25,6 +25,15 @@
     keyMap = "de";
   };
 
+  hardware = {
+    pulseaudio.enable = true;
+
+    bluetooth = {
+      enable = true;
+      powerOnBoot = false;
+    };
+  };
+
   networking = {
     hostName = "klapprechner"; # Define your hostname.
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -51,7 +60,6 @@
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -87,6 +95,7 @@
       gdb
       git
       gnome3.adwaita-icon-theme
+      gnome3.eog
       gnome3.nautilus
       gnupg
       htop
@@ -198,14 +207,17 @@
   };
 
   services = {
-    # Configure keymap in X11
+    blueman.enable = true;
+
     xserver = {
       enable = true;
+
+      # Configure keymap in X11
       layout = "de";
       xkbOptions = "caps:swapescape";
 
-      # Enable the GNOME 3 Desktop Environment.
       displayManager.gdm.enable = true;
+      # Enable the GNOME 3 Desktop Environment.
       # desktopManager.gnome3.enable = true;
 
       # Enable touchpad support (enabled default in most desktopManager).
