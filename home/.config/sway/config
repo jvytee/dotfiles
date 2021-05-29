@@ -233,7 +233,7 @@ bar {
     }
 }
 
-default_border pixel 2
+default_border pixel 1
 
 mode "exit" {
     bindsym $mod+e exec swaymsg exit
