@@ -75,6 +75,22 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment = {
+    gnome3 = {
+      excludePackages = with pkgs.gnome3; [
+        gnome-music
+        epiphany
+      ];
+    };
+
+    # Environment variables
+    sessionVariables = {
+      EDITOR = "nvim";
+      MOZ_ENABLE_WAYLAND = "1";
+      MOZ_USE_XINPUT2 = "1";
+      QT_QPA_PLATFORM = "wayland";
+      QT_QPA_PLATFORMTHEME = "qt5ct";
+    };
+
     systemPackages = with pkgs; [
       adwaita-qt
       ansible
@@ -94,9 +110,7 @@
       fzf
       gdb
       git
-      gnome3.adwaita-icon-theme
-      gnome3.eog
-      gnome3.nautilus
+      gnome3.gnome-tweaks
       gnupg
       htop
       inkscape
@@ -120,16 +134,6 @@
       vlc
       zotero
     ];
-
-    # Environment variables
-    sessionVariables = {
-      EDITOR = "nvim";
-      MOZ_ENABLE_WAYLAND = "1";
-      MOZ_USE_XINPUT2 = "1";
-      QT_QPA_PLATFORM = "wayland";
-      QT_QPA_PLATFORMTHEME = "qt5ct";
-      _JAVA_AWT_WM_NONREPARENTING = "1";
-    };
   };
 
   fonts.fonts = with pkgs; [
@@ -163,7 +167,7 @@
       enable = true;
       autosuggestions = {
         enable = true;
-        highlightStyle = "fg=10";
+        # highlightStyle = "fg=10";
       };
       enableCompletion = true;
       interactiveShellInit = ''
@@ -181,32 +185,9 @@
 
     qt5ct.enable = true;
     ssh.startAgent = true;
-
-    sway = {
-      enable = true;
-      extraPackages = with pkgs; [
-        swaylock
-        swayidle
-        xwayland
-        alacritty
-        brightnessctl
-        grim
-        i3status
-        imagemagick
-        libnotify
-        mako
-        pavucontrol
-        wdisplays
-        wl-clipboard
-        wofi
-      ];
-      wrapperFeatures.gtk = true;
-    };
   };
 
   services = {
-    blueman.enable = true;
-
     xserver = {
       enable = true;
 
@@ -214,9 +195,9 @@
       layout = "de";
       xkbOptions = "caps:swapescape";
 
-      displayManager.gdm.enable = true;
       # Enable the GNOME 3 Desktop Environment.
-      # desktopManager.gnome3.enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome3.enable = true;
 
       # Enable touchpad support (enabled default in most desktopManager).
       libinput.enable = true;
