@@ -75,8 +75,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment = {
-    gnome3 = {
-      excludePackages = with pkgs.gnome3; [
+    gnome = {
+      excludePackages = with pkgs.gnome; [
         gnome-music
         epiphany
       ];
@@ -110,20 +110,20 @@
       fzf
       gdb
       git
-      gnome3.gnome-tweaks
+      gnome.gnome-tweaks
       gnupg
       htop
       inkscape
       jq
-      kid3
       libreoffice
       mumble
       neofetch
       neovim
       pass-wayland
       powertop
-      python3
-      python38Packages.pynvim
+      python39
+      python39Packages.pynvim
+      quodlibet
       ripgrep
       starship
       stow
@@ -197,7 +197,7 @@
 
       # Enable the GNOME 3 Desktop Environment.
       displayManager.gdm.enable = true;
-      desktopManager.gnome3.enable = true;
+      desktopManager.gnome.enable = true;
 
       # Enable touchpad support (enabled default in most desktopManager).
       libinput.enable = true;
@@ -222,7 +222,7 @@
     };
 
     tlp = {
-      enable = true;
+      enable = false;
       settings = {
         MAX_LOST_WORK_SECS_ON_BAT = 15;
       };
