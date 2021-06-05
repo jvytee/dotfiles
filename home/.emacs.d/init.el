@@ -26,8 +26,6 @@
 (use-package flycheck
   :hook (after-init . global-flycheck-mode))
 
-(use-package gruvbox-theme)
-
 (use-package highlight-indentation
   :hook ((python-mode yaml-mode) . highlight-indentation-mode))
 

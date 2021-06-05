@@ -16,7 +16,6 @@ autocmd filetype python setlocal shiftwidth=4 softtabstop=4
 
 call plug#begin(stdpath('data') . '/plugged')
   Plug 'romainl/flattened'
-  Plug 'morhetz/gruvbox'
   Plug 'Shougo/deoplete.nvim', {
         \ 'do': ':UpdateRemotePlugins'
         \ }
@@ -32,7 +31,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'lervag/vimtex'
 call plug#end()
 
-colorscheme gruvbox
+colorscheme flattened_dark
 
 let g:deoplete#enable_at_startup = 1
 let g:LanguageClient_serverCommands = {
