@@ -38,7 +38,8 @@ let g:LanguageClient_serverCommands = {
       \ 'python': ['pyls'],
       \ 'cpp': ['clangd'],
       \ 'rust': ['rust-analyzer'],
-      \ 'javascript': ['npx', 'typescript-language-server', '--stdio'] }
+      \ 'javascript': ['npx', 'typescript-language-server', '--stdio'],
+      \ 'typescript': ['npx', 'typescript-language-server', '--stdio'] }
 
 let mapleader = "\<space>"
 let maplocalleader = "\<space>"
