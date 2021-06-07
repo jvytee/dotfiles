@@ -29,6 +29,8 @@
 (use-package highlight-indentation
   :hook ((python-mode yaml-mode) . highlight-indentation-mode))
 
+(use-package humanoid-themes)
+
 (use-package lsp-ivy
   :bind ("C-c s" . lsp-ivy-workspace-symbol)
   :commands lsp-ivy-workspace-symbol)
