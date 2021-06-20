@@ -13,6 +13,7 @@
  '(js-indent-level 2)
  '(package-selected-packages
    '(humanoid-themes humanoid-theme gruvbox rainbow-mode typescript-mode rust-mode highlight-indentation dockerfile-mode yaml-mode which-key virtualenvwrapper solarized-theme simple-modeline projectile nix-mode magit lsp-ui lsp-ivy flycheck evil counsel company better-defaults use-package))
+ '(typescript-indent-level 2)
  '(vc-follow-symlinks nil)
  '(x-underline-at-descent-line t))
 
