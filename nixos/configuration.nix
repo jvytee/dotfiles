@@ -26,7 +26,7 @@
   };
 
   hardware = {
-    pulseaudio.enable = true;
+    pulseaudio.enable = false;
 
     bluetooth = {
       enable = true;
@@ -138,6 +138,7 @@
 
   fonts.fonts = with pkgs; [
     cantarell-fonts
+    font-awesome
     noto-fonts
     source-code-pro
   ];
@@ -167,7 +168,7 @@
       enable = true;
       autosuggestions = {
         enable = true;
-        # highlightStyle = "fg=10";
+        highlightStyle = "fg=10";
       };
       enableCompletion = true;
       interactiveShellInit = ''
@@ -187,20 +188,13 @@
     ssh.startAgent = true;
   };
 
+  security.rtkit.enable = true;
+
   services = {
-    xserver = {
+    pipewire = {
       enable = true;
-
-      # Configure keymap in X11
-      layout = "de";
-      xkbOptions = "caps:swapescape";
-
-      # Enable the GNOME 3 Desktop Environment.
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
-
-      # Enable touchpad support (enabled default in most desktopManager).
-      libinput.enable = true;
+      pulse.enable = true;
+      jack.enable = true;
     };
 
     # Enable CUPS to print documents.
@@ -221,11 +215,21 @@
       configDir = "/home/julian/.config/syncthing";
     };
 
-    tlp = {
-      enable = false;
-      settings = {
-        MAX_LOST_WORK_SECS_ON_BAT = 15;
-      };
+    tlp.enable = false;
+
+    xserver = {
+      enable = true;
+
+      # Configure keymap in X11
+      layout = "de";
+      xkbOptions = "caps:swapescape";
+
+      # Enable the GNOME 3 Desktop Environment.
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+
+      # Enable touchpad support (enabled default in most desktopManager).
+      libinput.enable = true;
     };
   };
 
