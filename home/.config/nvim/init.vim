@@ -16,6 +16,7 @@ autocmd filetype python setlocal shiftwidth=4 softtabstop=4
 
 call plug#begin(stdpath('data') . '/plugged')
   Plug 'romainl/flattened'
+  Plug 'dracula/vim'
   Plug 'Shougo/deoplete.nvim', {
         \ 'do': ':UpdateRemotePlugins'
         \ }
@@ -31,15 +32,13 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'lervag/vimtex'
 call plug#end()
 
-colorscheme flattened_dark
+colorscheme dracula
 
 let g:deoplete#enable_at_startup = 1
 let g:LanguageClient_serverCommands = {
-      \ 'python': ['pyls'],
+      \ 'python': ['pylsp'],
       \ 'cpp': ['clangd'],
-      \ 'rust': ['rust-analyzer'],
-      \ 'javascript': ['npx', 'typescript-language-server', '--stdio'],
-      \ 'typescript': ['npx', 'typescript-language-server', '--stdio'] }
+      \ 'rust': ['rust-analyzer'] }
 
 let mapleader = "\<space>"
 let maplocalleader = "\<space>"
