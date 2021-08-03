@@ -20,6 +20,8 @@
 
 (use-package dockerfile-mode)
 
+(use-package dracula-theme)
+
 (use-package evil
   :config (evil-mode 1))
 
@@ -60,11 +62,6 @@
 
 (use-package simple-modeline
   :config (simple-modeline-mode))
-
-(use-package solarized-theme)
-(use-package spacemacs-theme)
-
-(use-package typescript-mode)
 
 (use-package virtualenvwrapper
   :config
