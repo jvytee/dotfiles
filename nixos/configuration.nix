@@ -139,6 +139,7 @@
   fonts.fonts = with pkgs; [
     cantarell-fonts
     font-awesome
+    iosevka
     noto-fonts
     source-code-pro
   ];
@@ -168,7 +169,7 @@
       enable = true;
       autosuggestions = {
         enable = true;
-        highlightStyle = "fg=10";
+        #highlightStyle = "fg=10";
       };
       enableCompletion = true;
       interactiveShellInit = ''
