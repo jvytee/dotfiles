@@ -28,6 +28,8 @@
 (use-package flycheck
   :hook (after-init . global-flycheck-mode))
 
+(use-package go-mode)
+
 (use-package highlight-indentation
   :hook ((python-mode yaml-mode) . highlight-indentation-mode))
 
@@ -38,9 +40,14 @@
 (use-package lsp-mode
   :commands lsp
   :hook
-  (((javascript-mode python-mode rust-mode typescript-mode yaml-mode) . lsp)
+  (((go-mode javascript-mode python-mode rust-mode yaml-mode) . lsp)
    (lsp-mode . lsp-enable-which-key-integration))
   :init (setq lsp-keymap-prefix "C-SPC"))
+
+(use-package lsp-pyright
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+                         (lsp))))
 
 (use-package lsp-ui
   :commands lsp-ui-mode)

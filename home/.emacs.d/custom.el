@@ -10,7 +10,7 @@
  '(ivy-mode t)
  '(js-indent-level 2)
  '(package-selected-packages
-   '(dracula-theme rainbow-mode rust-mode highlight-indentation dockerfile-mode yaml-mode which-key virtualenvwrapper simple-modeline projectile nix-mode magit lsp-ui lsp-ivy flycheck evil counsel company better-defaults use-package))
+   '(lsp-pyright go-mode dracula-theme rainbow-mode rust-mode highlight-indentation dockerfile-mode yaml-mode which-key virtualenvwrapper simple-modeline projectile nix-mode magit lsp-ui lsp-ivy flycheck evil counsel company better-defaults use-package))
  '(vc-follow-symlinks nil)
  '(x-underline-at-descent-line t))
 
