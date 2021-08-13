@@ -169,7 +169,7 @@
       enable = true;
       autosuggestions = {
         enable = true;
-        #highlightStyle = "fg=10";
+        highlightStyle = "fg=10";
       };
       enableCompletion = true;
       interactiveShellInit = ''
