@@ -20,8 +20,6 @@
 
 (use-package dockerfile-mode)
 
-(use-package dracula-theme)
-
 (use-package evil
   :config (evil-mode 1))
 
@@ -69,6 +67,12 @@
 
 (use-package simple-modeline
   :config (simple-modeline-mode))
+
+(use-package tree-sitter
+  :config (global-tree-sitter-mode)
+  :hook (tree-sitter-after-on . tree-sitter-hl-mode))
+
+(use-package tree-sitter-langs)
 
 (use-package virtualenvwrapper
   :config
