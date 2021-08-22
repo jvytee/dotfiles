@@ -18,7 +18,12 @@
   (setq ivy-count-format "(%d/%d) ")
   (setq ivy-use-virtual-buffers t))
 
+(use-package direnv
+  :config (direnv-mode))
+
 (use-package dockerfile-mode)
+
+(use-package erlang)
 
 (use-package evil
   :config (evil-mode 1))

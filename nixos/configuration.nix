@@ -84,7 +84,6 @@
 
     # Environment variables
     sessionVariables = {
-      EDITOR = "nvim";
       MOZ_ENABLE_WAYLAND = "1";
       MOZ_USE_XINPUT2 = "1";
       QT_QPA_PLATFORM = "wayland";
@@ -100,6 +99,7 @@
       brscan4
       chromium
       darktable
+      direnv
       element-desktop
       emacs
       exa
@@ -119,6 +119,7 @@
       mumble
       neofetch
       neovim
+      nix-direnv
       pass-wayland
       powertop
       python39
@@ -173,6 +174,7 @@
       };
       enableCompletion = true;
       interactiveShellInit = ''
+        eval "$(direnv hook zsh)"
         source $(fzf-share)/completion.zsh
         source $(fzf-share)/key-bindings.zsh
       '';
@@ -192,6 +194,11 @@
   security.rtkit.enable = true;
 
   services = {
+    emacs = {
+      enable = true;
+      defaultEditor = true;
+    };
+    
     pipewire = {
       enable = true;
       pulse.enable = true;
