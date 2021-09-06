@@ -6,6 +6,8 @@
 (setq use-package-always-ensure t)
 (eval-when-compile (require 'use-package))
 
+(use-package all-the-icons)
+
 (use-package better-defaults)
 
 (use-package company
@@ -36,6 +38,9 @@
 (use-package highlight-indentation
   :hook ((python-mode yaml-mode) . highlight-indentation-mode))
 
+(use-package jetbrains-darcula-theme
+  :config (load-theme 'jetbrains-darcula t))
+
 (use-package lsp-ivy
   :bind ("C-c s" . lsp-ivy-workspace-symbol)
   :commands lsp-ivy-workspace-symbol)
@@ -57,6 +62,10 @@
 
 (use-package magit
   :bind ("C-c g" . magit-file-dispatch))
+
+(use-package neotree
+  :bind ("C-c t" . neotree-toggle)
+  :config (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
 (use-package nix-mode
   :mode "\\.nix\\'")

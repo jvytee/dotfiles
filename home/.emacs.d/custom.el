@@ -5,14 +5,13 @@
  ;; If there is more than one, they won't work right.
  '(c-basic-offset 2)
  '(column-number-mode t)
- '(custom-enabled-themes '(solarized-dark))
- '(custom-safe-themes
-   '("aff12479ae941ea8e790abb1359c9bb21ab10acd15486e07e64e0e10d7fdab38" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default))
  '(inhibit-startup-screen t)
  '(ivy-mode t)
  '(js-indent-level 2)
  '(package-selected-packages
-   '(direnv erlang solarized-theme tree-sitter-langs tree-sitter spacemacs-theme lsp-pyright go-mode rainbow-mode rust-mode highlight-indentation dockerfile-mode yaml-mode which-key virtualenvwrapper simple-modeline projectile nix-mode magit lsp-ui lsp-ivy flycheck evil counsel company better-defaults use-package))
+   '(neotree all-the-icons jetbrains-darcula-theme direnv erlang solarized-theme tree-sitter-langs tree-sitter spacemacs-theme lsp-pyright go-mode rainbow-mode rust-mode highlight-indentation dockerfile-mode yaml-mode which-key virtualenvwrapper simple-modeline projectile nix-mode magit lsp-ui lsp-ivy flycheck evil counsel company better-defaults use-package))
+ '(show-paren-mode t)
+ '(tool-bar-mode nil)
  '(vc-follow-symlinks nil)
  '(x-underline-at-descent-line t))
 
