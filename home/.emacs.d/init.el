@@ -38,9 +38,6 @@
 (use-package highlight-indentation
   :hook ((python-mode yaml-mode) . highlight-indentation-mode))
 
-(use-package jetbrains-darcula-theme
-  :config (load-theme 'jetbrains-darcula t))
-
 (use-package lsp-ivy
   :bind ("C-c s" . lsp-ivy-workspace-symbol)
   :commands lsp-ivy-workspace-symbol)
