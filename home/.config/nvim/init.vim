@@ -1,6 +1,7 @@
 set autochdir
 set breakindent
 set clipboard+=unnamedplus
+set completeopt=menu,menuone,noselect
 set cursorline
 set linebreak
 set mouse=a
@@ -16,13 +17,11 @@ autocmd filetype python setlocal shiftwidth=4 softtabstop=4
 
 call plug#begin(stdpath('data') . '/plugged')
   Plug 'romainl/flattened'
-  Plug 'Shougo/deoplete.nvim', {
-        \ 'do': ':UpdateRemotePlugins'
-        \ }
-  Plug 'autozimu/LanguageClient-neovim', {
-        \ 'branch': 'next',
-        \ 'do': 'bash install.sh'
-        \ }
+  Plug 'dracula/vim'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/nvim-cmp' 
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'vim-python/python-syntax'
@@ -31,31 +30,47 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'lervag/vimtex'
 call plug#end()
 
-colorscheme flattened_dark
+colorscheme dracula
 
-let g:deoplete#enable_at_startup = 1
-let g:LanguageClient_serverCommands = {
-      \ 'python': ['pylsp'],
-      \ 'cpp': ['clangd'],
-      \ 'rust': ['rust-analyzer'] }
+lua << EOF
+-- Import stuff
+local nvim_lsp = require('lspconfig')
+local cmp = require('cmp')
+
+-- Setup LSP client
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+local options = {
+  capabilities = capabilities,
+  flags = { debounce_text_changes = 150 },
+}
+
+local servers = {
+  gopls = { 'gopls' },
+  pyright = { 'pyright-langserver', '--stdio' },
+  rust_analyzer = { 'rust-analyzer' },
+  tsserver = { 'npx', 'typescript-language-server', '--stdio' },
+}
+
+for server, cmd in pairs(servers) do
+  options.cmd = cmd
+  nvim_lsp[server].setup(options)
+end
+
+-- Setup autocompletion
+cmp.setup {
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+  },
+}
+EOF
 
 let mapleader = "\<space>"
 let maplocalleader = "\<space>"
 
-nmap <leader>cc <Plug>(lcn-menu)
-nmap <leader>ch <Plug>(lcn-hover)
-nmap <leader>cR <Plug>(lcn-rename)
-nmap <leader>cd <Plug>(lcn-definition)
-nmap <leader>cr <Plug>(lcn-references)
-nmap <leader>ci <Plug>(lcn-implementation)
-nmap <leader>cF <Plug>(lcn-format)
-nmap <leader>cn <Plug>(lcn-diagnostics-next)
-nmap <leader>cp <Plug>(lcn-diagnostics-prev)
-
 nnoremap <leader>f :FZF<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>g :GitFiles<cr>
-
-nnoremap <leader>nn :NERDTreeFocus<cr>
-nnoremap <leader>nt :NERDTreeToggle<cr>
 
