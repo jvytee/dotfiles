@@ -17,6 +17,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.luks.devices.cryptlvm-nixos.device = "/dev/disk/by-uuid/4ea3800a-a562-44d4-8ccc-ca788e5ed942";
+  boot.supportedFilesystems = [ "ntfs" ];
 
   # Select internationalisation properties.
   i18n.defaultLocale = "de_DE.UTF-8";
@@ -26,12 +27,12 @@
   };
 
   hardware = {
-    pulseaudio.enable = false;
-
     bluetooth = {
       enable = true;
       powerOnBoot = false;
     };
+
+    pulseaudio.enable = false;
   };
 
   networking = {
@@ -59,7 +60,7 @@
   };
 
   # Enable sound.
-  sound.enable = true;
+  #sound.enable = false;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -142,6 +143,7 @@
     font-awesome
     iosevka
     noto-fonts
+    roboto
     source-code-pro
   ];
 
@@ -170,7 +172,7 @@
       enable = true;
       autosuggestions = {
         enable = true;
-        highlightStyle = "fg=10";
+        #highlightStyle = "fg=10";
       };
       enableCompletion = true;
       interactiveShellInit = ''
@@ -201,6 +203,8 @@
     
     pipewire = {
       enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
       pulse.enable = true;
       jack.enable = true;
     };
