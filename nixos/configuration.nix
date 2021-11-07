@@ -85,11 +85,13 @@
 
     # Environment variables
     sessionVariables = {
+      EDITOR = "nvim";
       MOZ_ENABLE_WAYLAND = "1";
       MOZ_USE_XINPUT2 = "1";
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORMTHEME = "qt5ct";
     };
+
 
     systemPackages = with pkgs; [
       adwaita-qt
@@ -119,7 +121,18 @@
       libreoffice
       mumble
       neofetch
-      neovim
+      (neovim-unwrapped.overrideAttrs (oldAttrs: rec {
+        version = "0.5.1";
+
+        src = fetchFromGitHub {
+          owner = "neovim";
+          repo = "neovim";
+          rev = "v${version}";
+          sha256 = "0b2gda9h14lvwahrr7kq3ix8wsw99g4ngy1grmhv5544n93ypcyk";
+        };
+
+        buildInputs = oldAttrs.buildInputs ++ [ tree-sitter ];
+      }))
       nix-direnv
       pass-wayland
       powertop
@@ -198,7 +211,7 @@
   services = {
     emacs = {
       enable = true;
-      defaultEditor = true;
+      #defaultEditor = true;
     };
     
     pipewire = {
