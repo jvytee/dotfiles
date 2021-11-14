@@ -107,7 +107,9 @@ local servers = {
   pyright = { 'pyright-langserver', '--stdio' },
   rnix = { 'rnix-lsp' },
   rust_analyzer = { 'rust-analyzer' },
+  tailwindcss = { 'npx', 'tailwindcss-language-server', '--stdio' },
   tsserver = { 'npx', 'typescript-language-server', '--stdio' },
+  vuels = { 'npx', 'vls' },
 }
 
 for server, cmd in pairs(servers) do
@@ -118,7 +120,9 @@ end
 -- Setup treesitter
 local nvim_ts = require('nvim-treesitter.configs')
 nvim_ts.setup {
-  ensure_installed = { 'javascript', 'lua', 'nix', 'python', 'rust', 'typescript' }
+  ensure_installed = { 'html', 'javascript', 'lua', 'nix', 'python', 'rust', 'typescript', 'vue' },
+  highlight = { enable = true },
+  indent = { enable = true },
 }
 
 -- Set keymaps
