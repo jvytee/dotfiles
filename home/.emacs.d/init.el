@@ -85,6 +85,8 @@
 
 (use-package tree-sitter-langs)
 
+(use-package typescript-mode)
+
 (use-package virtualenvwrapper
   :config
   (venv-initialize-eshell)
