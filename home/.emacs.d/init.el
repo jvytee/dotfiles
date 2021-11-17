@@ -45,7 +45,7 @@
 (use-package lsp-mode
   :commands lsp
   :hook
-  (((go-mode javascript-mode python-mode rust-mode yaml-mode) . lsp)
+  (((go-mode javascript-mode python-mode rust-mode typescript-mode vue-mode yaml-mode) . lsp)
    (lsp-mode . lsp-enable-which-key-integration))
   :init (setq lsp-keymap-prefix "C-SPC"))
 
@@ -93,6 +93,8 @@
   (venv-initialize-interactive-shells)
   (setq venv-location "~/.local/share/virtualenvs"))
 
+(use-package vue-mode)
+
 (use-package which-key
   :config (which-key-mode 1))
 
@@ -103,5 +105,6 @@
 (add-hook 'markdown-mode-hook 'display-line-numbers-mode)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'yaml-mode-hook 'display-line-numbers-mode)
+(add-hook 'window-setup-hook 'toggle-frame-maximized)
 
 (load custom-file)

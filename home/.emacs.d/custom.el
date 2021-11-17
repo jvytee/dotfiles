@@ -12,7 +12,7 @@
  '(ivy-mode t)
  '(js-indent-level 2)
  '(package-selected-packages
-   '(typescript-mode dracula-theme neotree all-the-icons direnv erlang tree-sitter-langs tree-sitter lsp-pyright go-mode rainbow-mode rust-mode highlight-indentation dockerfile-mode yaml-mode which-key virtualenvwrapper simple-modeline projectile nix-mode magit lsp-ui lsp-ivy flycheck evil counsel company better-defaults use-package))
+   '(vue-mode typescript-mode dracula-theme neotree all-the-icons direnv erlang tree-sitter-langs tree-sitter lsp-pyright go-mode rainbow-mode rust-mode highlight-indentation dockerfile-mode yaml-mode which-key virtualenvwrapper simple-modeline projectile nix-mode magit lsp-ui lsp-ivy flycheck evil counsel company better-defaults use-package))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(vc-follow-symlinks nil)
