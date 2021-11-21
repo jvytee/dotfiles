@@ -49,11 +49,6 @@
    (lsp-mode . lsp-enable-which-key-integration))
   :init (setq lsp-keymap-prefix "C-SPC"))
 
-(use-package lsp-pyright
-  :hook (python-mode . (lambda ()
-                         (require 'lsp-pyright)
-                         (lsp))))
-
 (use-package lsp-ui
   :commands lsp-ui-mode)
 
@@ -64,6 +59,8 @@
   :bind ("C-c t" . neotree-toggle)
   :config (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
+(use-package nginx-mode)
+
 (use-package nix-mode
   :mode "\\.nix\\'")
 
@@ -71,6 +68,8 @@
   :bind ("C-c f" . projectile-find-file)
   :bind-keymap ("C-c p" . projectile-command-map)
   :config (projectile-mode +1))
+
+(use-package pyvenv)
 
 (use-package rainbow-mode)
 
@@ -87,12 +86,6 @@
 
 (use-package typescript-mode)
 
-(use-package virtualenvwrapper
-  :config
-  (venv-initialize-eshell)
-  (venv-initialize-interactive-shells)
-  (setq venv-location "~/.local/share/virtualenvs"))
-
 (use-package vue-mode)
 
 (use-package which-key
@@ -105,6 +98,8 @@
 (add-hook 'markdown-mode-hook 'display-line-numbers-mode)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'yaml-mode-hook 'display-line-numbers-mode)
-(add-hook 'window-setup-hook 'toggle-frame-maximized)
+
+(add-hook 'window-setup-hook 'raise-frame)
+(add-hook 'server-after-make-frame-hook 'raise-frame)
 
 (load custom-file)
