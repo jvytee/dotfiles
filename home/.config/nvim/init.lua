@@ -44,7 +44,7 @@ vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
     ['do'] = vim.fn.TSUpdate,
   })
   Plug 'romainl/flattened'
-  Plug 'vim-python/python-syntax'
+  Plug 'Yggdroot/indentLine'
 vim.call('plug#end')
 
 -- Set colorscheme
@@ -104,7 +104,7 @@ local options = {
 
 local servers = {
   gopls = { 'gopls' },
-  pyright = { 'pyright-langserver', '--stdio' },
+  pyright = { 'pylsp' },
   rnix = { 'rnix-lsp' },
   rust_analyzer = { 'rust-analyzer' },
   tailwindcss = { 'npx', 'tailwindcss-language-server', '--stdio' },
