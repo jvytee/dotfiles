@@ -25,8 +25,6 @@
 
 (use-package dockerfile-mode)
 
-(use-package erlang)
-
 (use-package evil
   :config (evil-mode 1))
 
@@ -72,6 +70,8 @@
 (use-package pyvenv)
 
 (use-package rainbow-mode)
+
+(use-package rg)
 
 (use-package rust-mode)
 
