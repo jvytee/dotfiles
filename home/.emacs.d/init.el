@@ -71,12 +71,16 @@
 
 (use-package rainbow-mode)
 
-(use-package rg)
+(use-package rg
+  :config (rg-enable-default-bindings))
 
 (use-package rust-mode)
 
 (use-package simple-modeline
   :config (simple-modeline-mode))
+
+(use-package tex
+  :ensure auctex)
 
 (use-package tree-sitter
   :config (global-tree-sitter-mode)
