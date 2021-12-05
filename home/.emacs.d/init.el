@@ -23,6 +23,9 @@
 (use-package direnv
   :config (direnv-mode))
 
+(use-package display-line-numbers
+  :hook ((conf-mode org-mode markdown-mode prog-mode vue-mode yaml-mode) . display-line-numbers-mode))
+
 (use-package dockerfile-mode)
 
 (use-package evil
@@ -96,12 +99,6 @@
   :config (which-key-mode 1))
 
 (use-package yaml-mode)
-
-(add-hook 'conf-mode-hook 'display-line-numbers-mode)
-(add-hook 'org-mode-hook 'display-line-numbers-mode)
-(add-hook 'markdown-mode-hook 'display-line-numbers-mode)
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
-(add-hook 'yaml-mode-hook 'display-line-numbers-mode)
 
 (add-hook 'window-setup-hook 'raise-frame)
 (add-hook 'server-after-make-frame-hook 'raise-frame)
