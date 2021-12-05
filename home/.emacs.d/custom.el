@@ -19,6 +19,7 @@
    '(auctex rg pyvenv nginx-mode vue-mode typescript-mode dracula-theme neotree all-the-icons direnv tree-sitter-langs tree-sitter go-mode rainbow-mode rust-mode highlight-indentation dockerfile-mode yaml-mode which-key simple-modeline projectile nix-mode magit lsp-ui lsp-ivy flycheck evil counsel company better-defaults use-package))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
+ '(typescript-indent-level 2)
  '(vc-follow-symlinks nil)
  '(x-underline-at-descent-line t))
 
