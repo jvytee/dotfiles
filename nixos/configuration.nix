@@ -33,6 +33,12 @@
     };
 
     pulseaudio.enable = false;
+
+    sane = {
+      enable = true;
+      extraBackends = [ pkgs.sane-airscan ];
+      brscan4.enable = true;
+    };
   };
 
   networking = {
@@ -68,7 +74,12 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.julian = {
     description = "Julian";
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "lp"
+      "networkmanager"
+      "scanner"
+      "wheel" # Enable ‘sudo’ for the user.
+    ];
     isNormalUser = true;
     shell = pkgs.zsh;
   };
@@ -99,7 +110,6 @@
       bat
       bind
       borgbackup
-      brscan4
       chromium
       darktable
       direnv
@@ -143,6 +153,7 @@
       starship
       stow
       tdesktop
+      texlive.combined.scheme-medium
       thunderbird
       tig
       tor
@@ -156,7 +167,6 @@
     font-awesome
     iosevka
     noto-fonts
-    roboto
     source-code-pro
   ];
 
