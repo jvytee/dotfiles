@@ -8,6 +8,9 @@
 
 (use-package all-the-icons)
 
+(use-package auctex-latexmk
+  :init (auctex-latexmk-setup))
+
 (use-package better-defaults)
 
 (use-package company
@@ -34,7 +37,9 @@
 (use-package flycheck
   :hook (after-init . global-flycheck-mode))
 
-(use-package go-mode)
+(use-package go-mode
+  :hook (go-mode . (lambda ()
+                     (setq tab-width 2))))
 
 (use-package highlight-indentation
   :hook ((python-mode yaml-mode) . highlight-indentation-mode))
@@ -93,7 +98,9 @@
 
 (use-package typescript-mode)
 
-(use-package vue-mode)
+(use-package vue-mode
+  :hook (lambda ()
+          (tree-sitter-hl-mode)))
 
 (use-package which-key
   :config (which-key-mode 1))
