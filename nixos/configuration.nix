@@ -75,7 +75,7 @@
   users.users.julian = {
     description = "Julian";
     extraGroups = [
-      "lp"
+      "lpadmin"
       "networkmanager"
       "scanner"
       "wheel" # Enable ‘sudo’ for the user.
@@ -100,7 +100,6 @@
       MOZ_ENABLE_WAYLAND = "1";
       MOZ_USE_XINPUT2 = "1";
       QT_QPA_PLATFORM = "wayland";
-      QT_QPA_PLATFORMTHEME = "qt5ct";
     };
 
 
@@ -108,9 +107,8 @@
       adwaita-qt
       ansible
       bat
-      bind
       borgbackup
-      chromium
+      coreutils
       darktable
       direnv
       element-desktop
@@ -118,10 +116,8 @@
       exa
       fd
       ffmpeg
-      file
-      firefox
+      (firefox.override { extraNativeMessagingHosts = [ passff-host ]; })
       fzf
-      gdb
       git
       gnome.gnome-tweaks
       gnupg
@@ -129,20 +125,7 @@
       inkscape
       jq
       libreoffice
-      mumble
-      neofetch
-      (neovim-unwrapped.overrideAttrs (oldAttrs: rec {
-        version = "0.5.1";
-
-        src = fetchFromGitHub {
-          owner = "neovim";
-          repo = "neovim";
-          rev = "v${version}";
-          sha256 = "0b2gda9h14lvwahrr7kq3ix8wsw99g4ngy1grmhv5544n93ypcyk";
-        };
-
-        buildInputs = oldAttrs.buildInputs ++ [ tree-sitter ];
-      }))
+      neovim
       nix-direnv
       pass-wayland
       powertop
@@ -165,7 +148,6 @@
   fonts.fonts = with pkgs; [
     cantarell-fonts
     font-awesome
-    iosevka
     noto-fonts
     source-code-pro
   ];
@@ -212,7 +194,6 @@
       syntaxHighlighting.enable = true;
     };
 
-    qt5ct.enable = true;
     ssh.startAgent = true;
   };
 
@@ -221,7 +202,6 @@
   services = {
     emacs = {
       enable = true;
-      #defaultEditor = true;
     };
     
     pipewire = {
