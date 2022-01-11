@@ -43,12 +43,13 @@ vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
     ['branch'] = '0.5-compat',
     ['do'] = vim.fn.TSUpdate,
   })
+  Plug 'morhetz/gruvbox'
   Plug 'romainl/flattened'
   Plug 'Yggdroot/indentLine'
 vim.call('plug#end')
 
 -- Set colorscheme
-vim.cmd('colorscheme dracula')
+vim.cmd('colorscheme gruvbox')
 
 -- Setup autocompletion
 local cmp = require('cmp')
