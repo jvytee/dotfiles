@@ -98,9 +98,7 @@
 
 (use-package typescript-mode)
 
-(use-package vue-mode
-  :hook (lambda ()
-          (tree-sitter-hl-mode)))
+(use-package vue-mode)
 
 (use-package which-key
   :config (which-key-mode 1))
