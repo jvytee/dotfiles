@@ -105,7 +105,7 @@ local options = {
 
 local servers = {
   gopls = { 'gopls' },
-  pyright = { 'pylsp' },
+  pylsp = { 'pylsp' },
   rnix = { 'rnix-lsp' },
   rust_analyzer = { 'rust-analyzer' },
   tailwindcss = { 'npx', 'tailwindcss-language-server', '--stdio' },
