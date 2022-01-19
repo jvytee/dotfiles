@@ -28,7 +28,6 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
   Plug 'LnL7/vim-nix'
   Plug 'cespare/vim-toml'
-  Plug 'dracula/vim'
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-nvim-lua'
@@ -38,12 +37,12 @@ vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'lervag/vimtex'
+  Plug 'morhetz/gruvbox'
   Plug 'neovim/nvim-lspconfig'
   Plug('nvim-treesitter/nvim-treesitter', {
     ['branch'] = '0.5-compat',
     ['do'] = vim.fn.TSUpdate,
   })
-  Plug 'morhetz/gruvbox'
   Plug 'romainl/flattened'
   Plug 'Yggdroot/indentLine'
 vim.call('plug#end')
