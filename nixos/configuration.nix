@@ -133,6 +133,7 @@
       python39Packages.pynvim
       quodlibet
       ripgrep
+      rnix-lsp
       starship
       stow
       tdesktop
