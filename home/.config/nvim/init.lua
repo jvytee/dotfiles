@@ -103,6 +103,7 @@ local options = {
 }
 
 local servers = {
+  hls = { 'haskell-language-server-wrapper', '--lsp' },
   gopls = { 'gopls' },
   pylsp = { 'pylsp' },
   rnix = { 'rnix-lsp' },
@@ -120,7 +121,17 @@ end
 -- Setup treesitter
 local nvim_ts = require('nvim-treesitter.configs')
 nvim_ts.setup {
-  ensure_installed = { 'html', 'javascript', 'lua', 'nix', 'python', 'rust', 'typescript', 'vue' },
+  ensure_installed = {
+    'haskell',
+    'html',
+    'javascript',
+    'lua',
+    'nix',
+    'python',
+    'rust',
+    'typescript',
+    'vue'
+  },
   highlight = { enable = true },
   indent = { enable = true },
 }

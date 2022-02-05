@@ -41,6 +41,10 @@
   :hook (go-mode . (lambda ()
                      (setq tab-width 2))))
 
+(use-package haskell-mode)
+
+(use-package lsp-haskell)
+
 (use-package highlight-indentation
   :hook ((python-mode yaml-mode) . highlight-indentation-mode))
 
@@ -51,7 +55,7 @@
 (use-package lsp-mode
   :commands lsp
   :hook
-  (((go-mode javascript-mode python-mode rust-mode typescript-mode vue-mode yaml-mode) . lsp)
+  (((go-mode haskell-mode haskell-literate-mode javascript-mode python-mode rust-mode typescript-mode vue-mode yaml-mode) . lsp)
    (lsp-mode . lsp-enable-which-key-integration))
   :init (setq lsp-keymap-prefix "C-SPC"))
 
