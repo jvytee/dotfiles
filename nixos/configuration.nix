@@ -75,6 +75,7 @@
   users.users.julian = {
     description = "Julian";
     extraGroups = [
+      "lp"
       "lpadmin"
       "networkmanager"
       "scanner"
@@ -129,8 +130,6 @@
       nix-direnv
       pass-wayland
       powertop
-      python39
-      python39Packages.pynvim
       quodlibet
       ripgrep
       rnix-lsp
@@ -140,7 +139,6 @@
       texlive.combined.scheme-medium
       thunderbird
       tig
-      tor
       vlc
       zotero
     ];
@@ -264,6 +262,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "20.09"; # Did you read the comment?
-
 }
 
