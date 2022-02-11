@@ -23,29 +23,31 @@ vim.cmd('autocmd filetype python setlocal shiftwidth=4 softtabstop=4')
 vim.g.mapleader = ','
 vim.g.maplocalleader = ' '
 
--- Configure vim-plug
-local Plug = vim.fn['plug#']
-vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
-  Plug 'LnL7/vim-nix'
-  Plug 'cespare/vim-toml'
-  Plug 'hrsh7th/cmp-buffer'
-  Plug 'hrsh7th/cmp-nvim-lsp'
-  Plug 'hrsh7th/cmp-nvim-lua'
-  Plug 'hrsh7th/cmp-vsnip'
-  Plug 'hrsh7th/nvim-cmp' 
-  Plug 'hrsh7th/vim-vsnip'
-  Plug 'junegunn/fzf'
-  Plug 'junegunn/fzf.vim'
-  Plug 'lervag/vimtex'
-  Plug 'morhetz/gruvbox'
-  Plug 'neovim/nvim-lspconfig'
-  Plug('nvim-treesitter/nvim-treesitter', {
-    ['branch'] = '0.5-compat',
-    ['do'] = vim.fn.TSUpdate,
-  })
-  Plug 'romainl/flattened'
-  Plug 'Yggdroot/indentLine'
-vim.call('plug#end')
+-- Specify plugins using packer
+local packer = require('packer')
+packer.startup(function()
+  use 'LnL7/vim-nix'
+  use 'Yggdroot/indentLine'
+  use 'cespare/vim-toml'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-nvim-lua'
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/nvim-cmp' 
+  use 'hrsh7th/vim-vsnip'
+  use 'junegunn/fzf'
+  use 'junegunn/fzf.vim'
+  use 'lervag/vimtex'
+  use 'morhetz/gruvbox'
+  use 'neovim/nvim-lspconfig'
+  use 'romainl/flattened'
+  use 'wbthomason/packer.nvim'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    branch = '0.5-compat',
+    run = vim.fn.TSUpdate,
+  }
+end)
 
 -- Set colorscheme
 vim.cmd('colorscheme gruvbox')
