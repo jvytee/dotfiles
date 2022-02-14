@@ -113,6 +113,7 @@ local servers = {
   tailwindcss = { 'npx', 'tailwindcss-language-server', '--stdio' },
   tsserver = { 'npx', 'typescript-language-server', '--stdio' },
   vuels = { 'npx', 'vls' },
+  yamlls = { 'yaml-language-server', '--stdio' },
 }
 
 for server, cmd in pairs(servers) do
@@ -132,7 +133,8 @@ nvim_ts.setup {
     'python',
     'rust',
     'typescript',
-    'vue'
+    'vue',
+    'yaml',
   },
   highlight = { enable = true },
   indent = { enable = true },
