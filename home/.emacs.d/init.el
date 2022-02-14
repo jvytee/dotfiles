@@ -43,21 +43,28 @@
 
 (use-package haskell-mode)
 
-(use-package lsp-haskell)
-
 (use-package highlight-indentation
   :hook ((python-mode yaml-mode) . highlight-indentation-mode))
+
+(use-package lsp-haskell
+  :after lsp-mode)
 
 (use-package lsp-ivy
   :bind ("C-c s" . lsp-ivy-workspace-symbol)
   :commands lsp-ivy-workspace-symbol)
 
 (use-package lsp-mode
-  :commands lsp
+  :init (setq lsp-keymap-prefix "C-c l")
   :hook
-  (((go-mode haskell-mode haskell-literate-mode javascript-mode python-mode rust-mode typescript-mode vue-mode yaml-mode) . lsp)
+  (((go-mode javascript-mode rust-mode typescript-mode vue-mode yaml-mode) . lsp-deferred)
    (lsp-mode . lsp-enable-which-key-integration))
-  :init (setq lsp-keymap-prefix "C-SPC"))
+  :commands (lsp lsp-deferred))
+
+(use-package lsp-pyright
+  :hook
+  (python-mode . (lambda ()
+                   (require 'lsp-pyright)
+                   (lsp-deferred))))
 
 (use-package lsp-ui
   :commands lsp-ui-mode)
