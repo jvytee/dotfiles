@@ -116,7 +116,6 @@
       emacs
       exa
       fd
-      ffmpeg
       (firefox.override { extraNativeMessagingHosts = [ passff-host ]; })
       fzf
       git
