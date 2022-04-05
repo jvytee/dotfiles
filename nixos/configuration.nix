@@ -143,6 +143,7 @@
   fonts.fonts = with pkgs; [
     cantarell-fonts
     font-awesome
+    iosevka
     noto-fonts
     source-code-pro
   ];
