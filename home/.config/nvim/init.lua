@@ -105,7 +105,7 @@ local options = {
 }
 
 local servers = {
-  hls = { 'haskell-language-server-wrapper', '--lsp' },
+  hls = { 'haskell-language-server', '--lsp' },
   gopls = { 'gopls' },
   pyright = { 'pyright-langserver', '--stdio' },
   rnix = { 'rnix-lsp' },
