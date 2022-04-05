@@ -14,6 +14,16 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+function start-application-mode { echoti smkx }
+function stop-application-mode { echoti rmkx }
+autoload -Uz add-zle-hook-widget
+add-zle-hook-widget -Uz zle-line-init start-application-mode
+add-zle-hook-widget -Uz zle-line-finish stop-application-mode
+
+bindkey "$terminfo[kdch1]" delete-char
+bindkey "$terminfo[khome]" beginning-of-line
+bindkey "$terminfo[kend]" end-of-line
+
 source $(fzf-share)/completion.zsh
 source $(fzf-share)/key-bindings.zsh
 
