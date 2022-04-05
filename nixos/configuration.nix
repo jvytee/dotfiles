@@ -106,14 +106,13 @@
 
     systemPackages = with pkgs; [
       adwaita-qt
-      ansible
       bat
       borgbackup
       coreutils
-      darktable
       direnv
       element-desktop
       emacs
+      evolution
       exa
       fd
       (firefox.override { extraNativeMessagingHosts = [ passff-host ]; })
@@ -122,7 +121,6 @@
       gnome.gnome-tweaks
       gnupg
       htop
-      inkscape
       jq
       libreoffice
       neovim
@@ -136,7 +134,6 @@
       stow
       tdesktop
       texlive.combined.scheme-medium
-      thunderbird
       tig
       vlc
       zotero
