@@ -29,9 +29,11 @@ packer.startup(function()
   use 'LnL7/vim-nix'
   use 'Yggdroot/indentLine'
   use 'cespare/vim-toml'
+  use 'freitass/todo.txt-vim'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-nvim-lua'
+  use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/nvim-cmp' 
   use 'hrsh7th/vim-vsnip'
@@ -39,14 +41,18 @@ packer.startup(function()
   use 'junegunn/fzf.vim'
   use 'lervag/vimtex'
   use 'morhetz/gruvbox'
-  use 'neovim/nvim-lspconfig'
-  use 'romainl/flattened'
-  use 'wbthomason/packer.nvim'
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
   use {
     'nvim-treesitter/nvim-treesitter',
     branch = '0.5-compat',
-    run = vim.fn.TSUpdate,
+    run = ':TSUpdate',
   }
+  use 'neovim/nvim-lspconfig'
+  use 'romainl/flattened'
+  use 'wbthomason/packer.nvim'
 end)
 
 -- Set colorscheme
@@ -60,10 +66,14 @@ cmp.setup {
       vim.call('vsnip#anonymous', args.body)
     end
   },
+  mapping = cmp.mapping.preset.insert {
+    ['<cr>'] = cmp.mapping.confirm { select = true }
+  },
   sources = {
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
     { name = 'vsnip' },
+    { name = 'path' },
     { name = 'buffer' },
   },
 }
@@ -105,8 +115,8 @@ local options = {
 }
 
 local servers = {
-  hls = { 'haskell-language-server', '--lsp' },
   gopls = { 'gopls' },
+  hls = { 'haskell-language-server', '--lsp' },
   pyright = { 'pyright-langserver', '--stdio' },
   rnix = { 'rnix-lsp' },
   rust_analyzer = { 'rust-analyzer' },
@@ -140,6 +150,19 @@ nvim_ts.setup {
   indent = { enable = true },
 }
 
+-- Setup lualine
+local lualine = require('lualine')
+lualine.setup {
+  extensions = {
+    'fzf',
+    'quickfix',
+  },
+  options = {
+    icons_enabled = false,
+    theme = 'gruvbox'
+  }
+}
+
 -- Set keymaps
 local function set_keymap(keys, cmd)
   vim.api.nvim_set_keymap('n', keys, '<cmd>' .. cmd .. '<cr>', keymap_opts)
@@ -148,3 +171,5 @@ end
 set_keymap('<leader>b', 'Buffers')
 set_keymap('<leader>f', 'FZF')
 set_keymap('<leader>g', 'GitFiles')
+set_keymap('<leader>r', 'Rg')
+set_keymap('<leader>m', 'Maps')
