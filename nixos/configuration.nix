@@ -39,6 +39,8 @@
       extraBackends = [ pkgs.sane-airscan ];
       brscan4.enable = true;
     };
+
+    opengl.driSupport32Bit = true;
   };
 
   networking = {
@@ -52,6 +54,7 @@
 
     wireguard.enable = true;
     firewall.checkReversePath = false;
+    firewall.enable = true;
     # The global useDHCP flag is deprecated, therefore explicitly set to false here.
 
     # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -136,6 +139,7 @@
       texlive.combined.scheme-medium
       tig
       vlc
+      wineWowPackages.stableFull
       zotero
     ];
   };
