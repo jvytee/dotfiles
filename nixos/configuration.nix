@@ -122,6 +122,7 @@
       fzf
       git
       gnome.gnome-tweaks
+      gnomeExtensions.appindicator
       gnupg
       htop
       jq
