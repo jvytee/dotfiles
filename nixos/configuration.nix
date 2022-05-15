@@ -176,11 +176,10 @@
 
     zsh = {
       enable = true;
-      autosuggestions = {
-        enable = true;
-        #highlightStyle = "fg=10";
-      };
+      autosuggestions.enable = true;
       enableCompletion = true;
+      histFile = "~/.histfile";
+      histSize = 1000;
       interactiveShellInit = ''
         function start-application-mode { echoti smkx }
         function stop-application-mode { echoti rmkx }
@@ -197,6 +196,10 @@
         source $(fzf-share)/key-bindings.zsh
       '';
       promptInit = ''eval "$(starship init zsh)"'';
+      setOptions = [
+        "autocd"
+        "nobeep"
+      ];
       shellAliases = {
         ip = "ip -c";
         ls = "exa";
