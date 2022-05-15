@@ -5,18 +5,20 @@
  ;; If there is more than one, they won't work right.
  '(c-basic-offset 2)
  '(column-number-mode t)
- '(custom-enabled-themes '(gruvbox))
  '(custom-safe-themes
-   '("d14f3df28603e9517eb8fb7518b662d653b25b26e83bd8e129acea042b774298" "18bec4c258b4b4fb261671cf59197c1c3ba2a7a47cc776915c3e8db3334a0d25" default))
+   '("3319c893ff355a88b86ef630a74fad7f1211f006d54ce451aab91d35d018158f" default))
  '(default-frame-alist
     '((horizontal-scroll-bars)
       (vertical-scroll-bars)
       (fullscreen . maximized)))
+ '(highlight-indent-guides-method 'bitmap)
+ '(highlight-indent-guides-responsive 'top)
  '(inhibit-startup-screen t)
  '(ivy-mode t)
  '(js-indent-level 2)
+ '(lsp-rust-analyzer-server-display-inlay-hints t)
  '(package-selected-packages
-   '(lsp-haskell lsp-pyright haskell-mode gruvbox-theme auctex-latexmk auctex rg pyvenv nginx-mode vue-mode typescript-mode neotree all-the-icons direnv tree-sitter-langs tree-sitter go-mode rainbow-mode rust-mode highlight-indentation dockerfile-mode yaml-mode which-key simple-modeline projectile nix-mode magit lsp-ui lsp-ivy flycheck evil counsel company better-defaults use-package))
+   '(doom-modeline doom-themes highlight-indent-guides lsp-haskell lsp-pyright haskell-mode auctex-latexmk auctex rg pyvenv nginx-mode vue-mode typescript-mode neotree all-the-icons direnv tree-sitter-langs tree-sitter go-mode rainbow-mode rust-mode dockerfile-mode yaml-mode which-key projectile nix-mode magit lsp-ui lsp-ivy flycheck evil counsel company better-defaults use-package))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(typescript-indent-level 2)

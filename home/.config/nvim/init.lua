@@ -37,9 +37,11 @@ packer.startup(function()
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/nvim-cmp' 
   use 'hrsh7th/vim-vsnip'
+  use 'joshdick/onedark.vim'
   use 'junegunn/fzf'
   use 'junegunn/fzf.vim'
   use 'lervag/vimtex'
+  use 'lukas-reineke/indent-blankline.nvim'
   use 'morhetz/gruvbox'
   use {
     'nvim-lualine/lualine.nvim',
@@ -56,7 +58,7 @@ packer.startup(function()
 end)
 
 -- Set colorscheme
-vim.cmd('colorscheme gruvbox')
+vim.cmd('colorscheme onedark')
 
 -- Setup autocompletion
 local cmp = require('cmp')
@@ -120,9 +122,9 @@ local servers = {
   pyright = { 'pyright-langserver', '--stdio' },
   rnix = { 'rnix-lsp' },
   rust_analyzer = { 'rust-analyzer' },
-  tailwindcss = { 'npx', 'tailwindcss-language-server', '--stdio' },
-  tsserver = { 'npx', 'typescript-language-server', '--stdio' },
-  vuels = { 'npx', 'vls' },
+  tailwindcss = { 'tailwindcss-language-server', '--stdio' },
+  tsserver = { 'typescript-language-server', '--stdio' },
+  vuels = { 'vls' },
   yamlls = { 'yaml-language-server', '--stdio' },
 }
 
@@ -161,6 +163,13 @@ lualine.setup {
     icons_enabled = false,
     theme = 'gruvbox'
   }
+}
+
+-- Setup indent blankline
+local indent_blankline = require('indent_blankline')
+indent_blankline.setup {
+  show_current_context = true,
+  show_current_context_start = true,
 }
 
 -- Set keymaps
