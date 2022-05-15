@@ -43,8 +43,9 @@
 
 (use-package haskell-mode)
 
-(use-package highlight-indentation
-  :hook ((python-mode yaml-mode) . highlight-indentation-mode))
+(use-package highlight-indent-guides
+  config (highlight-indent-guides-auto-set-faces)
+  :hook ((conf-mode prog-mode yaml-mode) . highlight-indent-guides-mode))
 
 (use-package lsp-haskell
   :after lsp-mode)
