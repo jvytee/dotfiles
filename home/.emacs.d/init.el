@@ -31,6 +31,15 @@
 
 (use-package dockerfile-mode)
 
+(use-package doom-modeline
+  :hook (after-init . doom-modeline-mode))
+
+(use-package doom-themes
+  :config
+  (load-theme 'doom-one 1)
+  (doom-themes-neotree-config)
+  (doom-themes-org-config))
+
 (use-package evil
   :config (evil-mode 1))
 
@@ -95,9 +104,6 @@
   :config (rg-enable-default-bindings))
 
 (use-package rust-mode)
-
-(use-package simple-modeline
-  :config (simple-modeline-mode))
 
 (use-package tex
   :ensure auctex)
