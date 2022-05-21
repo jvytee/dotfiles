@@ -53,7 +53,7 @@
 (use-package haskell-mode)
 
 (use-package highlight-indent-guides
-  config (highlight-indent-guides-auto-set-faces)
+  :config (highlight-indent-guides-auto-set-faces)
   :hook ((conf-mode prog-mode yaml-mode) . highlight-indent-guides-mode))
 
 (use-package lsp-haskell
@@ -66,7 +66,7 @@
 (use-package lsp-mode
   :init (setq lsp-keymap-prefix "C-c l")
   :hook
-  (((go-mode javascript-mode rust-mode typescript-mode vue-mode yaml-mode) . lsp-deferred)
+  (((go-mode haskell-mode javascript-mode rust-mode typescript-mode vue-mode yaml-mode) . lsp-deferred)
    (lsp-mode . lsp-enable-which-key-integration))
   :commands (lsp lsp-deferred))
 
