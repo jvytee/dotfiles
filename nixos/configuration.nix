@@ -11,6 +11,11 @@
       ./hardware-configuration.nix
     ];
 
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = "experimental-features = nix-command flakes";
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   # Use the systemd-boot EFI boot loader.
@@ -100,7 +105,6 @@
 
     # Environment variables
     sessionVariables = {
-      EDITOR = "nvim";
       MOZ_ENABLE_WAYLAND = "1";
       MOZ_USE_XINPUT2 = "1";
       QT_QPA_PLATFORM = "wayland";
@@ -133,7 +137,6 @@
       powertop
       quodlibet
       ripgrep
-      rnix-lsp
       starship
       stow
       tdesktop
@@ -159,20 +162,6 @@
     # mtr.enable = true;
 
     gnupg.agent.enable = true;
-
-    bash = {
-      enableCompletion = true;
-      interactiveShellInit = ''
-        source $(fzf-share)/completion.bash
-        source $(fzf-share)/key-bindings.bash
-      '';
-      promptInit = ''eval "$(starship init bash)"'';
-      shellAliases = {
-        ls = "exa";
-        ip = "ip -c";
-        vim = "nvim";
-      };
-    };
 
     zsh = {
       enable = true;
@@ -201,6 +190,7 @@
         "nobeep"
       ];
       shellAliases = {
+        ec = "emacsclient";
         ip = "ip -c";
         ls = "exa";
         vim = "nvim";
@@ -215,15 +205,18 @@
 
   services = {
     emacs = {
+      defaultEditor = true;
       enable = true;
     };
     
     pipewire = {
       enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
       jack.enable = true;
+      pulse.enable = true;
     };
 
     # Enable CUPS to print documents.
@@ -260,6 +253,7 @@
       # Enable touchpad support (enabled default in most desktopManager).
       libinput.enable = true;
 
+      # Add drivers for displaylink USB graphics
       videoDrivers = [ "displaylink" ];
     };
   };
