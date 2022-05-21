@@ -37,15 +37,14 @@ packer.startup(function()
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/nvim-cmp' 
   use 'hrsh7th/vim-vsnip'
-  use 'joshdick/onedark.vim'
   use 'junegunn/fzf'
   use 'junegunn/fzf.vim'
   use 'lervag/vimtex'
   use 'lukas-reineke/indent-blankline.nvim'
-  use 'morhetz/gruvbox'
+  use 'navarasu/onedark.nvim'
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    requires = { 'kyazdani42/nvim-web-devicons' }
   }
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -53,12 +52,11 @@ packer.startup(function()
     run = ':TSUpdate',
   }
   use 'neovim/nvim-lspconfig'
-  use 'romainl/flattened'
   use 'wbthomason/packer.nvim'
 end)
 
 -- Set colorscheme
-vim.cmd('colorscheme onedark')
+require('onedark').load()
 
 -- Setup autocompletion
 local cmp = require('cmp')
@@ -117,19 +115,18 @@ local options = {
 }
 
 local servers = {
-  gopls = { 'gopls' },
-  hls = { 'haskell-language-server', '--lsp' },
-  pyright = { 'pyright-langserver', '--stdio' },
-  rnix = { 'rnix-lsp' },
-  rust_analyzer = { 'rust-analyzer' },
-  tailwindcss = { 'tailwindcss-language-server', '--stdio' },
-  tsserver = { 'typescript-language-server', '--stdio' },
-  vuels = { 'vls' },
-  yamlls = { 'yaml-language-server', '--stdio' },
+  'ansiblels',
+  'gopls',
+  'hls',
+  'pyright',
+  'rust_analyzer',
+  'tailwindcss',
+  'tsserver',
+  'volar',
+  'yamlls',
 }
 
-for server, cmd in pairs(servers) do
-  options.cmd = cmd
+for _, server in ipairs(servers) do
   nvim_lsp[server].setup(options)
 end
 
