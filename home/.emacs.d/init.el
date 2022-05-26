@@ -36,7 +36,7 @@
 
 (use-package doom-themes
   :config
-  (load-theme 'doom-one 1)
+  (load-theme 'doom-gruvbox 1)
   (doom-themes-neotree-config)
   (doom-themes-org-config))
 
@@ -83,8 +83,7 @@
   :bind ("C-c g" . magit-file-dispatch))
 
 (use-package neotree
-  :bind ("C-c t" . neotree-toggle)
-  :config (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+  :bind ("C-c t" . neotree-toggle))
 
 (use-package nginx-mode)
 

@@ -17,6 +17,7 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.tabstop = 8
+vim.cmd('autocmd filetype go setlocal noexpandtab tabstop=2')
 vim.cmd('autocmd filetype python setlocal shiftwidth=4 softtabstop=4')
 
 -- Set leader keys
@@ -29,6 +30,7 @@ packer.startup(function()
   use 'LnL7/vim-nix'
   use 'Yggdroot/indentLine'
   use 'cespare/vim-toml'
+  use 'ellisonleao/gruvbox.nvim'
   use 'freitass/todo.txt-vim'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-nvim-lsp'
@@ -56,7 +58,7 @@ packer.startup(function()
 end)
 
 -- Set colorscheme
-require('onedark').load()
+vim.cmd('colorscheme gruvbox')
 
 -- Setup autocompletion
 local cmp = require('cmp')
