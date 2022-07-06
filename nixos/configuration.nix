@@ -146,7 +146,6 @@
   fonts.fonts = with pkgs; [
     cantarell-fonts
     font-awesome
-    inter
     iosevka
     noto-fonts
   ];
