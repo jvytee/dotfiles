@@ -79,6 +79,8 @@
 (use-package lsp-ui
   :commands lsp-ui-mode)
 
+(use-package lsp-tailwindcss)
+
 (use-package magit
   :bind ("C-c g" . magit-file-dispatch))
 
@@ -90,12 +92,13 @@
 (use-package nix-mode
   :mode "\\.nix\\'")
 
+(use-package pipenv-mode
+  :hook (python-mode . pipenv-mode))
+
 (use-package projectile
   :bind ("C-c f" . projectile-find-file)
   :bind-keymap ("C-c p" . projectile-command-map)
   :config (projectile-mode +1))
-
-(use-package pyvenv)
 
 (use-package rainbow-mode)
 
