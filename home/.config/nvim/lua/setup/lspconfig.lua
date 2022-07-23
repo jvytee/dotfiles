@@ -39,6 +39,7 @@ module.setup = function(keymap_opts)
 
   local servers = {
     'ansiblels',
+    'clangd',
     'gopls',
     'hls',
     'pyright',

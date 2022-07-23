@@ -13,6 +13,8 @@
 
 (use-package better-defaults)
 
+(use-package cmake-mode)
+
 (use-package company
   :hook (after-init . global-company-mode))
 
@@ -66,7 +68,7 @@
 (use-package lsp-mode
   :init (setq lsp-keymap-prefix "C-c l")
   :hook
-  (((go-mode haskell-mode javascript-mode rust-mode typescript-mode vue-mode yaml-mode) . lsp-deferred)
+  (((c++-mode go-mode haskell-mode javascript-mode rust-mode typescript-mode vue-mode yaml-mode) . lsp-deferred)
    (lsp-mode . lsp-enable-which-key-integration))
   :commands (lsp lsp-deferred))
 
