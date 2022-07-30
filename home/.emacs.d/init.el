@@ -66,7 +66,7 @@
   :commands lsp-ivy-workspace-symbol)
 
 (use-package lsp-mode
-  :init (setq lsp-keymap-prefix "C-c l")
+  :init (setq lsp-keymap-prefix "M-RET")
   :hook
   (((c++-mode go-mode haskell-mode javascript-mode rust-mode typescript-mode vue-mode yaml-mode) . lsp-deferred)
    (lsp-mode . lsp-enable-which-key-integration))
@@ -94,7 +94,7 @@
 (use-package nix-mode
   :mode "\\.nix\\'")
 
-(use-package pipenv-mode
+(use-package pipenv
   :hook (python-mode . pipenv-mode))
 
 (use-package projectile
