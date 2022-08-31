@@ -26,6 +26,8 @@
     keyMap = "de";
   };
 
+  documentation.dev.enable = true;
+
   hardware = {
     bluetooth = {
       enable = true;
@@ -146,7 +148,7 @@
   fonts.fonts = with pkgs; [
     cantarell-fonts
     font-awesome
-    iosevka
+    jetbrains-mono
     noto-fonts
   ];
 
