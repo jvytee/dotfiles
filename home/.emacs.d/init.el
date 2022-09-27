@@ -125,6 +125,9 @@
 
 (use-package rust-mode)
 
+(use-package slime
+  :config (setq inferior-lisp-program "sbcl"))
+
 (use-package tex
   :ensure auctex)
 

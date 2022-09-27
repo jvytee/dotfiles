@@ -16,7 +16,11 @@
  '(js-indent-level 2)
  '(lsp-rust-analyzer-server-display-inlay-hints t)
  '(package-selected-packages
-   '(pipenv cmake-mode lsp-tailwindcss doom-modeline doom-themes highlight-indent-guides lsp-haskell lsp-pyright haskell-mode auctex-latexmk auctex rg nginx-mode vue-mode typescript-mode neotree all-the-icons direnv tree-sitter-langs tree-sitter go-mode rainbow-mode rust-mode dockerfile-mode yaml-mode which-key projectile nix-mode magit lsp-ui lsp-ivy flycheck evil counsel company better-defaults use-package))
+   '(slime pipenv cmake-mode lsp-tailwindcss doom-modeline doom-themes highlight-indent-guides lsp-haskell lsp-pyright haskell-mode auctex-latexmk auctex rg nginx-mode vue-mode typescript-mode neotree all-the-icons direnv tree-sitter-langs tree-sitter go-mode rainbow-mode rust-mode dockerfile-mode yaml-mode which-key projectile nix-mode magit lsp-ui lsp-ivy flycheck evil counsel company better-defaults use-package))
+ '(server-after-make-frame-hook
+   '(doom-modeline-refresh-font-width-cache
+     (lambda nil
+       (set-gtk-theme-variant "dark"))))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(typescript-indent-level 2)
