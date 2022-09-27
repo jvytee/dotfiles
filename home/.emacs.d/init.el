@@ -29,7 +29,7 @@
   :config (direnv-mode))
 
 (use-package display-line-numbers
-  :hook ((conf-mode org-mode markdown-mode prog-mode vue-mode yaml-mode) . display-line-numbers-mode))
+  :hook ((conf-mode org-mode markdown-mode prog-mode tex-mode vue-mode yaml-mode) . display-line-numbers-mode))
 
 (use-package dockerfile-mode)
 
@@ -146,7 +146,17 @@
 
 (use-package yaml-mode)
 
-(add-hook 'window-setup-hook 'raise-frame)
-(add-hook 'server-after-make-frame-hook 'raise-frame)
+(defun set-gtk-theme-variant (variant)
+  (let* ((ids (mapcar (lambda (frame) (frame-parameter frame 'outer-window-id)) (frame-list)))
+         (cmds (mapcar (lambda (id) (format "xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT \"%s\" -id %s" variant id)) ids)))
+    (dolist (cmd cmds) (call-process-shell-command cmd))))
+
+(defun gtk-dark () (interactive)
+       (set-gtk-theme-variant "dark"))
+
+(defun gtk-light () (interactive)
+       (set-gtk-theme-variant "light"))
+
+(add-hook 'server-after-make-frame-hook (lambda () (set-gtk-theme-variant "dark")))
 
 (load custom-file)
