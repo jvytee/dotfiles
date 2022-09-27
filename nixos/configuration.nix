@@ -137,7 +137,7 @@
       starship
       stow
       tdesktop
-      texlive.combined.scheme-medium
+      texlive.combined.scheme-full
       tig
       vlc
       wineWowPackages.stableFull
@@ -150,6 +150,7 @@
     font-awesome
     jetbrains-mono
     noto-fonts
+    roboto
   ];
 
   programs = {
