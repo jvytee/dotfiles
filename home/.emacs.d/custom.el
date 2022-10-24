@@ -5,6 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(c-basic-offset 2)
  '(column-number-mode t)
+ '(css-indent-offset 2)
  '(default-frame-alist
     '((horizontal-scroll-bars)
       (vertical-scroll-bars)
@@ -16,7 +17,7 @@
  '(js-indent-level 2)
  '(lsp-rust-analyzer-server-display-inlay-hints t)
  '(package-selected-packages
-   '(slime pipenv cmake-mode lsp-tailwindcss doom-modeline doom-themes highlight-indent-guides lsp-haskell lsp-pyright haskell-mode auctex-latexmk auctex rg nginx-mode vue-mode typescript-mode neotree all-the-icons direnv tree-sitter-langs tree-sitter go-mode rainbow-mode rust-mode dockerfile-mode yaml-mode which-key projectile nix-mode magit lsp-ui lsp-ivy flycheck evil counsel company better-defaults use-package))
+   '(web-mode pipenv cmake-mode lsp-tailwindcss doom-modeline doom-themes highlight-indent-guides lsp-haskell lsp-pyright haskell-mode auctex-latexmk auctex rg nginx-mode typescript-mode neotree all-the-icons direnv tree-sitter-langs tree-sitter go-mode rainbow-mode rust-mode dockerfile-mode yaml-mode which-key projectile nix-mode magit lsp-ui lsp-ivy flycheck evil counsel company better-defaults use-package))
  '(server-after-make-frame-hook
    '(doom-modeline-refresh-font-width-cache
      (lambda nil

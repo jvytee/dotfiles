@@ -29,7 +29,7 @@
   :config (direnv-mode))
 
 (use-package display-line-numbers
-  :hook ((conf-mode org-mode markdown-mode prog-mode tex-mode vue-mode yaml-mode) . display-line-numbers-mode))
+  :hook ((conf-mode org-mode markdown-mode prog-mode tex-mode yaml-mode) . display-line-numbers-mode))
 
 (use-package dockerfile-mode)
 
@@ -84,7 +84,7 @@
 (use-package lsp-mode
   :init (setq lsp-keymap-prefix "M-RET")
   :hook
-  (((c++-mode go-mode haskell-mode javascript-mode rust-mode typescript-mode vue-mode yaml-mode) . lsp-deferred)
+  (((c++-mode go-mode haskell-mode javascript-mode rust-mode typescript-mode yaml-mode web-mode) . lsp-deferred)
    (lsp-mode . lsp-enable-which-key-integration))
   :commands (lsp lsp-deferred))
 
@@ -125,9 +125,6 @@
 
 (use-package rust-mode)
 
-(use-package slime
-  :config (setq inferior-lisp-program "sbcl"))
-
 (use-package tex
   :ensure auctex)
 
@@ -139,7 +136,7 @@
 
 (use-package typescript-mode)
 
-(use-package vue-mode)
+(use-package web-mode)
 
 (use-package which-key
   :config (which-key-mode 1))
