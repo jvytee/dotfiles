@@ -40,13 +40,13 @@ module.setup = function(keymap_opts)
   local servers = {
     'ansiblels',
     'clangd',
+    'denols',
     'gopls',
     'hls',
     'pyright',
     'rust_analyzer',
     'tailwindcss',
     'tsserver',
-    'volar',
     'yamlls',
   }
 
