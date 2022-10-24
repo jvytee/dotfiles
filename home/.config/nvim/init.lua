@@ -66,7 +66,7 @@ local keymap_opts = { noremap = true, silent = true }
 require('setup.lspconfig').setup(keymap_opts)
 
 -- Setup treesitter
-require('setup.nvim-treesitter').setup()
+require('setup.treesitter').setup()
 
 -- Setup lualine
 require('setup.lualine').setup()
