@@ -43,7 +43,6 @@ packer.startup(function()
   use 'junegunn/fzf.vim'
   use 'lervag/vimtex'
   use 'lukas-reineke/indent-blankline.nvim'
-  use 'navarasu/onedark.nvim'
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
