@@ -1,6 +1,8 @@
 local module = {}
 
 module.setup = function()
+  vim.g.vim_json_conceal = 0
+
   local indent_blankline = require('indent_blankline')
   indent_blankline.setup {
     show_current_context = true,

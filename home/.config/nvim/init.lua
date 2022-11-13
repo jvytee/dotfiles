@@ -17,8 +17,22 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.tabstop = 8
-vim.cmd('autocmd filetype go setlocal noexpandtab tabstop=2')
-vim.cmd('autocmd filetype python setlocal shiftwidth=4 softtabstop=4')
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'go',
+  callback = function()
+    vim.opt_local.expandtab = false
+    vim.opt_local.tabstop = 2
+  end
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'python',
+  callback = function()
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.softtabstop = 4
+  end
+})
 
 -- Set leader keys
 vim.g.mapleader = ','
@@ -28,7 +42,6 @@ vim.g.maplocalleader = ' '
 local packer = require('packer')
 packer.startup(function()
   use 'LnL7/vim-nix'
-  use 'Yggdroot/indentLine'
   use 'cespare/vim-toml'
   use 'ellisonleao/gruvbox.nvim'
   use 'freitass/todo.txt-vim'
@@ -43,44 +56,47 @@ packer.startup(function()
   use 'junegunn/fzf.vim'
   use 'lervag/vimtex'
   use 'lukas-reineke/indent-blankline.nvim'
+  use 'navarasu/onedark.nvim'
+  use 'neovim/nvim-lspconfig'
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true},
   }
+  use 'nvim-tree/nvim-tree.lua'
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
   }
-  use 'neovim/nvim-lspconfig'
   use 'wbthomason/packer.nvim'
 end)
 
 -- Set colorscheme
-vim.cmd('colorscheme gruvbox')
+vim.cmd('colorscheme onedark')
 
 -- Setup autocompletion
 require('setup.cmp').setup()
 
--- Setup LSP client
-local keymap_opts = { noremap = true, silent = true }
-require('setup.lspconfig').setup(keymap_opts)
-
--- Setup treesitter
-require('setup.treesitter').setup()
+-- Setup indent blankline
+require('setup.indent_blankline').setup()
 
 -- Setup lualine
 require('setup.lualine').setup()
 
--- Setup indent blankline
-require('setup.indent_blankline').setup()
+-- Setup LSP client
+require('setup.lspconfig').setup()
+
+-- Setup tree
+require('setup.tree').setup()
+
+-- Setup treesitter
+require('setup.treesitter').setup()
 
 -- Set keymaps
-local function set_keymap(keys, cmd)
-  vim.api.nvim_set_keymap('n', keys, '<cmd>' .. cmd .. '<cr>', keymap_opts)
-end
+local opts = { noremap = true, silent = true }
 
-set_keymap('<leader>b', 'Buffers')
-set_keymap('<leader>f', 'FZF')
-set_keymap('<leader>g', 'GitFiles')
-set_keymap('<leader>r', 'Rg')
-set_keymap('<leader>m', 'Maps')
+vim.keymap.set('n', '<leader>b', '<cmd>Buffers<cr>', opts)
+vim.keymap.set('n', '<leader>f', '<cmd>FZF<cr>', opts)
+vim.keymap.set('n', '<leader>g', '<cmd>GitFiles<cr>', opts)
+vim.keymap.set('n', '<leader>r', '<cmd>Rg<cr>', opts)
+vim.keymap.set('n', '<leader>m', '<cmd>Maps<cr>', opts)
+vim.keymap.set('n', '<leader>t', '<cmd>NvimTreeFocus<cr>', opts)
