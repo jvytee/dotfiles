@@ -148,7 +148,7 @@
   fonts.fonts = with pkgs; [
     cantarell-fonts
     font-awesome
-    jetbrains-mono
+    iosevka
     noto-fonts
     roboto
   ];
@@ -159,6 +159,11 @@
     # mtr.enable = true;
 
     gnupg.agent.enable = true;
+
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+    };
 
     zsh = {
       enable = true;
@@ -202,7 +207,7 @@
 
   services = {
     emacs = {
-      defaultEditor = true;
+      defaultEditor = false;
       enable = true;
     };
     
