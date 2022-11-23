@@ -55,6 +55,7 @@ packer.startup(function()
   use 'junegunn/fzf'
   use 'junegunn/fzf.vim'
   use 'lervag/vimtex'
+  use 'lewis6991/gitsigns.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
   use 'navarasu/onedark.nvim'
   use 'neovim/nvim-lspconfig'
@@ -75,6 +76,9 @@ vim.cmd('colorscheme onedark')
 
 -- Setup autocompletion
 require('setup.cmp').setup()
+
+-- Setup gitsigns
+require('gitsigns').setup()
 
 -- Setup indent blankline
 require('setup.indent_blankline').setup()
