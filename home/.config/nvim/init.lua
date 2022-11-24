@@ -11,6 +11,7 @@ vim.opt.number = true
 vim.opt.signcolumn = 'yes'
 vim.opt.smartcase = true
 vim.opt.termguicolors = true
+vim.opt.updatetime = 1000
 
 -- Configure indentation
 vim.opt.expandtab = true
@@ -68,6 +69,7 @@ packer.startup(function()
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
   }
+  use 'nvim-treesitter/nvim-treesitter-refactor'
   use 'wbthomason/packer.nvim'
 end)
 
