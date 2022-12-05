@@ -58,7 +58,7 @@ packer.startup(function()
   use 'lervag/vimtex'
   use 'lewis6991/gitsigns.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
-  use 'navarasu/onedark.nvim'
+  use 'Mofiqul/vscode.nvim'
   use 'neovim/nvim-lspconfig'
   use {
     'nvim-lualine/lualine.nvim',
@@ -74,7 +74,7 @@ packer.startup(function()
 end)
 
 -- Set colorscheme
-vim.cmd('colorscheme onedark')
+require('vscode').setup { italic_comments = true }
 
 -- Setup autocompletion
 require('setup.cmp').setup()
