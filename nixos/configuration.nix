@@ -208,7 +208,7 @@
   services = {
     emacs = {
       defaultEditor = false;
-      enable = true;
+      enable = false;
     };
     
     pipewire = {
