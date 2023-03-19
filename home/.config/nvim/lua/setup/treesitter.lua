@@ -4,16 +4,19 @@ module.setup = function()
   local nvim_ts = require('nvim-treesitter.configs')
   nvim_ts.setup {
     ensure_installed = {
+      'c',
       'cpp',
       'css',
       'go',
       'haskell',
       'html',
+      'java',
       'javascript',
       'json',
       'lua',
       'markdown',
       'markdown_inline',
+      'meson',
       'nix',
       'python',
       'rust',

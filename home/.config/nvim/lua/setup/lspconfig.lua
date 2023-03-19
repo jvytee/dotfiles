@@ -52,10 +52,13 @@ module.setup = function()
   }
 
   local servers = {
+    'ansiblels',
     'clangd',
     'denols',
     'gopls',
     'hls',
+    'jdtls',
+    'nil_ls',
     'pyright',
     'rust_analyzer',
     'tailwindcss',
@@ -66,6 +69,30 @@ module.setup = function()
   for _, server in ipairs(servers) do
     nvim_lsp[server].setup(options)
   end
+
+  local home = vim.env.HOME
+  local jdtls_options = {
+    capabilities = options.capabilities,
+    flags = options.flags,
+    on_attach = options.on_attach,
+    cmd = { 'jdt-language-server', '-configuration', home .. '/.cache/jdtls/config', '-data', home .. '/.cache/jdtls/workspace' },
+    init_options = { jvm_args = {}, workspace = home .. '/.cache/jdtls/workspace' },
+  }
+  nvim_lsp.jdtls.setup(jdtls_options)
+
+  local yamlls_options = {
+    capabilities = options.capabilities,
+    flags = options.flags,
+    on_attach = options.on_attach,
+    settings = {
+      yaml = {
+        schemas = {
+          ['https://github.com/yannh/kubernetes-json-schema/raw/master/v1.25.3-standalone/all.json'] = '*.yml'
+        }
+      }
+    }
+  }
+  nvim_lsp.yamlls.setup(yamlls_options)
 end
 
 return module
