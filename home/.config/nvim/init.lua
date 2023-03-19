@@ -74,7 +74,9 @@ packer.startup(function()
 end)
 
 -- Set colorscheme
-require('vscode').setup { italic_comments = true }
+local vscode = require('vscode')
+vscode.setup { italic_comments = true }
+vscode.load('dark')
 
 -- Setup autocompletion
 require('setup.cmp').setup()
