@@ -11,6 +11,11 @@
       ./hardware-configuration.nix
     ];
 
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
   nixpkgs.config.allowUnfree = true;
 
   # Use the systemd-boot EFI boot loader.
@@ -49,6 +54,10 @@
     hostName = "klapprechner"; # Define your hostname.
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
+    hosts = {
+      "192.168.39.231" = [ "minikube.local" ];
+    };
+
     networkmanager = {
       enable = true;
       wifi.powersave = true;
@@ -80,6 +89,8 @@
   users.users.julian = {
     description = "Julian";
     extraGroups = [
+      "audio"
+      "libvirtd"
       "lp"
       "lpadmin"
       "networkmanager"
@@ -114,8 +125,6 @@
       borgbackup
       coreutils
       direnv
-      element-desktop
-      emacs
       evolution
       exa
       fd
@@ -128,6 +137,8 @@
       htop
       jq
       libreoffice
+      man-pages
+      man-pages-posix
       neovim
       nix-direnv
       pass-wayland
@@ -139,6 +150,7 @@
       tdesktop
       texlive.combined.scheme-full
       tig
+      virt-manager
       vlc
       wineWowPackages.stableFull
       zotero
@@ -148,9 +160,8 @@
   fonts.fonts = with pkgs; [
     cantarell-fonts
     font-awesome
-    iosevka
     noto-fonts
-    roboto
+    source-code-pro
   ];
 
   programs = {
@@ -210,7 +221,7 @@
       defaultEditor = false;
       enable = false;
     };
-    
+
     pipewire = {
       enable = true;
       alsa = {
@@ -260,7 +271,11 @@
     };
   };
 
-  virtualisation.podman.enable = true;
+  virtualisation = {
+    containers.registries.insecure = ["minikube.local:30005"];
+    libvirtd.enable = true;
+    podman.enable = true;
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
