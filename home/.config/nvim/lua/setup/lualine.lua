@@ -9,7 +9,7 @@ module.setup = function()
     },
     options = {
       icons_enabled = false,
-      theme = 'vscode'
+      theme = 'gruvbox'
     }
   }
 end

@@ -74,9 +74,7 @@ packer.startup(function()
 end)
 
 -- Set colorscheme
-local vscode = require('vscode')
-vscode.setup { italic_comments = true }
-vscode.load('dark')
+vim.cmd [[colorscheme gruvbox]]
 
 -- Setup autocompletion
 require('setup.cmp').setup()

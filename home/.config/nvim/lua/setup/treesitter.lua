@@ -8,6 +8,8 @@ module.setup = function()
       'cpp',
       'css',
       'go',
+      'gomod',
+      'gosum',
       'haskell',
       'html',
       'java',
