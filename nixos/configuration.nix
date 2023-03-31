@@ -153,6 +153,7 @@
       virt-manager
       vlc
       wineWowPackages.stableFull
+      wireguard-tools
       zotero
     ];
   };
@@ -160,6 +161,7 @@
   fonts.fonts = with pkgs; [
     cantarell-fonts
     font-awesome
+    jetbrains-mono
     noto-fonts
     source-code-pro
   ];
