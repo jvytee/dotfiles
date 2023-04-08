@@ -121,6 +121,7 @@
 
     systemPackages = with pkgs; [
       adwaita-qt
+      alacritty
       bat
       borgbackup
       coreutils
