@@ -13,8 +13,6 @@
 
 (use-package better-defaults)
 
-(use-package cmake-mode)
-
 (use-package company
   :hook (after-init . global-company-mode))
 
@@ -42,11 +40,15 @@
   (doom-themes-neotree-config)
   (doom-themes-org-config))
 
+(use-package eglot)
+
 (use-package evil
   :config (evil-mode 1))
 
 (use-package flycheck
   :hook (after-init . global-flycheck-mode))
+
+(use-package geiser-guile)
 
 (use-package go-mode
   :hook (go-mode . (lambda ()
@@ -59,7 +61,6 @@
   :hook ((conf-mode prog-mode yaml-mode) . highlight-indent-guides-mode))
 
 (use-package ligature
-  :load-path "~/Downloads/software/ligature.el"
   :config
   (ligature-set-ligatures 'prog-mode '("-|" "-~" "---" "-<<" "-<" "--" "->" "->>" "-->" "///" "/=" "/=="
                                       "/>" "//" "/*" "*>" "***" "*/" "<-" "<<-" "<=>" "<=" "<|" "<||"
@@ -74,30 +75,30 @@
                                       "__" "~~" "~~>" "~>" "~-" "~@" "$>" "^=" "]#"))
   (global-ligature-mode t))
 
-(use-package lsp-haskell
-  :after lsp-mode)
-
-(use-package lsp-ivy
-  :bind ("C-c s" . lsp-ivy-workspace-symbol)
-  :commands lsp-ivy-workspace-symbol)
-
-(use-package lsp-mode
-  :init (setq lsp-keymap-prefix "M-RET")
-  :hook
-  (((c++-mode go-mode haskell-mode javascript-mode rust-mode typescript-mode yaml-mode web-mode) . lsp-deferred)
-   (lsp-mode . lsp-enable-which-key-integration))
-  :commands (lsp lsp-deferred))
-
-(use-package lsp-pyright
-  :hook
-  (python-mode . (lambda ()
-                   (require 'lsp-pyright)
-                   (lsp-deferred))))
-
-(use-package lsp-ui
-  :commands lsp-ui-mode)
-
-(use-package lsp-tailwindcss)
+; (use-package lsp-haskell
+;   :after lsp-mode)
+; 
+; (use-package lsp-ivy
+;   :bind ("C-c s" . lsp-ivy-workspace-symbol)
+;   :commands lsp-ivy-workspace-symbol)
+; 
+; (use-package lsp-mode
+;   :init (setq lsp-keymap-prefix "M-RET")
+;   :hook
+;   (((c++-mode go-mode haskell-mode javascript-mode rust-mode typescript-mode yaml-mode web-mode) . lsp-deferred)
+;    (lsp-mode . lsp-enable-which-key-integration))
+;   :commands (lsp lsp-deferred))
+; 
+; (use-package lsp-pyright
+;   :hook
+;   (python-mode . (lambda ()
+;                    (require 'lsp-pyright)
+;                    (lsp-deferred))))
+; 
+; (use-package lsp-ui
+;   :commands lsp-ui-mode)
+; 
+; (use-package lsp-tailwindcss)
 
 (use-package magit
   :bind ("C-c g" . magit-file-dispatch))
