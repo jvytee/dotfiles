@@ -70,8 +70,11 @@ packer.startup(function()
     run = ':TSUpdate',
   }
   use 'nvim-treesitter/nvim-treesitter-refactor'
+  use 'Olical/conjure'
   use 'wbthomason/packer.nvim'
 end)
+
+vim.g['conjure#filetype#scheme'] = 'conjure.client.guile.socket'
 
 -- Set colorscheme
 vim.cmd [[colorscheme gruvbox]]
@@ -106,3 +109,4 @@ vim.keymap.set('n', '<leader>g', '<cmd>GitFiles<cr>', opts)
 vim.keymap.set('n', '<leader>r', '<cmd>Rg<cr>', opts)
 vim.keymap.set('n', '<leader>m', '<cmd>Maps<cr>', opts)
 vim.keymap.set('n', '<leader>t', '<cmd>NvimTreeFocus<cr>', opts)
+

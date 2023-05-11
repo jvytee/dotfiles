@@ -22,6 +22,7 @@ module.setup = function()
       'nix',
       'python',
       'rust',
+      'scheme',
       'toml',
       'typescript',
       'tsx',
