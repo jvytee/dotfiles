@@ -9,15 +9,19 @@ module.setup = function()
       end
     },
     mapping = cmp.mapping.preset.insert {
-      ['<cr>'] = cmp.mapping.confirm { select = true }
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<cr>'] = cmp.mapping.confirm { select = true },
     },
-    sources = {
+    sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'nvim_lua' },
       { name = 'vsnip' },
+    },
+    {
       { name = 'path' },
       { name = 'buffer' },
-    },
+    }),
   }
 end
 
