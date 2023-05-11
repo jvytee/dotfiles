@@ -162,7 +162,7 @@
   fonts.fonts = with pkgs; [
     cantarell-fonts
     font-awesome
-    jetbrains-mono
+    iosevka
     noto-fonts
     source-code-pro
   ];
@@ -171,6 +171,8 @@
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
     # mtr.enable = true;
+
+    gnome-terminal.enable = true;
 
     gnupg.agent.enable = true;
 
@@ -222,7 +224,7 @@
   services = {
     emacs = {
       defaultEditor = false;
-      enable = false;
+      enable = true;
     };
 
     pipewire = {
