@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      <nixos-hardware/lenovo/thinkpad/t460s>
+      <nixos-hardware/lenovo/thinkpad/t460>
       ./hardware-configuration.nix
     ];
 
@@ -54,10 +54,6 @@
     hostName = "klapprechner"; # Define your hostname.
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-    hosts = {
-      "192.168.39.231" = [ "minikube.local" ];
-    };
-
     networkmanager = {
       enable = true;
       wifi.powersave = true;
@@ -80,7 +76,7 @@
   };
 
   # Enable sound.
-  #sound.enable = false;
+  # sound.enable = false;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -121,7 +117,6 @@
 
     systemPackages = with pkgs; [
       adwaita-qt
-      alacritty
       bat
       borgbackup
       coreutils
@@ -149,13 +144,13 @@
       starship
       stow
       tdesktop
-      texlive.combined.scheme-full
+      # texlive.combined.scheme-full
       tig
       virt-manager
       vlc
-      wineWowPackages.stableFull
+      # wineWowPackages.stableFull
       wireguard-tools
-      zotero
+      # zotero
     ];
   };
 
@@ -277,7 +272,6 @@
   };
 
   virtualisation = {
-    containers.registries.insecure = ["minikube.local:30005"];
     libvirtd.enable = true;
     podman.enable = true;
   };
