@@ -75,31 +75,6 @@
                                       "__" "~~" "~~>" "~>" "~-" "~@" "$>" "^=" "]#"))
   (global-ligature-mode t))
 
-; (use-package lsp-haskell
-;   :after lsp-mode)
-; 
-; (use-package lsp-ivy
-;   :bind ("C-c s" . lsp-ivy-workspace-symbol)
-;   :commands lsp-ivy-workspace-symbol)
-; 
-; (use-package lsp-mode
-;   :init (setq lsp-keymap-prefix "M-RET")
-;   :hook
-;   (((c++-mode go-mode haskell-mode javascript-mode rust-mode typescript-mode yaml-mode web-mode) . lsp-deferred)
-;    (lsp-mode . lsp-enable-which-key-integration))
-;   :commands (lsp lsp-deferred))
-; 
-; (use-package lsp-pyright
-;   :hook
-;   (python-mode . (lambda ()
-;                    (require 'lsp-pyright)
-;                    (lsp-deferred))))
-; 
-; (use-package lsp-ui
-;   :commands lsp-ui-mode)
-; 
-; (use-package lsp-tailwindcss)
-
 (use-package magit
   :bind ("C-c g" . magit-file-dispatch))
 
