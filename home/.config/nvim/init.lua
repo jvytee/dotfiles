@@ -70,11 +70,8 @@ packer.startup(function()
     run = ':TSUpdate',
   }
   use 'nvim-treesitter/nvim-treesitter-refactor'
-  use 'Olical/conjure'
   use 'wbthomason/packer.nvim'
 end)
-
-vim.g['conjure#filetype#scheme'] = 'conjure.client.guile.socket'
 
 -- Set colorscheme
 vim.cmd [[colorscheme gruvbox]]
