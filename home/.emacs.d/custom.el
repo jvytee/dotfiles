@@ -16,7 +16,7 @@
  '(ivy-mode t)
  '(js-indent-level 2)
  '(package-selected-packages
-   '(eglot ligature geiser-guile web-mode pipenv doom-modeline doom-themes highlight-indent-guides haskell-mode auctex-latexmk auctex rg nginx-mode typescript-mode neotree all-the-icons direnv tree-sitter-langs tree-sitter go-mode rainbow-mode rust-mode dockerfile-mode yaml-mode which-key projectile nix-mode magit flycheck evil counsel company better-defaults use-package))
+   '(markdown-mode meson-mode yasnippet paredit-evil eglot ligature geiser-guile web-mode pipenv doom-modeline doom-themes highlight-indent-guides haskell-mode auctex-latexmk auctex rg nginx-mode typescript-mode neotree all-the-icons direnv tree-sitter-langs tree-sitter go-mode rainbow-mode rust-mode dockerfile-mode yaml-mode which-key projectile nix-mode magit flycheck evil counsel company better-defaults use-package))
  '(server-after-make-frame-hook
    '(doom-modeline-refresh-font-width-cache
      (lambda nil
