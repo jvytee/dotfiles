@@ -62,6 +62,7 @@ module.setup = function()
     'pyright',
     'rust_analyzer',
     'tailwindcss',
+    'terraformls',
     'tsserver',
     'yamlls',
   }
@@ -79,20 +80,6 @@ module.setup = function()
     init_options = { jvm_args = {}, workspace = home .. '/.cache/jdtls/workspace' },
   }
   nvim_lsp.jdtls.setup(jdtls_options)
-
-  local yamlls_options = {
-    capabilities = options.capabilities,
-    flags = options.flags,
-    on_attach = options.on_attach,
-    settings = {
-      yaml = {
-        schemas = {
-          ['https://github.com/yannh/kubernetes-json-schema/raw/master/v1.25.3-standalone/all.json'] = '*.yml'
-        }
-      }
-    }
-  }
-  nvim_lsp.yamlls.setup(yamlls_options)
 end
 
 return module

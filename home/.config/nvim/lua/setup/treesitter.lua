@@ -23,6 +23,7 @@ module.setup = function()
       'python',
       'rust',
       'scheme',
+      'terraform',
       'toml',
       'typescript',
       'tsx',
