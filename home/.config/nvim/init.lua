@@ -62,7 +62,7 @@ packer.startup(function()
   use 'neovim/nvim-lspconfig'
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true},
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   }
   use 'nvim-tree/nvim-tree.lua'
   use {
@@ -107,3 +107,4 @@ vim.keymap.set('n', '<leader>r', '<cmd>Rg<cr>', opts)
 vim.keymap.set('n', '<leader>m', '<cmd>Maps<cr>', opts)
 vim.keymap.set('n', '<leader>t', '<cmd>NvimTreeFocus<cr>', opts)
 
+vim.keymap.set('n', '<localleader>b', '<cmd>!black %<cr>', opts)
