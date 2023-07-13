@@ -35,6 +35,14 @@ vim.api.nvim_create_autocmd('FileType', {
   end
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'structurizr',
+  callback = function()
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.softtabstop = 4
+  end
+})
+
 -- Set leader keys
 vim.g.mapleader = ','
 vim.g.maplocalleader = ' '
@@ -45,6 +53,7 @@ packer.startup(function()
   use 'LnL7/vim-nix'
   use 'cespare/vim-toml'
   use 'ellisonleao/gruvbox.nvim'
+  use 'folke/tokyonight.nvim'
   use 'freitass/todo.txt-vim'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-nvim-lsp'
@@ -58,7 +67,6 @@ packer.startup(function()
   use 'lervag/vimtex'
   use 'lewis6991/gitsigns.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
-  use 'Mofiqul/vscode.nvim'
   use 'neovim/nvim-lspconfig'
   use {
     'nvim-lualine/lualine.nvim',
