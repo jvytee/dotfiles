@@ -21,13 +21,14 @@
   :commands ivy-mode
   :config
   (setq ivy-count-format "(%d/%d) ")
-  (setq ivy-use-virtual-buffers t))
+  (setq ivy-use-virtual-buffers t)
+  :init (ivy-mode t))
 
 (use-package direnv
   :config (direnv-mode))
 
 (use-package display-line-numbers
-  :hook ((conf-mode org-mode markdown-mode prog-mode tex-mode yaml-mode) . display-line-numbers-mode))
+  :hook ((conf-mode org-mode markdown-mode nxml-mode prog-mode tex-mode yaml-mode) . display-line-numbers-mode))
 
 (use-package dockerfile-mode)
 
@@ -38,9 +39,21 @@
   :config
   (load-theme 'doom-gruvbox 1)
   (doom-themes-neotree-config)
-  (doom-themes-org-config))
+  (doom-themes-org-config)
+  (setq doom-themes-neotree-file-icons t))
 
-(use-package eglot)
+(use-package eglot
+  :config
+  (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
+  (define-key eglot-mode-map (kbd "C-c o") 'eglot-code-action-organize-imports)
+  (define-key eglot-mode-map (kbd "C-c h") 'eldoc-box-help-at-point)
+  (define-key eglot-mode-map (kbd "C-c x d") 'xref-find-definitions)
+  (define-key eglot-mode-map (kbd "C-c x r") 'xref-find-references)
+  (define-key eglot-mode-map (kbd "C-c a") 'eglot-code-actions)
+  (define-key eglot-mode-map (kbd "C-c b") 'eglot-format-buffer)
+  :hook ((go-mode python-mode rust-mode typescript-mode yaml-mode) . eglot-ensure))
+
+(use-package eldoc-box)
 
 (use-package evil
   :config (evil-mode 1))
@@ -54,26 +67,28 @@
   :hook (go-mode . (lambda ()
                      (setq tab-width 2))))
 
+(use-package groovy-mode)
+
 (use-package haskell-mode)
 
 (use-package highlight-indent-guides
   :config (highlight-indent-guides-auto-set-faces)
-  :hook ((conf-mode prog-mode yaml-mode) . highlight-indent-guides-mode))
+  :hook ((conf-mode nxml-mode prog-mode yaml-mode) . highlight-indent-guides-mode))
 
-; (use-package ligature
-;   :config
-;   (ligature-set-ligatures 'prog-mode '("-|" "-~" "---" "-<<" "-<" "--" "->" "->>" "-->" "///" "/=" "/=="
-;                                       "/>" "//" "/*" "*>" "***" "*/" "<-" "<<-" "<=>" "<=" "<|" "<||"
-;                                       "<|||" "<|>" "<:" "<>" "<-<" "<<<" "<==" "<<=" "<=<" "<==>" "<-|"
-;                                       "<<" "<~>" "<=|" "<~~" "<~" "<$>" "<$" "<+>" "<+" "</>" "</" "<*"
-;                                       "<*>" "<->" "<!--" ":>" ":<" ":::" "::" ":?" ":?>" ":=" "::=" "=>>"
-;                                       "==>" "=/=" "=!=" "=>" "===" "=:=" "==" "!==" "!!" "!=" ">]" ">:"
-;                                       ">>-" ">>=" ">=>" ">>>" ">-" ">=" "&&&" "&&" "|||>" "||>" "|>" "|]"
-;                                       "|}" "|=>" "|->" "|=" "||-" "|-" "||=" "||" ".." ".?" ".=" ".-" "..<"
-;                                       "..." "+++" "+>" "++" "[||]" "[<" "[|" "{|" "??" "?." "?=" "?:" "##"
-;                                       "###" "####" "#[" "#{" "#=" "#!" "#:" "#_(" "#_" "#?" "#(" ";;" "_|_"
-;                                       "__" "~~" "~~>" "~>" "~-" "~@" "$>" "^=" "]#"))
-;   (global-ligature-mode t))
+(use-package ligature
+  :config
+  (ligature-set-ligatures 'prog-mode '("-|" "-~" "---" "-<<" "-<" "--" "->" "->>" "-->" "///" "/=" "/=="
+                                      "/>" "//" "/*" "*>" "***" "*/" "<-" "<<-" "<=>" "<=" "<|" "<||"
+                                      "<|||" "<|>" "<:" "<>" "<-<" "<<<" "<==" "<<=" "<=<" "<==>" "<-|"
+                                      "<<" "<~>" "<=|" "<~~" "<~" "<$>" "<$" "<+>" "<+" "</>" "</" "<*"
+                                      "<*>" "<->" "<!--" ":>" ":<" ":::" "::" ":?" ":?>" ":=" "::=" "=>>"
+                                      "==>" "=/=" "=!=" "=>" "===" "=:=" "==" "!==" "!!" "!=" ">]" ">:"
+                                      ">>-" ">>=" ">=>" ">>>" ">-" ">=" "&&&" "&&" "|||>" "||>" "|>" "|]"
+                                      "|}" "|=>" "|->" "|=" "||-" "|-" "||=" "||" ".." ".?" ".=" ".-" "..<"
+                                      "..." "+++" "+>" "++" "[||]" "[<" "[|" "{|" "??" "?." "?=" "?:" "##"
+                                      "###" "####" "#[" "#{" "#=" "#!" "#:" "#_(" "#_" "#?" "#(" ";;" "_|_"
+                                      "__" "~~" "~~>" "~>" "~-" "~@" "$>" "^=" "]#"))
+  (global-ligature-mode t))
 
 (use-package magit
   :bind ("C-c g" . magit-file-dispatch))
@@ -83,7 +98,8 @@
 (use-package meson-mode)
 
 (use-package neotree
-  :bind ("C-c t" . neotree-toggle))
+  :bind ("C-c t" . neotree-toggle)
+  :hook (neotree-mode . (lambda () (doom-modeline-mode t))))
 
 (use-package nginx-mode)
 
@@ -91,6 +107,7 @@
   :mode "\\.nix\\'")
 
 (use-package pipenv
+  :config (setq pipenv-executable "~/.local/bin/pipenv")
   :hook (python-mode . pipenv-mode))
 
 (use-package projectile
@@ -114,7 +131,8 @@
 
 (use-package tree-sitter-langs)
 
-(use-package typescript-mode)
+(use-package typescript-mode
+  :config (setq typescript-indent-level 2))
 
 (use-package web-mode)
 
