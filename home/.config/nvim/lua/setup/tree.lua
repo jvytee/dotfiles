@@ -12,7 +12,7 @@ local module = {
             file = false,
             folder = false,
             folder_arrow = false,
-            git = false,
+            git = true,
           }
         }
       }
