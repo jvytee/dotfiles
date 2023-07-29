@@ -61,8 +61,6 @@
 (use-package flycheck
   :hook (after-init . global-flycheck-mode))
 
-(use-package geiser-guile)
-
 (use-package go-mode
   :hook (go-mode . (lambda ()
                      (setq tab-width 2))))
