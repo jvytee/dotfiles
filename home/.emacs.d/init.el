@@ -30,6 +30,10 @@
 (use-package display-line-numbers
   :hook ((conf-mode org-mode markdown-mode nxml-mode prog-mode tex-mode yaml-mode) . display-line-numbers-mode))
 
+(use-package docker
+  :bind ("C-c d" . docker)
+  :config (setq docker-compose-command "docker compose"))
+
 (use-package dockerfile-mode)
 
 (use-package doom-modeline
@@ -44,6 +48,7 @@
 
 (use-package eglot
   :config
+  (add-to-list 'eglot-server-programs '(java-mode . ("~/.local/bin/jdt-language-server")))
   (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
   (define-key eglot-mode-map (kbd "C-c o") 'eglot-code-action-organize-imports)
   (define-key eglot-mode-map (kbd "C-c h") 'eldoc-box-help-at-point)
@@ -51,7 +56,7 @@
   (define-key eglot-mode-map (kbd "C-c x r") 'xref-find-references)
   (define-key eglot-mode-map (kbd "C-c a") 'eglot-code-actions)
   (define-key eglot-mode-map (kbd "C-c b") 'eglot-format-buffer)
-  :hook ((go-mode python-mode rust-mode typescript-mode yaml-mode) . eglot-ensure))
+  :hook ((haskell-mode go-mode java-mode python-mode rust-mode typescript-mode yaml-mode) . eglot-ensure))
 
 (use-package eldoc-box)
 
@@ -61,9 +66,11 @@
 (use-package flycheck
   :hook (after-init . global-flycheck-mode))
 
-(use-package geiser-guile)
+(use-package flymake-markdownlint
+  :hook (markdown-mode . flymake-markdownlint-setup))
 
 (use-package go-mode
+  :config (setq go-command "~/go/bin/go1.20.6")
   :hook (go-mode . (lambda ()
                      (setq tab-width 2))))
 
@@ -93,12 +100,16 @@
 (use-package magit
   :bind ("C-c g" . magit-file-dispatch))
 
-(use-package markdown-mode)
+(use-package markdown-mode
+  :hook
+  (markdown-mode . flyspell-mode)
+  (markdown-mode . flymake-mode))
 
 (use-package meson-mode)
 
 (use-package neotree
   :bind ("C-c t" . neotree-toggle)
+  :config (setq neo-window-fixed-size nil)
   :hook (neotree-mode . (lambda () (doom-modeline-mode t))))
 
 (use-package nginx-mode)
@@ -145,15 +156,20 @@
   :config (yas-global-mode 1))
 
 (defun set-gtk-theme-variant (variant)
+  "Set VARIANT for GTK window decorations under X to either light or dark."
   (let* ((ids (mapcar (lambda (frame) (frame-parameter frame 'outer-window-id)) (frame-list)))
          (cmds (mapcar (lambda (id) (format "xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT \"%s\" -id %s" variant id)) ids)))
     (dolist (cmd cmds) (call-process-shell-command cmd))))
 
-(defun gtk-dark () (interactive)
-       (set-gtk-theme-variant "dark"))
+(defun gtk-dark ()
+  "Set dark GTK window decorations under X."
+  (interactive)
+  (set-gtk-theme-variant "dark"))
 
-(defun gtk-light () (interactive)
-       (set-gtk-theme-variant "light"))
+(defun gtk-light ()
+  "Set light GTK window decorations under X."
+  (interactive)
+  (set-gtk-theme-variant "light"))
 
 (add-hook 'server-after-make-frame-hook (lambda () (set-gtk-theme-variant "dark")))
 
