@@ -59,7 +59,7 @@ module.setup = function()
     'hls',
     'jdtls',
     'nil_ls',
-    'pyright',
+    'pylsp',
     'rust_analyzer',
     'tailwindcss',
     'terraformls',
