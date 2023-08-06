@@ -158,6 +158,7 @@
     cantarell-fonts
     font-awesome
     iosevka
+    jetbrains-mono
     noto-fonts
     source-code-pro
   ];
@@ -218,8 +219,8 @@
 
   services = {
     emacs = {
-      defaultEditor = false;
-      enable = true;
+      install = true;
+      package = pkgs.emacs29-pgtk;
     };
 
     pipewire = {
