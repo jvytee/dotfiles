@@ -53,7 +53,6 @@ packer.startup(function()
   use 'LnL7/vim-nix'
   use 'cespare/vim-toml'
   use 'ellisonleao/gruvbox.nvim'
-  use 'folke/tokyonight.nvim'
   use 'freitass/todo.txt-vim'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-nvim-lsp'
@@ -67,6 +66,7 @@ packer.startup(function()
   use 'lervag/vimtex'
   use 'lewis6991/gitsigns.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
+  use 'navarasu/onedark.nvim'
   use 'neovim/nvim-lspconfig'
   use {
     'nvim-lualine/lualine.nvim',
