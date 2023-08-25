@@ -6,7 +6,9 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<localleader>q', vim.diagnostic.setloclist, opts)
 
-local function on_attach(client, bufnr)
+-- local function on_attach(client, bufnr)
+local function on_attach(ev)
+  bufnr = ev.buf
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
@@ -48,7 +50,6 @@ module.setup = function()
   local options = {
     capabilities = capabilities,
     flags = { debounce_text_changes = 150 },
-    on_attach = on_attach,
   }
 
   local servers = {
@@ -71,15 +72,10 @@ module.setup = function()
     nvim_lsp[server].setup(options)
   end
 
-  local home = vim.env.HOME
-  local jdtls_options = {
-    capabilities = options.capabilities,
-    flags = options.flags,
-    on_attach = options.on_attach,
-    cmd = { 'jdt-language-server', '-configuration', home .. '/.cache/jdtls/config', '-data', home .. '/.cache/jdtls/workspace' },
-    init_options = { jvm_args = {}, workspace = home .. '/.cache/jdtls/workspace' },
-  }
-  nvim_lsp.jdtls.setup(jdtls_options)
+  vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    callback = on_attach,
+  })
 end
 
 return module
