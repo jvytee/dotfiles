@@ -1,6 +1,4 @@
-local module = {}
-
-module.setup = function()
+local config = function()
   local lualine = require('lualine')
   lualine.setup {
     extensions = {
@@ -14,4 +12,6 @@ module.setup = function()
   }
 end
 
-return module
+return {
+	{ "nvim-lualine/lualine.nvim", dependencies = { "kyazdani42/nvim-web-devicons" }, config = config }
+}

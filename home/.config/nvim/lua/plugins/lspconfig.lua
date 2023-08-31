@@ -1,5 +1,3 @@
-local module = {}
-
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<localleader>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -43,7 +41,7 @@ local function on_attach(ev)
   })
 end
 
-module.setup = function()
+local config = function()
   local nvim_lsp = require('lspconfig')
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -78,4 +76,6 @@ module.setup = function()
   })
 end
 
-return module
+return {
+	{ "neovim/nvim-lspconfig", config = config }
+}

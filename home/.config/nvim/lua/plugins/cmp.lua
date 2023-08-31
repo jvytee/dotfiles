@@ -1,6 +1,4 @@
-local module = {}
-
-module.setup = function()
+local config = function()
   local cmp = require('cmp')
   cmp.setup {
     snippet = {
@@ -25,4 +23,11 @@ module.setup = function()
   }
 end
 
-return module
+return {
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-nvim-lua",
+  "hrsh7th/cmp-path",
+  "hrsh7th/cmp-vsnip",
+  { "hrsh7th/nvim-cmp", config = config }
+}

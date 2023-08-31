@@ -32,6 +32,7 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function()
     vim.opt_local.shiftwidth = 4
     vim.opt_local.softtabstop = 4
+    vim.keymap.set('n', '<localleader>b', '<cmd>!black %<cr>', opts)
   end
 })
 
@@ -47,63 +48,20 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.g.mapleader = ','
 vim.g.maplocalleader = ' '
 
--- Specify plugins using packer
-local packer = require('packer')
-packer.startup(function()
-  use 'LnL7/vim-nix'
-  use 'cespare/vim-toml'
-  use 'ellisonleao/gruvbox.nvim'
-  use 'freitass/todo.txt-vim'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-nvim-lua'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/nvim-cmp' 
-  use 'hrsh7th/vim-vsnip'
-  use 'junegunn/fzf'
-  use 'junegunn/fzf.vim'
-  use 'lervag/vimtex'
-  use 'lewis6991/gitsigns.nvim'
-  use 'lukas-reineke/indent-blankline.nvim'
-  use 'navarasu/onedark.nvim'
-  use 'neovim/nvim-lspconfig'
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+-- Bootstrap lazy
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath
   }
-  use 'nvim-tree/nvim-tree.lua'
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-  }
-  use 'nvim-treesitter/nvim-treesitter-refactor'
-  use 'wbthomason/packer.nvim'
-end)
-
--- Set colorscheme
-vim.cmd [[colorscheme gruvbox]]
-
--- Setup autocompletion
-require('setup.cmp').setup()
-
--- Setup gitsigns
-require('gitsigns').setup()
-
--- Setup indent blankline
-require('setup.indent_blankline').setup()
-
--- Setup lualine
-require('setup.lualine').setup()
-
--- Setup LSP client
-require('setup.lspconfig').setup()
-
--- Setup tree
-require('setup.tree').setup()
-
--- Setup treesitter
-require('setup.treesitter').setup()
+end
+vim.opt.rtp:prepend(lazypath)
+require("lazy").setup "plugins"
 
 -- Set keymaps
 local opts = { noremap = true, silent = true }
@@ -115,4 +73,3 @@ vim.keymap.set('n', '<leader>r', '<cmd>Rg<cr>', opts)
 vim.keymap.set('n', '<leader>m', '<cmd>Maps<cr>', opts)
 vim.keymap.set('n', '<leader>t', '<cmd>NvimTreeFocus<cr>', opts)
 
-vim.keymap.set('n', '<localleader>b', '<cmd>!black %<cr>', opts)

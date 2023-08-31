@@ -1,6 +1,4 @@
-local module = {}
-
-module.setup = function()
+local config = function()
   vim.g.vim_json_conceal = 0
 
   local indent_blankline = require('indent_blankline')
@@ -10,4 +8,6 @@ module.setup = function()
   }
 end
 
-return module
+return {
+  { "lukas-reineke/indent-blankline.nvim", config = config }
+}

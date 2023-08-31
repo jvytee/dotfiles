@@ -1,6 +1,8 @@
-local module = {}
+local build = function()
+  require("nvim-treesitter.install").update { with_sync = true }
+end
 
-module.setup = function()
+local config = function()
   local nvim_ts = require('nvim-treesitter.configs')
   nvim_ts.setup {
     ensure_installed = {
@@ -40,4 +42,7 @@ module.setup = function()
   }
 end
 
-return module
+return {
+	{ "nvim-treesitter/nvim-treesitter", build = build, config = config },
+	"nvim-treesitter/nvim-treesitter-refactor"
+}
