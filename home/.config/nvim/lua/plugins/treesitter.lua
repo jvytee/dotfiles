@@ -1,5 +1,6 @@
 local build = function()
-  require("nvim-treesitter.install").update { with_sync = true }
+  local ts_update = require("nvim-treesitter.install").update { with_sync = true }
+  ts_update()
 end
 
 local config = function()
@@ -31,6 +32,7 @@ local config = function()
       'tsx',
       'yaml',
     },
+
     highlight = { enable = true },
     indent = { enable = true },
     refactor = {
