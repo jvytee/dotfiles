@@ -58,7 +58,7 @@ local config = function()
     'hls',
     'jdtls',
     'nil_ls',
-    'pylsp',
+    'pyright',
     'rust_analyzer',
     'tailwindcss',
     'terraformls',
