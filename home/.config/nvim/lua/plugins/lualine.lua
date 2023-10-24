@@ -1,17 +1,17 @@
 local config = function()
-  local lualine = require('lualine')
+  local lualine = require("lualine")
   lualine.setup {
     extensions = {
-      'fzf',
-      'quickfix',
+      "fzf",
+      "quickfix",
     },
     options = {
       icons_enabled = false,
-      theme = 'gruvbox'
+      theme = "gruvbox-material"
     }
   }
 end
 
 return {
-	{ "nvim-lualine/lualine.nvim", dependencies = { "kyazdani42/nvim-web-devicons" }, config = config }
+  { "nvim-lualine/lualine.nvim", dependencies = { "kyazdani42/nvim-web-devicons" }, config = config }
 }
