@@ -1,5 +1,5 @@
 local config_colorscheme = function()
-  vim.cmd "colorscheme gruvbox-material"
+  vim.cmd "colorscheme gruvbox"
 end
 
 return {
@@ -12,5 +12,4 @@ return {
   "junegunn/fzf.vim",
   "lervag/vimtex",
   "lewis6991/gitsigns.nvim",
-  { "sainnhe/gruvbox-material", priority = 60, config = config_colorscheme },
 }
