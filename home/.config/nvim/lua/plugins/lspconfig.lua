@@ -59,6 +59,7 @@ local config = function()
     "jdtls",
     "nil_ls",
     "pylsp",
+    "ruff_lsp",
     "rust_analyzer",
     "tailwindcss",
     "terraformls",
