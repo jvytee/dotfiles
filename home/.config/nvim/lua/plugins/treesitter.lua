@@ -4,33 +4,33 @@ local build = function()
 end
 
 local config = function()
-  local nvim_ts = require('nvim-treesitter.configs')
+  local nvim_ts = require("nvim-treesitter.configs")
   nvim_ts.setup {
     ensure_installed = {
-      'c',
-      'cpp',
-      'css',
-      'go',
-      'gomod',
-      'gosum',
-      'haskell',
-      'html',
-      'java',
-      'javascript',
-      'json',
-      'lua',
-      'markdown',
-      'markdown_inline',
-      'meson',
-      'nix',
-      'python',
-      'rust',
-      'scheme',
-      'terraform',
-      'toml',
-      'typescript',
-      'tsx',
-      'yaml',
+      "c",
+      "cpp",
+      "css",
+      "go",
+      "gomod",
+      "gosum",
+      "haskell",
+      "html",
+      "java",
+      "javascript",
+      "json",
+      "lua",
+      "markdown",
+      "markdown_inline",
+      "meson",
+      "nix",
+      "python",
+      "rust",
+      "scheme",
+      "terraform",
+      "toml",
+      "typescript",
+      "tsx",
+      "yaml",
     },
 
     highlight = { enable = true },
@@ -45,6 +45,6 @@ local config = function()
 end
 
 return {
-	{ "nvim-treesitter/nvim-treesitter", build = build, config = config },
-	"nvim-treesitter/nvim-treesitter-refactor"
+  { "nvim-treesitter/nvim-treesitter", build = build, config = config },
+  "nvim-treesitter/nvim-treesitter-refactor"
 }
