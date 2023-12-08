@@ -42,13 +42,13 @@
 (use-package doom-themes
   :config
   (load-theme 'doom-gruvbox 1)
-  (doom-themes-neotree-config)
   (doom-themes-org-config)
-  (setq doom-themes-neotree-file-icons t))
+  (setq doom-themes-treemacs-theme "doom-colors")
+  (doom-themes-treemacs-config))
 
 (use-package eglot
   :config
-  (add-to-list 'eglot-server-programs '(java-mode . ("~/.local/bin/jdt-language-server")))
+  (add-to-list 'eglot-server-programs '(java-mode . ("~/.local/bin/jdtls")))
   (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
   (define-key eglot-mode-map (kbd "C-c o") 'eglot-code-action-organize-imports)
   (define-key eglot-mode-map (kbd "C-c h") 'eldoc-box-help-at-point)
@@ -107,11 +107,6 @@
 
 (use-package meson-mode)
 
-(use-package neotree
-  :bind ("C-c t" . neotree-toggle)
-  :config (setq neo-window-fixed-size nil)
-  :hook (neotree-mode . (lambda () (doom-modeline-mode t))))
-
 (use-package nginx-mode)
 
 (use-package nix-mode
@@ -141,6 +136,19 @@
   :hook (tree-sitter-after-on . tree-sitter-hl-mode))
 
 (use-package tree-sitter-langs)
+
+(use-package treemacs
+  :defer t
+  :bind ("C-c t" . treemacs))
+
+(use-package treemacs-evil
+  :after (treemacs evil))
+
+(use-package treemacs-projectile
+  :after (treemacs projectile))
+
+(use-package treemacs-magit
+  :after (treemacs magit))
 
 (use-package typescript-mode
   :config (setq typescript-indent-level 2))
