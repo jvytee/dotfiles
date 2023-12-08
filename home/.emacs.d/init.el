@@ -49,19 +49,22 @@
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs '(java-mode . ("~/.local/bin/jdtls")))
-  (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
-  (define-key eglot-mode-map (kbd "C-c o") 'eglot-code-action-organize-imports)
-  (define-key eglot-mode-map (kbd "C-c h") 'eldoc-box-help-at-point)
-  (define-key eglot-mode-map (kbd "C-c x d") 'xref-find-definitions)
-  (define-key eglot-mode-map (kbd "C-c x r") 'xref-find-references)
-  (define-key eglot-mode-map (kbd "C-c a") 'eglot-code-actions)
-  (define-key eglot-mode-map (kbd "C-c b") 'eglot-format-buffer)
+  (evil-define-key 'normal eglot-mode-map (kbd "<leader> r") 'eglot-rename)
+  (evil-define-key 'normal eglot-mode-map (kbd "<leader> o") 'eglot-code-action-organize-imports)
+  (evil-define-key 'normal eglot-mode-map (kbd "<leader> h") 'eldoc-box-help-at-point)
+  (evil-define-key 'normal eglot-mode-map (kbd "<leader> x d") 'xref-find-definitions)
+  (evil-define-key 'normal eglot-mode-map (kbd "<leader> x r") 'xref-find-references)
+  (evil-define-key 'normal eglot-mode-map (kbd "<leader> a") 'eglot-code-actions)
+  (evil-define-key 'normal eglot-mode-map (kbd "<leader> f") 'eglot-format-buffer)
   :hook ((haskell-mode go-mode java-mode python-mode rust-mode typescript-mode yaml-mode) . eglot-ensure))
 
 (use-package eldoc-box)
 
 (use-package evil
-  :config (evil-mode 1))
+  :config
+  (evil-mode 1)
+  (evil-set-leader nil (kbd "C-SPC"))
+  (evil-set-leader 'normal (kbd "SPC")))
 
 (use-package evil-collection
   :config (evil-collection-init 'magit))
