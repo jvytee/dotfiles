@@ -63,6 +63,9 @@
 (use-package evil
   :config (evil-mode 1))
 
+(use-package evil-collection
+  :config (evil-collection-init 'magit))
+
 (use-package flycheck
   :hook (after-init . global-flycheck-mode))
 
