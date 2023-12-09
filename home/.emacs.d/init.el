@@ -49,6 +49,8 @@
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs '(java-mode . ("~/.local/bin/jdt-language-server")))
+  (add-to-list 'eglot-server-programs '((rust-ts-mode rust-mode) .
+                                        ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
   (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
   (define-key eglot-mode-map (kbd "C-c o") 'eglot-code-action-organize-imports)
   (define-key eglot-mode-map (kbd "C-c h") 'eldoc-box-help-at-point)
