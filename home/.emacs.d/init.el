@@ -1,5 +1,5 @@
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
 (require 'use-package-ensure)
@@ -78,7 +78,6 @@
   :hook (markdown-mode . flymake-markdownlint-setup))
 
 (use-package go-mode
-  :config (setq go-command "~/go/bin/go1.20.6")
   :hook (go-mode . (lambda ()
                      (setq tab-width 2))))
 
