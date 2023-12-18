@@ -74,10 +74,15 @@
 (use-package flycheck
   :hook (after-init . global-flycheck-mode))
 
-(use-package flymake-markdownlint
-  :hook (markdown-mode . flymake-markdownlint-setup))
-
 (use-package go-mode
+  :config
+  (let* ((user-home (getenv "HOME"))
+         (go-version "1.21.4")
+         (go-root (concat user-home "/sdk/go" go-version))
+         (sdk-bin (concat go-root "/bin")))
+    (when (file-directory-p go-root)
+      (setenv "GOROOT" go-root)
+      (setq exec-path (append (list "~/go/bin" sdk-bin) exec-path))))
   :hook (go-mode . (lambda ()
                      (setq tab-width 2))))
 
