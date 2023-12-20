@@ -10,6 +10,7 @@ local config = function()
       "c",
       "cpp",
       "css",
+      "dockerfile",
       "go",
       "gomod",
       "gosum",
