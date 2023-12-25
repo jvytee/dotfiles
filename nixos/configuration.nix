@@ -122,9 +122,10 @@
       coreutils
       direnv
       evolution
-      exa
+      eza
       fd
-      (firefox.override { extraNativeMessagingHosts = [ passff-host ]; })
+      # (firefox.override { extraNativeMessagingHosts = [ passff-host ]; })
+      fractal
       fzf
       git
       gnome.gnome-tweaks
@@ -154,7 +155,7 @@
     ];
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     cantarell-fonts
     font-awesome
     iosevka
@@ -167,6 +168,11 @@
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
     # mtr.enable = true;
+
+    firefox = {
+      enable = true;
+      nativeMessagingHosts.packages = [ pkgs.passff-host ];
+    };
 
     gnome-terminal.enable = true;
 
@@ -204,7 +210,6 @@
         "nobeep"
       ];
       shellAliases = {
-        ec = "emacsclient";
         ip = "ip -c";
         ls = "exa";
         vim = "nvim";
