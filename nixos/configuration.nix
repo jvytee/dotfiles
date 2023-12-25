@@ -124,7 +124,6 @@
       evolution
       eza
       fd
-      # (firefox.override { extraNativeMessagingHosts = [ passff-host ]; })
       fractal
       fzf
       git
@@ -138,7 +137,9 @@
       man-pages-posix
       neovim
       nix-direnv
+      nixd
       pass-wayland
+      pinentry-gnome
       powertop
       quodlibet
       ripgrep
@@ -159,7 +160,6 @@
     cantarell-fonts
     font-awesome
     iosevka
-    jetbrains-mono
     noto-fonts
     source-code-pro
   ];
@@ -211,7 +211,7 @@
       ];
       shellAliases = {
         ip = "ip -c";
-        ls = "exa";
+        ls = "eza";
         vim = "nvim";
       };
       syntaxHighlighting.enable = true;
