@@ -168,22 +168,4 @@
 (use-package yasnippet
   :config (yas-global-mode 1))
 
-(defun set-gtk-theme-variant (variant)
-  "Set VARIANT for GTK window decorations under X to either light or dark."
-  (let* ((ids (mapcar (lambda (frame) (frame-parameter frame 'outer-window-id)) (frame-list)))
-         (cmds (mapcar (lambda (id) (format "xprop -f _GTK_THEME_VARIANT 8u -set _GTK_THEME_VARIANT \"%s\" -id %s" variant id)) ids)))
-    (dolist (cmd cmds) (call-process-shell-command cmd))))
-
-(defun gtk-dark ()
-  "Set dark GTK window decorations under X."
-  (interactive)
-  (set-gtk-theme-variant "dark"))
-
-(defun gtk-light ()
-  "Set light GTK window decorations under X."
-  (interactive)
-  (set-gtk-theme-variant "light"))
-
-(add-hook 'server-after-make-frame-hook (lambda () (set-gtk-theme-variant "dark")))
-
 (load custom-file)
