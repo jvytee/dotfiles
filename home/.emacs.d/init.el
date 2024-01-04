@@ -77,7 +77,7 @@
 (use-package go-mode
   :config
   (let* ((user-home (getenv "HOME"))
-         (go-version "1.21.4")
+         (go-version "1.21.5")
          (go-root (concat user-home "/sdk/go" go-version))
          (sdk-bin (concat go-root "/bin")))
     (when (file-directory-p go-root)
