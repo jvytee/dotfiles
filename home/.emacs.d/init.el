@@ -104,6 +104,8 @@
                                        "(*" "*)" "/*" "*/" "[|" "|]" "{|" "|}" "++" "+++" "\\/" "/\\" "|-" "-|" "<!--" "<!---"))
   (global-ligature-mode t))
 
+(use-package lua-mode)
+
 (use-package magit
   :bind ("C-c g" . magit-file-dispatch))
 
