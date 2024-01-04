@@ -150,7 +150,8 @@
   :after (treemacs evil))
 
 (use-package treemacs-projectile
-  :after (treemacs projectile))
+  :after (treemacs projectile)
+  :config (treemacs-project-follow-mode))
 
 (use-package treemacs-magit
   :after (treemacs magit))
