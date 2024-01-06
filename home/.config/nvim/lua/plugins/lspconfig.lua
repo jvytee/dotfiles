@@ -57,7 +57,7 @@ local config = function()
     "gopls",
     "hls",
     "jdtls",
-    "nil_ls",
+    "nixd",
     "pyright",
     "ruff_lsp",
     "rust_analyzer",
