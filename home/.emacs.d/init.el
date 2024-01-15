@@ -135,6 +135,8 @@
 
 (use-package rust-mode)
 
+(use-package terraform-mode)
+
 (use-package tex
   :ensure auctex)
 
