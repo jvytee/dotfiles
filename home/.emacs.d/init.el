@@ -48,9 +48,16 @@
 
 (use-package eglot
   :config
-  (add-to-list 'eglot-server-programs '(java-mode . ("~/.local/bin/jdtls")))
+  (add-to-list 'eglot-server-programs '((java-ts-mode java-mode) . ("~/.local/bin/jdtls")))
   (add-to-list 'eglot-server-programs '((rust-ts-mode rust-mode) .
                                         ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
+  (setq-default eglot-workspace-configuration '(:gopls (:hints (:assignVariableTypes t
+                                                                :compositeLiteralFields t
+                                                                :compositeLiteralTypes t
+                                                                :constantValues t
+                                                                :functionTypeParameters t
+                                                                :parameterName t
+                                                                :rangeVariableTypes t))))
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> r") 'eglot-rename)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> o") 'eglot-code-action-organize-imports)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> h") 'eldoc-box-help-at-point)
@@ -75,16 +82,9 @@
   :hook (after-init . global-flycheck-mode))
 
 (use-package go-mode
-  :config
-  (let* ((user-home (getenv "HOME"))
-         (go-version "1.21.5")
-         (go-root (concat user-home "/sdk/go" go-version))
-         (sdk-bin (concat go-root "/bin")))
-    (when (file-directory-p go-root)
-      (setenv "GOROOT" go-root)
-      (setq exec-path (append (list "~/go/bin" sdk-bin) exec-path))))
-  :hook (go-mode . (lambda ()
-                     (setq tab-width 2))))
+  :hook
+  (before-save . eglot-format-buffer)
+  (go-mode . (lambda () (setq tab-width 2))))
 
 (use-package groovy-mode)
 
