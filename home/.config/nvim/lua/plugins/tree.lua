@@ -11,5 +11,7 @@ local config = function()
 end
 
 return {
-  { "nvim-tree/nvim-tree.lua", config = config }
+  "nvim-tree/nvim-tree.lua",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  config = config
 }
