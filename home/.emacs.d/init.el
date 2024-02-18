@@ -65,7 +65,7 @@
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> x r") 'xref-find-references)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> a") 'eglot-code-actions)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> f") 'eglot-format-buffer)
-  :hook ((haskell-mode go-mode java-mode python-mode rust-mode typescript-mode yaml-mode) . eglot-ensure))
+  :hook ((haskell-mode go-mode java-mode nix-mode python-mode rust-mode terraform-mode typescript-mode yaml-mode) . eglot-ensure))
 
 (use-package eldoc-box)
 
@@ -133,9 +133,12 @@
 (use-package rg
   :config (rg-enable-default-bindings))
 
-(use-package rust-mode)
+(use-package rust-mode
+  :config (setq indent-tabs-mode nil))
 
 (use-package terraform-mode)
+
+(use-package sql-indent)
 
 (use-package tex
   :ensure auctex)
