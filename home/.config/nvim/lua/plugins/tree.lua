@@ -6,7 +6,10 @@ local config = function()
       group_empty = true,
       highlight_git = true,
       highlight_opened_files = "all",
-    }
+    },
+    view = {
+      width = 32,
+    },
   }
 end
 
