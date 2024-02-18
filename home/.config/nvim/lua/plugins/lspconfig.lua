@@ -44,23 +44,22 @@ end
 local config = function()
   local nvim_lsp = require("lspconfig")
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
+  local flags = { debounce_text_changes = 150 }
 
   local options = {
     capabilities = capabilities,
-    flags = { debounce_text_changes = 150 },
+    flags = flags,
   }
 
   local servers = {
     "ansiblels",
     "clangd",
-    "denols",
     "gopls",
     "hls",
     "jdtls",
+    "jedi_language_server",
     "nixd",
-    "pyright",
     "ruff_lsp",
-    "rust_analyzer",
     "tailwindcss",
     "terraformls",
     "tsserver",
@@ -70,6 +69,18 @@ local config = function()
   for _, server in ipairs(servers) do
     nvim_lsp[server].setup(options)
   end
+
+  nvim_lsp.rust_analyzer.setup {
+    capabilities = capabilities,
+    flags = flags,
+    settings = {
+      ["rust-analyzer"] = {
+        check = {
+          command = "clippy",
+        },
+      },
+    },
+  }
 
   vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
