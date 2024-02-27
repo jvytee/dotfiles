@@ -1,5 +1,5 @@
 local config_colorscheme = function()
-  vim.cmd "colorscheme gruvbox"
+  vim.cmd "colorscheme onedark"
 end
 
 return {
@@ -12,4 +12,5 @@ return {
   "junegunn/fzf.vim",
   "lervag/vimtex",
   "lewis6991/gitsigns.nvim",
+  { "navarasu/onedark.nvim", priority = 60, config = config_colorscheme },
 }

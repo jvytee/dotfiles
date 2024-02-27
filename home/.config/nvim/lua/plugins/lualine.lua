@@ -7,7 +7,7 @@ local config = function()
     },
     options = {
       icons_enabled = false,
-      theme = "gruvbox"
+      theme = "onedark"
     }
   }
 end
