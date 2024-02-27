@@ -148,6 +148,7 @@
       tdesktop
       # texlive.combined.scheme-full
       tig
+      tor-browser
       virt-manager
       vlc
       # wineWowPackages.stableFull
@@ -160,6 +161,7 @@
     cantarell-fonts
     font-awesome
     iosevka
+    jetbrains-mono
     noto-fonts
     source-code-pro
   ];
@@ -256,7 +258,8 @@
       configDir = "/home/julian/.config/syncthing";
     };
 
-    tlp.enable = false;
+    power-profiles-daemon.enable = false;
+    tlp.enable = true;
 
     xserver = {
       enable = true;
