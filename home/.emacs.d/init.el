@@ -62,13 +62,16 @@
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> r") 'eglot-rename)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> o") 'eglot-code-action-organize-imports)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> h") 'eldoc-box-help-at-point)
+  (evil-define-key 'normal eglot-mode-map (kbd "<leader> q") 'eldoc-box-quit-frame)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> x d") 'xref-find-definitions)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> x r") 'xref-find-references)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> a") 'eglot-code-actions)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> f") 'eglot-format-buffer)
   :hook ((haskell-mode go-mode java-mode nix-mode python-mode rust-mode terraform-mode typescript-mode yaml-mode) . eglot-ensure))
 
-(use-package eldoc-box)
+(use-package eldoc-box
+  :config (setq eldoc-idle-delay 1.0)
+  :hook (eglot-managed-mode . eldoc-box-hover-mode))
 
 (use-package evil
   :config
