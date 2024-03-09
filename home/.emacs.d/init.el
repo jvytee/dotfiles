@@ -80,7 +80,7 @@
   (evil-set-leader 'normal (kbd "SPC")))
 
 (use-package evil-collection
-  :config (evil-collection-init 'magit))
+  :config (evil-collection-init '(flycheck magit sly xref)))
 
 (use-package flycheck
   :hook (after-init . global-flycheck-mode))
@@ -148,6 +148,10 @@
 
 (use-package rust-mode
   :config (setq indent-tabs-mode nil))
+
+(use-package sly
+  :config
+  (setq inferior-lisp-program "sbcl"))
 
 (use-package terraform-mode)
 
