@@ -118,13 +118,14 @@
     systemPackages = with pkgs; [
       adwaita-qt
       bat
+      calibre
       borgbackup
       coreutils
       direnv
       evolution
       eza
       fd
-      fractal
+      fluffychat
       fzf
       git
       gnome.gnome-tweaks
@@ -136,8 +137,8 @@
       man-pages
       man-pages-posix
       neovim
+      nil
       nix-direnv
-      nixd
       pass-wayland
       pinentry-gnome
       powertop
