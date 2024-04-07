@@ -26,7 +26,6 @@ local config = function()
     "jedi_language_server",
     "nil_ls",
     "ruff_lsp",
-    "tailwindcss",
     "terraformls",
     "tsserver",
     "yamlls",
