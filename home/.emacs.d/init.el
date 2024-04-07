@@ -179,7 +179,8 @@
 (use-package typescript-mode
   :config (setq typescript-indent-level 2))
 
-(use-package web-mode)
+(use-package web-mode
+  :config (setq web-mode-enable-engine-detection t))
 
 (use-package which-key
   :config (which-key-mode 1))
