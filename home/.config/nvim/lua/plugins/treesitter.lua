@@ -16,6 +16,7 @@ local config = function()
       "gosum",
       "haskell",
       "html",
+      "htmldjango",
       "java",
       "javascript",
       "json",
