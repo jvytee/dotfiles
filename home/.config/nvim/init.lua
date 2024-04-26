@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.shiftwidth = 4
     vim.opt_local.softtabstop = 4
-    vim.keymap.set("n", "<localleader>b", "<cmd>!black %<cr>", opts)
+    vim.keymap.set("n", "<localleader>f", "<cmd>!ruff format %<cr>", opts)
   end
 })
 
@@ -73,3 +73,16 @@ vim.keymap.set("n", "<leader>r", "<cmd>Rg<cr>", opts)
 vim.keymap.set("n", "<leader>m", "<cmd>Maps<cr>", opts)
 vim.keymap.set("n", "<leader>t", "<cmd>NvimTreeFocus<cr>", opts)
 
+-- Configure clipboard for WSL
+vim.g.clipboard = {
+  name = "WslClipboard",
+  copy = {
+    ["+"] = "clip.exe",
+    ["*"] = "clip.exe",
+  },
+  paste = {
+    ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  },
+  cache_enabled = 0,
+}

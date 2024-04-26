@@ -1,5 +1,6 @@
 local config_colorscheme = function()
-  vim.cmd "colorscheme onedark"
+  local onedark = require "onedark"
+  onedark.load()
 end
 
 return {
