@@ -11,6 +11,9 @@ local config = function()
       width = 32,
     },
   }
+
+  local opts = require("on_attach").opts
+  vim.keymap.set("n", "<leader>t", "<cmd>NvimTreeFocus<cr>", opts)
 end
 
 return {

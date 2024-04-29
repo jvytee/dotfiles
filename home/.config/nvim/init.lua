@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Set leader keys
-vim.g.mapleader = ","
+vim.g.mapleader = "  "
 vim.g.maplocalleader = " "
 
 -- Bootstrap lazy
@@ -62,16 +62,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup "plugins"
-
--- Set keymaps
-local opts = { noremap = true, silent = true }
-
-vim.keymap.set("n", "<leader>b", "<cmd>Buffers<cr>", opts)
-vim.keymap.set("n", "<leader>f", "<cmd>FZF<cr>", opts)
-vim.keymap.set("n", "<leader>g", "<cmd>GitFiles<cr>", opts)
-vim.keymap.set("n", "<leader>r", "<cmd>Rg<cr>", opts)
-vim.keymap.set("n", "<leader>m", "<cmd>Maps<cr>", opts)
-vim.keymap.set("n", "<leader>t", "<cmd>NvimTreeFocus<cr>", opts)
 
 -- Configure clipboard for WSL
 vim.g.clipboard = {
