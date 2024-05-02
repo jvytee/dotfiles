@@ -24,7 +24,16 @@ bindkey "$terminfo[kdch1]" delete-char
 bindkey "$terminfo[khome]" beginning-of-line
 bindkey "$terminfo[kend]" end-of-line
 
-source $(fzf-share)/completion.zsh
-source $(fzf-share)/key-bindings.zsh
+export PATH=~/.local/bin:$PATH
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/fzf/completion.zsh
+source ~/.zsh/fzf/key-bindings.zsh
+
+eval "$(starship init zsh)"
+
+alias bat=batcat
+alias ls=exa
+alias ip="ip -c"
 
 alias backup='borg create --progress --compression lz4 /run/media/julian/57f1c76f-de35-4d2c-9d0e-0581d3245c20/backup::$(date +%F) Bilder/ Dokumente/ Musik/ code/ Sync/ .gnupg/ .ssh/ .password-store/ Downloads/musik Downloads/dokumente Downloads/bilder'
