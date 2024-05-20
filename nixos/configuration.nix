@@ -60,6 +60,7 @@
     };
 
     wireguard.enable = true;
+
     firewall.checkReversePath = false;
     firewall.enable = true;
     # The global useDHCP flag is deprecated, therefore explicitly set to false here.
@@ -108,24 +109,25 @@
     };
 
     # Environment variables
-    sessionVariables = {
-      MOZ_ENABLE_WAYLAND = "1";
-      MOZ_USE_XINPUT2 = "1";
-      QT_QPA_PLATFORM = "wayland";
-    };
+    # sessionVariables = {
+    #   MOZ_ENABLE_WAYLAND = "1";
+    #   MOZ_USE_XINPUT2 = "1";
+    #   QT_QPA_PLATFORM = "wayland";
+    # };
 
 
     systemPackages = with pkgs; [
-      adwaita-qt
       bat
       calibre
+      chromium
       borgbackup
       coreutils
       direnv
       evolution
       eza
       fd
-      fluffychat
+      foot
+      fractal
       fzf
       git
       gnome.gnome-tweaks
@@ -136,6 +138,7 @@
       libreoffice
       man-pages
       man-pages-posix
+      markdownlint-cli
       neovim
       nil
       nix-direnv
@@ -144,17 +147,15 @@
       powertop
       quodlibet
       ripgrep
+      signal-desktop
       starship
       stow
       tdesktop
-      # texlive.combined.scheme-full
       tig
-      tor-browser
       virt-manager
       vlc
       # wineWowPackages.stableFull
       wireguard-tools
-      # zotero
     ];
   };
 
@@ -162,7 +163,6 @@
     cantarell-fonts
     font-awesome
     iosevka
-    jetbrains-mono
     noto-fonts
     source-code-pro
   ];
@@ -215,7 +215,6 @@
       shellAliases = {
         ip = "ip -c";
         ls = "eza";
-        vim = "nvim";
       };
       syntaxHighlighting.enable = true;
     };
@@ -230,6 +229,9 @@
       install = true;
       package = pkgs.emacs29-pgtk;
     };
+
+    # Enable the OpenSSH daemon.
+    # openssh.enable = true;
 
     pipewire = {
       enable = true;
@@ -249,8 +251,7 @@
       brgenml1cupswrapper
     ];
 
-    # Enable the OpenSSH daemon.
-    # openssh.enable = true;
+    resolved.enable = true;
 
     syncthing = {
       enable = true;
@@ -258,9 +259,6 @@
       dataDir = "/home/julian";
       configDir = "/home/julian/.config/syncthing";
     };
-
-    power-profiles-daemon.enable = false;
-    tlp.enable = true;
 
     xserver = {
       enable = true;
