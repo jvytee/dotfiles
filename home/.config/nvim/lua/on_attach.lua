@@ -22,6 +22,7 @@ local function attach_fn(ev)
     vim.lsp.buf.format { async = true }
   end, bufopts)
 
+  vim.lsp.inlay_hint.enable(true)
   vim.api.nvim_create_autocmd("CursorHold", {
     buffer = bufnr,
     callback = function()

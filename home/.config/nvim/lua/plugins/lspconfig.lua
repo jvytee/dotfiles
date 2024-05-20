@@ -2,7 +2,14 @@ local on_attach = require "on_attach"
 local opts = on_attach.opts
 local attach_fn = on_attach.attach_fn
 
-vim.keymap.set("n", "<localleader>e", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "<localleader>e", function()
+  vim.diagnostic.open_float(nil, {
+    focusable = false,
+    close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+    source = "always",
+    scope = "cursor",
+  })
+end, opts)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 vim.keymap.set("n", "<localleader>q", vim.diagnostic.setloclist, opts)
