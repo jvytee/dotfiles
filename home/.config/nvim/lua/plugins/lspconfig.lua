@@ -1,21 +1,10 @@
-local on_attach = require "on_attach"
-local opts = on_attach.opts
-local attach_fn = on_attach.attach_fn
-
-vim.keymap.set("n", "<localleader>e", function()
-  vim.diagnostic.open_float(nil, {
-    focusable = false,
-    close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-    source = "always",
-    scope = "cursor",
-  })
-end, opts)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-vim.keymap.set("n", "<localleader>q", vim.diagnostic.setloclist, opts)
-
 local config = function()
-  local nvim_lsp = require("lspconfig")
+  local nvim_lsp = require "lspconfig"
+
+  local on_attach = require "on_attach"
+  local opts = on_attach.opts
+  local attach_fn = on_attach.attach_fn
+
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
   local flags = { debounce_text_changes = 150 }
 
@@ -42,6 +31,24 @@ local config = function()
     nvim_lsp[server].setup(options)
   end
 
+  nvim_lsp.gopls.setup {
+    capabilities = capabilities,
+    flags = flags,
+    settings = {
+      ["gopls"] = {
+        hints = {
+          assignVariableTypes = true,
+          compositeLiteralFields = true,
+          compositeLiteralTypes = true,
+          constantValues = true,
+          functionTypeParameters = true,
+          parameterNames = true,
+          rangeVariableTypes = true,
+        }
+      },
+    },
+  }
+
   nvim_lsp.rust_analyzer.setup {
     capabilities = capabilities,
     flags = flags,
@@ -61,5 +68,6 @@ local config = function()
 end
 
 return {
-  { "neovim/nvim-lspconfig", config = config }
+  "neovim/nvim-lspconfig",
+  config = config,
 }
