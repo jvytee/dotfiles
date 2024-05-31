@@ -29,11 +29,11 @@ bindkey "$terminfo[kdch1]" delete-char
 
 # Extensions
 function source-if-exists { [[ -f $1 ]] && source $1 }
-source-if-exists /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source-if-exists /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source-if-exists /usr/share/doc/fzf/examples/key-bindings.zsh
-source-if-exists /usr/share/doc/fzf/examples/completion.zsh
-source-if-exists /etc/zsh_command_not_found
+source-if-exists ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source-if-exists ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source-if-exists ~/.zsh/fzf/key-bindings.zsh
+source-if-exists ~/.zsh/fzf/completion.zsh
+source-if-exists ~/.zsh/zsh-command-not-found/zsh_command_not_found
 
 # Custom aliases
 alias bat=batcat
@@ -58,15 +58,16 @@ alias backup="borg create \
   projects/"
 
 # Environment variables
-export PATH=~/.local/bin:~/go/bin:~/sdk/go1.22.2/bin:~/.elan/bin:$PATH
+export PATH=~/.local/bin:~/go/bin:~/.elan/bin:$PATH
 export PIPENV_SHELL=/usr/bin/zsh
 export WORKON_HOME=~/.local/share/virtualenvs
 
 # Custom tool setup
 eval "$(direnv hook zsh)"
-eval "$(docker completion zsh)"
 eval "$(starship init zsh)"
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/terraform terraform
-source /etc/bash_completion.d/azure-cli
+# Work tools setup
+# eval "$(docker completion zsh)"
+# autoload -U +X bashcompinit && bashcompinit
+# complete -o nospace -C /usr/bin/terraform terraform
+# source /etc/bash_completion.d/azure-cli
