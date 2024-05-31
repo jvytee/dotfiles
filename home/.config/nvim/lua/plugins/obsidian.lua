@@ -1,5 +1,5 @@
 local init = function()
-  vim.opt.conceallevel = 1
+  vim.opt.conceallevel = 2
 end
 
 return {
