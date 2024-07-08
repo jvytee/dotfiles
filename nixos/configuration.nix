@@ -87,7 +87,6 @@
     description = "Julian";
     extraGroups = [
       "audio"
-      "libvirtd"
       "lp"
       "lpadmin"
       "networkmanager"
@@ -126,7 +125,6 @@
       evolution
       eza
       fd
-      foot
       fractal
       fzf
       git
@@ -135,6 +133,7 @@
       gnupg
       htop
       jq
+      lazygit
       libreoffice
       man-pages
       man-pages-posix
@@ -143,7 +142,7 @@
       nil
       nix-direnv
       pass-wayland
-      pinentry-gnome
+      pinentry-gnome3
       powertop
       quodlibet
       ripgrep
@@ -151,8 +150,6 @@
       starship
       stow
       tdesktop
-      tig
-      virt-manager
       vlc
       # wineWowPackages.stableFull
       wireguard-tools
@@ -163,6 +160,7 @@
     cantarell-fonts
     font-awesome
     iosevka
+    jetbrains-mono
     noto-fonts
     source-code-pro
   ];
@@ -230,6 +228,9 @@
       package = pkgs.emacs29-pgtk;
     };
 
+    # Enable touchpad support (enabled default in most desktopManager).
+    libinput.enable = true;
+
     # Enable the OpenSSH daemon.
     # openssh.enable = true;
 
@@ -264,25 +265,21 @@
       enable = true;
 
       # Configure keymap in X11
-      layout = "de";
-      xkbOptions = "caps:swapescape";
+      xkb = {
+        layout = "de";
+        options = "caps:swapescape";
+      };
 
       # Enable the GNOME 3 Desktop Environment.
       displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;
-
-      # Enable touchpad support (enabled default in most desktopManager).
-      libinput.enable = true;
 
       # Add drivers for displaylink USB graphics
       videoDrivers = [ "displaylink" ];
     };
   };
 
-  virtualisation = {
-    libvirtd.enable = true;
-    podman.enable = true;
-  };
+  virtualisation.podman.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
