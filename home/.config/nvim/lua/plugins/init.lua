@@ -10,5 +10,4 @@ return {
   "freitass/todo.txt-vim",
   "hrsh7th/vim-vsnip",
   "lervag/vimtex",
-  "lewis6991/gitsigns.nvim",
 }
