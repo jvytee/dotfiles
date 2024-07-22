@@ -2,7 +2,6 @@ local config = function()
   local lualine = require("lualine")
   lualine.setup {
     extensions = {
-      "fzf",
       "quickfix",
     },
     options = {
