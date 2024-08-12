@@ -7,8 +7,6 @@
  '(column-number-mode t)
  '(css-indent-offset 2)
  '(default-frame-alist '((horizontal-scroll-bars) (vertical-scroll-bars)))
- '(eldoc-echo-area-prefer-doc-buffer t)
- '(eldoc-idle-delay 1.0)
  '(font-use-system-font t)
  '(inhibit-startup-screen t)
  '(ispell-dictionary nil)

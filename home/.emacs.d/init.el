@@ -61,26 +61,28 @@
                                                                 :rangeVariableTypes t))))
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> r") 'eglot-rename)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> o") 'eglot-code-action-organize-imports)
-  ;; (evil-define-key 'normal eglot-mode-map (kbd "<leader> h") 'eldoc-box-help-at-point)
-  ;; (evil-define-key 'normal eglot-mode-map (kbd "<leader> q") 'eldoc-box-quit-frame)
-  (evil-define-key 'normal eglot-mode-map (kbd "<leader> h") 'eldoc)
+  (evil-define-key 'normal eglot-mode-map (kbd "<leader> h") 'eldoc-box-help-at-point)
+  (evil-define-key 'normal eglot-mode-map (kbd "<leader> q") 'eldoc-box-quit-frame)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> x d") 'xref-find-definitions)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> x r") 'xref-find-references)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> a") 'eglot-code-actions)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> f") 'eglot-format-buffer)
   :hook ((haskell-mode go-mode java-mode nix-mode python-mode rust-mode terraform-mode typescript-mode yaml-mode) . eglot-ensure))
 
-;; (use-package eldoc-box
-;;   :config (setq eldoc-idle-delay 1.0)
-;;   :hook (eglot-managed-mode . eldoc-box-hover-mode))
+(use-package eldoc-box
+  :config
+  (setq eldoc-echo-area-prefer-doc-buffer t)
+  (setq eldoc-idle-delay 1.0))
 
 (use-package evil
   :config
   (evil-mode 1)
   (evil-set-leader nil (kbd "C-SPC"))
-  (evil-set-leader 'normal (kbd "SPC")))
+  (evil-set-leader 'normal (kbd "SPC"))
+  :init (setq evil-want-keybinding nil))
 
 (use-package evil-collection
+  :after evil
   :config (evil-collection-init '(flycheck magit xref)))
 
 (use-package flycheck
@@ -108,17 +110,10 @@
 
 (use-package ligature
   :config
-  (ligature-set-ligatures 'prog-mode '("-|" "-~" "---" "-<<" "-<" "--" "->" "->>" "-->" "///" "/=" "/=="
-                                       "/>" "//" "/*" "*>" "***" "*/" "<-" "<<-" "<=>" "<=" "<|" "<||"
-                                       "<|||" "<|>" "<:" "<>" "<-<" "<<<" "<==" "<<=" "<=<" "<==>" "<-|"
-                                       "<<" "<~>" "<=|" "<~~" "<~" "<$>" "<$" "<+>" "<+" "</>" "</" "<*"
-                                       "<*>" "<->" "<!--" ":>" ":<" ":::" "::" ":?" ":?>" ":=" "::=" "=>>"
-                                       "==>" "=/=" "=!=" "=>" "===" "=:=" "==" "!==" "!!" "!=" ">]" ">:"
-                                       ">>-" ">>=" ">=>" ">>>" ">-" ">=" "&&&" "&&" "|||>" "||>" "|>" "|]"
-                                       "|}" "|=>" "|->" "|=" "||-" "|-" "||=" "||" ".." ".?" ".=" ".-" "..<"
-                                       "..." "+++" "+>" "++" "[||]" "[<" "[|" "{|" "??" "?." "?=" "?:" "##"
-                                       "###" "####" "#[" "#{" "#=" "#!" "#:" "#_(" "#_" "#?" "#(" ";;" "_|_"
-                                       "__" "~~" "~~>" "~>" "~-" "~@" "$>" "^=" "]#"))
+  (ligature-set-ligatures 'prog-mode '("<---" "<--"  "<<-" "<-" "->" "-->" "--->" "<->" "<-->" "<--->" "<---->" "<!--"
+                                       "<==" "<===" "<=" "=>" "=>>" "==>" "===>" ">=" "<=>" "<==>" "<===>" "<====>" "<!---"
+                                       "<~~" "<~" "~>" "~~>" "::" ":::" "==" "!=" "===" "!=="
+                                       ":=" ":-" ":+" "<*" "<*>" "*>" "<|" "<|>" "|>" "+:" "-:" "=:" "<******>" "++" "+++"))
   (global-ligature-mode t))
 
 (use-package lua-mode)
