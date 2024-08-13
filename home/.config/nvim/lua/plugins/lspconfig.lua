@@ -21,7 +21,7 @@ local config = function()
     "jdtls",
     "jedi_language_server",
     "nil_ls",
-    "ruff_lsp",
+    "ruff",
     "terraformls",
     "tsserver",
     "yamlls",
