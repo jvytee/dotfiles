@@ -69,10 +69,7 @@
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> f") 'eglot-format-buffer)
   :hook ((haskell-mode go-mode java-mode nix-mode python-mode rust-mode terraform-mode typescript-mode yaml-mode) . eglot-ensure))
 
-(use-package eldoc-box
-  :config
-  (setq eldoc-echo-area-prefer-doc-buffer t)
-  (setq eldoc-idle-delay 1.0))
+(use-package eldoc-box)
 
 (use-package evil
   :config

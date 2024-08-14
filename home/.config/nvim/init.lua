@@ -15,32 +15,22 @@ vim.opt.updatetime = 1000
 
 -- Configure indentation
 vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
 vim.opt.tabstop = 8
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "go",
   callback = function()
     vim.opt_local.expandtab = false
-    vim.opt_local.tabstop = 2
+    vim.opt_local.tabstop = 4
   end
 })
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "python,groovy",
   callback = function()
-    vim.opt_local.shiftwidth = 4
-    vim.opt_local.softtabstop = 4
     vim.keymap.set("n", "<localleader>f", "<cmd>!ruff format %<cr>", opts)
-  end
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "structurizr",
-  callback = function()
-    vim.opt_local.shiftwidth = 4
-    vim.opt_local.softtabstop = 4
   end
 })
 
