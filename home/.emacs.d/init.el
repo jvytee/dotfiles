@@ -51,6 +51,7 @@
   (add-to-list 'eglot-server-programs '((java-ts-mode java-mode) . ("~/.local/bin/jdtls")))
   (add-to-list 'eglot-server-programs '((rust-ts-mode rust-mode) .
                                         ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
+  (add-to-list 'eglot-server-programs '((yaml-ts-mode yaml-mode) . ("/usr/bin/ansible-language-server" "--stdio")))
   (setq-default eglot-workspace-configuration '(:gopls (:hints (:assignVariableTypes t
                                                                 :compositeLiteralFields t
                                                                 :compositeLiteralTypes t
