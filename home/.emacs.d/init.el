@@ -76,11 +76,13 @@
   (evil-mode 1)
   (evil-set-leader nil (kbd "C-SPC"))
   (evil-set-leader 'normal (kbd "SPC"))
-  :init (setq evil-want-keybinding nil))
+  :init
+  (setq evil-want-keybinding nil)
+  (setq evil-want-C-u-scroll t))
 
 (use-package evil-collection
   :after evil
-  :config (evil-collection-init '(flycheck magit xref)))
+  :config (evil-collection-init '(flycheck info magit xref)))
 
 (use-package flycheck
   :hook (after-init . global-flycheck-mode))
