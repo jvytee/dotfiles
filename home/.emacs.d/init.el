@@ -128,6 +128,15 @@
 (use-package nix-mode
   :mode "\\.nix\\'")
 
+(use-package obsidian
+  :config
+  (obsidian-specify-path "~/notes")
+  (global-obsidian-mode t)
+  :bind (:map obsidian-mode
+              ("C-c C-o" . obsidian-follow-link-at-point)
+              ("C-c C-b" . obsidian-backlink-jump)
+              ("C-c C-l" . obsidian-insert-wikilink)))
+
 (use-package pipenv
   :config (setq pipenv-executable "~/.local/bin/pipenv")
   :hook (python-mode . pipenv-mode))
