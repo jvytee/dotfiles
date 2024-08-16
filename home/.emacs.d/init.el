@@ -92,9 +92,7 @@
   :config (global-flycheck-eglot-mode 1))
 
 (use-package go-mode
-  :hook
-  (before-save . eglot-format-buffer)
-  (go-mode . (lambda () (setq tab-width 2))))
+  :hook (before-save . eglot-format-buffer))
 
 (use-package groovy-mode)
 
