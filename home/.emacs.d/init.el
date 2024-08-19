@@ -48,7 +48,6 @@
 (use-package eglot
   :config
   (setq eglot-events-buffer-size 0)
-  (add-to-list 'eglot-ignored-server-capabilities :hoverProvider)
   (add-to-list 'eglot-server-programs '((rust-ts-mode rust-mode) .
                                         ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
   (add-to-list 'eglot-server-programs '((yaml-ts-mode yaml-mode) . ("/usr/bin/ansible-language-server" "--stdio")))
@@ -69,7 +68,10 @@
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> f") 'eglot-format-buffer)
   :hook ((haskell-mode go-mode java-mode nix-mode python-mode rust-mode terraform-mode typescript-mode yaml-mode) . eglot-ensure))
 
-(use-package eldoc-box)
+(use-package eldoc-box
+  :config
+  (setq eldoc-echo-area-prefer-doc-buffer t)
+  (setq eldoc-echo-area-use-multiline-p nil))
 
 (use-package evil
   :config
