@@ -146,6 +146,9 @@
   :bind-keymap ("C-c p" . projectile-command-map)
   :config (projectile-mode +1))
 
+(use-package python-mode
+  :config (setq flycheck-eglot-exclusive nil))
+
 (use-package rainbow-mode)
 
 (use-package rg
