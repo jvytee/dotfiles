@@ -159,9 +159,11 @@
 (use-package rust-mode
   :config (setq indent-tabs-mode nil))
 
-(use-package terraform-mode)
+(use-package sicp)
 
 (use-package sql-indent)
+
+(use-package terraform-mode)
 
 (use-package tex
   :ensure auctex)
