@@ -27,7 +27,7 @@
   :config (direnv-mode))
 
 (use-package display-line-numbers
-  :hook ((conf-mode org-mode markdown-mode nxml-mode prog-mode tex-mode yaml-mode) . display-line-numbers-mode))
+  :hook ((conf-mode LaTeX-mode org-mode markdown-mode nxml-mode prog-mode yaml-mode) . display-line-numbers-mode))
 
 (use-package docker
   :bind ("C-c d" . docker)
