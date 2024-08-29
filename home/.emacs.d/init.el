@@ -191,6 +191,8 @@
 (use-package typescript-mode
   :config (setq typescript-indent-level 2))
 
+(use-package vterm)
+
 (use-package web-mode
   :config (setq web-mode-enable-engine-detection t))
 
