@@ -23,7 +23,7 @@ local config = function()
     "nil_ls",
     "ruff",
     "terraformls",
-    "tsserver",
+    "ts_ls",
     "yamlls",
   }
 
