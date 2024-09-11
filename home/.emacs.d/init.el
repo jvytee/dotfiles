@@ -40,7 +40,7 @@
 
 (use-package doom-themes
   :config
-  (load-theme 'leuven 1)
+  (load-theme (if (display-graphic-p) 'leuven 'doom-tokyo-night) 1)
   (doom-themes-org-config)
   (setq doom-themes-treemacs-theme "doom-colors")
   (doom-themes-treemacs-config))
