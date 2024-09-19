@@ -40,7 +40,9 @@
 
 (use-package doom-themes
   :config
-  (load-theme (if (display-graphic-p) 'leuven 'doom-tokyo-night) 1)
+  (let ((terminal-theme 'doom-tokyo-night)
+        (window-theme 'leuven))
+    (load-theme (if (display-graphic-p) window-theme terminal-theme) 1))
   (doom-themes-org-config)
   (setq doom-themes-treemacs-theme "doom-colors")
   (doom-themes-treemacs-config))
@@ -50,7 +52,7 @@
   (setq eglot-events-buffer-size 0)
   (add-to-list 'eglot-server-programs '((rust-ts-mode rust-mode) .
                                         ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
-  (add-to-list 'eglot-server-programs '((yaml-ts-mode yaml-mode) . ("/usr/bin/ansible-language-server" "--stdio")))
+  ;; (add-to-list 'eglot-server-programs '((yaml-ts-mode yaml-mode) . ("/usr/bin/ansible-language-server" "--stdio")))
   (setq-default eglot-workspace-configuration '(:gopls (:hints (:assignVariableTypes t
                                                                 :compositeLiteralFields t
                                                                 :compositeLiteralTypes t
