@@ -6,7 +6,7 @@ local config = function()
     },
     options = {
       icons_enabled = false,
-      theme = "tokyonight"
+      theme = "gruvbox"
     }
   }
 end

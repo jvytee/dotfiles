@@ -40,8 +40,8 @@
 
 (use-package doom-themes
   :config
-  (let ((terminal-theme 'doom-tokyo-night)
-        (window-theme 'leuven))
+  (let ((terminal-theme 'doom-gruvbox)
+        (window-theme 'doom-gruvbox))
     (load-theme (if (display-graphic-p) window-theme terminal-theme) 1))
   (doom-themes-org-config)
   (setq doom-themes-treemacs-theme "doom-colors")
