@@ -95,6 +95,8 @@
   :after (flycheck eglot)
   :config (global-flycheck-eglot-mode 1))
 
+(use-package geiser-guile)
+
 (use-package go-mode
   :hook (before-save . eglot-format-buffer))
 
@@ -179,11 +181,11 @@
 (use-package tex
   :ensure auctex)
 
-(use-package tree-sitter
-  :config (global-tree-sitter-mode)
-  :hook (tree-sitter-after-on . tree-sitter-hl-mode))
+;; (use-package tree-sitter
+;;   :config (global-tree-sitter-mode)
+;;   :hook (tree-sitter-after-on . tree-sitter-hl-mode))
 
-(use-package tree-sitter-langs)
+;; (use-package tree-sitter-langs)
 
 (use-package treemacs
   :defer t
