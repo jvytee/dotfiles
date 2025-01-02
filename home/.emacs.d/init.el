@@ -40,9 +40,15 @@
 
 (use-package doom-themes
   :config
-  (let ((terminal-theme 'doom-gruvbox)
-        (window-theme 'doom-gruvbox))
-    (load-theme (if (display-graphic-p) window-theme terminal-theme) 1))
+  (let ((dark-theme 'doom-gruvbox)
+        (light-theme 'leuven)
+        (gtk-theme (getenv "GTK_THEME")))
+    (load-theme (if (and (display-graphic-p)
+                         (not (and gtk-theme
+                                   (string-match-p "dark" gtk-theme))))
+                    light-theme
+                  dark-theme)
+                1))
   (doom-themes-org-config)
   (setq doom-themes-treemacs-theme "doom-colors")
   (doom-themes-treemacs-config))
@@ -54,12 +60,12 @@
                                         ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
   ;; (add-to-list 'eglot-server-programs '((yaml-ts-mode yaml-mode) . ("/usr/bin/ansible-language-server" "--stdio")))
   (setq-default eglot-workspace-configuration '(:gopls (:hints (:assignVariableTypes t
-                                                                :compositeLiteralFields t
-                                                                :compositeLiteralTypes t
-                                                                :constantValues t
-                                                                :functionTypeParameters t
-                                                                :parameterName t
-                                                                :rangeVariableTypes t))))
+                                                                                     :compositeLiteralFields t
+                                                                                     :compositeLiteralTypes t
+                                                                                     :constantValues t
+                                                                                     :functionTypeParameters t
+                                                                                     :parameterName t
+                                                                                     :rangeVariableTypes t))))
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> r") 'eglot-rename)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> o") 'eglot-code-action-organize-imports)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> h") 'eldoc-box-help-at-point)
@@ -170,6 +176,7 @@
   :config (rg-enable-default-bindings))
 
 (use-package rust-mode
+  :init (setq rust-mode-treesitter-derive t)
   :config (setq indent-tabs-mode nil))
 
 (use-package sicp)
