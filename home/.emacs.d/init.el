@@ -214,7 +214,8 @@
 (use-package vterm)
 
 (use-package web-mode
-  :config (setq web-mode-enable-engine-detection t))
+  :config (setq web-mode-engines-alist '(("django" . "\\.html\\'")))
+  :mode (("\\.html?\\'" . web-mode)))
 
 (use-package which-key
   :config (which-key-mode 1))
