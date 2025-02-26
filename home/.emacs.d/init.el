@@ -153,13 +153,17 @@
   :mode "\\.nix\\'")
 
 (use-package obsidian
-  :config
-  (obsidian-specify-path "~/notes")
-  (global-obsidian-mode t)
-  :bind (:map obsidian-mode
-              ("C-c C-o" . obsidian-follow-link-at-point)
-              ("C-c C-b" . obsidian-backlink-jump)
-              ("C-c C-l" . obsidian-insert-wikilink)))
+ :demand t
+ :config
+ (global-obsidian-mode t)
+ :bind
+ (:map obsidian-mode
+       ("C-c C-o" . obsidian-follow-link-at-point)
+       ("C-c C-b" . obsidian-backlink-jump)
+       ("C-c C-l" . obsidian-insert-wikilink))
+ :custom
+ (obsidian-directory "~/Sync/Second Brain")
+ (obsidian-daily-notes-directory "00 Daily"))
 
 (use-package pipenv
   :config (setq pipenv-executable "~/.local/bin/pipenv")
