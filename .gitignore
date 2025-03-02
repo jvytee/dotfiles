@@ -1,2 +1,5 @@
 home/.config/sway/wallpaper.jpg
 .envrc
+home/.emacs.d/
+!home/.emacs.d/init.el
+!home/.emacs.d/custom.el
