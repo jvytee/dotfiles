@@ -186,12 +186,6 @@
 (use-package tex
   :ensure auctex)
 
-;; (use-package tree-sitter
-;;   :config (global-tree-sitter-mode)
-;;   :hook (tree-sitter-after-on . tree-sitter-hl-mode))
-
-;; (use-package tree-sitter-langs)
-
 (use-package treemacs
   :defer t
   :bind ("C-c t" . treemacs))
