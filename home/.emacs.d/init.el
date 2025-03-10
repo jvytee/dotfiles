@@ -86,7 +86,7 @@
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> x r") 'xref-find-references)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> a") 'eglot-code-actions)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> f") 'eglot-format-buffer)
-  :hook ((haskell-mode go-mode java-mode nix-mode python-mode rust-mode terraform-mode typescript-mode yaml-mode) . eglot-ensure))
+  :hook ((haskell-mode go-mode java-mode javascript-mode nix-mode python-mode rust-mode terraform-mode typescript-mode yaml-mode) . eglot-ensure))
 
 (use-package eldoc-box
   :config
