@@ -128,7 +128,7 @@
 (use-package highlight-indent-guides
   :config
   (highlight-indent-guides-auto-set-faces)
-  (setq highlight-indent-guides-method 'bitmap)
+  (setq highlight-indent-guides-method (if (display-graphic-p) 'bitmap 'character))
   (setq highlight-indent-guides-responsive 'top)
   :hook ((conf-mode nxml-mode prog-mode yaml-mode) . highlight-indent-guides-mode))
 
