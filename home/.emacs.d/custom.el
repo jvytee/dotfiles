@@ -9,6 +9,8 @@
  '(inhibit-startup-screen t)
  '(ispell-dictionary "en_GB")
  '(nxml-slash-auto-complete-flag t)
+ '(org-agenda-files (directory-files-recursively org-directory ".org$"))
+ '(org-directory "~/notes")
  '(package-selected-packages
    '(gcmh-mode gcmh geiser-guile vterm sicp python-mode obsidian
                flycheck-eglot sql-indent terraform-mode lua-mode
