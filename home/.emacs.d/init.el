@@ -216,4 +216,8 @@
 (use-package yasnippet
   :config (yas-global-mode 1))
 
+(defun find-agenda-files (root)
+  (let ((subdirs '("00 Daily" "01 Projects" "02 Areas" "03 Resources")))
+    (mapcan (lambda (subdir) (directory-files-recursively (concat root "/" subdir) ".org$")) subdirs)))
+
 (load custom-file)
