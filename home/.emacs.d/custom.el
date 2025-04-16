@@ -10,6 +10,7 @@
  '(ispell-dictionary "en_GB")
  '(nxml-slash-auto-complete-flag t)
  '(org-agenda-files (find-agenda-files org-directory))
+ '(org-babel-load-languages '((emacs-lisp . t) (python . t) (scheme . t)))
  '(org-directory "~/notes")
  '(package-selected-packages
    '(all-the-icons auctex auctex-latexmk better-defaults company counsel
