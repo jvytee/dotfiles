@@ -42,23 +42,30 @@ alias ls=exa
 
 alias backup="borg create \
   --progress \
-  --compression lz4 \
-  /run/media/julian/57f1c76f-de35-4d2c-9d0e-0581d3245c20/backup::$(date +%F) \
+  ssh://u430241-sub2@u430241-sub2.your-storagebox.de:23/./backup::$(date +%F) \
   .gnupg/ \
   .password-store/ \
   .ssh/ \
   Bilder/ \
   Dokumente/ \
-  Downloads/bilder \
-  Downloads/dokumente \
-  Downloads/musik \
+  Downloads/ \
   Musik/ \
   Sync/ \
   code/ \
   projects/"
 
+alias backup-sina="borg create \
+  --progress \
+  ssh://u430241-sub2@u430241-sub2.your-storagebox.de:23/./backup-sina::$(date +%F) \
+  Bilder/ \
+  Dokumente/ \
+  Downloads/ \
+  Musik/ \
+  Videos/"
+
 # Environment variables
-export PATH=~/.local/bin:~/go/bin:~/.elan/bin:$PATH
+export EDITOR=~/.local/bin/nvim
+export PATH=~/.local/bin:~/go/bin:$PATH
 export PIPENV_SHELL=/usr/bin/zsh
 export WORKON_HOME=~/.local/share/virtualenvs
 
