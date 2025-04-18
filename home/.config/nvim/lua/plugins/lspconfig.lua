@@ -22,18 +22,17 @@ local config = function()
         "jedi_language_server",
         "nil_ls",
         "ruff",
+        "rust_analyzer",
         "terraformls",
         "ts_ls",
         "yamlls",
     }
 
     for _, server in ipairs(servers) do
-        nvim_lsp[server].setup(options)
+        vim.lsp.enable(server)
     end
 
-    nvim_lsp.gopls.setup {
-        capabilities = capabilities,
-        flags = flags,
+    vim.lsp.config("gopls", {
         settings = {
             ["gopls"] = {
                 hints = {
@@ -47,11 +46,9 @@ local config = function()
                 }
             },
         },
-    }
+    })
 
-    nvim_lsp.rust_analyzer.setup {
-        capabilities = capabilities,
-        flags = flags,
+    vim.lsp.config("rust_analyzer", {
         settings = {
             ["rust-analyzer"] = {
                 check = {
@@ -59,7 +56,7 @@ local config = function()
                 },
             },
         },
-    }
+    })
 
     vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),

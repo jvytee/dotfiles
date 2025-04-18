@@ -5,6 +5,11 @@ local function attach_fn(ev)
     local bufnr = ev.buf
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
+    -- local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    -- if client:supports_method("textDocument/completion") then
+    --     vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+    -- end
+
     vim.keymap.set("n", "<localleader>e", function()
         vim.diagnostic.open_float(nil, {
             focusable = false,
