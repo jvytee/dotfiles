@@ -187,7 +187,8 @@
 
 (use-package treemacs
   :defer t
-  :bind ("C-c t" . treemacs))
+  :bind ("C-c t" . treemacs)
+  :config (setq treemacs-indent-guide-mode 1))
 
 (use-package treemacs-evil
   :after (treemacs evil))
