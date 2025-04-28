@@ -61,23 +61,23 @@
                     dark-theme
                   light-theme)
                 1))
-  (doom-themes-org-config)
   (setq doom-themes-treemacs-theme "doom-colors")
-  (doom-themes-treemacs-config))
+  (doom-themes-treemacs-config)
+  (doom-themes-org-config))
 
 (use-package eglot
   :config
   (setq eglot-events-buffer-size 0)
   (add-to-list 'eglot-server-programs '((rust-ts-mode rust-mode) .
                                         ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
-  ;; (add-to-list 'eglot-server-programs '((yaml-ts-mode yaml-mode) . ("/usr/bin/ansible-language-server" "--stdio")))
+  (add-to-list 'eglot-server-programs '((yaml-ts-mode yaml-mode) . ("/usr/bin/ansible-language-server" "--stdio")))
   (setq-default eglot-workspace-configuration '(:gopls (:hints (:assignVariableTypes t
-                                                                                     :compositeLiteralFields t
-                                                                                     :compositeLiteralTypes t
-                                                                                     :constantValues t
-                                                                                     :functionTypeParameters t
-                                                                                     :parameterName t
-                                                                                     :rangeVariableTypes t))))
+                                                                :compositeLiteralFields t
+                                                                :compositeLiteralTypes t
+                                                                :constantValues t
+                                                                :functionTypeParameters t
+                                                                :parameterName t
+                                                                :rangeVariableTypes t))))
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> r") 'eglot-rename)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> o") 'eglot-code-action-organize-imports)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> h") 'eldoc-box-help-at-point)
