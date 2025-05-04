@@ -55,8 +55,8 @@
 
 (use-package doom-themes
   :config
-  (let ((dark-theme 'modus-vivendi)
-        (light-theme 'modus-operandi-tinted))
+  (let ((dark-theme 'doom-gruvbox)
+        (light-theme 'leuven))
     (load-theme (if (dark-theme-p)
                     dark-theme
                   light-theme)

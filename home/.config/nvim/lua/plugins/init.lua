@@ -1,5 +1,5 @@
 local config_colorscheme = function()
-    vim.cmd "colorscheme modus"
+    vim.cmd "colorscheme gruvbox"
 end
 
 return {
