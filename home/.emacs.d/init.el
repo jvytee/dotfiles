@@ -125,6 +125,18 @@
 
 (use-package haskell-mode)
 
+(use-package helpful
+  :config
+  (setq counsel-describe-function-function #'helpful-callable)
+  (setq counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ("C-h f" . helpful-callable)
+  ("C-h v" . helpful-variable)
+  ("C-h k" . helpful-key)
+  ("C-h x" . helpful-command)
+  ("C-c C-d" . helpful-at-point)
+  ("C-h F" . helpful-function))
+
 (use-package highlight-indent-guides
   :config
   (highlight-indent-guides-auto-set-faces)
@@ -154,6 +166,9 @@
 
 (use-package nix-mode
   :mode "\\.nix\\'")
+
+(use-package ob-mermaid
+  :config (setq ob-mermaid-cli-path "/usr/bin/mmdc"))
 
 (use-package pipenv
   :config (setq pipenv-executable "~/.local/bin/pipenv")

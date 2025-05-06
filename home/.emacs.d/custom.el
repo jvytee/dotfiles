@@ -17,12 +17,12 @@
                    direnv docker dockerfile-mode doom-modeline
                    doom-themes eglot eldoc-box evil evil-collection
                    flycheck flycheck-eglot gcmh gcmh-mode geiser-guile
-                   go-mode groovy-mode haskell-mode
+                   go-mode groovy-mode haskell-mode helpful
                    highlight-indent-guides ligature lua-mode magit
                    markdown-mode meson-mode nginx-mode nix-mode
-                   paredit-evil pipenv projectile python-mode
-                   rainbow-mode rg rust-mode sicp sql-indent
-                   terraform-mode treemacs treemacs-evil
+                   ob-mermaid paredit-evil pipenv projectile
+                   python-mode rainbow-mode rg rust-mode sicp
+                   sql-indent terraform-mode treemacs treemacs-evil
                    treemacs-magit treemacs-projectile typescript-mode
                    use-package vterm web-mode which-key yaml-mode
                    yasnippet))
