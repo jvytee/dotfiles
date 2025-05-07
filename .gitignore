@@ -1,5 +1,13 @@
-home/.config/sway/wallpaper.jpg
 .envrc
+
+home/.config/
+!home/.config/bat/
+!home/.config/i3status/
+!home/.config/mako/
+!home/.config/nvim/
+!home/.config/sway/
+!home/.config/youtube-dl
+
 home/.emacs.d/
 !home/.emacs.d/init.el
 !home/.emacs.d/custom.el
