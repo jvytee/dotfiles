@@ -4,12 +4,13 @@ local function attach_fn(ev)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
     vim.keymap.set("n", "<localleader>e", function()
-        vim.diagnostic.open_float(nil, {
-            focusable = false,
+        vim.diagnostic.open_float {
+            border = "rounded",
             close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-            source = "always",
+            focusable = false,
             scope = "cursor",
-        })
+            source = "always",
+        }
     end, bufopts)
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
