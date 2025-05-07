@@ -1,22 +1,18 @@
-local on_attach = require "on_attach"
-
 return {
-  {
-    "Julian/lean.nvim",
-    event = { "BufReadPre *.lean", "BufNewFile *.lean" },
+    {
+        "Julian/lean.nvim",
+        event = { "BufReadPre *.lean", "BufNewFile *.lean" },
 
-    dependencies = {
-      "neovim/nvim-lspconfig",
-      "nvim-lua/plenary.nvim",
-      -- you also will likely want nvim-cmp or some completion engine
-    },
+        dependencies = {
+            "neovim/nvim-lspconfig",
+            "nvim-lua/plenary.nvim",
+            "hrsh7th/nvim-cmp",
+            "nvim-telescope/telescope.nvim",
+        },
 
-    -- see details below for full configuration options
-    opts = {
-      lsp = {
-        on_attach = on_attach.attach_fn,
-      },
-      mappings = true,
+        -- see details below for full configuration options
+        opts = {
+            mappings = true,
+        }
     }
-  }
 }

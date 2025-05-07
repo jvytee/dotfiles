@@ -12,8 +12,7 @@ local config = function()
         },
     }
 
-    local opts = require("on_attach").opts
-    vim.keymap.set("n", "<leader>t", "<cmd>NvimTreeFocus<cr>", opts)
+    vim.keymap.set("n", "<leader>t", "<cmd>NvimTreeFocus<cr>", { noremap = true, silent = true })
 end
 
 return {
