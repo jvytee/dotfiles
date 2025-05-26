@@ -9,7 +9,6 @@ return {
             { name = "Notes", path = "~/Sync/Notes" },
             { name = "Second Brain", path = "~/Sync/Second Brain" },
         },
-        daily_notes = { folder = "Daily" },
         daily_notes = { folder = "00 Daily" },
         completion = { nvim_cmp = true, min_chars = 2 },
         disable_frontmatter = true,
