@@ -27,6 +27,10 @@ bindkey "$terminfo[khome]" beginning-of-line
 bindkey "$terminfo[kend]" end-of-line
 bindkey "$terminfo[kdch1]" delete-char
 
+# Set window title
+function set_window_title() { echo -ne "\033]0;$(basename $PWD)\007" }
+precmd_functions+=(set_window_title)
+
 # Extensions
 function source-if-exists { [[ -f $1 ]] && source $1 }
 source-if-exists ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
