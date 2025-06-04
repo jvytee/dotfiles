@@ -53,14 +53,6 @@ local function attach_fn(ev)
 end
 
 local config = function()
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
-    local flags = { debounce_text_changes = 150 }
-
-    local options = {
-        capabilities = capabilities,
-        flags = flags,
-    }
-
     local servers = {
         "ansiblels",
         "clangd",
@@ -81,7 +73,7 @@ local config = function()
     end
 
     vim.lsp.config("*", {
-        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+        capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), require("cmp_nvim_lsp").default_capabilities()),
         flags = { debounce_text_changes = 150 },
     })
 
