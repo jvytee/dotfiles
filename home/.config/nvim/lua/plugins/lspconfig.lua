@@ -42,10 +42,11 @@ local function attach_fn(ev)
         buffer = bufnr,
         callback = function()
             local opts = {
-                focusable = false,
+                border = "rounded",
                 close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-                source = "always",
+                focusable = false,
                 scope = "cursor",
+                source = "always",
             }
             vim.diagnostic.open_float(nil, opts)
         end
