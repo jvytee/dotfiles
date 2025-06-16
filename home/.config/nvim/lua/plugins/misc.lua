@@ -1,5 +1,5 @@
 local config_colorscheme = function()
-    vim.cmd "colorscheme gruvbox"
+    require("onedark").load()
 end
 
 return {
@@ -8,4 +8,5 @@ return {
     { "ellisonleao/gruvbox.nvim", priority = 1000, config = config_colorscheme },
     "lervag/vimtex",
     "mfussenegger/nvim-ansible",
+    { "navarasu/onedark.nvim", priority = 1000, config = config_colorscheme },
 }
