@@ -1,5 +1,5 @@
 local config_colorscheme = function()
-    vim.cmd "colorscheme tokyonight"
+    vim.cmd "colorscheme tokyonight-night"
 end
 
 return {
