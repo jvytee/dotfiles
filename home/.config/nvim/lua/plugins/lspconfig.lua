@@ -65,6 +65,7 @@ local config = function()
         "ruff",
         "rust_analyzer",
         "terraformls",
+        "tinymist",
         "ts_ls",
         "yamlls",
     }

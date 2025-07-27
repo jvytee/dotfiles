@@ -37,6 +37,7 @@ local config = function()
             "terraform",
             "toml",
             "typescript",
+            "typst",
             "tsx",
             "xml",
             "yaml",
