@@ -1,5 +1,5 @@
 -- Set general options
-vim.opt.autochdir = true
+-- vim.opt.autochdir = true
 vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
