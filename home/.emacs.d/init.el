@@ -96,7 +96,6 @@
 (use-package evil
   :config
   (evil-mode 1)
-  (evil-set-leader nil (kbd "C-SPC"))
   (evil-set-leader 'normal (kbd "SPC"))
   :init
   (setq evil-want-keybinding nil)

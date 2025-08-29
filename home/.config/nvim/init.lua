@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "python,groovy",
+    pattern = "python",
     callback = function()
         vim.keymap.set("n", "<localleader>f", "<cmd>!ruff format %<cr>", opts)
     end
