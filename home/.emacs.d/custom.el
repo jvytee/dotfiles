@@ -22,10 +22,10 @@
                    markdown-mode meson-mode nginx-mode nix-mode
                    ob-mermaid paredit-evil pipenv projectile
                    python-mode rainbow-mode rg rust-mode sicp
-                   sql-indent terraform-mode treemacs treemacs-evil
-                   treemacs-magit treemacs-projectile typescript-mode
-                   use-package vterm web-mode which-key yaml-mode
-                   yasnippet))
+                   spacemacs-theme sql-indent terraform-mode treemacs
+                   treemacs-evil treemacs-magit treemacs-projectile
+                   typescript-mode use-package vterm web-mode
+                   which-key yaml-mode yasnippet))
  '(pixel-scroll-precision-mode t)
  '(tab-width 4)
  '(tool-bar-mode nil)

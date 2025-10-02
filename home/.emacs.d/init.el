@@ -55,8 +55,8 @@
 
 (use-package doom-themes
   :config
-  (let ((dark-theme 'doom-gruvbox)
-        (light-theme 'leuven))
+  (let ((dark-theme 'spacemacs-dark)
+        (light-theme 'spacemacs-light))
     (load-theme (if (dark-theme-p)
                     dark-theme
                   light-theme)
@@ -191,6 +191,8 @@
   :config (setq indent-tabs-mode nil))
 
 (use-package sicp)
+
+(use-package spacemacs-theme)
 
 (use-package sql-indent)
 
