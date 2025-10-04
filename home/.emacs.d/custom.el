@@ -19,11 +19,12 @@
                    groovy-mode haskell-mode helpful
                    highlight-indent-guides ligature lua-mode
                    markdown-mode meson-mode nginx-mode nix-mode
-                   ob-mermaid pipenv python-mode rainbow-mode rg
-                   rust-mode sicp spacemacs-theme sql-indent
-                   terraform-mode treemacs-evil treemacs-magit
-                   treemacs-projectile typescript-mode vterm web-mode
-                   yaml-mode yasnippet))
+                   ob-mermaid paredit-evil pipenv projectile
+                   python-mode rainbow-mode rg rust-mode sicp
+                   spacemacs-theme sql-indent terraform-mode treemacs
+                   treemacs-evil treemacs-magit treemacs-projectile
+                   typescript-mode use-package vterm web-mode
+                   which-key yaml-mode yasnippet))
  '(pixel-scroll-precision-mode t)
  '(tab-width 4)
  '(tool-bar-mode nil)
