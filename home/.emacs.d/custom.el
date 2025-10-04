@@ -13,19 +13,17 @@
  '(org-babel-load-languages '((emacs-lisp . t) (python . t) (scheme . t)))
  '(org-directory "~/notes")
  '(package-selected-packages
-   '(all-the-icons auctex auctex-latexmk better-defaults company counsel
-                   direnv docker dockerfile-mode doom-modeline
-                   doom-themes eglot eldoc-box evil evil-collection
-                   flycheck flycheck-eglot gcmh gcmh-mode geiser-guile
-                   go-mode groovy-mode haskell-mode helpful
-                   highlight-indent-guides ligature lua-mode magit
+   '(all-the-icons auctex-latexmk better-defaults company counsel direnv
+                   docker dockerfile-mode doom-modeline doom-themes
+                   eldoc-box evil-collection gcmh geiser-guile go-mode
+                   groovy-mode haskell-mode helpful
+                   highlight-indent-guides ligature lua-mode
                    markdown-mode meson-mode nginx-mode nix-mode
-                   ob-mermaid paredit-evil pipenv projectile
-                   python-mode rainbow-mode rg rust-mode sicp
-                   sql-indent terraform-mode treemacs treemacs-evil
-                   treemacs-magit treemacs-projectile typescript-mode
-                   use-package vterm web-mode which-key yaml-mode
-                   yasnippet))
+                   ob-mermaid pipenv python-mode rainbow-mode rg
+                   rust-mode sicp spacemacs-theme sql-indent
+                   terraform-mode treemacs-evil treemacs-magit
+                   treemacs-projectile typescript-mode vterm web-mode
+                   yaml-mode yasnippet))
  '(pixel-scroll-precision-mode t)
  '(tab-width 4)
  '(tool-bar-mode nil)

@@ -55,8 +55,8 @@
 
 (use-package doom-themes
   :config
-  (let ((dark-theme 'doom-gruvbox)
-        (light-theme 'leuven))
+  (let ((dark-theme 'spacemacs-dark)
+        (light-theme 'spacemacs-light))
     (load-theme (if (dark-theme-p)
                     dark-theme
                   light-theme)
@@ -67,7 +67,7 @@
 
 (use-package eglot
   :config
-  (setq eglot-events-buffer-size 0)
+  (setq eglot-events-buffer-config '(:size 0 :format full))
   (add-to-list 'eglot-server-programs '((rust-ts-mode rust-mode) .
                                         ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
   (add-to-list 'eglot-server-programs '((yaml-ts-mode yaml-mode) . ("/usr/bin/ansible-language-server" "--stdio")))
@@ -103,14 +103,7 @@
 
 (use-package evil-collection
   :after evil
-  :config (evil-collection-init '(flycheck info magit xref)))
-
-(use-package flycheck
-  :hook (after-init . global-flycheck-mode))
-
-(use-package flycheck-eglot
-  :after (flycheck eglot)
-  :config (global-flycheck-eglot-mode 1))
+  :config (evil-collection-init '(info magit xref)))
 
 (use-package gcmh
   :config (gcmh-mode 1))
@@ -178,8 +171,7 @@
   :bind-keymap ("C-c p" . projectile-command-map)
   :config (projectile-mode +1))
 
-(use-package python-mode
-  :config (setq flycheck-eglot-exclusive nil))
+(use-package python-mode)
 
 (use-package rainbow-mode)
 
@@ -191,6 +183,8 @@
   :config (setq indent-tabs-mode nil))
 
 (use-package sicp)
+
+(use-package spacemacs-theme)
 
 (use-package sql-indent)
 
