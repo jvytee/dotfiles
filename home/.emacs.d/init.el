@@ -162,6 +162,21 @@
 (use-package ob-mermaid
   :config (setq ob-mermaid-cli-path "/usr/bin/mmdc"))
 
+(use-package obsidian
+  :config
+  (global-obsidian-mode t)
+  (obsidian-backlinks-mode t)
+  :custom
+  (obsidian-directory "~/Sync/Second Brain")
+  (obsidian-inbox-directory "00 Daily")
+  (markdown-enable-wiki-links t)
+  :bind (:map obsidian-mode-map
+              ("C-c C-n" . obsidian-capture)
+              ("C-c C-l" . obsidian-insert-wikilink)
+              ("C-c C-o" . obsidian-follow-link-at-point)
+              ("C-c C-p" . obsidian-jump)
+              ("C-c C-b" . obsidian-backlink-jump)))
+
 (use-package pipenv
   :config (setq pipenv-executable "~/.local/bin/pipenv")
   :hook (python-mode . pipenv-mode))

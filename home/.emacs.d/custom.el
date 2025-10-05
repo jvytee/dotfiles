@@ -19,7 +19,7 @@
                    groovy-mode haskell-mode helpful
                    highlight-indent-guides ligature lua-mode
                    markdown-mode meson-mode nginx-mode nix-mode
-                   ob-mermaid paredit-evil pipenv projectile
+                   ob-mermaid obsidian paredit-evil pipenv projectile
                    python-mode rainbow-mode rg rust-mode sicp
                    spacemacs-theme sql-indent terraform-mode treemacs
                    treemacs-evil treemacs-magit treemacs-projectile
