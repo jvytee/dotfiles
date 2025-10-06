@@ -18,13 +18,12 @@
                    eldoc-box evil-collection gcmh geiser-guile go-mode
                    groovy-mode haskell-mode helpful
                    highlight-indent-guides ligature lua-mode
-                   markdown-mode meson-mode nginx-mode nix-mode
-                   ob-mermaid obsidian paredit-evil pipenv projectile
-                   python-mode rainbow-mode rg rust-mode sicp
-                   spacemacs-theme sql-indent terraform-mode treemacs
+                   meson-mode nginx-mode nix-mode ob-mermaid obsidian
+                   pipenv rainbow-mode rg rust-mode sicp
+                   spacemacs-theme sql-indent terraform-mode
                    treemacs-evil treemacs-magit treemacs-projectile
-                   typescript-mode vterm web-mode
-                   which-key yaml-mode yasnippet))
+                   typescript-mode vterm web-mode which-key yaml-mode
+                   yasnippet))
  '(pixel-scroll-precision-mode t)
  '(tab-width 4)
  '(tool-bar-mode nil)

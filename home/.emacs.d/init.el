@@ -150,6 +150,7 @@
   :bind ("C-c g" . magit-file-dispatch))
 
 (use-package markdown-mode
+  :config (setq markdown-hide-urls t)
   :hook (markdown-mode . flyspell-mode))
 
 (use-package meson-mode)
@@ -185,8 +186,6 @@
   :bind ("C-c f" . projectile-find-file)
   :bind-keymap ("C-c p" . projectile-command-map)
   :config (projectile-mode +1))
-
-(use-package python-mode)
 
 (use-package rainbow-mode)
 
