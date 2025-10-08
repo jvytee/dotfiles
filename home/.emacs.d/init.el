@@ -70,7 +70,6 @@
   (setq eglot-events-buffer-config '(:size 0 :format full))
   (add-to-list 'eglot-server-programs '((rust-ts-mode rust-mode) .
                                         ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
-  ; (add-to-list 'eglot-server-programs '((yaml-ts-mode yaml-mode) . ("/usr/bin/ansible-language-server" "--stdio")))
   (setq-default eglot-workspace-configuration '(:gopls (:hints (:assignVariableTypes t
                                                                 :compositeLiteralFields t
                                                                 :compositeLiteralTypes t
@@ -110,7 +109,8 @@
   (evil-set-leader 'normal (kbd "SPC"))
   :init
   (setq evil-want-keybinding nil)
-  (setq evil-want-C-u-scroll t))
+  (setq evil-want-C-u-scroll t)
+  :bind ("C-c C-u" . universal-argument))
 
 (use-package evil-collection
   :after evil
