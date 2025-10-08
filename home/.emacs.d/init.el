@@ -70,7 +70,7 @@
   (setq eglot-events-buffer-config '(:size 0 :format full))
   (add-to-list 'eglot-server-programs '((rust-ts-mode rust-mode) .
                                         ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
-  (add-to-list 'eglot-server-programs '((yaml-ts-mode yaml-mode) . ("/usr/bin/ansible-language-server" "--stdio")))
+  ; (add-to-list 'eglot-server-programs '((yaml-ts-mode yaml-mode) . ("/usr/bin/ansible-language-server" "--stdio")))
   (setq-default eglot-workspace-configuration '(:gopls (:hints (:assignVariableTypes t
                                                                 :compositeLiteralFields t
                                                                 :compositeLiteralTypes t
@@ -86,7 +86,18 @@
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> x r") 'xref-find-references)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> a") 'eglot-code-actions)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> f") 'eglot-format-buffer)
-  :hook ((haskell-mode go-mode java-mode javascript-mode nix-mode python-mode rust-mode terraform-mode typescript-mode web-mode yaml-mode) . eglot-ensure))
+  :hook
+  ((haskell-mode
+    go-mode
+    java-mode
+    javascript-mode
+    nix-mode
+    python-mode
+    rust-mode
+    terraform-mode
+    typescript-mode
+    web-mode
+    yaml-mode) . eglot-ensure))
 
 (use-package eldoc-box
   :config
@@ -103,7 +114,7 @@
 
 (use-package evil-collection
   :after evil
-  :config (evil-collection-init '(info magit xref)))
+  :config (evil-collection-init))
 
 (use-package gcmh
   :config (gcmh-mode 1))
@@ -181,6 +192,8 @@
 (use-package pipenv
   :config (setq pipenv-executable "~/.local/bin/pipenv")
   :hook (python-mode . pipenv-mode))
+
+(use-package poly-ansible)
 
 (use-package projectile
   :bind ("C-c f" . projectile-find-file)
