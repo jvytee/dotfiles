@@ -20,7 +20,7 @@
                    highlight-indent-guides ligature lua-mode
                    meson-mode nginx-mode nix-mode ob-mermaid obsidian
                    pipenv poly-ansible rainbow-mode rg rust-mode sicp
-                   spacemacs-theme sql-indent terraform-mode
+                   sql-indent terraform-mode
                    treemacs-evil treemacs-magit treemacs-projectile
                    typescript-mode vterm web-mode which-key yaml-mode
                    yasnippet))

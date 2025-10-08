@@ -55,8 +55,8 @@
 
 (use-package doom-themes
   :config
-  (let ((dark-theme 'spacemacs-dark)
-        (light-theme 'spacemacs-light))
+  (let ((dark-theme 'doom-gruvbox)
+        (light-theme 'leuven))
     (load-theme (if (dark-theme-p)
                     dark-theme
                   light-theme)
@@ -66,6 +66,7 @@
   (doom-themes-org-config))
 
 (use-package eglot
+  :after evil
   :config
   (setq eglot-events-buffer-config '(:size 0 :format full))
   (add-to-list 'eglot-server-programs '((rust-ts-mode rust-mode) .
@@ -86,8 +87,8 @@
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> a") 'eglot-code-actions)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> f") 'eglot-format-buffer)
   :hook
-  ((haskell-mode
-    go-mode
+  ((go-mode
+    haskell-mode
     java-mode
     javascript-mode
     nix-mode
@@ -104,13 +105,12 @@
   (setq eldoc-echo-area-use-multiline-p nil))
 
 (use-package evil
-  :config
-  (evil-mode 1)
-  (evil-set-leader 'normal (kbd "SPC"))
   :init
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
-  :bind ("C-c C-u" . universal-argument))
+  :config
+  (evil-mode 1)
+  (evil-set-leader 'normal (kbd "SPC")))
 
 (use-package evil-collection
   :after evil
@@ -179,7 +179,7 @@
   (global-obsidian-mode t)
   (obsidian-backlinks-mode t)
   :custom
-  (obsidian-directory "~/Sync/Second Brain")
+  (obsidian-directory "~/notes")
   (obsidian-inbox-directory "00 Daily")
   (markdown-enable-wiki-links t)
   :bind (:map obsidian-mode-map
@@ -210,8 +210,6 @@
   :config (setq indent-tabs-mode nil))
 
 (use-package sicp)
-
-(use-package spacemacs-theme)
 
 (use-package sql-indent)
 
