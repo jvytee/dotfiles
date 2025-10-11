@@ -1,183 +1,147 @@
 # Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# your system. Help is available in the configuration.nix(5) man page, on
+# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      <nixos-hardware/lenovo/thinkpad/t460>
-      ./hardware-configuration.nix
-    ];
-
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    <nixos-hardware/lenovo/thinkpad/t460>
   ];
-
-  nixpkgs.config.allowUnfree = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.luks.devices.cryptlvm-nixos.device = "/dev/disk/by-uuid/4ea3800a-a562-44d4-8ccc-ca788e5ed942";
-  boot.supportedFilesystems = [ "ntfs" ];
+
+  hardware.enableRedistributableFirmware = true;
+  nixpkgs.config.allowUnfree = true;
+  nix = {
+    package = pkgs.lixPackageSets.stable.lix;
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
+
+  networking = {
+    hostName = "klapprechner"; # Define your hostname.
+    # Pick only one of the below networking options.
+    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+    firewall.checkReversePath = false;
+
+    wg-quick.interfaces.uwupn = {
+      autostart = false;
+      configFile = "/etc/nixos/uwupn.conf";
+    };
+  };
+
+  # Set your time zone.
+  time.timeZone = "Europe/Berlin";
+
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "de_DE.UTF-8";
   console = {
     font = "Lat2-Terminus16";
-    keyMap = "de";
+    # keyMap = "de";
+    useXkbConfig = true; # use xkb.options in tty.
   };
 
-  documentation.dev.enable = true;
+  services = {
+    btrfs.autoScrub.enable = true;
 
-  hardware = {
-    bluetooth = {
+    # Enable sound.
+    # pulseaudio.enable = true;
+    # OR
+    pipewire = {
       enable = true;
-      powerOnBoot = false;
+      pulse.enable = true;
     };
 
-    pulseaudio.enable = false;
-
-    sane = {
+    # Enable CUPS to print documents.
+    printing = {
       enable = true;
-      extraBackends = [ pkgs.sane-airscan ];
-      brscan4.enable = true;
+      drivers = [ pkgs.brlaser ];
     };
 
-    opengl.driSupport32Bit = true;
+    syncthing = {
+      enable = true;
+      user = "julian";
+      dataDir = "/home/julian";
+      configDir = "/home/julian/.config/syncthing";
+    };
+
+    # Enable the X11 windowing system.
+    xserver = {
+      enable = true;
+
+      desktopManager.gnome.enable = true;
+      displayManager.gdm.enable = true;
+
+      videoDrivers = [ "displaylink" ];
+
+      # Configure keymap in X11
+      xkb.layout = "de";
+      xkb.options = "caps:swapescape";
+    };
+
+    # List services that you want to enable:
+
+    # Enable the OpenSSH daemon.
+    # openssh.enable = true;
   };
 
-  networking = {
-    hostName = "klapprechner"; # Define your hostname.
-    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-    networkmanager = {
-      enable = true;
-      wifi.powersave = true;
-    };
-
-    wireguard.enable = true;
-
-    firewall.checkReversePath = false;
-    firewall.enable = true;
-    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-
-    # Per-interface useDHCP will be mandatory in the future, so this generated config
-    # replicates the default behaviour.
-    useDHCP = false;
-    interfaces.enp0s31f6.useDHCP = true;
-    interfaces.wlp4s0.useDHCP = true;
-
-    # Configure network proxy if necessary
-    # networking.proxy.default = "http://user:password@proxy:port/";
-    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-  };
-
-  # Enable sound.
-  # sound.enable = false;
-
-  # Set your time zone.
-  time.timeZone = "Europe/Berlin";
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.julian = {
     description = "Julian";
-    extraGroups = [
-      "audio"
-      "lp"
-      "lpadmin"
-      "networkmanager"
-      "scanner"
-      "wheel" # Enable ‘sudo’ for the user.
-    ];
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     isNormalUser = true;
-    shell = pkgs.zsh;
-  };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment = {
-    gnome = {
-      excludePackages = with pkgs.gnome; [
-        gnome-music
-        epiphany
-      ];
-    };
-
-    # Environment variables
-    # sessionVariables = {
-    #   MOZ_ENABLE_WAYLAND = "1";
-    #   MOZ_USE_XINPUT2 = "1";
-    #   QT_QPA_PLATFORM = "wayland";
-    # };
-
-
-    systemPackages = with pkgs; [
-      bat
-      calibre
-      chromium
+    packages = with pkgs; [
       borgbackup
-      coreutils
-      direnv
-      evolution
-      eza
-      fd
-      fractal
-      fzf
-      git
-      gnome.gnome-tweaks
-      gnomeExtensions.appindicator
-      gnupg
-      htop
-      jq
+      ((emacsPackagesFor emacs-pgtk).emacsWithPackages (emacsPackages:
+        [emacsPackages.vterm]
+      ))
+      gimp3
+      inkscape
+      keepassxc
       lazygit
       libreoffice
-      man-pages
-      man-pages-posix
-      markdownlint-cli
-      neovim
-      nil
-      nix-direnv
-      pass-wayland
-      pinentry-gnome3
-      powertop
+      obsidian
       quodlibet
-      ripgrep
-      signal-desktop
-      starship
       stow
       tdesktop
       vlc
-      # wineWowPackages.stableFull
-      wireguard-tools
     ];
+    shell = pkgs.zsh;
   };
 
-  fonts.packages = with pkgs; [
-    cantarell-fonts
-    font-awesome
-    iosevka
-    jetbrains-mono
-    noto-fonts
-    source-code-pro
-  ];
-
   programs = {
-    # Some programs need SUID wrappers, can be configured further or are
-    # started in user sessions.
-    # mtr.enable = true;
+    direnv.enable = true;
+    firefox.enable = true;
+    gnome-terminal.enable = true;
+    thunderbird.enable = true;
+    starship.enable = true;
 
-    firefox = {
-      enable = true;
-      nativeMessagingHosts.packages = [ pkgs.passff-host ];
+    fzf = {
+      fuzzyCompletion = true;
+      keybindings = true;
     };
 
-    gnome-terminal.enable = true;
-
-    gnupg.agent.enable = true;
+    # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    # programs.mtr.enable = true;
+    gnupg.agent = {
+      enable = true;
+      # enableSSHSupport = true;
+    };
 
     neovim = {
       enable = true;
@@ -201,11 +165,10 @@
         bindkey "$terminfo[khome]" beginning-of-line
         bindkey "$terminfo[kend]" end-of-line
 
-        eval "$(direnv hook zsh)"
-        source $(fzf-share)/completion.zsh
-        source $(fzf-share)/key-bindings.zsh
+        function set_window_title() { echo -ne "\033]0;$(basename $PWD)\007" }
+        precmd_functions+=(set_window_title)
       '';
-      promptInit = ''eval "$(starship init zsh)"'';
+      # promptInit = ''eval "$(starship init zsh)"'';
       setOptions = [
         "autocd"
         "nobeep"
@@ -216,68 +179,31 @@
       };
       syntaxHighlighting.enable = true;
     };
-
-    ssh.startAgent = true;
   };
 
-  security.rtkit.enable = true;
+  # List packages installed in system profile.
+  # You can use https://search.nixos.org/ to find more packages (and options).
+  environment.systemPackages = with pkgs; [
+    bat
+    curl
+    dig
+    eza
+    fd
+    git
+    gnome-tweaks
+    nil
+    ripgrep
+  ];
 
-  services = {
-    emacs = {
-      install = true;
-      package = pkgs.emacs29-pgtk;
-    };
-
-    # Enable touchpad support (enabled default in most desktopManager).
-    libinput.enable = true;
-
-    # Enable the OpenSSH daemon.
-    # openssh.enable = true;
-
-    pipewire = {
-      enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-      jack.enable = true;
-      pulse.enable = true;
-    };
-
-    # Enable CUPS to print documents.
-    printing.enable = true;
-    printing.drivers = with pkgs; [
-      gutenprint
-      brlaser
-      brgenml1cupswrapper
-    ];
-
-    resolved.enable = true;
-
-    syncthing = {
-      enable = true;
-      user = "julian";
-      dataDir = "/home/julian";
-      configDir = "/home/julian/.config/syncthing";
-    };
-
-    xserver = {
-      enable = true;
-
-      # Configure keymap in X11
-      xkb = {
-        layout = "de";
-        options = "caps:swapescape";
-      };
-
-      # Enable the GNOME 3 Desktop Environment.
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
-
-      # Add drivers for displaylink USB graphics
-      videoDrivers = [ "displaylink" ];
-    };
-  };
+  fonts.packages = with pkgs; [
+    font-awesome
+    inter
+    lato
+    nerd-fonts.iosevka
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.monaspace
+    noto-fonts
+  ];
 
   virtualisation.podman.enable = true;
 
@@ -287,12 +213,29 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.09"; # Did you read the comment?
+  # Copy the NixOS configuration file and link it from the resulting system
+  # (/run/current-system/configuration.nix). This is useful in case you
+  # accidentally delete configuration.nix.
+  # system.copySystemConfiguration = true;
+
+  # This option defines the first version of NixOS you have installed on this particular machine,
+  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
+  #
+  # Most users should NEVER change this value after the initial install, for any reason,
+  # even if you've upgraded your system to a new NixOS release.
+  #
+  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
+  # so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
+  # to actually do that.
+  #
+  # This value being lower than the current NixOS release does NOT mean your system is
+  # out of date, out of support, or vulnerable.
+  #
+  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
+  # and migrated your data accordingly.
+  #
+  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+  system.stateVersion = "25.05"; # Did you read the comment?
+
 }
 
