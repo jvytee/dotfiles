@@ -176,7 +176,6 @@
 
 (use-package obsidian
   :config
-  (global-obsidian-mode t)
   (obsidian-backlinks-mode t)
   :custom
   (obsidian-directory "~/notes")
