@@ -8,6 +8,7 @@
  '(font-use-system-font t)
  '(inhibit-startup-screen t)
  '(ispell-dictionary "en_GB")
+ '(js-indent-level 2)
  '(nxml-slash-auto-complete-flag t)
  '(org-agenda-files (find-agenda-files org-directory))
  '(org-babel-load-languages '((emacs-lisp . t) (python . t)))
@@ -20,9 +21,8 @@
                    highlight-indent-guides ligature lua-mode
                    meson-mode nginx-mode nix-mode ob-mermaid obsidian
                    pipenv poly-ansible rainbow-mode rg rust-mode sicp
-                   sql-indent terraform-mode
-                   treemacs-evil treemacs-magit treemacs-projectile
-                   typescript-mode vterm web-mode which-key yaml-mode
+                   sql-indent terraform-mode treemacs-evil
+                   treemacs-magit treemacs-projectile vterm web-mode
                    yasnippet))
  '(pixel-scroll-precision-mode t)
  '(tab-width 4)

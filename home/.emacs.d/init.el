@@ -95,7 +95,7 @@
     python-mode
     rust-mode
     terraform-mode
-    typescript-mode
+    typescript-ts-mode
     web-mode
     yaml-mode) . eglot-ensure))
 
@@ -121,8 +121,7 @@
 
 (use-package geiser-guile)
 
-(use-package go-mode
-  :hook (before-save . eglot-format-buffer))
+(use-package go-mode)
 
 (use-package groovy-mode)
 
@@ -231,9 +230,6 @@
 
 (use-package treemacs-magit
   :after (treemacs magit))
-
-(use-package typescript-mode
-  :config (setq typescript-indent-level 2))
 
 (use-package vterm)
 
