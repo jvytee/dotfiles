@@ -200,6 +200,8 @@
 
 (use-package rainbow-mode)
 
+(use-package realgud)
+
 (use-package rg
   :config (rg-enable-default-bindings))
 
@@ -208,6 +210,8 @@
   :config (setq indent-tabs-mode nil))
 
 (use-package sicp)
+
+(use-package sops)
 
 (use-package sql-indent)
 
