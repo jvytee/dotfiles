@@ -10,7 +10,6 @@
  '(ispell-dictionary "en_GB")
  '(js-indent-level 2)
  '(nxml-slash-auto-complete-flag t)
- '(org-agenda-files (find-agenda-files org-directory))
  '(org-babel-load-languages '((emacs-lisp . t) (python . t)))
  '(org-directory "~/notes")
  '(package-selected-packages

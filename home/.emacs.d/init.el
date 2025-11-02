@@ -1,3 +1,6 @@
+(add-to-list 'exec-path "~/.local/bin")
+(add-to-list 'exec-path "~/.nix-profile/bin")
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
@@ -248,9 +251,5 @@
 
 (use-package yasnippet
   :config (yas-global-mode 1))
-
-(defun find-agenda-files (root)
-  (let ((subdirs '("00 Daily" "01 Projects" "02 Areas" "03 Resources")))
-    (mapcan (lambda (subdir) (directory-files-recursively (concat root "/" subdir) ".org$")) subdirs)))
 
 (load custom-file)
