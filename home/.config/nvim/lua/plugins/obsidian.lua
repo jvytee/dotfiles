@@ -6,8 +6,7 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
         workspaces = {
-            { name = "Notes", path = "~/Sync/Notes" },
-            { name = "Second Brain", path = "~/Sync/Second Brain" },
+            { name = "Notes", path = "~/notes", strict = true },
         },
         daily_notes = { folder = "00 Daily" },
         completion = { nvim_cmp = true, min_chars = 2 },
