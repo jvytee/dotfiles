@@ -253,4 +253,6 @@
   (let ((subdirs '("00 Daily" "01 Projects" "02 Areas" "03 Resources")))
     (mapcan (lambda (subdir) (directory-files-recursively (concat root "/" subdir) ".org$")) subdirs)))
 
+(evil-define-key 'normal python-mode-map (kbd "<leader> d") 'realgud:pdb)
+
 (load custom-file)
