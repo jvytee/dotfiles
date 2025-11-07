@@ -12,6 +12,16 @@
 
 (use-package better-defaults)
 
+(use-package centaur-tabs
+  :demand
+  :config
+  (setq centaur-tabs-set-modified-marker t)
+  (centaur-tabs-mode t)
+  (centaur-tabs-group-by-projectile-project)
+  :bind
+  ("C-<prior>" . centaur-tabs-backward)
+  ("C-<next>" . centaur-tabs-forward))
+
 (use-package company
   :hook (after-init . global-company-mode))
 
@@ -72,12 +82,12 @@
   (add-to-list 'eglot-server-programs '((rust-ts-mode rust-mode) .
                                         ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
   (setq-default eglot-workspace-configuration '(:gopls (:hints (:assignVariableTypes t
-                                                                :compositeLiteralFields t
-                                                                :compositeLiteralTypes t
-                                                                :constantValues t
-                                                                :functionTypeParameters t
-                                                                :parameterName t
-                                                                :rangeVariableTypes t))))
+                                                                                     :compositeLiteralFields t
+                                                                                     :compositeLiteralTypes t
+                                                                                     :constantValues t
+                                                                                     :functionTypeParameters t
+                                                                                     :parameterName t
+                                                                                     :rangeVariableTypes t))))
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> r") 'eglot-rename)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> o") 'eglot-code-action-organize-imports)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> h") 'eldoc-box-help-at-point)
