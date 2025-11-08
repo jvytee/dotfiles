@@ -15,15 +15,15 @@
  '(org-directory "~/notes")
  '(package-selected-packages
    '(all-the-icons auctex-latexmk better-defaults centaur-tabs company
-                   counsel direnv docker dockerfile-mode doom-modeline
-                   doom-themes eldoc-box evil-collection gcmh
-                   geiser-guile go-mode groovy-mode haskell-mode
+                   counsel dape direnv docker dockerfile-mode
+                   doom-modeline doom-themes eldoc-box evil-collection
+                   gcmh geiser-guile go-mode groovy-mode haskell-mode
                    helpful highlight-indent-guides ligature lua-mode
                    meson-mode nginx-mode nix-mode ob-mermaid obsidian
-                   pipenv poly-ansible rainbow-mode realgud rg
-                   rust-mode sicp sops sql-indent terraform-mode
-                   treemacs-evil treemacs-magit treemacs-projectile
-                   vterm web-mode yasnippet))
+                   pipenv poly-ansible rainbow-mode rg rust-mode sicp
+                   sops sql-indent terraform-mode treemacs-evil
+                   treemacs-magit treemacs-projectile vterm web-mode
+                   yasnippet))
  '(pixel-scroll-precision-mode t)
  '(tab-width 4)
  '(tool-bar-mode nil)

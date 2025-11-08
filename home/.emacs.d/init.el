@@ -33,6 +33,8 @@
   (setq ivy-use-virtual-buffers t)
   :init (ivy-mode t))
 
+(use-package dape)
+
 (use-package direnv
   :config (direnv-mode))
 
@@ -210,7 +212,8 @@
 
 (use-package rainbow-mode)
 
-(use-package realgud)
+(use-package repeat
+  :custom (repeat-mode +1))
 
 (use-package rg
   :config (rg-enable-default-bindings))
