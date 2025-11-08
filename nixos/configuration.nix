@@ -29,6 +29,12 @@
     # Pick only one of the below networking options.
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+    nameservers = [
+      "9.9.9.9"
+      "149.112.112.112"
+      "2620:fe::fe"
+      "2620:fe::9"
+    ];
     firewall.checkReversePath = false;
 
     wg-quick.interfaces.uwupn = {
@@ -67,6 +73,11 @@
     printing = {
       enable = true;
       drivers = [ pkgs.brlaser ];
+    };
+
+    resolved = {
+      enable = true;
+      dnsovertls = "true";
     };
 
     syncthing = {
@@ -109,7 +120,6 @@
       ((emacsPackagesFor emacs-pgtk).emacsWithPackages (emacsPackages:
         [emacsPackages.vterm]
       ))
-      gimp3
       inkscape
       keepassxc
       lazygit
@@ -192,6 +202,7 @@
     git
     gnome-tweaks
     nil
+    nixfmt
     ripgrep
   ];
 
@@ -201,7 +212,6 @@
     lato
     nerd-fonts.iosevka
     nerd-fonts.jetbrains-mono
-    nerd-fonts.monaspace
     noto-fonts
   ];
 
