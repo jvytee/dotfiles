@@ -13,14 +13,17 @@
 (use-package better-defaults)
 
 (use-package centaur-tabs
-  :demand
   :config
-  (setq centaur-tabs-set-modified-marker t)
-  (centaur-tabs-mode t)
+  (setq centaur-tabs-height 32
+        centaur-tabs-set-modified-marker t)
+  (centaur-tabs-change-fonts
+   (face-attribute 'variable-pitch :family)
+   (face-attribute 'variable-pitch :height))
   (centaur-tabs-group-by-projectile-project)
   :bind
   ("C-<prior>" . centaur-tabs-backward)
-  ("C-<next>" . centaur-tabs-forward))
+  ("C-<next>" . centaur-tabs-forward)
+  :hook (after-init . centaur-tabs-mode))
 
 (use-package company
   :hook (after-init . global-company-mode))
