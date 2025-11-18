@@ -71,7 +71,7 @@
 (use-package doom-themes
   :config
   (let ((dark-theme 'doom-gruvbox)
-        (light-theme 'leuven))
+        (light-theme 'modus-operandi-tinted))
     (load-theme (if (dark-theme-p)
                     dark-theme
                   light-theme)
