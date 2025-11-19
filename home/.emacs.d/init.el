@@ -84,15 +84,20 @@
   :after evil
   :config
   (setq eglot-events-buffer-config '(:size 0 :format full))
-  (add-to-list 'eglot-server-programs '((rust-ts-mode rust-mode) .
-                                        ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
+  (add-to-list 'eglot-server-programs
+               '((rust-ts-mode rust-mode) .
+                 ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
+  (add-to-list 'eglot-server-programs
+               `((yaml-ts-mode yaml-mode) . ,(eglot-alternatives
+                                              '(("yaml-language-server" "--stdio")
+                                                ("ansible-language-server" "--stdio")))))
   (setq-default eglot-workspace-configuration '(:gopls (:hints (:assignVariableTypes t
-                                                                                     :compositeLiteralFields t
-                                                                                     :compositeLiteralTypes t
-                                                                                     :constantValues t
-                                                                                     :functionTypeParameters t
-                                                                                     :parameterName t
-                                                                                     :rangeVariableTypes t))))
+                                                                :compositeLiteralFields t
+                                                                :compositeLiteralTypes t
+                                                                :constantValues t
+                                                                :functionTypeParameters t
+                                                                :parameterName t
+                                                                :rangeVariableTypes t))))
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> r") 'eglot-rename)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> o") 'eglot-code-action-organize-imports)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> h") 'eldoc-box-help-at-point)
