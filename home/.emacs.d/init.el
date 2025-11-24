@@ -70,8 +70,8 @@
 
 (use-package doom-themes
   :config
-  (let ((dark-theme 'modus-vivendi)
-        (light-theme 'modus-operandi-tinted))
+  (let ((dark-theme 'doom-gruvbox)
+        (light-theme 'doom-gruvbox-light))
     (load-theme (if (dark-theme-p)
                     dark-theme
                   light-theme)
