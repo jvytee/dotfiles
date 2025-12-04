@@ -235,7 +235,8 @@
 
 (use-package sicp)
 
-(use-package sops)
+(use-package sops
+  :hook ((yaml-mode js-json-mode) . sops-mode))
 
 (use-package sql-indent)
 
