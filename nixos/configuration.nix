@@ -120,14 +120,16 @@
       ((emacsPackagesFor emacs-pgtk).emacsWithPackages (emacsPackages:
         [emacsPackages.vterm]
       ))
+      gimp
       inkscape
       keepassxc
       lazygit
       libreoffice
       obsidian
       quodlibet
+      shotwell
       stow
-      tdesktop
+      telegram-desktop
       vlc
     ];
     shell = pkgs.zsh;
@@ -202,16 +204,16 @@
     git
     gnome-tweaks
     nil
-    nixfmt
+    nixfmt-rfc-style
     ripgrep
   ];
 
   fonts.packages = with pkgs; [
     font-awesome
     inter
-    lato
-    nerd-fonts.iosevka
-    nerd-fonts.jetbrains-mono
+    iosevka
+    julia-mono
+    nerd-fonts.symbols-only
     noto-fonts
   ];
 
