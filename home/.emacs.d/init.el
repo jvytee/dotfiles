@@ -1,3 +1,24 @@
+(defun find-agenda-files (root)
+  (let ((subdirs '("00 Daily" "01 Projects" "02 Areas" "03 Resources")))
+    (mapcan (lambda (subdir) (directory-files-recursively (concat root "/" subdir) ".org$")) subdirs)))
+
+(setq column-number-mode t
+      default-frame-alist '((horizontal-scroll-bars) (vertical-scroll-bars))
+      font-use-system-font t
+      inhibit-startup-screen t
+      ispell-dictionary "en_GB"
+      js-indent-level 2
+      nxml-slash-auto-complete-flag t
+      org-directory "~/notes"
+      org-agenda-files (find-agenda-files org-directory)
+      org-babel-load-languages '((emacs-lisp . t) (python . t))
+      pixel-scroll-precision-mode t
+      tab-width 4
+      tool-bar-mode nil
+      vc-follow-symlinks nil
+      warning-minimum-level :error
+      xterm-mouse-mode t)
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
@@ -117,7 +138,8 @@
     terraform-mode
     typescript-ts-mode
     web-mode
-    yaml-mode) . eglot-ensure))
+    yaml-mode
+    zig-mode) . eglot-ensure))
 
 (use-package eldoc-box
   :config
@@ -274,8 +296,4 @@
 (use-package yasnippet
   :config (yas-global-mode 1))
 
-(defun find-agenda-files (root)
-  (let ((subdirs '("00 Daily" "01 Projects" "02 Areas" "03 Resources")))
-    (mapcan (lambda (subdir) (directory-files-recursively (concat root "/" subdir) ".org$")) subdirs)))
-
-(load custom-file)
+(use-package zig-mode)
