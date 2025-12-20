@@ -4,7 +4,7 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-font pango:Noto Sans 9
+font pango:Inter 9
 
 ### Variables
 #
@@ -16,11 +16,11 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi --show drun --width 480 --allow-images --lines 7 --gtk-dark | xargs swaymsg exec --
+set $menu wmenu-run -f "pango:Inter 9"
 
 ### Output configuration
 #
@@ -32,6 +32,7 @@ output * bg ~/.config/sway/wallpaper.jpg fill
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+output DVI-I-1 position -1920,0
 
 ### Idle configuration
 #
@@ -46,7 +47,7 @@ output * bg ~/.config/sway/wallpaper.jpg fill
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
-### Input configuration
+### Input configur
 #
 # Example configuration:
 #
@@ -219,18 +220,6 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     status_command i3status
-
-    colors {
-        statusline #c0bfbc
-        background #241f31
-        separator  #3d3846
-
-        focused_workspace  #3584e4 #241f31 #deddda
-        active_workspace   #c0bfbc #241f31 #c0bfbc
-        inactive_workspace #3d3846 #241f31 #c0bfbc
-        urgent_workspace   #e01b24 #241f31 #e01b24
-        binding_mode       #e01b24 #241f31 #e01b24
-    }
 }
 
 default_border pixel 1
@@ -253,12 +242,3 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-
-# class                 border  backgr. text    indicator child_border
-client.focused          #3584e4 #241f31 #deddda #33d17a   #3584e4
-client.focused_inactive #c0bfbc #241f31 #c0bfbc #33d17a   #c0bfbc
-client.unfocused        #3d3846 #241f31 #c0bfbc #3d3846   #241f31
-client.urgent           #e01b24 #241f31 #e01b24 #e01b24   #e01b24
-client.placeholder      #3d3846 #241f31 #c0bfbc #3d3846   #241f31
-
-client.background       #241f31
