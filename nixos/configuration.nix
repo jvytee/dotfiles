@@ -61,6 +61,9 @@
   services = {
     btrfs.autoScrub.enable = true;
 
+    desktopManager.gnome.enable = true;
+    displayManager.gdm.enable = true;
+
     # Enable sound.
     # pulseaudio.enable = true;
     # OR
@@ -90,10 +93,6 @@
     # Enable the X11 windowing system.
     xserver = {
       enable = true;
-
-      desktopManager.gnome.enable = true;
-      displayManager.gdm.enable = true;
-
       videoDrivers = [ "displaylink" ];
 
       # Configure keymap in X11
@@ -150,10 +149,10 @@
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
     # programs.mtr.enable = true;
-    gnupg.agent = {
-      enable = true;
-      # enableSSHSupport = true;
-    };
+    # gnupg.agent = {
+    #   enable = true;
+    #   enableSSHSupport = true;
+    # };
 
     neovim = {
       enable = true;
@@ -203,6 +202,7 @@
     fd
     git
     gnome-tweaks
+    htop
     nil
     nixfmt-rfc-style
     ripgrep
