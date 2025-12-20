@@ -92,7 +92,7 @@
 (use-package doom-themes
   :config
   (let ((dark-theme 'doom-tokyo-night)
-        (light-theme 'modus-vivendi-tinted))
+        (light-theme 'modus-operandi-tinted))
     (load-theme (if (dark-theme-p)
                     dark-theme
                   light-theme)
