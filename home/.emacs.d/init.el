@@ -112,6 +112,8 @@
                `((yaml-ts-mode yaml-mode) . ,(eglot-alternatives
                                               '(("yaml-language-server" "--stdio")
                                                 ("ansible-language-server" "--stdio")))))
+  (add-to-list 'eglot-server-programs
+               '((python-ts-mode python-mode) . ("ty" "server")))
   (setq-default eglot-workspace-configuration '(:gopls (:hints (:assignVariableTypes t
                                                                 :compositeLiteralFields t
                                                                 :compositeLiteralTypes t
