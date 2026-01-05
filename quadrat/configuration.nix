@@ -102,9 +102,11 @@
           "2620:fe::fe"
           "2620:fe::9"
         ];
-        local = "/kalk.local/";
-        domain = "kalk.local";
+        local = "/local/";
         expand-hosts = true;
+        address = [
+          "/quadrat.local/192.168.178.118"
+        ];
       };
     };
 
