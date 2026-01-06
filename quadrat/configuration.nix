@@ -16,20 +16,38 @@
   ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
 
-  networking.hostName = "quadrat"; # Define your hostname.
+  networking = {
+    hostName = "quadrat"; # Define your hostname.
 
-  # Configure network connections interactively with nmcli or nmtui.
-  networking.networkmanager.enable = true;
+    # Configure network connections interactively with nmcli or nmtui.
+    networkmanager.enable = true;
+
+    # Open ports in the firewall.
+    firewall = {
+      allowedTCPPorts = [ 53 ];
+      allowedUDPPorts = [ 53 ];
+      # Or disable the firewall altogether.
+      # enable = false;
+    };
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "03:15";
+  };
+
+  system.autoUpgrade = {
+    enable = true;
+    dates = "Sun *-*-* 04:40";
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "de_DE.UTF-8";
@@ -38,27 +56,6 @@
     # keyMap = "de";
     useXkbConfig = true; # use xkb.options in tty.
   };
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb.layout = "de";
-  services.xserver.xkb.options = "caps:swapescape";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # services.pulseaudio.enable = true;
-  # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.julian = {
@@ -90,35 +87,62 @@
 
   # List services that you want to enable:
   services = {
+    # Enable the X11 windowing system.
+    # xserver.enable = true;
+
+    # Configure keymap in X11
+    xserver.xkb = {
+      layout = "de";
+      options = "caps:swapescape";
+    };
+
+    # Enable CUPS to print documents.
+    # printing.enable = true;
+
+    # Enable sound.
+    # pulseaudio.enable = true;
+    # OR
+    # pipewire = {
+    #   enable = true;
+    #   pulse.enable = true;
+    # };
+
+    # Enable touchpad support (enabled default in most desktopManager).
+    # libinput.enable = true;
+
     dnsmasq = {
       enable = true;
       settings = {
+        local = "/local/";
+        address = [
+          "/quadrat.local/192.168.178.118"
+        ];
+
         listen-address = "::1,127.0.0.1,192.168.178.118,fdab:f99c:fd1b:0:c907:ed04:3275:9d90";
-        cache-size = 10000;
-        no-resolv = true;
         server = [
           "9.9.9.9"
           "149.112.112.112"
           "2620:fe::fe"
           "2620:fe::9"
         ];
-        local = "/local/";
+
+        bogus-priv = true;
+        cache-size = 10000;
+        domain-needed = true;
         expand-hosts = true;
-        address = [
-          "/quadrat.local/192.168.178.118"
-        ];
+        local-service = true;
+        log-queries = false;
+        no-resolv = true;
+
+        dnssec = true; # Enable DNSSEC
+        # DNSSEC trust anchor. Source: https://data.iana.org/root-anchors/root-anchors.xml
+        trust-anchor = ".,20326,8,2,E06D44B80B8F1D39A95C0B0D7C65D08458E880409BBC683457104237C7F8EC8D";
       };
     };
 
     # Enable the OpenSSH daemon.
     openssh.enable = true;
   };
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 53 ];
-  networking.firewall.allowedUDPPorts = [ 53 ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
