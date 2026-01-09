@@ -12,7 +12,7 @@ return {
         completion = { nvim_cmp = true, min_chars = 2 },
         disable_frontmatter = true,
         mappings = {
-            ["<localleader>t"] = {
+            ["<leader>ot"] = {
                 action = function()
                     vim.cmd "ObsidianToday"
                 end,
