@@ -2,28 +2,29 @@
   (let ((subdirs '("00 Daily" "01 Projects" "02 Areas" "03 Resources")))
     (mapcan (lambda (subdir) (directory-files-recursively (concat root "/" subdir) ".org$")) subdirs)))
 
-(setq column-number-mode t
-      default-frame-alist '((horizontal-scroll-bars) (vertical-scroll-bars))
-      font-use-system-font t
-      inhibit-startup-screen t
-      ispell-dictionary "en_GB"
-      js-indent-level 2
-      nxml-slash-auto-complete-flag t
-      org-directory "~/notes"
-      org-agenda-files (find-agenda-files org-directory)
-      org-babel-load-languages '((emacs-lisp . t) (python . t))
-      pixel-scroll-precision-mode t
-      tab-width 4
-      tool-bar-mode nil
-      vc-follow-symlinks nil
-      warning-minimum-level :error
-      xterm-mouse-mode t)
+(setopt column-number-mode t
+        default-frame-alist '((horizontal-scroll-bars) (vertical-scroll-bars))
+        font-use-system-font t
+        gc-cons-threshold 8000000
+        inhibit-startup-screen t
+        ispell-dictionary "en_GB"
+        js-indent-level 2
+        nxml-slash-auto-complete-flag t
+        org-directory "~/notes"
+        org-agenda-files (find-agenda-files org-directory)
+        org-babel-load-languages '((emacs-lisp . t) (python . t))
+        pixel-scroll-precision-mode t
+        tab-width 4
+        tool-bar-mode nil
+        vc-follow-symlinks nil
+        warning-minimum-level :error
+        xterm-mouse-mode t)
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 (require 'use-package-ensure)
-(setq use-package-always-ensure t)
+(setopt use-package-always-ensure t)
 (eval-when-compile (require 'use-package))
 
 (use-package all-the-icons)
@@ -35,8 +36,8 @@
 
 (use-package centaur-tabs
   :config
-  (setq centaur-tabs-height 32
-        centaur-tabs-set-modified-marker t)
+  (setopt centaur-tabs-height 32
+          centaur-tabs-set-modified-marker t)
   (centaur-tabs-change-fonts
    (face-attribute 'variable-pitch :family)
    (face-attribute 'variable-pitch :height))
@@ -53,8 +54,8 @@
   :bind ("C-c i" . swiper-isearch)
   :commands ivy-mode
   :config
-  (setq ivy-count-format "(%d/%d) ")
-  (setq ivy-use-virtual-buffers t)
+  (setopt ivy-count-format "(%d/%d) "
+          ivy-use-virtual-buffers t)
   :init (ivy-mode t))
 
 (use-package dape)
@@ -97,14 +98,14 @@
                     dark-theme
                   light-theme)
                 1))
-  (setq doom-themes-treemacs-theme "doom-colors")
+  (setopt doom-themes-treemacs-theme "doom-colors")
   (doom-themes-treemacs-config)
   (doom-themes-org-config))
 
 (use-package eglot
   :after evil
   :config
-  (setq eglot-events-buffer-config '(:size 0 :format full))
+  (setopt eglot-events-buffer-config '(:size 0 :format full))
   (add-to-list 'eglot-server-programs
                '((rust-ts-mode rust-mode) .
                  ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
@@ -160,8 +161,8 @@
   :after evil
   :config (evil-collection-init))
 
-(use-package gcmh
-  :config (gcmh-mode 1))
+;; (use-package gcmh
+;;   :config (gcmh-mode 1))
 
 (use-package geiser-guile)
 
@@ -173,8 +174,8 @@
 
 (use-package helpful
   :config
-  (setq counsel-describe-function-function #'helpful-callable)
-  (setq counsel-describe-variable-function #'helpful-variable)
+  (setopt counsel-describe-function-function #'helpful-callable
+          counsel-describe-variable-function #'helpful-variable)
   :bind
   ("C-h f" . helpful-callable)
   ("C-h v" . helpful-variable)
@@ -186,8 +187,8 @@
 (use-package highlight-indent-guides
   :config
   (highlight-indent-guides-auto-set-faces)
-  (setq highlight-indent-guides-method (if (display-graphic-p) 'bitmap 'character))
-  (setq highlight-indent-guides-responsive 'top)
+  (setopt highlight-indent-guides-method (if (display-graphic-p) 'bitmap 'character)
+          highlight-indent-guides-responsive 'top)
   :hook ((conf-mode nxml-mode prog-mode yaml-mode) . highlight-indent-guides-mode))
 
 (use-package ligature
@@ -204,7 +205,7 @@
   :bind ("C-c g" . magit-file-dispatch))
 
 (use-package markdown-mode
-  :config (setq markdown-hide-urls t)
+  :config (setopt markdown-hide-urls t)
   :hook (markdown-mode . flyspell-mode))
 
 (use-package meson-mode)
@@ -215,7 +216,7 @@
   :mode "\\.nix\\'")
 
 (use-package ob-mermaid
-  :config (setq ob-mermaid-cli-path "/usr/bin/mmdc"))
+  :config (setopt ob-mermaid-cli-path "/usr/bin/mmdc"))
 
 (use-package obsidian
   :config
@@ -232,10 +233,8 @@
               ("C-c C-b" . obsidian-backlink-jump)))
 
 (use-package pipenv
-  :config (setq pipenv-executable "~/.local/bin/pipenv")
+  :config (setopt pipenv-executable "~/.local/bin/pipenv")
   :hook (python-mode . pipenv-mode))
-
-(use-package poly-ansible)
 
 (use-package projectile
   :bind ("C-c f" . projectile-find-file)
@@ -255,7 +254,7 @@
 
 (use-package rust-mode
   :init (setq rust-mode-treesitter-derive t)
-  :config (setq indent-tabs-mode nil))
+  :config (setopt indent-tabs-mode nil))
 
 (use-package sicp)
 
@@ -272,7 +271,7 @@
 (use-package treemacs
   :defer t
   :bind ("C-c t" . treemacs)
-  :config (setq treemacs-indent-guide-mode 1))
+  :config (setopt treemacs-indent-guide-mode 1))
 
 (use-package treemacs-evil
   :after (treemacs evil))
