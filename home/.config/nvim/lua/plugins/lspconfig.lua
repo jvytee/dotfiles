@@ -61,7 +61,7 @@ local config = function()
         "hls",
         "jdtls",
         "jedi_language_server",
-        "nil_ls",
+        "nixd",
         "ruff",
         "rust_analyzer",
         "terraformls",
