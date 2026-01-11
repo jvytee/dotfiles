@@ -61,8 +61,8 @@
   users.users.julian = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      # TODO
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIXsa+rFKFESXeTR+AQGaI4GcxIFY1U0RkWu/aJr+8Eo julian"
     ];
   };
 
@@ -118,6 +118,7 @@
           "/quadrat.local/192.168.178.118"
         ];
 
+        cache-size = 10000;
         listen-address = "::1,127.0.0.1,192.168.178.118,fdab:f99c:fd1b:0:c907:ed04:3275:9d90";
         server = [
           "9.9.9.9"
@@ -127,7 +128,6 @@
         ];
 
         bogus-priv = true;
-        cache-size = 10000;
         domain-needed = true;
         expand-hosts = true;
         local-service = true;
@@ -141,7 +141,12 @@
     };
 
     # Enable the OpenSSH daemon.
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      settings = {
+        PasswordAuthentication = false;
+      };
+    };
   };
 
   # Copy the NixOS configuration file and link it from the resulting system
