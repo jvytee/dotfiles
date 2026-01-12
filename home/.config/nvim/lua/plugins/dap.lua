@@ -5,23 +5,22 @@ local config = function()
     vim.keymap.set("n", "<localleader>dn", dap.step_over)
     vim.keymap.set("n", "<localleader>ds", dap.step_into)
     vim.keymap.set("n", "<localleader>dr", dap.repl.toggle)
-    vim.keymap.set("n", "<localleader>dq", dap.repl.toggle)
+    vim.keymap.set("n", "<localleader>dq", dap.terminate)
 
     local widgets = require "dap.ui.widgets"
     vim.keymap.set("n", "<localleader>dh", widgets.hover)
-
-    local dap_view = require "dap-view"
-    vim.keymap.set("n", "<localleader>dv", ":DapViewToggle<cr>")
 
     local dap_python = require "dap-python"
     dap_python.setup "debugpy-adapter"
     dap_python.test_runner = "pytest"
     vim.keymap.set("n", "<localleader>dt", dap_python.test_method)
     vim.keymap.set("n", "<localleader>dT", dap_python.test_class)
+
+    require("nvim-dap-virtual-text").setup()
 end
 
 return {
-    { "igorlfs/nvim-dap-view", lazy = false },
     { "mfussenegger/nvim-dap", config = config },
     "mfussenegger/nvim-dap-python",
+    "theHamsta/nvim-dap-virtual-text",
 }
