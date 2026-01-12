@@ -3,19 +3,6 @@ local function attach_fn(ev)
     local bufnr = ev.buf
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
-    -- vim.keymap.set("n", "<localleader>e", function()
-    --     vim.diagnostic.open_float {
-    --         border = "rounded",
-    --         close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-    --         focusable = false,
-    --         scope = "cursor",
-    --         source = "always",
-    --     }
-    -- end, bufopts)
-    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
-    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
-    vim.keymap.set("n", "<C-m>", builtin.diagnostics, bufopts)
-
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
     vim.keymap.set("n", "gd", builtin.lsp_definitions, bufopts)
     vim.keymap.set("n", "gI", builtin.lsp_implementations, bufopts)
@@ -68,7 +55,6 @@ local config = function()
         "ts_ls",
         "ty",
         "yamlls",
-        "zls",
     }
 
     for _, server in ipairs(servers) do
@@ -113,6 +99,5 @@ local config = function()
 end
 
 return {
-    "neovim/nvim-lspconfig",
-    config = config,
+    "neovim/nvim-lspconfig", config = config,
 }

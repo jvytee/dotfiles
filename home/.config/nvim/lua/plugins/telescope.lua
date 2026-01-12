@@ -1,31 +1,23 @@
 local config = function()
     local builtin = require("telescope.builtin")
 
-    vim.keymap.set("n", "<leader>b", builtin.buffers, {})
-    vim.keymap.set("n", "<leader>c", builtin.commands, {})
-    vim.keymap.set("n", "<leader>f", builtin.find_files, {})
-    vim.keymap.set("n", "<leader>g", builtin.git_files, {})
-    vim.keymap.set("n", "<leader>k", builtin.keymaps, {})
-    vim.keymap.set("n", "<leader>r", builtin.live_grep, {})
+    vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Telescope buffers" })
+    vim.keymap.set("n", "<leader>c", builtin.commands, { desc = "Telescope commands" })
+    vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Telescope find files" })
+    vim.keymap.set("n", "<leader>g", builtin.git_files, { desc = "Telescope git files" })
+    vim.keymap.set("n", "<leader>k", builtin.keymaps, { desc = "Telescope keymaps" })
+    vim.keymap.set("n", "<leader>r", builtin.live_grep, { desc = "Telescope live ripgrep" })
 
-    vim.keymap.set("n", "<localleader>e", function()
-        vim.diagnostic.open_float {
-            border = "rounded",
-            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-            focusable = false,
-            scope = "cursor",
-            source = "always",
-        }
-    end, bufopts)
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
-    vim.keymap.set("n", "<localleader>q", builtin.diagnostics, bufopts)
+    vim.keymap.set("n", "<C-m>", builtin.diagnostics, bufopts)
 end
 
 return {
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
     config = config,
-    dependencies = { "nvim-lua/plenary.nvim" },
-    priority = 900
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
+    },
 }

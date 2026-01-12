@@ -1,6 +1,10 @@
-local config = function()
-    local tree = require("nvim-tree")
-    tree.setup {
+return {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    keys = {
+        { "<C-c>t", "<cmd>NvimTreeFocus<cr>", { noremap = true, silent = true }, desc = "Tree" }
+    },
+    opts = {
         renderer = {
             add_trailing = true,
             group_empty = true,
@@ -15,12 +19,4 @@ local config = function()
             width = 32,
         },
     }
-
-    vim.keymap.set("n", "<leader>t", "<cmd>NvimTreeFocus<cr>", { noremap = true, silent = true })
-end
-
-return {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = config
 }

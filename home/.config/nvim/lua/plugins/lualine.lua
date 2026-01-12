@@ -1,6 +1,7 @@
-local config = function()
-    local lualine = require("lualine")
-    lualine.setup {
+return {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "kyazdani42/nvim-web-devicons" },
+    opts = {
         extensions = {
             "quickfix",
         },
@@ -9,8 +10,4 @@ local config = function()
             theme = "auto"
         }
     }
-end
-
-return {
-    { "nvim-lualine/lualine.nvim", dependencies = { "kyazdani42/nvim-web-devicons" }, config = config }
 }

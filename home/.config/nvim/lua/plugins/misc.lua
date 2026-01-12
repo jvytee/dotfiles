@@ -5,8 +5,8 @@ end
 return {
     "LnL7/vim-nix",
     "cespare/vim-toml",
-    { "ellisonleao/gruvbox.nvim", priority = 1000 },
-    { "folke/tokyonight.nvim", priority = 1000, config = config_colorscheme },
+    "ellisonleao/gruvbox.nvim",
     "lervag/vimtex",
     "mfussenegger/nvim-ansible",
+    { "folke/tokyonight.nvim", priority = 1000, config = config_colorscheme },
 }

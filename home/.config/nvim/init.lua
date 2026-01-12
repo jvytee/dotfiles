@@ -28,13 +28,6 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "python",
-    callback = function()
-        vim.keymap.set("n", "<localleader>f", "<cmd>!ruff format %<cr>", opts)
-    end
-})
-
-vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
     callback = function()
         vim.opt_local.conceallevel = 2
@@ -53,7 +46,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.g.mapleader = "  "
 vim.g.maplocalleader = " "
 
--- Bootstrap lazy
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system {
@@ -66,7 +59,12 @@ if not vim.loop.fs_stat(lazypath) then
     }
 end
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup("plugins", { rocks = { enabled = false } })
+require("lazy").setup({
+    spec = {
+        { import = "plugins" },
+    },
+    rocks = { enabled = false }
+})
 
 -- Configure clipboard for WSL
 -- vim.g.clipboard = {
