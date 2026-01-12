@@ -3,34 +3,34 @@ local function attach_fn(ev)
     local bufnr = ev.buf
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
-    vim.keymap.set("n", "<localleader>e", function()
-        vim.diagnostic.open_float {
-            border = "rounded",
-            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-            focusable = false,
-            scope = "cursor",
-            source = "always",
-        }
-    end, bufopts)
+    -- vim.keymap.set("n", "<localleader>e", function()
+    --     vim.diagnostic.open_float {
+    --         border = "rounded",
+    --         close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+    --         focusable = false,
+    --         scope = "cursor",
+    --         source = "always",
+    --     }
+    -- end, bufopts)
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
-    vim.keymap.set("n", "<localleader>q", builtin.diagnostics, bufopts)
+    vim.keymap.set("n", "<C-m>", builtin.diagnostics, bufopts)
 
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
     vim.keymap.set("n", "gd", builtin.lsp_definitions, bufopts)
-    vim.keymap.set("n", "gi", builtin.lsp_implementations, bufopts)
-    vim.keymap.set("n", "gr", builtin.lsp_references, bufopts)
+    vim.keymap.set("n", "gI", builtin.lsp_implementations, bufopts)
+    vim.keymap.set("n", "gA", builtin.lsp_references, bufopts)
     vim.keymap.set("n", "K", function()
         vim.lsp.buf.hover { border = "rounded" }
     end, bufopts)
     vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set("n", "<localleader>a", vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set("n", "<localleader>r", vim.lsp.buf.rename, bufopts)
-    vim.keymap.set("n", "<localleader>f", function()
+    vim.keymap.set("n", "g.", vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.rename, bufopts)
+    vim.keymap.set("n", "gf", function()
         vim.lsp.buf.format { async = true }
     end, bufopts)
-    vim.keymap.set("n", "<localleader>t", builtin.lsp_type_definitions, bufopts)
-    vim.keymap.set("n", "<localleader>s", builtin.lsp_workspace_symbols, bufopts)
+    vim.keymap.set("n", "gy", builtin.lsp_type_definitions, bufopts)
+    vim.keymap.set("n", "gS", builtin.lsp_workspace_symbols, bufopts)
     vim.keymap.set("n", "<localleader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
     vim.keymap.set("n", "<localleader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
     vim.keymap.set("n", "<localleader>wl", function()
@@ -60,13 +60,13 @@ local config = function()
         "gopls",
         "hls",
         "jdtls",
-        "jedi_language_server",
         "nixd",
         "ruff",
         "rust_analyzer",
         "terraformls",
         "tinymist",
         "ts_ls",
+        "ty",
         "yamlls",
         "zls",
     }

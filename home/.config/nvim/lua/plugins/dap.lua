@@ -20,7 +20,7 @@ local config = function()
 end
 
 return {
-    { "mfussenegger/nvim-dap", config = config },
     "mfussenegger/nvim-dap-python",
     "theHamsta/nvim-dap-virtual-text",
+    { "mfussenegger/nvim-dap", config = config },
 }

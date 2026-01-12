@@ -5,6 +5,5 @@ local config = function()
 end
 
 return {
-    "lewis6991/gitsigns.nvim",
-    config = config,
+    "lewis6991/gitsigns.nvim", config = config,
 }

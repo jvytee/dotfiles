@@ -3,7 +3,6 @@ local config = function()
     cmp.setup {
         snippet = {
             expand = function(args)
-                -- vim.call("vsnip#anonymous", args.body)
                 vim.snippet.expand(args.body)
             end
         },
@@ -16,7 +15,6 @@ local config = function()
             {
                 { name = "nvim_lsp" },
                 { name = "nvim_lua" },
-                -- { name = "vsnip" },
             },
             {
                 { name = "path" },
@@ -35,6 +33,5 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-path",
-    -- "hrsh7th/cmp-vsnip",
     { "hrsh7th/nvim-cmp", config = config }
 }
