@@ -1,28 +1,30 @@
 local function attach_fn(ev)
     local builtin = require "telescope.builtin"
     local bufnr = ev.buf
-    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+    local bufopts = function(description)
+        return { noremap = true, silent = true, buffer = bufnr, desc = description }
+    end
 
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set("n", "gd", builtin.lsp_definitions, bufopts)
-    vim.keymap.set("n", "gI", builtin.lsp_implementations, bufopts)
-    vim.keymap.set("n", "gA", builtin.lsp_references, bufopts)
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts("Find declaration"))
+    vim.keymap.set("n", "gd", builtin.lsp_definitions, bufopts("Find definitions"))
+    vim.keymap.set("n", "gI", builtin.lsp_implementations, bufopts("Find implementations"))
+    vim.keymap.set("n", "gA", builtin.lsp_references, bufopts("Find all references"))
     vim.keymap.set("n", "K", function()
         vim.lsp.buf.hover { border = "rounded" }
-    end, bufopts)
-    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set("n", "g.", vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set("n", "gr", vim.lsp.buf.rename, bufopts)
+    end, bufopts("Hover"))
+    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts("Signature help"))
+    vim.keymap.set("n", "g.", vim.lsp.buf.code_action, bufopts("Code action"))
+    vim.keymap.set("n", "gr", vim.lsp.buf.rename, bufopts("Rename"))
     vim.keymap.set("n", "gf", function()
         vim.lsp.buf.format { async = true }
-    end, bufopts)
-    vim.keymap.set("n", "gy", builtin.lsp_type_definitions, bufopts)
-    vim.keymap.set("n", "gS", builtin.lsp_workspace_symbols, bufopts)
-    vim.keymap.set("n", "<localleader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set("n", "<localleader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+    end, bufopts("Format buffer"))
+    vim.keymap.set("n", "gy", builtin.lsp_type_definitions, bufopts("Find type definitions"))
+    vim.keymap.set("n", "gS", builtin.lsp_workspace_symbols, bufopts("List workspace symbols"))
+    vim.keymap.set("n", "<localleader>wa", vim.lsp.buf.add_workspace_folder, bufopts("Add workspace folder"))
+    vim.keymap.set("n", "<localleader>wr", vim.lsp.buf.remove_workspace_folder, bufopts("Remove workspace folder"))
     vim.keymap.set("n", "<localleader>wl", function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, bufopts)
+    end, bufopts("List workspace folders"))
 
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     vim.api.nvim_create_autocmd("CursorHold", {
