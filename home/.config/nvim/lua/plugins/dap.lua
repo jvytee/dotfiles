@@ -8,19 +8,21 @@ local config = function()
     vim.keymap.set("n", "<localleader>dq", dap.terminate)
 
     local widgets = require "dap.ui.widgets"
+    local sidebar = widgets.sidebar(widgets.scopes)
     vim.keymap.set("n", "<localleader>dh", widgets.hover)
+    vim.keymap.set("n", "<localleader>du", sidebar.toggle)
+end
 
+local config_dap_python = function()
     local dap_python = require "dap-python"
     dap_python.setup "debugpy-adapter"
     dap_python.test_runner = "pytest"
     vim.keymap.set("n", "<localleader>dt", dap_python.test_method)
     vim.keymap.set("n", "<localleader>dT", dap_python.test_class)
-
-    require("nvim-dap-virtual-text").setup()
 end
 
+
 return {
-    "mfussenegger/nvim-dap-python",
-    "theHamsta/nvim-dap-virtual-text",
     { "mfussenegger/nvim-dap", config = config },
+    { "mfussenegger/nvim-dap-python", ft = "python", config = config_dap_python }
 }
