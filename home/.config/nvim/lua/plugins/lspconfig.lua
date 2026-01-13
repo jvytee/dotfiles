@@ -46,9 +46,13 @@ local config = function()
     local servers = {
         "ansiblels",
         "clangd",
+        "cssls",
+        "eslint",
         "gopls",
         "hls",
+        "html",
         "jdtls",
+        "jsonls",
         "nixd",
         "ruff",
         "rust_analyzer",
