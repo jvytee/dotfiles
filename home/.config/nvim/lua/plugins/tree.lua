@@ -2,7 +2,7 @@ return {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
-        { "<C-c>t", "<cmd>NvimTreeFocus<cr>", { noremap = true, silent = true }, desc = "Tree" }
+        { "<leader>t", "<cmd>NvimTreeFocus<cr>", { noremap = true, silent = true }, desc = "Tree" }
     },
     opts = {
         renderer = {
