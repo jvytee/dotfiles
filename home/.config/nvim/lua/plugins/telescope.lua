@@ -15,6 +15,7 @@ end
 
 return {
     "nvim-telescope/telescope.nvim",
+    version = "*",
     config = config,
     dependencies = {
         "nvim-lua/plenary.nvim",
