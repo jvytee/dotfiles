@@ -5,7 +5,7 @@
 (setopt column-number-mode t
         default-frame-alist '((horizontal-scroll-bars) (vertical-scroll-bars))
         font-use-system-font t
-        gc-cons-threshold 16000000
+        gc-cons-threshold 32000000
         inhibit-startup-screen t
         ispell-dictionary "en_GB"
         js-indent-level 2
@@ -93,7 +93,7 @@
 (use-package doom-themes
   :config
   (let ((dark-theme 'doom-tokyo-night)
-        (light-theme 'modus-operandi-tinted))
+        (light-theme 'doom-one-light))
     (load-theme (if (dark-theme-p)
                     dark-theme
                   light-theme)
