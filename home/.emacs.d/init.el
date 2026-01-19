@@ -5,7 +5,7 @@
 (setopt column-number-mode t
         default-frame-alist '((horizontal-scroll-bars) (vertical-scroll-bars))
         font-use-system-font t
-        gc-cons-threshold 16000000
+        gc-cons-threshold 32000000
         inhibit-startup-screen t
         ispell-dictionary "en_GB"
         js-indent-level 2
@@ -18,6 +18,7 @@
         tool-bar-mode nil
         vc-follow-symlinks nil
         warning-minimum-level :error
+        window-sides-vertical t
         xterm-mouse-mode t)
 
 (require 'package)
@@ -58,7 +59,11 @@
           ivy-use-virtual-buffers t)
   :init (ivy-mode t))
 
-(use-package dape)
+(use-package dape
+  :preface (setopt dape-key-prefix "\M-d")
+  :custom
+  (dape-breakpoint-global-mode +1)
+  (dape-cwd-function 'projectile-project-root))
 
 (use-package direnv
   :config (direnv-mode))
@@ -93,7 +98,7 @@
 (use-package doom-themes
   :config
   (let ((dark-theme 'doom-tokyo-night)
-        (light-theme 'modus-operandi-tinted))
+        (light-theme 'doom-one-light))
     (load-theme (if (dark-theme-p)
                     dark-theme
                   light-theme)
@@ -122,14 +127,18 @@
                                                                 :functionTypeParameters t
                                                                 :parameterName t
                                                                 :rangeVariableTypes t))))
+  (evil-define-key 'normal eglot-mode-map (kbd "g d") 'xref-find-definitions)
+  (evil-define-key 'normal eglot-mode-map (kbd "g r") 'xref-find-references)
+  (evil-define-key 'normal eglot-mode-map (kbd "g D") 'eglot-find-declaration)
+  (evil-define-key 'normal eglot-mode-map (kbd "g I") 'eglot-find-implementation)
+  (evil-define-key 'normal eglot-mode-map (kbd "g T") 'eglot-find-typeDefinition)
+  (evil-define-key 'normal eglot-mode-map (kbd "<leader> a") 'eglot-code-actions)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> r") 'eglot-rename)
+  (evil-define-key 'normal eglot-mode-map (kbd "<leader> f") 'eglot-format-buffer)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> o") 'eglot-code-action-organize-imports)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> h") 'eldoc-box-help-at-point)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> q") 'eldoc-box-quit-frame)
-  (evil-define-key 'normal eglot-mode-map (kbd "<leader> x d") 'xref-find-definitions)
-  (evil-define-key 'normal eglot-mode-map (kbd "<leader> x r") 'xref-find-references)
-  (evil-define-key 'normal eglot-mode-map (kbd "<leader> a") 'eglot-code-actions)
-  (evil-define-key 'normal eglot-mode-map (kbd "<leader> f") 'eglot-format-buffer)
+  (evil-define-key 'normal eglot-mode-map (kbd "g q") 'flymake-show-project-diagnostics)
   :hook
   ((go-mode
     haskell-mode
@@ -159,9 +168,6 @@
 (use-package evil-collection
   :after evil
   :config (evil-collection-init))
-
-;; (use-package gcmh
-;;   :config (gcmh-mode 1))
 
 (use-package geiser-guile)
 
@@ -239,9 +245,6 @@
   :bind ("C-c f" . projectile-find-file)
   :bind-keymap ("C-c p" . projectile-command-map)
   :config (projectile-mode +1))
-
-(use-package python
-  :bind ("<leader> d" . dape))
 
 (use-package rainbow-mode)
 

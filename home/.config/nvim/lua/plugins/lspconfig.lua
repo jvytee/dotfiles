@@ -5,21 +5,21 @@ local function attach_fn(ev)
         return { noremap = true, silent = true, buffer = bufnr, desc = description }
     end
 
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts("Find declaration"))
     vim.keymap.set("n", "gd", builtin.lsp_definitions, bufopts("Find definitions"))
+    vim.keymap.set("n", "gr", builtin.lsp_references, bufopts("Find all references"))
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts("Find declaration"))
     vim.keymap.set("n", "gI", builtin.lsp_implementations, bufopts("Find implementations"))
-    vim.keymap.set("n", "gA", builtin.lsp_references, bufopts("Find all references"))
+    vim.keymap.set("n", "gT", builtin.lsp_type_definitions, bufopts("Find type definitions"))
     vim.keymap.set("n", "K", function()
         vim.lsp.buf.hover { border = "rounded" }
     end, bufopts("Hover"))
     vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts("Signature help"))
-    vim.keymap.set("n", "g.", vim.lsp.buf.code_action, bufopts("Code action"))
-    vim.keymap.set("n", "gr", vim.lsp.buf.rename, bufopts("Rename"))
-    vim.keymap.set("n", "gf", function()
+    vim.keymap.set("n", "<localleader>a", vim.lsp.buf.code_action, bufopts("Code action"))
+    vim.keymap.set("n", "<localleader>r", vim.lsp.buf.rename, bufopts("Rename"))
+    vim.keymap.set("n", "<localleader>f", function()
         vim.lsp.buf.format { async = true }
     end, bufopts("Format buffer"))
-    vim.keymap.set("n", "gy", builtin.lsp_type_definitions, bufopts("Find type definitions"))
-    vim.keymap.set("n", "gS", builtin.lsp_workspace_symbols, bufopts("List workspace symbols"))
+    vim.keymap.set("n", "<localleader>ws", builtin.lsp_workspace_symbols, bufopts("List workspace symbols"))
     vim.keymap.set("n", "<localleader>wa", vim.lsp.buf.add_workspace_folder, bufopts("Add workspace folder"))
     vim.keymap.set("n", "<localleader>wr", vim.lsp.buf.remove_workspace_folder, bufopts("Remove workspace folder"))
     vim.keymap.set("n", "<localleader>wl", function()

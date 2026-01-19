@@ -1,23 +1,13 @@
 return {
-    "epwalsh/obsidian.nvim",
+    "obsidian-nvim/obsidian.nvim",
     version = "*",
-    lazy = true,
     ft = "markdown",
-    dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
+        legacy_commands = false,
         workspaces = {
             { name = "Notes", path = "~/notes", strict = true },
         },
         daily_notes = { folder = "00 Daily" },
         completion = { nvim_cmp = true, min_chars = 2 },
-        disable_frontmatter = true,
-        mappings = {
-            ["<leader>ot"] = {
-                action = function()
-                    vim.cmd "ObsidianToday"
-                end,
-                opts = { buffer = true },
-            },
-        },
     },
 }
