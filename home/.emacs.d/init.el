@@ -60,7 +60,7 @@
   :init (ivy-mode t))
 
 (use-package dape
-  :preface (setopt dape-key-prefix "\C-c d")
+  :preface (setopt dape-key-prefix "\M-d")
   :custom
   (dape-breakpoint-global-mode +1)
   (dape-cwd-function 'projectile-project-root))
