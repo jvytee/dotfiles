@@ -10,7 +10,7 @@ local config = function()
 
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
-    vim.keymap.set("n", "<C-m>", builtin.diagnostics, bufopts)
+    vim.keymap.set("n", "gq", builtin.diagnostics, bufopts)
 end
 
 return {
