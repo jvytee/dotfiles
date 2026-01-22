@@ -14,11 +14,12 @@ local config = function()
         sources = cmp.config.sources(
             {
                 { name = "nvim_lsp" },
-                { name = "nvim_lua" },
-            },
-            {
                 { name = "path" },
                 { name = "buffer" },
+            },
+            {
+                { name = "nvim_lua" },
+                { name = "vimtex" },
             }
         ),
         window = {
@@ -33,5 +34,6 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-path",
+    "micangl/cmp-vimtex",
     { "hrsh7th/nvim-cmp", config = config }
 }

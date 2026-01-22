@@ -285,7 +285,10 @@
 (use-package terraform-mode)
 
 (use-package tex
-  :ensure auctex)
+  :ensure auctex
+  :config
+  (setopt TeX-auto-save t
+          TeX-PDF-mode t))
 
 (use-package treemacs
   :defer t
