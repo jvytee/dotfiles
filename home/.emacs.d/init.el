@@ -2,24 +2,29 @@
   (let ((subdirs '("00 Daily" "01 Projects" "02 Areas" "03 Resources")))
     (mapcan (lambda (subdir) (directory-files-recursively (concat root "/" subdir) ".org$")) subdirs)))
 
-(setopt column-number-mode t
-        default-frame-alist '((horizontal-scroll-bars) (vertical-scroll-bars))
-        font-use-system-font t
-        gc-cons-threshold 32000000
-        inhibit-startup-screen t
-        ispell-dictionary "en_GB"
-        js-indent-level 2
-        nxml-slash-auto-complete-flag t
-        org-directory "~/notes"
-        org-agenda-files (find-agenda-files org-directory)
-        org-babel-load-languages '((emacs-lisp . t) (python . t))
-        pixel-scroll-precision-mode t
-        tab-width 4
-        tool-bar-mode nil
-        vc-follow-symlinks nil
-        warning-minimum-level :error
-        window-sides-vertical t
-        xterm-mouse-mode t)
+(use-package emacs
+  :custom
+  (column-number-mode t)
+  (context-menu-mode t)
+  (default-frame-alist '((horizontal-scroll-bars) (vertical-scroll-bars)))
+  (enable-recursive-minibuffers t)
+  (font-use-system-font t)
+  (gc-cons-threshold 32000000)
+  (inhibit-startup-screen t)
+  (ispell-dictionary "en_GB")
+  (js-indent-level 2)
+  (nxml-slash-auto-complete-flag t)
+  (org-directory "~/notes")
+  (org-agenda-files (find-agenda-files org-directory))
+  (org-babel-load-languages '((emacs-lisp . t) (python . t)))
+  (pixel-scroll-precision-mode t)
+  (read-extended-command-predicate #'command-completion-default-include-p)
+  (tab-width 4)
+  (tool-bar-mode nil)
+  (vc-follow-symlinks nil)
+  (warning-minimum-level :error)
+  (window-sides-vertical t)
+  (xterm-mouse-mode t))
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -51,13 +56,22 @@
 (use-package company
   :hook (after-init . global-company-mode))
 
-(use-package counsel
-  :bind ("C-c i" . swiper-isearch)
-  :commands ivy-mode
-  :config
-  (setopt ivy-count-format "(%d/%d) "
-          ivy-use-virtual-buffers t)
-  :init (ivy-mode t))
+(use-package vertico
+  :custom
+  (vertico-cycle t)
+  (vertico-resize t)
+  :init (vertico-mode))
+
+(use-package orderless
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles partial-completion))))
+  (completion-category-defaults nil)
+  (completion-pcm-leading-wildcard t))
+
+(use-package marginalia
+  :bind (:map minibuffer-local-map ("M-A" . marginalia-cycle))
+  :init (marginalia-mode))
 
 (use-package dape
   :preface (setopt dape-key-prefix "\M-d")
@@ -242,9 +256,12 @@
   :hook (python-mode . pipenv-mode))
 
 (use-package projectile
+  :after (vertico)
   :bind ("C-c f" . projectile-find-file)
   :bind-keymap ("C-c p" . projectile-command-map)
-  :config (projectile-mode +1))
+  :custom (projectile-completion-system 'default)
+  :config
+  (projectile-mode +1))
 
 (use-package rainbow-mode)
 
