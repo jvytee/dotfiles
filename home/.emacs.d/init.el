@@ -53,9 +53,6 @@
   ("C-<next>" . centaur-tabs-forward)
   :hook (after-init . centaur-tabs-mode))
 
-(use-package company
-  :hook (after-init . global-company-mode))
-
 (use-package vertico
   :custom
   (vertico-cycle t)
@@ -76,6 +73,16 @@
 (use-package consult
   :bind ("C-x b" . consult-buffer)
   :config (setopt completion-in-region-function #'consult-completion-in-region))
+
+(use-package corfu
+  :init
+  (setopt global-corfu-minibuffer nil)
+  (global-corfu-mode)
+  :config
+  (setopt corfu-auto t
+          corfu-auto-dealy 0.5
+          corfu-auto-trigger "."
+          corfu-quit-no-match t))
 
 (use-package dape
   :preface (setopt dape-key-prefix "\M-d")
