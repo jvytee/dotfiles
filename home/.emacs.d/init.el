@@ -74,9 +74,8 @@
   :init (marginalia-mode))
 
 (use-package consult
-  :bind
-  ("C-x M-:" . consult-complex-command)
-  ("C-x b" . consult-buffer))
+  :bind ("C-x b" . consult-buffer)
+  :config (setopt completion-in-region-function #'consult-completion-in-region))
 
 (use-package dape
   :preface (setopt dape-key-prefix "\M-d")
