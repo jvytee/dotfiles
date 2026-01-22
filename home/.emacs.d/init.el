@@ -73,6 +73,11 @@
   :bind (:map minibuffer-local-map ("M-A" . marginalia-cycle))
   :init (marginalia-mode))
 
+(use-package consult
+  :bind
+  ("C-x M-:" . consult-complex-command)
+  ("C-x b" . consult-buffer))
+
 (use-package dape
   :preface (setopt dape-key-prefix "\M-d")
   :custom
