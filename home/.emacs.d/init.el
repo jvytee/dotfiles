@@ -135,23 +135,28 @@
 (use-package eglot
   :after evil
   :config
-  (setopt eglot-events-buffer-config '(:size 0 :format full))
+  (setopt eglot-events-buffer-config '(:size 0))
   (add-to-list 'eglot-server-programs
-               '((rust-ts-mode rust-mode) .
-                 ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
+               '((python-ts-mode python-mode) . ,(eglot-alternatives
+                                                  '(("ty" "server")
+                                                    ("ruff" "server")))))
   (add-to-list 'eglot-server-programs
                `((yaml-ts-mode yaml-mode) . ,(eglot-alternatives
                                               '(("yaml-language-server" "--stdio")
                                                 ("ansible-language-server" "--stdio")))))
-  (add-to-list 'eglot-server-programs
-               '((python-ts-mode python-mode) . ("ty" "server")))
-  (setq-default eglot-workspace-configuration '(:gopls (:hints (:assignVariableTypes t
-                                                                :compositeLiteralFields t
-                                                                :compositeLiteralTypes t
-                                                                :constantValues t
-                                                                :functionTypeParameters t
-                                                                :parameterName t
-                                                                :rangeVariableTypes t))))
+  (setq-default eglot-workspace-configuration '(:gopls
+                                                (:hints
+                                                 (:assignVariableTypes t
+                                                  :compositeLiteralFields t
+                                                  :compositeLiteralTypes t
+                                                  :constantValues t
+                                                  :functionTypeParameters t
+                                                  :parameterName t
+                                                  :rangeVariableTypes t))
+                                                :rust-analyzer
+                                                (:initializationOptions
+                                                 (:check
+                                                  (:command "clippy")))))
   (evil-define-key 'normal eglot-mode-map (kbd "g d") 'xref-find-definitions)
   (evil-define-key 'normal eglot-mode-map (kbd "g r") 'xref-find-references)
   (evil-define-key 'normal eglot-mode-map (kbd "g D") 'eglot-find-declaration)
