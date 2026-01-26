@@ -1,13 +1,12 @@
-.envrc
+**/*
+!**/
 
 home/.config/
-!home/.config/bat/
-!home/.config/i3status/
-!home/.config/mako/
-!home/.config/nvim/
-!home/.config/sway/
-!home/.config/youtube-dl
+!home/.config/bat/config
+!home/.config/nvim/**/*.lua
+!home/.config/youtube-dl/config
 
-home/.emacs.d/
 !home/.emacs.d/init.el
-!home/.emacs.d/custom.el
+
+!nixos/**/*.nix
+!quadrat/**/*.nix
