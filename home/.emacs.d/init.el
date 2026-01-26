@@ -77,7 +77,8 @@
 (use-package corfu
   :init
   (setopt global-corfu-minibuffer nil)
-  (global-corfu-mode)
+  (if (display-graphic-p)
+      (global-corfu-mode))
   :config
   (setopt corfu-auto t
           corfu-auto-dealy 0.5
@@ -144,19 +145,19 @@
                `((yaml-ts-mode yaml-mode) . ,(eglot-alternatives
                                               '(("yaml-language-server" "--stdio")
                                                 ("ansible-language-server" "--stdio")))))
-  (setq-default eglot-workspace-configuration '(:gopls
-                                                (:hints
-                                                 (:assignVariableTypes t
-                                                  :compositeLiteralFields t
-                                                  :compositeLiteralTypes t
-                                                  :constantValues t
-                                                  :functionTypeParameters t
-                                                  :parameterName t
-                                                  :rangeVariableTypes t))
-                                                :rust-analyzer
-                                                (:initializationOptions
-                                                 (:check
-                                                  (:command "clippy")))))
+  (setopt eglot-workspace-configuration '(:gopls
+                                          (:hints
+                                           (:assignVariableTypes t
+                                            :compositeLiteralFields t
+                                            :compositeLiteralTypes t
+                                            :constantValues t
+                                            :functionTypeParameters t
+                                            :parameterName t
+                                            :rangeVariableTypes t))
+                                          :rust-analyzer
+                                          (:initializationOptions
+                                           (:check
+                                            (:command "clippy")))))
   (evil-define-key 'normal eglot-mode-map (kbd "g d") 'xref-find-definitions)
   (evil-define-key 'normal eglot-mode-map (kbd "g r") 'xref-find-references)
   (evil-define-key 'normal eglot-mode-map (kbd "g D") 'eglot-find-declaration)
