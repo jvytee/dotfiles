@@ -106,29 +106,21 @@
 (use-package doom-modeline
   :hook (after-init . doom-modeline-mode))
 
-(defun dark-theme-p ()
-  (let* ((gtk-theme (getenv "GTK_THEME"))
-         (color-scheme (shell-command-to-string "gsettings get org.gnome.desktop.interface color-scheme"))
-         (dark-gtk-theme-p (and
-                            gtk-theme
-                            (string-match-p "dark" gtk-theme)))
-         (dark-color-scheme-p (and
-                               color-scheme
-                               (string-match-p "prefer-dark" color-scheme)))
-         (terminal-p (not (display-graphic-p))))
-    (or
-     dark-gtk-theme-p
-     dark-color-scheme-p
-     terminal-p)))
+(defun select-theme (light-theme dark-theme terminal-theme)
+  "Select theme for light, dark and terminal mode"
+  (if (not (display-graphic-p))
+      terminal-theme
+    (let* ((gtk-theme (getenv "GTK_THEME"))
+           (gtk-theme-dark-p (and gtk-theme (string-match-p "dark" gtk-theme)))
+           (color-scheme (shell-command-to-string "gsettings get org.gnome.desktop.interface color-scheme"))
+           (color-scheme-dark-p (and color-scheme (string-match-p "prefer-dark" color-scheme))))
+      (if (or gtk-theme-dark-p color-scheme-dark-p)
+          dark-theme
+        light-theme))))
 
 (use-package doom-themes
   :config
-  (let ((dark-theme 'doom-tokyo-night)
-        (light-theme 'doom-one-light))
-    (load-theme (if (dark-theme-p)
-                    dark-theme
-                  light-theme)
-                1))
+  (load-theme (select-theme 'doom-one-light 'doom-vibrant 'doom-tokyo-night) 1)
   (setopt doom-themes-treemacs-theme "doom-colors")
   (doom-themes-treemacs-config)
   (doom-themes-org-config))
