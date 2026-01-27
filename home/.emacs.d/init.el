@@ -194,7 +194,9 @@
   (setq evil-want-C-u-scroll t)
   :config
   (evil-mode 1)
-  (evil-set-leader 'normal (kbd "SPC")))
+  (evil-set-leader 'normal (kbd "SPC"))
+  (evil-global-set-key 'normal (kbd "g c c") 'comment-line)
+  (evil-global-set-key 'visual (kbd "g c") 'comment-region))
 
 (use-package evil-collection
   :after evil
