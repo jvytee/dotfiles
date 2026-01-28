@@ -6,6 +6,7 @@
   :custom
   (column-number-mode t)
   (context-menu-mode t)
+  (css-indent-offset 2)
   (default-frame-alist '((horizontal-scroll-bars) (vertical-scroll-bars)))
   (enable-recursive-minibuffers t)
   (font-use-system-font t)
