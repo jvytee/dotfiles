@@ -130,7 +130,7 @@
   :config
   (setopt eglot-events-buffer-config '(:size 0))
   (add-to-list 'eglot-server-programs
-               '((python-ts-mode python-mode) . ,(eglot-alternatives
+               `((python-ts-mode python-mode) . ,(eglot-alternatives
                                                   '(("ty" "server")
                                                     ("ruff" "server")))))
   (add-to-list 'eglot-server-programs
