@@ -77,13 +77,14 @@
 
 (use-package corfu
   :init
-  (setopt global-corfu-minibuffer nil)
+  (setopt global-corfu-minibuffer t)
   (if (display-graphic-p)
       (global-corfu-mode))
   :config
   (setopt corfu-auto t
           corfu-auto-dealy 0.5
           corfu-auto-trigger "."
+          corfu-cycle t
           corfu-quit-no-match t))
 
 (use-package dape
