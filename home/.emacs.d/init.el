@@ -72,7 +72,9 @@
   :init (marginalia-mode))
 
 (use-package consult
-  :bind ("C-x b" . consult-buffer)
+  :bind
+  ("C-x b" . consult-buffer)
+  ("C-x r" . consult-ripgrep)
   :config (setopt completion-in-region-function #'consult-completion-in-region))
 
 (use-package corfu
@@ -280,9 +282,6 @@
 
 (use-package repeat
   :custom (repeat-mode +1))
-
-(use-package rg
-  :config (rg-enable-default-bindings))
 
 (use-package rust-mode
   :init (setq rust-mode-treesitter-derive t)
