@@ -75,11 +75,11 @@
   :bind
   ("C-x b" . consult-buffer)
   ("C-x r" . consult-ripgrep)
-  :config (setopt completion-in-region-function #'consult-completion-in-region))
+  :init (setopt completion-in-region-function #'consult-completion-in-region))
 
 (use-package corfu
   :init
-  (setopt global-corfu-minibuffer t)
+  (setopt global-corfu-minibuffer nil)
   (if (display-graphic-p)
       (global-corfu-mode))
   :config
