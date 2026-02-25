@@ -125,8 +125,7 @@
 (use-package doom-themes
   :config
   (load-theme (select-theme 'doom-one-light 'doom-vibrant 'doom-tokyo-night) 1)
-  (setopt doom-themes-padded-modeline t
-          doom-themes-treemacs-theme "doom-colors")
+  (setopt doom-themes-treemacs-theme "doom-colors")
   (doom-themes-treemacs-config)
   (doom-themes-org-config))
 
