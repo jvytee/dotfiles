@@ -10,7 +10,7 @@
   (default-frame-alist '((horizontal-scroll-bars) (vertical-scroll-bars)))
   (enable-recursive-minibuffers t)
   (font-use-system-font t)
-  (gc-cons-threshold 32000000)
+  ;; (gc-cons-threshold 32000000)
   (inhibit-startup-screen t)
   (ispell-dictionary "en_GB")
   (js-indent-level 2)
@@ -125,9 +125,13 @@
 (use-package doom-themes
   :config
   (load-theme (select-theme 'doom-one-light 'doom-vibrant 'doom-tokyo-night) 1)
-  (setopt doom-themes-treemacs-theme "doom-colors")
+  (setopt doom-themes-padded-modeline t
+          doom-themes-treemacs-theme "doom-colors")
   (doom-themes-treemacs-config)
   (doom-themes-org-config))
+
+(use-package solaire-mode
+  :init (solaire-global-mode t))
 
 (use-package eglot
   :after evil
