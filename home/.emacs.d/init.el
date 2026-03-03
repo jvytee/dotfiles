@@ -123,8 +123,9 @@
         light-theme))))
 
 (use-package doom-themes
+  :after solaire-mode
   :config
-  (load-theme (select-theme 'doom-one-light 'doom-vibrant 'doom-tokyo-night) 1)
+  (load-theme (select-theme 'doom-one-light 'doom-tokyo-night 'doom-tokyo-night) 1)
   (setopt doom-themes-treemacs-theme "doom-colors")
   (doom-themes-treemacs-config)
   (doom-themes-org-config))
@@ -137,14 +138,8 @@
   :config
   (setopt eglot-events-buffer-config '(:size 0))
   (add-to-list 'eglot-server-programs
-               `((python-ts-mode python-mode) . ,(eglot-alternatives
-                                                  '(("ty" "server")
-                                                    ("ruff" "server")))))
-  (add-to-list 'eglot-server-programs
-               `((yaml-ts-mode yaml-mode) . ,(eglot-alternatives
-                                              '(("yaml-language-server" "--stdio")
-                                                ("ansible-language-server" "--stdio")))))
-  (setopt eglot-workspace-configuration '(:gopls
+               '((go-ts-mode go-mode) . ("gopls"
+                                         :initializationOptions
                                           (:hints
                                            (:assignVariableTypes t
                                             :compositeLiteralFields t
@@ -152,11 +147,20 @@
                                             :constantValues t
                                             :functionTypeParameters t
                                             :parameterName t
-                                            :rangeVariableTypes t))
-                                          :rust-analyzer
-                                          (:initializationOptions
-                                           (:check
-                                            (:command "clippy")))))
+                                            :rangeVariableTypes t)))))
+  (add-to-list 'eglot-server-programs
+               `((python-ts-mode python-mode) . ,(eglot-alternatives
+                                                  '(("ty" "server")
+                                                    ("ruff" "server")))))
+  (add-to-list 'eglot-server-programs
+               '((rust-ts-mode rust-mode) . ("rust-analyzer"
+                                             :initializationOptions
+                                             (:check
+                                              (:command "clippy")))))
+  (add-to-list 'eglot-server-programs
+               `((yaml-ts-mode yaml-mode) . ,(eglot-alternatives
+                                              '(("yaml-language-server" "--stdio")
+                                                ("ansible-language-server" "--stdio")))))
   (evil-define-key 'normal eglot-mode-map (kbd "g d") 'xref-find-definitions)
   (evil-define-key 'normal eglot-mode-map (kbd "g r") 'xref-find-references)
   (evil-define-key 'normal eglot-mode-map (kbd "g D") 'eglot-find-declaration)
