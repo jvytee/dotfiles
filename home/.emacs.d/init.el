@@ -10,9 +10,8 @@
   (default-frame-alist '((horizontal-scroll-bars) (vertical-scroll-bars)))
   (enable-recursive-minibuffers t)
   (font-use-system-font t)
-  ;; (gc-cons-threshold 32000000)
+  (gc-cons-threshold 64000000)
   (inhibit-startup-screen t)
-  (ispell-dictionary "en_GB")
   (js-indent-level 2)
   (nxml-slash-auto-complete-flag t)
   (org-directory "~/notes")
@@ -136,7 +135,7 @@
 (use-package eglot
   :after evil
   :config
-  (setopt eglot-events-buffer-config '(:size 0))
+  (setopt eglot-events-buffer-config '(:size 0 :format full))
   (add-to-list 'eglot-server-programs
                '((go-ts-mode go-mode) . ("gopls"
                                          :initializationOptions
@@ -234,19 +233,10 @@
 
 (use-package ligature
   :config
-  (ligature-set-ligatures 'prog-mode '("--" "---" "==" "===" "!=" "!==" "=!="
-                                       "=:=" "=/=" "<=" ">=" "&&" "&&&" "&=" "++" "+++" "***" ";;" "!!"
-                                       "??" "???" "?:" "?." "?=" "<:" ":<" ":>" ">:" "<:<" "<>" "<<<" ">>>"
-                                       "<<" ">>" "||" "-|" "_|_" "|-" "||-" "|=" "||=" "##" "###" "####"
-                                       "#{" "#[" "]#" "#(" "#?" "#_" "#_(" "#:" "#!" "#=" "^=" "<$>" "<$"
-                                       "$>" "<+>" "<+" "+>" "<*>" "<*" "*>" "</" "</>" "/>" "<!--" "<#--"
-                                       "-->" "->" "->>" "<<-" "<-" "<=<" "=<<" "<<=" "<==" "<=>" "<==>"
-                                       "==>" "=>" "=>>" ">=>" ">>=" ">>-" ">-" "-<" "-<<" ">->" "<-<" "<-|"
-                                       "<=|" "|=>" "|->" "<->" "<~~" "<~" "<~>" "~~" "~~>" "~>" "~-" "-~"
-                                       "~@" "[||]" "|]" "[|" "|}" "{|" "[<" ">]" "|>" "<|" "||>" "<||"
-                                       "|||>" "<|||" "<|>" "..." ".." ".=" "..<" ".?" "::" ":::" ":=" "::="
-                                       ":?" ":?>" "//" "///" "/*" "*/" "/=" "//=" "/==" "@_" "__" "???"
-                                       "<:<" ";;;"))
+(ligature-set-ligatures 'prog-mode '("<---" "<--"  "<<-" "<-" "->" "-->" "--->" "<->" "<-->" "<--->" "<---->" "<!--"
+                                       "<==" "<===" "<=" "=>" "=>>" "==>" "===>" ">=" "<=>" "<==>" "<===>" "<====>" "<!---"
+                                       "<~~" "<~" "~>" "~~>" "::" ":::" "==" "!=" "===" "!=="
+                                       ":=" ":-" ":+" "<*" "<*>" "*>" "<|" "<|>" "|>" "+:" "-:" "=:" "<******>" "++" "+++"))
   (global-ligature-mode t))
 
 (use-package lua-mode)
