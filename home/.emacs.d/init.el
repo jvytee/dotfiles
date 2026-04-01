@@ -195,13 +195,14 @@
   (setq evil-want-C-u-scroll t)
   :config
   (evil-mode 1)
-  (evil-set-leader 'normal (kbd "SPC"))
-  (evil-global-set-key 'normal (kbd "g c c") 'comment-line)
-  (evil-global-set-key 'visual (kbd "g c") 'comment-region))
+  (evil-set-leader 'normal (kbd "SPC")))
 
 (use-package evil-collection
   :after evil
   :config (evil-collection-init))
+
+(use-package evil-commentary
+  :config (evil-commentary-mode t))
 
 (use-package geiser-guile)
 
@@ -229,6 +230,9 @@
   (setopt highlight-indent-guides-method (if (display-graphic-p) 'bitmap 'character)
           highlight-indent-guides-responsive 'top)
   :hook ((conf-mode nxml-mode prog-mode yaml-mode) . highlight-indent-guides-mode))
+
+(use-package hl-todo
+  :config (global-hl-todo-mode t))
 
 (use-package ligature
   :config
@@ -321,8 +325,6 @@
 
 (use-package treemacs-magit
   :after (treemacs magit))
-
-(use-package vterm)
 
 (use-package web-mode
   :config
