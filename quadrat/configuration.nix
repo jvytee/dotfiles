@@ -57,13 +57,30 @@
     useXkbConfig = true; # use xkb.options in tty.
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.julian = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIXsa+rFKFESXeTR+AQGaI4GcxIFY1U0RkWu/aJr+8Eo julian"
-    ];
+  users = {
+    groups.git = { };
+
+    users = {
+      # Define a user account. Don't forget to set a password with ‘passwd’.
+      julian = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIXsa+rFKFESXeTR+AQGaI4GcxIFY1U0RkWu/aJr+8Eo julian"
+        ];
+      };
+
+      git = {
+        isSystemUser = true;
+        group = "git";
+        home = "/var/lib/git-server";
+        createHome = true;
+        shell = "${pkgs.git}/bin/git-shell";
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIXsa+rFKFESXeTR+AQGaI4GcxIFY1U0RkWu/aJr+8Eo julian"
+        ];
+      };
+    };
   };
 
   # programs.firefox.enable = true;
@@ -146,6 +163,13 @@
       settings = {
         PasswordAuthentication = false;
       };
+      extraConfig = ''
+        Match user git
+          AllowTcpForwarding no
+          AllowAgentForwarding no
+          PermitTTY no
+          X11Forwarding no
+      '';
     };
   };
 
