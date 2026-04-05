@@ -2,20 +2,48 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    <nixos-hardware/lenovo/thinkpad/t460>
-  ];
+  ./hardware-configuration.nix
+  # <nixos-hardware/lenovo/thinkpad/t460>
+];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  hardware.enableRedistributableFirmware = true;
-  nixpkgs.config.allowUnfree = true;
+  hardware = {
+    bluetooth.powerOnBoot = false;
+    enableRedistributableFirmware = true;
+
+    sane = {
+      enable = true;
+
+      brscan4 = {
+        enable = true;
+        netDevices.mfc-7820n = {
+          name = "Brother";
+          model = "MFC-7820N";
+          ip = "192.168.178.21";
+        };
+      };
+    };
+  };
+
+  nixpkgs = {
+    config.allowUnfree = true;
+
+    overlays = [ (final: prev: {
+      inherit (prev.lixPackageSets.stable)
+      nixpkgs-review
+      nix-eval-jobs
+      nix-fast-build
+      colmena;
+    }) ];
+  };
+
   nix = {
     package = pkgs.lixPackageSets.stable.lix;
     settings.experimental-features = [
@@ -39,7 +67,7 @@
 
     wg-quick.interfaces.uwupn = {
       autostart = false;
-      configFile = "/etc/nixos/uwupn.conf";
+      configFile = "/etc/nixos/uwupn-klapprechner.conf";
     };
   };
 
@@ -80,7 +108,7 @@
 
     resolved = {
       enable = true;
-      dnsovertls = "true";
+      dnsovertls = "opportunistic";
     };
 
     syncthing = {
@@ -112,13 +140,17 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.julian = {
     description = "Julian";
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "scanner"
+      "lp"
+    ]; # Enable ‘sudo’ for the user.
     isNormalUser = true;
     packages = with pkgs; [
       borgbackup
-      ((emacsPackagesFor emacs-pgtk).emacsWithPackages (emacsPackages:
-        [emacsPackages.vterm]
-      ))
+      emacs-pgtk
+      foliate
       gimp
       inkscape
       keepassxc
@@ -203,7 +235,7 @@
     git
     gnome-tweaks
     htop
-    nil
+    nixd
     nixfmt-rfc-style
     ripgrep
   ];
@@ -212,7 +244,7 @@
     font-awesome
     inter
     iosevka
-    julia-mono
+    jetbrains-mono
     nerd-fonts.symbols-only
     noto-fonts
   ];

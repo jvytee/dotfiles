@@ -8,5 +8,5 @@ home/.config/
 
 !home/.emacs.d/init.el
 
-!nixos/**/*.nix
+!klapprechner/**/*.nix
 !quadrat/**/*.nix
