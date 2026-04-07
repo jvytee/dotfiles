@@ -2,8 +2,8 @@ local config = function()
     local dap = require "dap"
     vim.keymap.set("n", "<localleader>dc", dap.continue)
     vim.keymap.set("n", "<localleader>db", dap.toggle_breakpoint)
-    vim.keymap.set("n", "<localleader>dn", dap.step_over)
-    vim.keymap.set("n", "<localleader>ds", dap.step_into)
+    vim.keymap.set("n", "<localleader>ds", dap.step_over)
+    vim.keymap.set("n", "<localleader>dn", dap.step_into)
     vim.keymap.set("n", "<localleader>dr", dap.repl.toggle)
     vim.keymap.set("n", "<localleader>dq", dap.terminate)
 
