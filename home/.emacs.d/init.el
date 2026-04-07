@@ -41,7 +41,8 @@
 
 (use-package centaur-tabs
   :config
-  (setopt centaur-tabs-height 32
+  (setopt centaur-tabs-cycle-scope 'tabs
+          centaur-tabs-height 32
           centaur-tabs-set-modified-marker t)
   (centaur-tabs-change-fonts
    (face-attribute 'variable-pitch :family)
