@@ -15,6 +15,9 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+# Exclude commands beginning with a space from history
+setopt HIST_IGNORE_SPACE
+
 # Ensure ZLE in application mode for terminfo compatibility
 function start-application-mode { echoti smkx }
 function stop-application-mode { echoti rmkx }
@@ -38,6 +41,9 @@ source-if-exists ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source-if-exists ~/.zsh/fzf/key-bindings.zsh
 source-if-exists ~/.zsh/fzf/completion.zsh
 source-if-exists ~/.zsh/zsh-command-not-found/zsh_command_not_found
+
+# Enable bash completion
+autoload -U +X bashcompinit && bashcompinit
 
 # Custom aliases
 alias bat=batcat
@@ -78,7 +84,6 @@ eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
 
 # Work tools setup
-# eval "$(docker completion zsh)"
-# autoload -U +X bashcompinit && bashcompinit
-# complete -o nospace -C /usr/bin/terraform terraform
-# source /etc/bash_completion.d/azure-cli
+complete -o nospace -C /usr/bin/terraform terraform
+eval "$(docker completion zsh)"
+source /etc/bash_completion.d/azure-cli
