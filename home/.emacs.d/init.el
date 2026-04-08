@@ -4,6 +4,9 @@
 
 (use-package emacs
   :custom
+  (bidi-display-reordering 'left-to-right)
+  (bidi-paragraph-redirection 'left-to-right)
+  (bidi-inhibit-bpa t)
   (column-number-mode t)
   (context-menu-mode t)
   (css-indent-offset 2)
@@ -18,6 +21,8 @@
   (org-agenda-files (find-agenda-files org-directory))
   (org-babel-load-languages '((emacs-lisp . t) (python . t) (shell . t)))
   (read-extended-command-predicate #'command-completion-default-include-p)
+  (read-process-output-max 4000000)
+  (redisplay-skip-fontification-on-input t)
   (tab-width 4)
   (tool-bar-mode nil)
   (vc-follow-symlinks nil)
@@ -80,7 +85,8 @@
   :init
   (setopt global-corfu-minibuffer nil)
   (if (display-graphic-p)
-      (global-corfu-mode))
+      (global-corfu-mode)
+    (global-completion-preview-mode))
   :config
   (setopt corfu-auto t
           corfu-auto-dealy 0.5
