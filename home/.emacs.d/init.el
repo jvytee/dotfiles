@@ -84,15 +84,18 @@
 (use-package corfu
   :init
   (setopt global-corfu-minibuffer nil)
-  (if (display-graphic-p)
-      (global-corfu-mode)
-    (global-completion-preview-mode))
+  (global-corfu-mode)
   :config
   (setopt corfu-auto t
           corfu-auto-dealy 0.5
           corfu-auto-trigger "."
           corfu-cycle t
           corfu-quit-no-match t))
+
+(use-package corfu-terminal
+  :init
+  (unless (display-graphic-p)
+    (corfu-terminal-mode t)))
 
 (use-package dape
   :preface (setopt dape-key-prefix "\M-d")
@@ -145,14 +148,14 @@
   (add-to-list 'eglot-server-programs
                '((go-ts-mode go-mode) . ("gopls"
                                          :initializationOptions
-                                          (:hints
-                                           (:assignVariableTypes t
-                                            :compositeLiteralFields t
-                                            :compositeLiteralTypes t
-                                            :constantValues t
-                                            :functionTypeParameters t
-                                            :parameterName t
-                                            :rangeVariableTypes t)))))
+                                         (:hints
+                                          (:assignVariableTypes t
+                                           :compositeLiteralFields t
+                                           :compositeLiteralTypes t
+                                           :constantValues t
+                                           :functionTypeParameters t
+                                           :parameterName t
+                                           :rangeVariableTypes t)))))
   (add-to-list 'eglot-server-programs
                `((python-ts-mode python-mode) . ,(eglot-alternatives
                                                   '(("ty" "server")
@@ -243,7 +246,7 @@
 
 (use-package ligature
   :config
-(ligature-set-ligatures 'prog-mode '("<---" "<--"  "<<-" "<-" "->" "-->" "--->" "<->" "<-->" "<--->" "<---->" "<!--"
+  (ligature-set-ligatures 'prog-mode '("<---" "<--"  "<<-" "<-" "->" "-->" "--->" "<->" "<-->" "<--->" "<---->" "<!--"
                                        "<==" "<===" "<=" "=>" "=>>" "==>" "===>" ">=" "<=>" "<==>" "<===>" "<====>" "<!---"
                                        "<~~" "<~" "~>" "~~>" "::" ":::" "==" "!=" "===" "!=="
                                        ":=" ":-" ":+" "<*" "<*>" "*>" "<|" "<|>" "|>" "+:" "-:" "=:" "<******>" "++" "+++"))
