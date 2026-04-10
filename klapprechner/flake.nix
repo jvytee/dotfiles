@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    minevent.url = "git+file:///home/julian/code/minevent";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {

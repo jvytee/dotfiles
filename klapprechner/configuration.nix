@@ -7,7 +7,7 @@
 {
   imports = [ # Include the results of the hardware scan.
   ./hardware-configuration.nix
-  # <nixos-hardware/lenovo/thinkpad/t460>
+  inputs.minevent.nixosModules.default
 ];
 
   # Use the systemd-boot EFI boot loader.
@@ -32,20 +32,9 @@
     };
   };
 
-  nixpkgs = {
-    config.allowUnfree = true;
-
-    overlays = [ (final: prev: {
-      inherit (prev.lixPackageSets.stable)
-      nixpkgs-review
-      nix-eval-jobs
-      nix-fast-build
-      colmena;
-    }) ];
-  };
+  nixpkgs.config.allowUnfree = true;
 
   nix = {
-    package = pkgs.lixPackageSets.stable.lix;
     settings.experimental-features = [
       "nix-command"
       "flakes"
@@ -92,6 +81,8 @@
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
 
+    # minevent.enable = true;
+
     # Enable sound.
     # pulseaudio.enable = true;
     # OR
@@ -132,10 +123,10 @@
 
     # Enable the OpenSSH daemon.
     # openssh.enable = true;
-  };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
+    # Enable touchpad support (enabled default in most desktopManager).
+    # services.libinput.enable = true;
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.julian = {
