@@ -12,3 +12,6 @@ home/.config/
 !quadrat/**/*.nix
 
 .direnv/
+.envrc
+
+.terraform/
