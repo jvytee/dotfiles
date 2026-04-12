@@ -166,6 +166,10 @@
                                              (:check
                                               (:command "clippy")))))
   (add-to-list 'eglot-server-programs
+               `((terraform-mode) . ,(eglot-alternatives
+                                      '(("tofu-ls" "serve")
+                                        ("terraform-ls" "serve")))))
+  (add-to-list 'eglot-server-programs
                `((yaml-ts-mode yaml-mode) . ,(eglot-alternatives
                                               '(("yaml-language-server" "--stdio")
                                                 ("ansible-language-server" "--stdio")))))
