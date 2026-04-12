@@ -1,4 +1,4 @@
-**/*
+home/**/*
 !**/
 
 home/.config/
@@ -10,3 +10,5 @@ home/.config/
 
 !klapprechner/**/*.nix
 !quadrat/**/*.nix
+
+.direnv/
