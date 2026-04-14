@@ -53,6 +53,7 @@ local config = function()
         "ruff",
         "rust_analyzer",
         "terraformls",
+        "tofu_ls",
         "tinymist",
         "ts_ls",
         "ty",
