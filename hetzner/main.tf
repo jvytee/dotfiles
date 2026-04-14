@@ -4,7 +4,7 @@ resource "hcloud_server" "hetzner01" {
   location     = "fsn1"
   image        = "debian-13"
   ssh_keys     = [hcloud_ssh_key.main.id]
-  firewall_ids = [hcloud_firewall.hetzner01]
+  firewall_ids = [hcloud_firewall.hetzner01.id]
 
   public_net {
     ipv4_enabled = true
@@ -32,26 +32,16 @@ resource "hcloud_firewall" "hetzner01" {
   }
 }
 
-resource "inwx_nameserver" "hochzeit" {
-  domain = local.minevent_domain
-  type   = "MASTER"
-  nameservers = [
-    "ns.inwx.de",
-    "ns2.inwx.de",
-    "ns3.inwx.eu"
-  ]
-}
-
 resource "inwx_nameserver_record" "hochzeit_v4" {
-  domain     = local.minevent_domain
-  type       = "A"
-  content    = hcloud_server.hetzner01.ipv4_address
-  depends_on = [inwx_nameserver.hochzeit]
+  domain  = local.minevent_domain
+  name    = local.minevent_subdomain
+  type    = "A"
+  content = hcloud_server.hetzner01.ipv4_address
 }
 
 resource "inwx_nameserver_record" "hochzeit_v6" {
-  domain     = local.minevent_domain
-  type       = "AAAA"
-  content    = hcloud_server.hetzner01.ipv6_address
-  depends_on = [inwx_nameserver.hochzeit]
+  domain  = local.minevent_domain
+  name    = local.minevent_subdomain
+  type    = "AAAA"
+  content = hcloud_server.hetzner01.ipv6_address
 }

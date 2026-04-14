@@ -43,11 +43,8 @@ terraform {
   }
 }
 
-provider "hcloud" {
-  token = var.hcloud_api_token
-}
+# Authentication via HCLOUD_TOKEN env var
+provider "hcloud" {}
 
-provider "inwx" {
-  username = var.inwx_username
-  password = var.inwx_password
-}
+# Authentication via INWX_USERNAME, INWX_PASSWORD env vars
+provider "inwx" {}

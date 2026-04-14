@@ -1,3 +1,4 @@
 locals {
-  minevent_domain = "hochzeit.cloudsal.at"
+  minevent_domain    = "cloudsal.at"
+  minevent_subdomain = "hochzeit"
 }
