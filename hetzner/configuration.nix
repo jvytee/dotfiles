@@ -18,7 +18,11 @@
 
     # Open ports in the firewall.
     firewall = {
-      allowedTCPPorts = [ 22 ];
+      allowedTCPPorts = [
+        22
+        80
+        443
+      ];
       allowedUDPPorts = [ ];
       # Or disable the firewall altogether.
       # enable = false;
@@ -37,6 +41,11 @@
         { Gateway = "fe80::1"; }
       ];
     };
+  };
+
+  security.acme = {
+    defaults.email = "jvytee@posteo.org";
+    acceptTerms = true;
   };
 
   nix.gc = {
@@ -143,6 +152,14 @@
           AllowAgentForwarding no
           PermitTTY no
           X11Forwarding no
+      '';
+    };
+
+    minevent = {
+      enable = true;
+      domain = "hochzeit.cloudsal.at";
+      userlist = ''
+        julian:$argon2id$v=19$m=19456,t=2,p=1$FVQ4FyazS1KCMty4+9L5HQ$FJMjHug/dPuqI3tcNGcTbIyQqFRio4M16tP4NI5+iAY
       '';
     };
   };

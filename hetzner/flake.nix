@@ -7,6 +7,7 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    minevent.url = "git+file:///home/julian/code/minevent";
   };
 
   outputs =
@@ -14,6 +15,7 @@
       self,
       nixpkgs,
       disko,
+      minevent, 
       ...
     }@inputs:
     {
@@ -25,6 +27,7 @@
           ./configuration.nix
           ./hardware-configuration.nix
           ./disk-configuration.nix
+          minevent.nixosModules.default
         ];
       };
     };
