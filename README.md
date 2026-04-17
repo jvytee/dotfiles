@@ -14,7 +14,16 @@ stow -t ~ home/
 
 ## Remote deployments
 
-To deploy the NixOS configuration for _quadrat_:
+Install NixOS on _hetzner01_ using NixOS Anywhere:
+
+```shell
+nix run github:nix-community/nixos-anywhere -- \
+  --generate-hardware-config nixos-generate-config ./hardware-configuration.nix \
+  --flake .#hetzner01 \
+  --target-host root@hochzeit.cloudsal.at
+```
+
+Deploy NixOS configuration to _quadrat_:
 
 ```shell
 cd quadrat
@@ -25,3 +34,4 @@ nixos-rebuild switch \
     --sudo \
     --ask-sudo-password
 ```
+

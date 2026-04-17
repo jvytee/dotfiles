@@ -14,6 +14,7 @@
 
   networking = {
     hostName = "hetzner01"; # Define your hostname.
+    useNetworkd = true;
 
     # Open ports in the firewall.
     firewall = {
@@ -21,6 +22,20 @@
       allowedUDPPorts = [ ];
       # Or disable the firewall altogether.
       # enable = false;
+    };
+  };
+
+  systemd.network = {
+    enable = true;
+    networks.hetzner = {
+      matchConfig.name = "enp1s0";
+      networkConfig.DHCP = "ipv4";
+      address = [
+        "2a01:4f8:c013:57ea::1/64"
+      ];
+      routes = [
+        { Gateway = "fe80::1"; }
+      ];
     };
   };
 
