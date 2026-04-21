@@ -306,6 +306,9 @@
 (use-package repeat
   :custom (repeat-mode +1))
 
+(use-package rg
+  :init (rg-enable-default-bindings))
+
 (use-package rust-mode
   :init (setq rust-mode-treesitter-derive t)
   :config (setopt indent-tabs-mode nil))
