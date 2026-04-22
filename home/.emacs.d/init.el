@@ -163,8 +163,8 @@
   (add-to-list 'eglot-server-programs
                '((rust-ts-mode rust-mode) . ("rust-analyzer"
                                              :initializationOptions
-                                             (:check
-                                              (:command "clippy")))))
+                                             (:procMacro
+                                              (:enable :json-false)))))
   (add-to-list 'eglot-server-programs
                `((terraform-mode) . ,(eglot-alternatives
                                       '(("tofu-ls" "serve")
