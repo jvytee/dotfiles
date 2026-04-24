@@ -47,6 +47,7 @@ autoload -U +X bashcompinit && bashcompinit
 
 # Custom aliases
 alias bat=batcat
+alias emacs-dark="GTK_THEME=Adwaita:dark emacs"
 alias ip="ip -c"
 alias ls=exa
 
@@ -74,7 +75,7 @@ alias backup-sina="borg create \
   Videos/"
 
 # Environment variables
-export EDITOR=~/.local/bin/nvim
+export EDITOR=nvim
 export PATH=~/.local/bin:~/go/bin:$PATH
 export PIPENV_SHELL=/usr/bin/zsh
 export WORKON_HOME=~/.local/share/virtualenvs
