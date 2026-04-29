@@ -58,6 +58,8 @@
   ("C-<next>" . centaur-tabs-forward)
   :hook (after-init . centaur-tabs-mode))
 
+(use-package csv-mode)
+
 (use-package vertico
   :custom
   (vertico-cycle t)
