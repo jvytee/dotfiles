@@ -163,11 +163,6 @@
                                                   '(("ty" "server")
                                                     ("ruff" "server")))))
   (add-to-list 'eglot-server-programs
-               '((rust-ts-mode rust-mode) . ("rust-analyzer"
-                                             :initializationOptions
-                                             (:procMacro
-                                              (:enable :json-false)))))
-  (add-to-list 'eglot-server-programs
                `((terraform-mode) . ,(eglot-alternatives
                                       '(("tofu-ls" "serve")
                                         ("terraform-ls" "serve")))))
