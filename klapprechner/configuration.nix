@@ -2,13 +2,18 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports = [ # Include the results of the hardware scan.
-  ./hardware-configuration.nix
-  inputs.minevent.nixosModules.default
-];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.minevent.nixosModules.default
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -32,9 +37,22 @@
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      (final: prev: {
+        inherit (prev.lixPackageSets.stable)
+          nixpkgs-review
+          nix-eval-jobs
+          nix-fast-build
+          colmena
+          ;
+      })
+    ];
+  };
 
   nix = {
+    package = pkgs.lixPackageSets.stable.lix;
     settings.experimental-features = [
       "nix-command"
       "flakes"
@@ -45,7 +63,7 @@
     hostName = "klapprechner"; # Define your hostname.
     # Pick only one of the below networking options.
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+    networkmanager.enable = true; # Easiest to use and most distros use this by default.
     nameservers = [
       "9.9.9.9"
       "149.112.112.112"
@@ -81,7 +99,13 @@
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
 
-    # minevent.enable = true;
+    # minevent = {
+    #   enable = true;
+    #   userlist = ''
+    #     julian:$argon2id$v=19$m=19456,t=2,p=1$vsT4ij/GfDokFkqFtNNEsQ$OKhMgXjQzSvvZNalk43xr2SauX/b8lb2P1U5vHzQpPM
+    #     sina:$argon2id$v=19$m=19456,t=2,p=1$bKR4GiBQTO31SL8EQPguAg$1gZVI3Q39bK+cbzO3Bd324pQjiobsP10HtJBrtsPyEA
+    #   '';
+    # };
 
     # Enable sound.
     # pulseaudio.enable = true;
@@ -150,6 +174,7 @@
       obsidian
       quodlibet
       shotwell
+      signal-desktop
       stow
       telegram-desktop
       vlc
@@ -273,4 +298,3 @@
   system.stateVersion = "25.05"; # Did you read the comment?
 
 }
-
