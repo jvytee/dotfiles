@@ -85,16 +85,6 @@ local config = function()
         },
     })
 
-    vim.lsp.config("rust_analyzer", {
-        settings = {
-            ["rust-analyzer"] = {
-                procMacro = {
-                    enable = false,
-                },
-            },
-        },
-    })
-
     vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = attach_fn,
