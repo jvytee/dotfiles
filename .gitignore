@@ -9,9 +9,7 @@ home/.config/
 !home/.emacs.d/init.el
 
 !klapprechner/**/*.nix
-!quadrat/**/*.nix
 
 .direnv/
 .envrc
 
-.terraform/
