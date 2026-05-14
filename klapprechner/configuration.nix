@@ -256,14 +256,19 @@
     ripgrep
   ];
 
-  fonts.packages = with pkgs; [
-    font-awesome
-    inter
-    iosevka
-    jetbrains-mono
-    nerd-fonts.symbols-only
-    noto-fonts
-  ];
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      font-awesome
+      inter
+      iosevka
+      jetbrains-mono
+      nerd-fonts.symbols-only
+      noto-fonts
+      raleway
+      recursive
+    ];
+  };
 
   virtualisation.podman.enable = true;
 
