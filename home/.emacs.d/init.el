@@ -109,7 +109,14 @@
   :config (direnv-mode))
 
 (use-package display-line-numbers
-  :hook ((conf-mode LaTeX-mode org-mode markdown-mode nxml-mode prog-mode yaml-mode) . display-line-numbers-mode))
+  :hook ((conf-mode
+          LaTeX-mode
+          org-mode
+          markdown-mode
+          nxml-mode
+          prog-mode
+          yaml-mode
+          yaml-ts-mode) . display-line-numbers-mode))
 
 (use-package docker
   :bind ("C-c d" . docker)
@@ -215,6 +222,9 @@
 (use-package evil-commentary
   :config (evil-commentary-mode t))
 
+(use-package flymake-ruff
+  :hook (eglot-managed-mode . flymake-ruff-load))
+
 (use-package geiser-guile)
 
 (use-package go-mode)
@@ -297,6 +307,22 @@
   :custom (projectile-completion-system 'default)
   :config
   (projectile-mode +1))
+
+(use-package python-mode
+  :bind (:map python-mode-map
+              ("C-c r r" . ruff-format-buffer-file)
+              ("C-c r R" . ruff-fix-buffer-file)))
+
+(defun ruff-format-buffer-file ()
+  (interactive)
+  (ruff-command "format" (buffer-file-name)))
+
+(defun ruff-fix-buffer-file ()
+  (interactive)
+  (ruff-command "check --fix" (buffer-file-name)))
+
+(defun ruff-command (command file-name)
+  (shell-command (format "ruff %s %s" command file-name)))
 
 (use-package rainbow-mode)
 
