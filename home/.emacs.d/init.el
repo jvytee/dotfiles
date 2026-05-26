@@ -196,7 +196,9 @@
     javascript-mode
     nix-mode
     python-mode
+    python-ts-mode
     rust-mode
+    rust-ts-mode
     terraform-mode
     typescript-ts-mode
     web-mode
@@ -309,9 +311,10 @@
   (projectile-mode +1))
 
 (use-package python-mode
-  :bind (:map python-mode-map
-              ("C-c r r" . ruff-format-buffer-file)
-              ("C-c r R" . ruff-fix-buffer-file)))
+  :ensure nil
+  :bind
+  (("C-c r r" . ruff-format-buffer-file)
+   ("C-c r R" . ruff-fix-buffer-file)))
 
 (defun ruff-format-buffer-file ()
   (interactive)
@@ -339,7 +342,7 @@
 (use-package sicp)
 
 (use-package sops
-  :hook ((yaml-mode js-json-mode) . sops-mode))
+  :init (global-sops-mode 1))
 
 (use-package sql-indent)
 
