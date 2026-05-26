@@ -92,7 +92,8 @@
           corfu-auto-dealy 0.5
           corfu-auto-trigger "."
           corfu-cycle t
-          corfu-quit-no-match t))
+          corfu-quit-no-match t)
+  (corfu-popupinfo-mode))
 
 (use-package corfu-terminal
   :init
@@ -280,9 +281,6 @@
 
 (use-package nix-mode
   :mode "\\.nix\\'")
-
-(use-package ob-mermaid
-  :config (setopt ob-mermaid-cli-path "/usr/bin/mmdc"))
 
 (use-package obsidian
   :config
