@@ -102,9 +102,8 @@
 
 (use-package dape
   :preface (setopt dape-key-prefix "\M-d")
-  :custom
-  (dape-breakpoint-global-mode +1)
-  (dape-cwd-function 'projectile-project-root))
+  :config (dape-breakpoint-global-mode +1)
+  :custom (dape-cwd-function 'projectile-project-root))
 
 (use-package direnv
   :config (direnv-mode))
