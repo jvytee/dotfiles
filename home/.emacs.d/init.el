@@ -310,19 +310,19 @@
 (use-package python-mode
   :ensure nil
   :bind
-  (("C-c r r" . ruff-format-buffer-file)
-   ("C-c r R" . ruff-fix-buffer-file)))
+  (("C-c r r" . ruff-format-buffer)
+   ("C-c r R" . ruff-fix-buffer)))
 
-(defun ruff-format-buffer-file ()
+(defun ruff-format-buffer ()
   (interactive)
-  (ruff-command "format" (buffer-file-name)))
+  (ruff-command-buffer "format"))
 
-(defun ruff-fix-buffer-file ()
+(defun ruff-fix-buffer ()
   (interactive)
-  (ruff-command "check --fix" (buffer-file-name)))
+  (ruff-command-buffer "check --fix"))
 
-(defun ruff-command (command file-name)
-  (shell-command (format "ruff %s %s" command file-name)))
+(defun ruff-command-buffer (command)
+  (shell-command-on-region (point-min) (point-max) (format "ruff %s" command)))
 
 (use-package rainbow-mode)
 
