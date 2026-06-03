@@ -195,6 +195,7 @@
     haskell-mode
     java-mode
     javascript-mode
+    nael-mode
     nix-mode
     python-mode
     python-ts-mode
@@ -276,6 +277,9 @@
   :hook (markdown-mode . flyspell-mode))
 
 (use-package meson-mode)
+
+(use-package nael
+  :hook (nael-mode . abbrev-mode))
 
 (use-package nginx-mode)
 
