@@ -44,19 +44,19 @@
 
 (use-package better-defaults)
 
-(use-package centaur-tabs
-  :config
-  (setopt centaur-tabs-cycle-scope 'tabs
-          centaur-tabs-height 32
-          centaur-tabs-set-modified-marker t)
-  (centaur-tabs-change-fonts
-   (face-attribute 'variable-pitch :family)
-   (face-attribute 'variable-pitch :height))
-  (centaur-tabs-group-by-projectile-project)
-  :bind
-  ("C-<prior>" . centaur-tabs-backward)
-  ("C-<next>" . centaur-tabs-forward)
-  :hook (after-init . centaur-tabs-mode))
+;; (use-package centaur-tabs
+;;   :config
+;;   (setopt centaur-tabs-cycle-scope 'tabs
+;;           centaur-tabs-height 32
+;;           centaur-tabs-set-modified-marker t)
+;;   (centaur-tabs-change-fonts
+;;    (face-attribute 'variable-pitch :family)
+;;    (face-attribute 'variable-pitch :height))
+;;   (centaur-tabs-group-by-projectile-project)
+;;   :bind
+;;   ("C-<prior>" . centaur-tabs-backward)
+;;   ("C-<next>" . centaur-tabs-forward)
+;;   :hook (after-init . centaur-tabs-mode))
 
 (use-package csv-mode)
 
@@ -102,8 +102,9 @@
 
 (use-package dape
   :preface (setopt dape-key-prefix "\M-d")
-  :config (dape-breakpoint-global-mode +1)
-  :custom (dape-cwd-function 'projectile-project-root))
+  :custom
+  (dape-breakpoint-global-mode +1)
+  (dape-cwd-function 'projectile-project-root))
 
 (use-package direnv
   :config (direnv-mode))
@@ -310,7 +311,8 @@
 (use-package python-mode
   :ensure nil
   :bind
-  (("C-c r r" . ruff-format-buffer)
+  (("C-c r i" . ruff-sort-imports-buffer)
+   ("C-c r r" . ruff-format-buffer)
    ("C-c r R" . ruff-fix-buffer)))
 
 (defun ruff-format-buffer ()
@@ -320,6 +322,10 @@
 (defun ruff-fix-buffer ()
   (interactive)
   (ruff-command-buffer "check --fix"))
+
+(defun ruff-sort-imports-buffer ()
+  (interactive)
+  (ruff-command-buffer "check --fix --select I"))
 
 (defun ruff-command-buffer (command)
   (shell-command-on-region (point-min) (point-max) (format "ruff %s" command)))
