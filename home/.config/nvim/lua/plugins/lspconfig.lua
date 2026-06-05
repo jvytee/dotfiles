@@ -1,7 +1,6 @@
 local function attach_fn(ev)
     local builtin = require "telescope.builtin"
     local bufnr = ev.buf
-    local client_id = ev.data.client_id
     local bufopts = function(description)
         return { noremap = true, silent = true, buffer = bufnr, desc = description }
     end
@@ -25,14 +24,7 @@ local function attach_fn(ev)
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts("List workspace folders"))
 
-    vim.keymap.set('i', '<c-space>', function()
-        vim.lsp.completion.get()
-    end)
-
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    vim.lsp.completion.enable(true, client_id, bufnr, {
-        autotrigger = true,
-    })
     vim.api.nvim_create_autocmd("CursorHold", {
         buffer = bufnr,
         callback = function()
@@ -68,6 +60,11 @@ local config = function()
     for _, server in ipairs(servers) do
         vim.lsp.enable(server)
     end
+
+    vim.lsp.config("*", {
+        capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), require("cmp_nvim_lsp").default_capabilities()),
+        flags = { debounce_text_changes = 150 },
+    })
 
     vim.lsp.config("gopls", {
         settings = {
