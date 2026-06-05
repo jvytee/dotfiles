@@ -12,6 +12,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
 vim.opt.termguicolors = true
 vim.opt.updatetime = 1000
+vim.opt.winborder = "rounded"
 
 -- Configure indentation
 vim.opt.expandtab = true

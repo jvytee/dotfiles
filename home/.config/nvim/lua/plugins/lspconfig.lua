@@ -10,9 +10,7 @@ local function attach_fn(ev)
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts("Find declaration"))
     vim.keymap.set("n", "gI", builtin.lsp_implementations, bufopts("Find implementations"))
     vim.keymap.set("n", "gT", builtin.lsp_type_definitions, bufopts("Find type definitions"))
-    vim.keymap.set("n", "K", function()
-        vim.lsp.buf.hover { border = "rounded" }
-    end, bufopts("Hover"))
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts("Hover"))
     vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts("Signature help"))
     vim.keymap.set("n", "<localleader>a", vim.lsp.buf.code_action, bufopts("Code action"))
     vim.keymap.set("n", "<localleader>r", vim.lsp.buf.rename, bufopts("Rename"))
@@ -31,7 +29,6 @@ local function attach_fn(ev)
         buffer = bufnr,
         callback = function()
             local opts = {
-                border = "rounded",
                 close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
                 focusable = false,
                 scope = "cursor",
