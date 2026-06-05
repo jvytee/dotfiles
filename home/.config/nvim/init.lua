@@ -1,8 +1,9 @@
 -- Set general options
 -- vim.opt.autochdir = true
+vim.opt.autocomplete = true
 vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.completeopt = { "menu", "menuone", "noselect", "popup" }
 vim.opt.cursorline = true
 vim.opt.foldenable = false
 vim.opt.linebreak = true
