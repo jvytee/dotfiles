@@ -8,7 +8,7 @@ local config = function()
         },
         mapping = cmp.mapping.preset.insert {
             ["<C-Space>"] = cmp.mapping.complete(),
-            ["<C-e>"] = cmp.mapping.abort(),
+            ["<C-c>"] = cmp.mapping.abort(),
             ["<CR>"] = cmp.mapping.confirm { select = true },
         },
         sources = cmp.config.sources(
@@ -22,10 +22,6 @@ local config = function()
                 { name = "vimtex" },
             }
         ),
-        window = {
-            completion = cmp.config.window.bordered(),
-            documentation = cmp.config.window.bordered(),
-        },
     }
 end
 
