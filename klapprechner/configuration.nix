@@ -163,15 +163,18 @@
     ]; # Enable ‘sudo’ for the user.
     isNormalUser = true;
     packages = with pkgs; [
+      age
       borgbackup
       emacs-pgtk
       foliate
+      ghostty
       gimp
       inkscape
       keepassxc
       lazygit
       libreoffice
       obsidian
+      openssl
       quodlibet
       shotwell
       signal-desktop
