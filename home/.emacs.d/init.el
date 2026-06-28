@@ -204,7 +204,8 @@
     terraform-mode
     typescript-ts-mode
     web-mode
-    yaml-mode) . eglot-ensure))
+    yaml-mode
+    zig-mode) . eglot-ensure))
 
 (use-package eldoc-box
   :config
@@ -389,3 +390,6 @@
 
 (use-package yasnippet
   :config (yas-global-mode 1))
+
+(use-package zig-mode
+  :mode ("\\.zig\\'" "\\.zon\\'"))
