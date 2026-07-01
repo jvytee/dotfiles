@@ -13,7 +13,6 @@
   (default-frame-alist '((horizontal-scroll-bars) (vertical-scroll-bars)))
   (enable-recursive-minibuffers t)
   (font-use-system-font t)
-  (gc-cons-threshold 64000000)
   (inhibit-startup-screen t)
   (js-indent-level 2)
   (nxml-slash-auto-complete-flag t)
@@ -229,6 +228,9 @@
 
 (use-package flymake-ruff
   :hook (eglot-managed-mode . flymake-ruff-load))
+
+(use-package gcmh
+  :config (gcmh-mode 1))
 
 (use-package geiser-guile)
 
