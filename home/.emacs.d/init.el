@@ -22,12 +22,16 @@
   (read-extended-command-predicate #'command-completion-default-include-p)
   (read-process-output-max 4000000)
   (redisplay-skip-fontification-on-input t)
+  (global-tab-line-mode t)
   (tab-width 4)
   (tool-bar-mode nil)
   (vc-follow-symlinks nil)
   (warning-minimum-level :error)
   (window-sides-vertical t)
-  (xterm-mouse-mode t))
+  (xterm-mouse-mode t)
+  (set-face-attribute 'tab-line nil
+                      :family (face-attribute 'variable-pitch :family)
+                      :height (face-attribute 'variable-pitch :height)))
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -42,20 +46,6 @@
   :init (auctex-latexmk-setup))
 
 (use-package better-defaults)
-
-;; (use-package centaur-tabs
-;;   :config
-;;   (setopt centaur-tabs-cycle-scope 'tabs
-;;           centaur-tabs-height 32
-;;           centaur-tabs-set-modified-marker t)
-;;   (centaur-tabs-change-fonts
-;;    (face-attribute 'variable-pitch :family)
-;;    (face-attribute 'variable-pitch :height))
-;;   (centaur-tabs-group-by-projectile-project)
-;;   :bind
-;;   ("C-<prior>" . centaur-tabs-backward)
-;;   ("C-<next>" . centaur-tabs-forward)
-;;   :hook (after-init . centaur-tabs-mode))
 
 (use-package csv-mode)
 
@@ -142,7 +132,7 @@
 (use-package doom-themes
   :after solaire-mode
   :config
-  (load-theme (select-theme 'leuven 'doom-tokyo-night 'doom-tokyo-night) 1)
+  (load-theme (select-theme 'doom-one-light 'doom-tokyo-night 'doom-tokyo-night) 1)
   (setopt doom-themes-treemacs-theme "doom-colors")
   (doom-themes-treemacs-config)
   (doom-themes-org-config))
