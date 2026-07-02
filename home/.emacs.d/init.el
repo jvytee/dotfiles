@@ -22,7 +22,6 @@
   (read-extended-command-predicate #'command-completion-default-include-p)
   (read-process-output-max 4000000)
   (redisplay-skip-fontification-on-input t)
-  (global-tab-line-mode t)
   (tab-width 4)
   (tool-bar-mode nil)
   (vc-follow-symlinks nil)
@@ -31,8 +30,12 @@
   (xterm-mouse-mode t))
 
 (use-package tab-line
+  :demand t
+  :bind
+  (("C-<prev>" . tab-line-switch-to-prev-tab)
+   ("C-<next>" . tab-line-switch-to-next-tab))
   :config
-  (tab-line-mode t))
+  (global-tab-line-mode t))
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
