@@ -28,10 +28,11 @@
   (vc-follow-symlinks nil)
   (warning-minimum-level :error)
   (window-sides-vertical t)
-  (xterm-mouse-mode t)
-  (set-face-attribute 'tab-line nil
-                      :family (face-attribute 'variable-pitch :family)
-                      :height (face-attribute 'variable-pitch :height)))
+  (xterm-mouse-mode t))
+
+(use-package tab-line
+  :config
+  (tab-line-mode t))
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -135,7 +136,10 @@
   (load-theme (select-theme 'doom-one-light 'doom-tokyo-night 'doom-tokyo-night) 1)
   (setopt doom-themes-treemacs-theme "doom-colors")
   (doom-themes-treemacs-config)
-  (doom-themes-org-config))
+  (doom-themes-org-config)
+  (set-face-attribute 'tab-line nil
+                      :family "Sans Serif"
+                      :box nil))
 
 (use-package solaire-mode
   :init (solaire-global-mode t))
