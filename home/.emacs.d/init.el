@@ -96,8 +96,7 @@
 (use-package dape
   :preface (setopt dape-key-prefix "\M-d")
   :custom
-  (dape-breakpoint-global-mode +1)
-  (dape-cwd-function 'projectile-project-root))
+  (dape-breakpoint-global-mode +1))
 
 (use-package direnv
   :config (direnv-mode))
@@ -304,14 +303,6 @@
   :config (setopt pipenv-executable "~/.local/bin/pipenv")
   :hook (python-mode . pipenv-mode))
 
-(use-package projectile
-  :after (vertico)
-  :bind ("C-c f" . projectile-find-file)
-  :bind-keymap ("C-c p" . projectile-command-map)
-  :custom (projectile-completion-system 'default)
-  :config
-  (projectile-mode +1))
-
 (use-package python-mode
   :ensure nil
   :bind
@@ -364,14 +355,12 @@
 (use-package treemacs
   :defer t
   :bind ("C-c t" . treemacs)
-  :config (setopt treemacs-indent-guide-mode 1))
+  :config
+  (setopt treemacs-indent-guide-mode 1)
+  (treemacs-project-follow-mode t))
 
 (use-package treemacs-evil
   :after (treemacs evil))
-
-(use-package treemacs-projectile
-  :after (treemacs projectile)
-  :config (treemacs-project-follow-mode))
 
 (use-package treemacs-magit
   :after (treemacs magit))
