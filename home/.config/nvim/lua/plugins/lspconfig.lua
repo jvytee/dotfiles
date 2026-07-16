@@ -55,6 +55,7 @@ local config = function()
         "ts_ls",
         "ty",
         "yamlls",
+        "zls",
     }
 
     for _, server in ipairs(servers) do
