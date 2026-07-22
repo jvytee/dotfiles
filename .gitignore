@@ -6,6 +6,7 @@ home/.config/
 !home/.config/nvim/**/*.lua
 !home/.config/youtube-dl/config
 
+!home/.vimrc
 !home/.emacs.d/init.el
 
 !klapprechner/**/*.nix

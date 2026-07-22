@@ -19,6 +19,7 @@
   (org-directory "~/notes")
   (org-agenda-files (find-agenda-files org-directory))
   (org-babel-load-languages '((emacs-lisp . t) (python . t) (shell . t)))
+  (pixel-scroll-precision-mode t)
   (read-extended-command-predicate #'command-completion-default-include-p)
   (read-process-output-max 4000000)
   (redisplay-skip-fontification-on-input t)
@@ -149,7 +150,8 @@
 (use-package eglot
   :after evil
   :config
-  (setopt eglot-events-buffer-config '(:size 0 :format full))
+  (setopt eglot-events-buffer-config '(:size 0 :format full)
+          eglot-autoshutdown t)
   (add-to-list 'eglot-server-programs
                '((go-ts-mode go-mode) . ("gopls"
                                          :initializationOptions
@@ -352,7 +354,8 @@
   :defer t
   :bind ("C-c t" . treemacs)
   :config
-  (setopt treemacs-indent-guide-mode 1)
+  (setopt treemacs-indent-guide-mode 1
+          treemacs-width 45)
   (treemacs-project-follow-mode t))
 
 (use-package treemacs-evil
