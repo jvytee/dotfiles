@@ -354,8 +354,7 @@
   :defer t
   :bind ("C-c t" . treemacs)
   :config
-  (setopt treemacs-indent-guide-mode 1
-          treemacs-width 45)
+  (setopt treemacs-indent-guide-mode 1)
   (treemacs-project-follow-mode t))
 
 (use-package treemacs-evil
