@@ -301,28 +301,6 @@
   :config (setopt pipenv-executable "~/.local/bin/pipenv")
   :hook (python-mode . pipenv-mode))
 
-(use-package python-mode
-  :ensure nil
-  :bind
-  (("C-c r i" . ruff-sort-imports-buffer)
-   ("C-c r r" . ruff-format-buffer)
-   ("C-c r R" . ruff-fix-buffer)))
-
-(defun ruff-format-buffer ()
-  (interactive)
-  (ruff-command-buffer "format"))
-
-(defun ruff-fix-buffer ()
-  (interactive)
-  (ruff-command-buffer "check --fix"))
-
-(defun ruff-sort-imports-buffer ()
-  (interactive)
-  (ruff-command-buffer "check --fix --select I"))
-
-(defun ruff-command-buffer (command)
-  (shell-command-on-region (point-min) (point-max) (format "ruff %s" command)))
-
 (use-package rainbow-mode)
 
 (use-package repeat
