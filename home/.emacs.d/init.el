@@ -186,7 +186,6 @@
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> o") 'eglot-code-action-organize-imports)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> h") 'eldoc-box-help-at-point)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> q") 'eldoc-box-quit-frame)
-  (evil-define-key 'normal eglot-mode-map (kbd "g q") 'flymake-show-project-diagnostics)
   :hook
   ((go-mode
     haskell-mode
@@ -223,8 +222,12 @@
 (use-package evil-commentary
   :config (evil-commentary-mode t))
 
-(use-package flymake-ruff
-  :hook (eglot-managed-mode . flymake-ruff-load))
+(use-package flycheck
+  :init (global-flycheck-mode 1)
+  :config
+  (global-flycheck-eglot-mode 1)
+  (setopt flycheck-eglot-exclusive nil)
+  (evil-define-key 'normal flycheck-mode-map (kbd "g q") 'flycheck-list-errors))
 
 (use-package gcmh
   :config (gcmh-mode 1))
