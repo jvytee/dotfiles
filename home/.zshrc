@@ -49,7 +49,7 @@ autoload -U +X bashcompinit && bashcompinit
 alias bat=batcat
 alias emacs-dark="GTK_THEME=Adwaita:dark emacs"
 alias ip="ip -c"
-alias ls=exa
+alias ls="ls --color=auto -h"
 
 alias backup="borg create \
   --progress \
