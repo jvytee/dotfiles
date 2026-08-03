@@ -136,7 +136,7 @@
 (use-package doom-themes
   :after solaire-mode
   :config
-  (load-theme (select-theme 'doom-one-light 'doom-tokyo-night 'doom-tokyo-night) 1)
+  (load-theme (select-theme 'modus-operandi 'modus-vivendi 'doom-tokyo-night) 1)
   (setopt doom-themes-treemacs-theme "doom-colors")
   (doom-themes-treemacs-config)
   (doom-themes-org-config)
