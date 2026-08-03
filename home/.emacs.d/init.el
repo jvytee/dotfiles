@@ -175,8 +175,6 @@
                `((yaml-ts-mode yaml-mode) . ,(eglot-alternatives
                                               '(("yaml-language-server" "--stdio")
                                                 ("ansible-language-server" "--stdio")))))
-  (evil-define-key 'normal eglot-mode-map (kbd "g d") 'xref-find-definitions)
-  (evil-define-key 'normal eglot-mode-map (kbd "g r") 'xref-find-references)
   (evil-define-key 'normal eglot-mode-map (kbd "g D") 'eglot-find-declaration)
   (evil-define-key 'normal eglot-mode-map (kbd "g I") 'eglot-find-implementation)
   (evil-define-key 'normal eglot-mode-map (kbd "g T") 'eglot-find-typeDefinition)
@@ -184,8 +182,6 @@
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> r") 'eglot-rename)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> f") 'eglot-format-buffer)
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> o") 'eglot-code-action-organize-imports)
-  (evil-define-key 'normal eglot-mode-map (kbd "<leader> h") 'eldoc-box-help-at-point)
-  (evil-define-key 'normal eglot-mode-map (kbd "<leader> q") 'eldoc-box-quit-frame)
   :hook
   ((go-mode
     haskell-mode
@@ -203,9 +199,12 @@
     zig-mode) . eglot-ensure))
 
 (use-package eldoc-box
+  :after evil
   :config
   (setq eldoc-echo-area-prefer-doc-buffer t)
-  (setq eldoc-echo-area-use-multiline-p nil))
+  (setq eldoc-echo-area-use-multiline-p nil)
+  (evil-define-key 'normal global-map (kbd "<leader> h") 'eldoc-box-help-at-point)
+  (evil-define-key 'normal global-map (kbd "<leader> q") 'eldoc-box-quit-frame))
 
 (use-package evil
   :init
@@ -352,6 +351,11 @@
 
 (use-package which-key
   :config (which-key-mode 1))
+
+(use-package xref
+  :init
+  (evil-define-key 'normal eglot-mode-map (kbd "g d") 'xref-find-definitions)
+  (evil-define-key 'normal eglot-mode-map (kbd "g r") 'xref-find-references))
 
 (use-package yaml-mode)
 
