@@ -364,8 +364,4 @@
 
 (use-package zig-mode
   :mode ("\\.zig\\'" "\\.zon\\'")
-  :hook
-  ((compilation-filter . ansi-color-compilation-filter)
-   (compilation-filter . (lambda ()
-                           (let ((inhibit-read-only t))
-                             (ansi-color-apply-on-region compilation-filter-start (point)))))))
+  :hook (compilation-filter . ansi-color-compilation-filter))
