@@ -122,7 +122,7 @@
   :hook (after-init . doom-modeline-mode))
 
 (defun select-theme (light-theme dark-theme terminal-theme)
-  "Select theme for light, dark and terminal mode"
+  "Select theme for light, dark and terminal mode."
   (if (not (display-graphic-p))
       terminal-theme
     (let* ((gtk-theme (getenv "GTK_THEME"))
@@ -142,7 +142,7 @@
   (doom-themes-org-config)
   (set-face-attribute 'tab-line nil
                       :family "Sans Serif"
-                      :height 90))
+                      :height 1.0))
 
 (use-package solaire-mode
   :init (solaire-global-mode t))
