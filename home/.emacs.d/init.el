@@ -364,7 +364,4 @@
 
 (use-package zig-mode
   :mode ("\\.zig\\'" "\\.zon\\'")
-  :hook
-  ((compilation-filter . ansi-color-compilation-filter)
-   (compilation-filter . (lambda ()
-                           (replace-string-in-region "\r" "\n" compilation-filter-start (point))))))
+  :hook (compilation-filter . ansi-color-compilation-filter))
