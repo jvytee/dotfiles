@@ -33,7 +33,7 @@
 (use-package tab-line
   :demand t
   :bind
-  (("C-<prev>" . tab-line-switch-to-prev-tab)
+  (("C-<prior>" . tab-line-switch-to-prev-tab)
    ("C-<next>" . tab-line-switch-to-next-tab))
   :config
   (global-tab-line-mode t))
