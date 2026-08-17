@@ -82,7 +82,9 @@
   (setopt global-corfu-minibuffer nil)
   (global-corfu-mode)
   :config
-  (setopt corfu-auto-trigger "."
+  (setopt corfu-auto t
+          corfu-auto-dealy 0.5
+          corfu-auto-trigger "."
           corfu-cycle t
           corfu-quit-no-match t)
   (corfu-popupinfo-mode))
