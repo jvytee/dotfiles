@@ -257,6 +257,7 @@
     nixd
     nixfmt-rfc-style
     ripgrep
+    wireguard-tools
   ];
 
   fonts = {
