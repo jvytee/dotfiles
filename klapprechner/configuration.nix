@@ -269,8 +269,6 @@
       jetbrains-mono
       nerd-fonts.symbols-only
       noto-fonts
-      raleway
-      recursive
     ];
   };
 
