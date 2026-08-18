@@ -83,7 +83,7 @@
   (global-corfu-mode)
   :config
   (setopt corfu-auto t
-          corfu-auto-dealy 0.5
+          corfu-auto-delay 0.5
           corfu-auto-trigger "."
           corfu-cycle t
           corfu-quit-no-match t)
