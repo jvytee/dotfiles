@@ -72,9 +72,15 @@
     ];
     firewall.checkReversePath = false;
 
-    wg-quick.interfaces.uwupn = {
-      autostart = false;
-      configFile = "/etc/nixos/uwupn-klapprechner.conf";
+    wg-quick.interfaces = {
+      cloudsalat = {
+        autostart = false;
+        configFile = "/etc/nixos/cloudsalat-klapprechner.conf";
+      };
+      uwupn = {
+        autostart = false;
+        configFile = "/etc/nixos/uwupn-klapprechner.conf";
+      };
     };
   };
 
@@ -123,7 +129,7 @@
 
     resolved = {
       enable = true;
-      dnsovertls = "opportunistic";
+      settings.Resolve.DNSOverTLS = "opportunistic";
     };
 
     syncthing = {
@@ -155,24 +161,28 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.julian = {
     description = "Julian";
+    isNormalUser = true;
+    shell = pkgs.zsh;
+
     extraGroups = [
       "networkmanager"
-      "wheel"
+      "wheel" # Enable ‘sudo’ for the user.
       "scanner"
       "lp"
-    ]; # Enable ‘sudo’ for the user.
-    isNormalUser = true;
+    ];
+
     packages = with pkgs; [
+      abiword
       age
       borgbackup
       emacs-pgtk
       foliate
       ghostty
       gimp
+      gnumeric
       inkscape
       keepassxc
       lazygit
-      libreoffice
       obsidian
       openssl
       quodlibet
@@ -182,7 +192,6 @@
       telegram-desktop
       vlc
     ];
-    shell = pkgs.zsh;
   };
 
   programs = {
@@ -253,11 +262,10 @@
     fd
     git
     gnome-tweaks
-    htop
+    btop
     nixd
-    nixfmt-rfc-style
+    nixfmt
     ripgrep
-    wireguard-tools
   ];
 
   fonts = {
@@ -269,6 +277,8 @@
       jetbrains-mono
       nerd-fonts.symbols-only
       noto-fonts
+      raleway
+      recursive
     ];
   };
 
