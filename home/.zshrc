@@ -38,8 +38,6 @@ precmd_functions+=(set_window_title)
 function source-if-exists { [[ -f $1 ]] && source $1 }
 source-if-exists ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source-if-exists ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source-if-exists ~/.zsh/fzf/key-bindings.zsh
-source-if-exists ~/.zsh/fzf/completion.zsh
 source-if-exists ~/.zsh/zsh-command-not-found/zsh_command_not_found
 
 # Enable bash completion
@@ -47,7 +45,6 @@ autoload -U +X bashcompinit && bashcompinit
 
 # Custom aliases
 alias bat=batcat
-alias emacs-dark="GTK_THEME=Adwaita:dark emacs"
 alias ip="ip -c"
 alias ls="ls --color=auto -h"
 
@@ -75,7 +72,7 @@ alias backup-sina="borg create \
   Videos/"
 
 # Environment variables
-export EDITOR=nvim
+export EDITOR=vim
 export PATH=~/.local/bin:~/go/bin:$PATH
 export PIPENV_SHELL=/usr/bin/zsh
 export WORKON_HOME=~/.local/share/virtualenvs
@@ -83,8 +80,9 @@ export WORKON_HOME=~/.local/share/virtualenvs
 # Custom tool setup
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
+source <(fzf --zsh)
 
 # Work tools setup
-complete -o nospace -C /usr/bin/terraform terraform
-eval "$(docker completion zsh)"
-source /etc/bash_completion.d/azure-cli
+# complete -o nospace -C /usr/bin/terraform terraform
+# eval "$(docker completion zsh)"
+# source /etc/bash_completion.d/azure-cli
