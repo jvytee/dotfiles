@@ -19,7 +19,6 @@
   (org-directory "~/notes")
   (org-agenda-files (find-agenda-files org-directory))
   (org-babel-load-languages '((emacs-lisp . t) (python . t) (shell . t)))
-  (pixel-scroll-precision-mode t)
   (read-extended-command-predicate #'command-completion-default-include-p)
   (read-process-output-max 4000000)
   (redisplay-skip-fontification-on-input t)

@@ -175,9 +175,7 @@
       abiword
       age
       borgbackup
-      emacs-pgtk
       foliate
-      ghostty
       gimp
       gnumeric
       inkscape
@@ -197,7 +195,6 @@
   programs = {
     direnv.enable = true;
     firefox.enable = true;
-    gnome-terminal.enable = true;
     thunderbird.enable = true;
     starship.enable = true;
 
@@ -214,7 +211,7 @@
     #   enableSSHSupport = true;
     # };
 
-    neovim = {
+    vim = {
       enable = true;
       defaultEditor = true;
     };
