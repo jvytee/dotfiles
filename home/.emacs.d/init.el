@@ -89,11 +89,6 @@
           corfu-quit-no-match t)
   (corfu-popupinfo-mode))
 
-(use-package corfu-terminal
-  :init
-  (unless (display-graphic-p)
-    (corfu-terminal-mode t)))
-
 (use-package dape
   :preface (setopt dape-key-prefix "\M-d")
   :custom
