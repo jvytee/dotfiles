@@ -196,8 +196,6 @@
 (use-package eldoc-box
   :after evil
   :config
-  (setq eldoc-echo-area-prefer-doc-buffer t)
-  (setq eldoc-echo-area-use-multiline-p nil)
   (evil-define-key 'normal global-map (kbd "<leader> h") 'eldoc-box-help-at-point)
   (evil-define-key 'normal global-map (kbd "<leader> q") 'eldoc-box-quit-frame))
 
