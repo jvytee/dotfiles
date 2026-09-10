@@ -24,6 +24,7 @@
   (redisplay-skip-fontification-on-input t)
   (tab-width 4)
   (tool-bar-mode nil)
+  (treesit-enabled-modes t)
   (vc-follow-symlinks nil)
   (warning-minimum-level :error)
   (window-sides-vertical t)
@@ -90,8 +91,7 @@
 
 (use-package dape
   :preface (setopt dape-key-prefix "\M-d")
-  :custom
-  (dape-breakpoint-global-mode +1))
+  :config (setopt dape-breakpoint-global-mode +1))
 
 (use-package direnv
   :config (direnv-mode))
@@ -103,6 +103,7 @@
           markdown-mode
           nxml-mode
           prog-mode
+          toml-ts-mode
           yaml-mode
           yaml-ts-mode) . display-line-numbers-mode))
 
@@ -179,9 +180,12 @@
   (evil-define-key 'normal eglot-mode-map (kbd "<leader> o") 'eglot-code-action-organize-imports)
   :hook
   ((go-mode
+    go-ts-mode
     haskell-mode
     java-mode
-    javascript-mode
+    java-ts-mode
+    js-mode
+    js-ts-mode
     nix-mode
     python-mode
     python-ts-mode
