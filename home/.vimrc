@@ -2,6 +2,7 @@ filetype plugin indent on
 syntax on 
 
 set clipboard=unnamedplus
+set cursorline
 set hlsearch
 set mouse=a
 set nocompatible
