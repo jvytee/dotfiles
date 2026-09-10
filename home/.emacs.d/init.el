@@ -195,6 +195,7 @@
     typescript-ts-mode
     web-mode
     yaml-mode
+    yaml-ts-mode
     zig-mode) . eglot-ensure))
 
 (use-package eldoc-box
@@ -229,18 +230,6 @@
 (use-package groovy-mode)
 
 (use-package haskell-mode)
-
-(use-package helpful
-  :config
-  (setopt counsel-describe-function-function #'helpful-callable
-          counsel-describe-variable-function #'helpful-variable)
-  :bind
-  ("C-h f" . helpful-callable)
-  ("C-h v" . helpful-variable)
-  ("C-h k" . helpful-key)
-  ("C-h x" . helpful-command)
-  ("C-c C-d" . helpful-at-point)
-  ("C-h F" . helpful-function))
 
 (use-package highlight-indent-guides
   :config
