@@ -249,8 +249,6 @@
                                        ":=" ":-" ":+" "<*" "<*>" "*>" "<|" "<|>" "|>" "+:" "-:" "=:" "<******>" "++" "+++"))
   (global-ligature-mode t))
 
-(use-package lua-mode)
-
 (use-package magit
   :bind ("C-c g" . magit-file-dispatch))
 
@@ -336,8 +334,6 @@
   :init
   (evil-define-key 'normal eglot-mode-map (kbd "g d") 'xref-find-definitions)
   (evil-define-key 'normal eglot-mode-map (kbd "g r") 'xref-find-references))
-
-(use-package yaml-mode)
 
 (use-package yasnippet
   :config (yas-global-mode 1))
