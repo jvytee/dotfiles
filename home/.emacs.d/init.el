@@ -337,7 +337,3 @@
 
 (use-package yasnippet
   :config (yas-global-mode 1))
-
-(use-package zig-mode
-  :mode ("\\.zig\\'" "\\.zon\\'")
-  :hook (compilation-filter . ansi-color-compilation-filter))
