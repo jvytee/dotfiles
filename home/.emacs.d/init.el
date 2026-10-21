@@ -143,6 +143,8 @@
 (use-package solaire-mode
   :init (solaire-global-mode t))
 
+(use-package eat)
+
 (use-package eglot
   :after evil
   :config
@@ -292,6 +294,14 @@
 (use-package rust-mode
   :init (setq rust-mode-treesitter-derive t)
   :config (setopt indent-tabs-mode nil))
+
+(use-package shell-pop
+  :config
+  (setopt shell-pop-shell-type '("eat" "*eat*"
+                                 (lambda ()
+                                   (when (fboundp 'eat)
+                                     (eat shell-pop-term-shell))))
+          shell-pop-universal-key "C-ö"))
 
 (use-package sicp)
 
