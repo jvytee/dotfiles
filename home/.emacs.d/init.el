@@ -331,6 +331,8 @@
 (use-package treemacs-magit
   :after (treemacs magit))
 
+(use-package typst-ts-mode)
+
 (use-package web-mode
   :config
   (setopt web-mode-engines-alist '(("django" . "\\.html\\'"))
